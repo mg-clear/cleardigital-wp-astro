@@ -1,0 +1,30 @@
+---
+import WPLayout from "../../layouts/WPLayout.astro";
+
+let res = await fetch(
+  `https://dev-clear-astro-wp.pantheonsite.io/wp-json/wp/v2/pages/?slug=homepage`
+);
+let [post] = await res.json();
+---
+
+<WPLayout title={post.title.rendered} metadescription={post.excerpt.rendered}>
+  <main>
+    <section class="blade dark has-grid-bg has-video-bg">
+      <div class="blade-content">
+        <div class="eyebrow">{post.acf.homepage_blades[0].eyebrow}</div>
+        <h1 class="h2">{post.acf.homepage_blades[0].headline}</h1>
+        <a href={post.acf.homepage_blades[0].cta_url} class="hero-cta"
+          >{post.acf.homepage_blades[0].cta_text}</a
+        >
+      </div>
+      <div class="bg-container overlay">
+        <video class="video-bg overlay" autoplay loop muted>
+          <source
+            src="https://media.istockphoto.com/id/1372283447/video/attractive-woman-wearing-virtual-reality-headset-augmented-reality-creative-lady-swiping.mp4?s=mp4-640x640-is&k=20&c=Flz0Jza76gPaFZyEJ8X6114fy__lJc1m_4_yKZRZsVo="
+            type="video/mp4"
+          />
+        </video>
+      </div>
+    </section>
+  </main>
+</WPLayout>

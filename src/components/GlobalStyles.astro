@@ -1,0 +1,170 @@
+<style is:global>
+  @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;700&display=swap");
+
+  :root {
+    font-size: 62.5%;
+  }
+
+  @media (min-width: 1200px) {
+    :root {
+      font-size: 0.625vw;
+    }
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+  }
+
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4 {
+    letter-spacing: -0.05em;
+    line-height: 1.1;
+    font-weight: bold;
+    margin: 0 0 2rem 0;
+  }
+
+  h1,
+  .h1 {
+    font-size: 10rem;
+  }
+
+  h2,
+  .h2 {
+    font-size: 7rem;
+  }
+
+  h3,
+  .h3 {
+    font-size: 5rem;
+  }
+
+  h4,
+  .h4 {
+    font-size: 3rem;
+  }
+  body {
+    font-size: 1.6rem;
+  }
+
+  @media (min-width: 1200px) {
+    h1,
+    .h1 {
+      font-size: 14.5rem;
+    }
+
+    h2,
+    .h2 {
+      font-size: 10.5rem;
+    }
+
+    h3,
+    .h3 {
+      font-size: 7.5rem;
+    }
+
+    h4,
+    .h4 {
+      font-size: 4.4rem;
+    }
+
+    body {
+      font-size: 2rem;
+    }
+  }
+
+  .blade {
+    width: 100%;
+    min-height: 100vh;
+    padding: 15rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .blade-content {
+    width: 136.6rem;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .blade.dark {
+    color: white;
+    background-color: black;
+  }
+
+  .blade.has-grid-bg::before {
+    position: absolute;
+    content: " ";
+    background-image: url(/Grid_Pattern_Black.svg);
+    background-repeat: repeat;
+    background-size: 5rem;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.33;
+    z-index: 1;
+  }
+
+  .blade.has-grid-bg.dark::before {
+    background-image: url(/Grid_Pattern_White.svg);
+  }
+
+  .bg-container,
+  .bg-container > * {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .bg-container {
+    z-index: 0;
+  }
+
+  .bg-container.overlay::before {
+    position: absolute;
+    content: " ";
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: black;
+    opacity: 0.4;
+    z-index: 1;
+  }
+
+  .video-bg {
+    object-fit: cover;
+  }
+</style>
