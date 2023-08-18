@@ -1,4 +1,5 @@
 ---
+import CTAButton from "../../components/CTAButton.astro";
 import WPLayout from "../../layouts/WPLayout.astro";
 
 let res = await fetch(
@@ -13,9 +14,10 @@ let [post] = await res.json();
       <div class="blade-content">
         <div class="eyebrow">{post.acf.homepage_blades[0].eyebrow}</div>
         <h1 class="h2">{post.acf.homepage_blades[0].headline}</h1>
-        <a href={post.acf.homepage_blades[0].cta_url} class="hero-cta"
-          >{post.acf.homepage_blades[0].cta_text}</a
-        >
+        <CTAButton
+          label={post.acf.homepage_blades[0].cta_text}
+          href={post.acf.homepage_blades[0].cta_url}
+        />
       </div>
       <div class="bg-container overlay">
         <video class="video-bg overlay" autoplay loop muted>
@@ -24,6 +26,21 @@ let [post] = await res.json();
             type="video/mp4"
           />
         </video>
+      </div>
+    </section>
+    <section class="blade has-grid-bg">
+      <div class="blade-content">
+        <h1>This is an H1 headline.</h1>
+      </div>
+    </section>
+    <section class="blade dark has-grid-bg">
+      <div class="blade-content">
+        <h3>This is an H3 headline with a large amount of copy underneath.</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium magnam voluptates placeat earum necessitatibus officiis illo voluptate pariatur aperiam consequatur in, illum optio, non inventore facilis, veritatis mollitia ducimus. Repellat ab dolores dolorem at inventore pariatur autem odit ullam amet? Perspiciatis ipsam repellat quidem tenetur laboriosam, mollitia laborum sequi saepe error adipisci assumenda, vel hic voluptate cumque commodi excepturi maiores ex labore reprehenderit nemo inventore. Dignissimos, nemo facere eos necessitatibus tempora eaque ex obcaecati totam quae repellat ipsam similique sint fuga quasi iusto aliquam et. Perspiciatis velit quas impedit excepturi autem sapiente totam, atque placeat, iure pariatur nisi soluta cumque?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio autem soluta consequatur eius. Animi rerum, repellendus molestiae doloribus eveniet, dolorem distinctio praesentium quo laboriosam cupiditate qui reiciendis impedit! Quibusdam molestiae repudiandae odit et modi sunt aperiam corrupti quam. Dolores quidem temporibus cupiditate porro ad quod omnis minima necessitatibus, neque expedita!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo quod labore ea sed sint nulla ullam itaque id consequuntur eveniet, veniam, excepturi eligendi, soluta exercitationem harum! Accusantium officia dolorem fugiat consectetur asperiores blanditiis optio earum repellendus perferendis animi laudantium commodi sint itaque facilis vero voluptas aperiam debitis, et quam molestias quisquam facere totam inventore delectus. Aliquam necessitatibus corrupti autem quaerat rerum. Nulla quisquam consequatur quam perferendis minus laudantium est debitis similique exercitationem! A quia et eum quasi optio omnis. Possimus ipsa sequi eveniet dolores aliquam eius corrupti excepturi quo veritatis et molestias inventore, nulla rerum! Accusantium vel optio qui eos.</p>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro modi, necessitatibus veniam ab neque atque officiis veritatis debitis iure voluptatum, expedita accusantium nulla. Nisi praesentium hic magni quisquam eligendi assumenda molestias asperiores veritatis adipisci neque alias, atque error ipsa obcaecati vel tempore ad consequatur officia qui? Nam repudiandae officiis maiores voluptatum explicabo, molestiae officia reiciendis, delectus esse, fugiat quaerat iste hic id! Iusto repudiandae sunt voluptates sed corrupti cupiditate itaque!</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga, provident. Assumenda fuga incidunt quas soluta tempora commodi non veritatis debitis sunt reiciendis eum, quo aut adipisci quae vitae inventore amet voluptatem quod, omnis labore! Tempora quos dolorem ex nihil earum sint, perspiciatis magni, delectus voluptatum fugit placeat, totam iure vero. Debitis illum ullam ipsa nobis veritatis quis natus provident quod numquam asperiores autem neque cupiditate itaque cum quia, sapiente facere porro quasi quibusdam deleniti nihil exercitationem assumenda! Soluta aut sint expedita a quam excepturi blanditiis possimus maiores nemo nam. Aspernatur libero illum laboriosam ducimus ipsum vero expedita nam molestias. Debitis repellendus fugiat ducimus asperiores odit repellat sequi hic totam quibusdam accusantium, neque dolore necessitatibus. Saepe ducimus atque minus, recusandae sint maxime culpa eos ullam quos numquam natus quis laboriosam alias id, fugit doloremque magnam vero doloribus ea veritatis est iste aperiam nam. Eum facilis exercitationem, ipsa dolor et, quaerat architecto minima vero enim facere, consequatur qui in eaque nostrum praesentium. Dolorem laboriosam, labore laborum nulla nihil porro. Sit minima autem amet optio? Natus eveniet dicta, amet eaque reprehenderit, hic illum eligendi, nisi qui quam velit ipsum temporibus labore modi ullam laboriosam incidunt fugit voluptatum odit odio maiores itaque aliquid quidem!</p>
       </div>
     </section>
   </main>
