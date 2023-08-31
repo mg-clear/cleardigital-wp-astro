@@ -1,0 +1,40 @@
+---
+import CTAButton from './CTAButton.astro';
+import Eyebrow from './Eyebrow.astro';
+interface Props {
+	eyebrow: string;
+	headline: string;
+	ctaLabel: string;
+	ctaHref: string;
+	ctaTarget: string;
+	backgroundVideoUrl: string;
+    backgroundVideoMediaType?: string;
+}
+
+const { eyebrow, headline, ctaLabel, ctaHref, ctaTarget, backgroundVideoUrl, backgroundVideoMediaType = "video/mp4" } = Astro.props;
+---
+
+<section class="blade dark has-grid-bg has-video-bg">
+    <div class="blade-content">
+        <Eyebrow
+            text={eyebrow}
+            className='hero'
+        />
+        <h1 class="h2">
+            {headline}
+        </h1>
+        <CTAButton
+            label={ctaLabel}
+            href={ctaHref} 
+            target={ctaTarget}
+        />
+    </div>
+    <div class="bg-container overlay">
+        <video class="video-bg overlay" autoplay loop muted>
+            <source
+                src={backgroundVideoUrl}
+                type={backgroundVideoMediaType}
+            />
+        </video>
+    </div>
+</section>

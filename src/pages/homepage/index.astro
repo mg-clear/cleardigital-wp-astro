@@ -1,5 +1,6 @@
 ---
 import CTAButton from "../../components/CTAButton.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
 import WPLayout from "../../layouts/WPLayout.astro";
 
 let res = await fetch(
@@ -12,11 +13,12 @@ let [post] = await res.json();
   <main>
     <section class="blade dark has-grid-bg has-video-bg">
       <div class="blade-content">
-        <div class="eyebrow">{post.acf.homepage_blades[0].eyebrow}</div>
+        <Eyebrow text={post.acf.homepage_blades[0].eyebrow} />
         <h1 class="h2">{post.acf.homepage_blades[0].headline}</h1>
         <CTAButton
           label={post.acf.homepage_blades[0].cta_text}
           href={post.acf.homepage_blades[0].cta_url}
+          target="_blank"
         />
       </div>
       <div class="bg-container overlay">

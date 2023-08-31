@@ -2,12 +2,13 @@
 interface Props {
   label: string;
   href: string;
+  target: string;
 }
 
-const { label, href } = Astro.props;
+const { label, href, target = '_self' } = Astro.props;
 ---
 
-<a href={href} class="cta-button">{label}</a>
+<a href={href} class="cta-button" target={target}>{label}</a>
 <style>
   .cta-button {
     display: inline-block;
