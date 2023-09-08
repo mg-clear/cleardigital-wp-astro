@@ -1,0 +1,7 @@
+$break-desktop_tablet: 1200px;
+$break-tablet_mobile: 768px;
+
+$desktop_min: $break-desktop_tablet;
+$tablet_max: $desktop_min - 1px;
+$tablet_min: $break-tablet_mobile;
+$mobile_max: $tablet_min - 1px;

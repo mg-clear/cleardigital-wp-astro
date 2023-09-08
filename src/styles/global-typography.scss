@@ -1,0 +1,140 @@
+html {
+	font-size: 62.5%; /* This is set so that 1rem is 10px when viewport is at 100% zoom level */
+
+	@media(min-width: $desktop_min) {
+		font-size: 0.625vw; /* This is normalized such that at 1600px viewport width, 1rem is 10px when viewport is at 100% zoom level; and the font size scales linearly with the viewport from 1200px and higher */
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+}
+
+/* Global typography rules from UI Kit https://www.figma.com/file/1T5HSD64E5uNvMGbFFBCl1/Clear-Digital-UI-Kit?type=design&node-id=253-299&mode=design&t=eqXl5Jm4QXVINLEn-0 */
+
+body, .body-default {
+	font-family: "Poppins", Arial, Helvetica, sans-serif;
+	font-size: 1.6rem;
+	font-weight: normal;
+	letter-spacing: 0;
+	line-height: 1.5;
+}
+
+h1, .h1 {
+	font-size: 8rem;
+	font-weight: bold;
+	letter-spacing: -0.05em;
+	line-height: 1.1;
+
+	@media(min-width: $tablet_min) {
+		font-size: 12rem;
+	}
+
+	@media(min-width: $desktop_min) {
+		font-size: 14rem;
+	}
+}
+
+h2, .h2 {
+	font-size: 4rem;
+	font-weight: bold;
+	letter-spacing: -0.02em;
+	line-height: 1.1;
+
+	@media(min-width: $tablet_min) {
+		font-size: 6.5rem;
+	}
+
+	@media(min-width: $desktop_min) {
+		font-size: 7.5rem;
+	}
+}
+
+h3, .h3 {
+	font-size: 3rem;
+	font-weight: bold;
+	letter-spacing: -0.02em;
+	line-height: 1.1;
+
+	@media(min-width: $tablet_min) {
+		font-size: 5rem;
+	}
+
+	@media(min-width: $desktop_min) {
+		font-size: 5.5rem;
+	}
+}
+
+h4, .h4 {
+	font-size: 2.4rem;
+	font-weight: bold;
+	letter-spacing: 0;
+	line-height: 1.3;
+
+	@media(min-width: $tablet_min) {
+		font-size: 3rem;
+	}
+}
+
+.subtitle {
+	font-size: 2rem;
+	font-weight: normal;
+	letter-spacing: 0;
+	line-height: 1;
+
+	@media(min-width: $tablet_min) {
+		font-size: 2.5rem;
+	}
+}
+
+.body-large {
+	font-size: 1.8rem;
+	font-weight: normal;
+	letter-spacing: 0;
+	line-height: 1.5;
+
+	@media(min-width: $tablet_min) {
+		font-size: 2rem;
+	}
+}
+
+.body-medium {
+	font-size: 1.6rem;
+	font-weight: normal;
+	letter-spacing: 0;
+	line-height: 1.5;
+
+	@media(min-width: $tablet_min) {
+		font-size: 1.8rem;
+	}
+}
+
+.button-large {
+	font-size: 1.6rem;
+	font-weight: bold;
+	letter-spacing: 0;
+	line-height: 1;
+
+	@media(min-width: $tablet_min) {
+		font-size: 2rem;
+	}
+}
+
+.button-small {
+	font-size: 1.6rem;
+	font-weight: bold;
+	letter-spacing: 0;
+	line-height: 1;
+}
+
+.footer-links-small {
+	font-size: 1.2rem;
+	font-weight: normal;
+	letter-spacing: 0;
+	line-height: 1;
+
+	@media(min-width: $tablet_min) {
+		font-size: 1.4rem;
+	}
+}

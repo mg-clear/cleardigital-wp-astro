@@ -8,7 +8,7 @@ interface Props {
 const { label, href, target = '_self' } = Astro.props;
 ---
 
-<a href={href} class="cta-button" target={target}>{label}</a>
+<a href={href} class="cta-button button-large" target={target}>{label}</a>
 <style>
   .cta-button {
     display: inline-block;

@@ -1,0 +1,11 @@
+:root {
+	--content-width: 100%;
+	--content-side-padding: 2rem;
+	--column-gutter-width: 1.6rem;
+
+	@media(min-width: $desktop_min) {
+		--content-width: 141rem;
+		--content-side-padding: 2rem;
+		--column-gutter-width: 3rem;
+	}
+}

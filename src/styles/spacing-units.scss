@@ -1,0 +1,17 @@
+:root {
+	--padding-unit-150: 7rem;
+	--padding-unit-50: 4rem;
+	--padding-unit-30: 2rem;
+	--padding-unit-20: 1.5rem;
+	--padding-unit-10: 1rem;
+	--padding-unit-5: 0.5rem;
+
+	@media(min-width: $desktop_min) {
+		--padding-unit-150: 15rem;
+		--padding-unit-50: 5rem;
+		--padding-unit-30: 3rem;
+		--padding-unit-20: 2rem;
+		--padding-unit-10: 1rem;
+		--padding-unit-5: 0.5rem;
+	}
+}
