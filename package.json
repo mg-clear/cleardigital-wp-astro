@@ -10,8 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/netlify": "^3.0.1",
     "@fontsource/poppins": "^5.0.8",
-    "astro": "^2.10.9",
+    "astro": "^3.0.10",
     "sass": "^1.66.1"
   }
 }
