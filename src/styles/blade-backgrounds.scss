@@ -1,0 +1,65 @@
+.blade {
+    &.dark {
+		color: $white;
+		background-color: $black;
+	}
+
+	&.has-grid-bg {
+
+		&::before {
+			position: absolute;
+			content: " ";
+			background-image: url(/Grid_Pattern_Black.svg);
+			background-repeat: repeat;
+			background-size: 6rem;
+			background-position: center;
+			height: 100%;
+			width: 100%;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			opacity: 0.33;
+			z-index: 1;
+            background-attachment: fixed;
+		}
+
+		&.dark::before {
+			background-image: url(/Grid_Pattern_White.svg);
+		}
+	}
+
+    .bg-container,
+    .bg-container > * {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    .bg-container {
+        z-index: 0;
+    }
+
+    .bg-container.overlay::before {
+        position: absolute;
+        content: " ";
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background-color: black;
+        opacity: 0.4;
+        z-index: 1;
+    }
+
+    .video-bg {
+        object-fit: cover;
+    }
+}

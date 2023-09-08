@@ -9,3 +9,29 @@
 		--column-gutter-width: 3rem;
 	}
 }
+
+.blade {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    position: relative;
+	padding-block: var(--padding-unit-150);
+	padding-inline: var(--content-side-padding);
+	min-height: 100vh;
+
+	&.not-screen-height {
+		min-height: unset;
+	}
+}
+
+.blade-content, .content-width {
+	width: 100%;
+	max-width: var(--content-width);
+	margin: 0 auto;
+	position: relative;
+}
+
+.blade-content {
+	z-index: 2;
+}

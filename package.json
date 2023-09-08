@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/netlify": "^3.0.1",
     "@fontsource/poppins": "^5.0.8",
+    "@julian_cataldo/astro-resets": "^0.12.6",
     "astro": "^3.0.10",
     "sass": "^1.66.1"
   }

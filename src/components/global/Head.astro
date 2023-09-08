@@ -1,0 +1,34 @@
+---
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/700.css';
+import Resets from '@julian_cataldo/astro-resets/Resets.astro';
+import "../../styles/main.scss";
+
+interface Props {
+  title: string;
+  metadescription: string;
+}
+
+const { title, metadescription } = Astro.props;
+---
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={metadescription} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <Resets
+        removeAllMargins={true}
+        fontSmoothing={true}
+        fontSystem={true}
+        scrollSmooth={true}
+        borderBox={true}
+        scrollBarKeep={true}
+        breakWords={true}
+        consistentFont={true}
+        unstyleNavList={true}
+        accessibleLineHeight={true}
+    />
+    <title>{title}</title>
+</head>
