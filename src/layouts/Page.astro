@@ -18,8 +18,10 @@ const { title, metadescription } = Astro.props;
     metadescription = {metadescription}
   />
   <body>
-	  <Header />
-    <slot />
-    <Footer />
+    <main>
+      <Header />
+      <slot />
+      <Footer />
+    </main>
   </body>
 </html>

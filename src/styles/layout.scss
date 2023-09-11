@@ -17,7 +17,6 @@
 	justify-content: center;
     position: relative;
 	padding-block: var(--padding-unit-150);
-	padding-inline: var(--content-side-padding);
 	min-height: 100vh;
 
 	&.not-screen-height {
@@ -25,9 +24,10 @@
 	}
 }
 
-.blade-content, .content-width {
+.blade-content, .content-width, .container {
 	width: 100%;
-	max-width: var(--content-width);
+	max-width: calc(var(--content-width) + calc(2 * var(--content-side-padding)));
+	padding-inline: var(--content-side-padding);
 	margin: 0 auto;
 	position: relative;
 }

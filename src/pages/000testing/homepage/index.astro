@@ -1,8 +1,8 @@
 ---
-import BladeHeroBanner from "../../components/BladeHeroBanner.astro";
-import CTAButton from "../../components/CTAButton.astro";
-import Eyebrow from "../../components/Eyebrow.astro";
-import Page from "../../layouts/Page.astro";
+import BladeHeroBanner from "../../../components/BladeHeroBanner.astro";
+import CTAButton from "../../../components/CTAButton.astro";
+import Eyebrow from "../../../components/Eyebrow.astro";
+import Page from "../../../layouts/Page.astro";
 
 let res = await fetch(
   `https://dev-clear-astro-wp.pantheonsite.io/wp-json/wp/v2/pages/?slug=homepage`
@@ -11,7 +11,6 @@ let [post] = await res.json();
 ---
 
 <Page title={post.title.rendered} metadescription={post.excerpt.rendered}>
-  <main>
     <BladeHeroBanner
       eyebrow={post.acf.homepage_blades[0].eyebrow}
       headline={post.acf.homepage_blades[0].headline}
@@ -36,5 +35,4 @@ let [post] = await res.json();
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga, provident. Assumenda fuga incidunt quas soluta tempora commodi non veritatis debitis sunt reiciendis eum, quo aut adipisci quae vitae inventore amet voluptatem quod, omnis labore! Tempora quos dolorem ex nihil earum sint, perspiciatis magni, delectus voluptatum fugit placeat, totam iure vero. Debitis illum ullam ipsa nobis veritatis quis natus provident quod numquam asperiores autem neque cupiditate itaque cum quia, sapiente facere porro quasi quibusdam deleniti nihil exercitationem assumenda! Soluta aut sint expedita a quam excepturi blanditiis possimus maiores nemo nam. Aspernatur libero illum laboriosam ducimus ipsum vero expedita nam molestias. Debitis repellendus fugiat ducimus asperiores odit repellat sequi hic totam quibusdam accusantium, neque dolore necessitatibus. Saepe ducimus atque minus, recusandae sint maxime culpa eos ullam quos numquam natus quis laboriosam alias id, fugit doloremque magnam vero doloribus ea veritatis est iste aperiam nam. Eum facilis exercitationem, ipsa dolor et, quaerat architecto minima vero enim facere, consequatur qui in eaque nostrum praesentium. Dolorem laboriosam, labore laborum nulla nihil porro. Sit minima autem amet optio? Natus eveniet dicta, amet eaque reprehenderit, hic illum eligendi, nisi qui quam velit ipsum temporibus labore modi ullam laboriosam incidunt fugit voluptatum odit odio maiores itaque aliquid quidem!</p>
       </div>
     </section>
-  </main>
-</Page>
+  </Page>
