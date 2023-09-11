@@ -1,0 +1,86 @@
+---
+
+interface Props {
+
+}
+
+const {
+
+} = Astro.props;
+
+---
+
+<div class="logo-carousel">
+	<ul>
+		<li>
+			<img src="/logos/cisco_logo.svg" alt="Logo">
+		</li>
+		<li>
+			<img src="/logos/mcafee_logo.svg" alt="Logo">
+		</li>
+		<li>
+			<img src="/logos/stanford_logo.svg" alt="Logo">
+		</li>
+		<li>
+			<img src="/logos/tenable_logo.svg" alt="Logo">
+		</li>
+		<li>
+			<img src="/logos/vmware_logo.svg" alt="Logo">
+		</li>
+		<li>
+			<img src="/logos/cisco_logo.svg" alt="Logo">
+		</li>
+		<li>
+			<img src="/logos/mcafee_logo.svg" alt="Logo">
+		</li>
+		<li>
+			<img src="/logos/stanford_logo.svg" alt="Logo">
+		</li>
+		<li>
+			<img src="/logos/tenable_logo.svg" alt="Logo">
+		</li>
+		<li>
+			<img src="/logos/vmware_logo.svg" alt="Logo">
+		</li>
+	</ul>
+</div>
+
+<style lang="scss">
+	.logo-carousel {
+		position: relative;
+		padding-block-start: var(--padding-unit-150);
+
+		&::before {
+			content: '';
+			position: absolute;
+			width: var(--padding-unit-150);
+			background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+			top: 0;
+			bottom: 0;
+			left: 0;
+			height: 100%;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			width: var(--padding-unit-150);
+			background: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+			top: 0;
+			bottom: 0;
+			right: 0;
+			height: 100%;
+		}
+
+		ul {
+			overflow: hidden;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: no-wrap;
+			gap: 10rem;
+		}
+	}
+</style>
