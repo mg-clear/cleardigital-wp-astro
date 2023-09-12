@@ -6,9 +6,10 @@ import Footer from "../components/global/Footer.astro";
 interface Props {
   title: string;
   metadescription: string;
+  ogimage: string;
 }
 
-const { title, metadescription } = Astro.props;
+const { title, metadescription, ogimage } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -16,6 +17,7 @@ const { title, metadescription } = Astro.props;
   <Head 
     title = {title}
     metadescription = {metadescription}
+    ogimage = {ogimage}
   />
   <body>
     <main>

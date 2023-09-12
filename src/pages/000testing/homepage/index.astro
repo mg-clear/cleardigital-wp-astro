@@ -4,18 +4,62 @@ import CTAButton from "../../../components/CTAButton.astro";
 import Eyebrow from "../../../components/Eyebrow.astro";
 import Page from "../../../layouts/Page.astro";
 
-let res = await fetch(
-  `https://dev-clear-astro-wp.pantheonsite.io/wp-json/wp/v2/pages/?slug=homepage`
+const res = await fetch(
+  `https://dev-clear-astro-wp.pantheonsite.io/graphql`,
+  {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      query: `
+        query HomepageQuery($id: ID! = "cG9zdDo3") {
+          page(id: $id) {
+            id
+            title
+            homepageBlades {
+              homepageBlades {
+                ... on Page_Homepageblades_HomepageBlades_HeroBanner {
+                  ctaLabel
+                  ctaTarget
+                  ctaUrl
+                  eyebrow
+                  headline
+                  fieldGroupName
+                }
+                ... on Page_Homepageblades_HomepageBlades_Section1 {
+                  field1
+                  field2
+                  fieldGroupName
+                }
+              }
+            }
+            seo {
+              metaDesc
+              opengraphTitle
+              opengraphImage {
+                sourceUrl
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        id: "cG9zdDo3",
+      }
+    })
+  }
 );
-let [post] = await res.json();
+const json = await res.json();
+const page = json.data.page;
+
+console.log(page)
 ---
 
-<Page title={post.title.rendered} metadescription={post.excerpt.rendered}>
+<Page metadescription={page.seo.metaDesc} ogimage={page.seo.opengraphImage.sourceUrl} title={page.title}>
     <BladeHeroBanner
-      eyebrow={post.acf.homepage_blades[0].eyebrow}
-      headline={post.acf.homepage_blades[0].headline}
-      ctaLabel={post.acf.homepage_blades[0].cta_label}
-      ctaHref={post.acf.homepage_blades[0].cta_url}
+      eyebrow=""
+      headline=""
+      ctaLabel=""
+      ctaHref=""
       ctaTarget="_blank"
       backgroundVideoUrl="https://media.istockphoto.com/id/1372283447/video/attractive-woman-wearing-virtual-reality-headset-augmented-reality-creative-lady-swiping.mp4?s=mp4-640x640-is&k=20&c=Flz0Jza76gPaFZyEJ8X6114fy__lJc1m_4_yKZRZsVo="
       backgroundVideoMediaType="video/mp4"
