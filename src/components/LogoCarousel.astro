@@ -8,6 +8,8 @@ const {
 
 } = Astro.props;
 
+console.log('this js code runs on the server22222');
+
 ---
 
 <div class="logo-carousel">
@@ -44,6 +46,12 @@ const {
 		</li>
 	</ul>
 </div>
+
+<script>
+	console.log('this js script runs in the client');
+	const logoCarousel = document.querySelectorAll('.logo-carousel');
+	console.log(logoCarousel);
+</script>
 
 <style lang="scss">
 	.logo-carousel {
