@@ -10,8 +10,293 @@ const {
 
 ---
 
-<section class="image-two-block blade dark">
+<style lang="scss">
+	@import 'src/styles/variables';
+	@import 'src/styles/mixins';
+
+	/* Swiper styling overrides */
+
+	.swiper {
+		--swiper-theme-color: #{$color-brand};
+		position: relative;
+	}
+
+	.swiper-wrapper {
+		height: auto !important;
+	}
+
+	.swiper-pagination-progressbar {
+		background: transparent !important;
+		height: 0.8rem !important;
+		margin-top: 4rem;
+		position: relative !important;
+
+		@media (min-width: $breakpoint-tablet) {
+			margin-top: 5rem;
+		}
+
+		&::before {
+			background-color: $color-background-dark;
+			content: '';
+			display: block;
+			height: 0.1rem;
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 100%;
+		}
+	}
+
+	.swiper-button-prev,
+	.swiper-button-next {
+		height: 100% !important;
+		margin-top: 0 !important;
+		top: 0 !important;
+		width: 100% !important;
+
+		&::after {
+			display: none !important;
+		}
+
+		&.swiper-button-disabled {
+			opacity: 1 !important;
+		}
+	}
+
+	.swiper-button-prev,
+	.swiper-container-rtl .swiper-button-next {
+		left: -100% !important;
+	}
+
+	.swiper-button-next,
+	.swiper-container-rtl .swiper-button-prev {
+		right: -100% !important;
+	}
+
+
+	[is='flynt-block-image-two-col'] {
+		background-color: $color-background-dark;
+		min-height: 100vh;
+		overflow: hidden;
+		padding: 0 !important;
+
+		.columns {
+			@include row(0);
+
+			&-outer {
+				&.swiper {
+					.swiper-wrapper {
+						@media (min-width: $breakpoint-tablet) {
+							flex-wrap: nowrap;
+						}
+					}
+				}
+
+				.swiper-button-next,
+				.swiper-button-prev {
+					display: none;
+
+					@media (min-width: $breakpoint-tablet-horizontal) {
+						display: block;
+					}
+				}
+
+				.swiper-button-next {
+					right: calc(-100% + #{$container-padding-mobile}) !important;
+
+					@media (min-width: $breakpoint-tablet) {
+						right: calc(-100% + #{$container-padding-tablet}) !important;
+					}
+
+					@media (min-width: $breakpoint-desktop) {
+						right: calc(-100% + #{$container-padding-desktop}) !important;
+					}
+				}
+
+				.swiper-button-prev {
+					left: calc(-100% + #{$container-padding-mobile}) !important;
+
+					@media (min-width: $breakpoint-tablet) {
+						left: calc(-100% + #{$container-padding-tablet}) !important;
+					}
+
+					@media (min-width: $breakpoint-desktop) {
+						left: calc(-100% + #{$container-padding-desktop}) !important;
+					}
+				}
+			}
+		}
+
+		.column {
+			@include col(12);
+			height: 100vh;
+			position: relative;
+
+			@media (min-width: $breakpoint-tablet) {
+				@include col(6);
+			}
+		}
+
+		.figure {
+			height: 100%;
+			margin: 0;
+			overflow: hidden;
+			position: relative;
+
+			.figure-image {
+				height: 100%;
+				object-fit: cover;
+				width: 100%;
+			}
+		}
+
+		video {
+			height: 100vh;
+			margin: 0;
+			object-fit: cover;
+			overflow: hidden;
+			position: relative;
+			width: 100%;
+		}
+
+		.content {
+			bottom: $component-spacing-mobile;
+			left: 0;
+			padding-left: $container-padding-mobile;
+			padding-right: $container-padding-mobile;
+			position: absolute;
+			width: auto;
+
+			@media (min-width: $breakpoint-tablet) {
+				bottom: $component-spacing-tablet;
+				padding-left: $container-padding-tablet;
+				padding-right: $container-padding-tablet;
+			}
+
+			@media (min-width: $breakpoint-desktop) {
+				bottom: $component-spacing-desktop;
+				max-width: 66.66667%;
+				padding-left: $container-padding-desktop;
+				padding-right: $container-padding-desktop;
+			}
+
+			.marker {
+				color: $color-background;
+			}
+		}
+
+		.logo {
+			@include spacing('medium');
+			display: inline-block;
+			height: 4rem;
+			max-width: 19.5rem;
+			overflow: hidden;
+			width: 100%;
+
+			.logo-image {
+				height: 100%;
+				object-fit: contain;
+			}
+		}
+	}
+</style>
+
+<!-- <section class="image-two-block blade dark">
 	<div class="container blade-content">
 		ImageTwoBlock.astro
 	</div>
-</section>
+</section> -->
+
+<div class="flyntComponent componentSpacing" is="flynt-block-image-two-col">
+	<div class="columns-outer swiper">
+		<div class="columns swiper-wrapper">
+			<div class="column swiper-slide">
+				<figure class="figure">
+					<img class="figure-image lazyload" src="/man-holding-phone.webp" width="800" height="1090" alt="Background Image">
+				</figure>
+				<div class="content">
+					<div class="logo">
+						<img class="logo-image lazyload" src="/logo-digimarc.webp" width="290" height="61" alt="Logo">
+					</div>
+					<h2 class="h3">
+						<span class="art art--circleWhite">27%</span>
+						increase on click-through rates.
+					</h2>
+					<a href="/" class="button button--link">View case study</a>
+				</div>
+			</div>
+			<div class="column swiper-slide">
+				<figure class="figure">
+					<img class="figure-image lazyload" src="/office-discussion.webp" width="800" height="1090" alt="Background Image">
+				</figure>
+				<div class="content">
+					<div class="logo">
+						<img class="logo-image lazyload" src="/logo-leadspace.webp" width="290" height="61" alt="Logo">
+					</div>
+					<h2 class="h3">53%
+						<span class="marker marker--crossout">increase</span>
+						on engagement metrics.</h2>
+					<a href="/" class="button button--link">View case study</a>
+				</div>
+			</div>
+			<div class="column swiper-slide">
+				<!-- <video class="video" width="640" height="640" aria-hidden="true" autoplay muted loop poster="/girl-in-vr-headset.webp">
+					<source src="/Videos/video-dummy.mp4" type="video/mp4">
+					<source src="/Videos/video-dummy.webm" type="video/webm">
+				</video> -->
+				<figure class="figure">
+					<img class="figure-image lazyload" src="/man-holding-phone.webp" width="800" height="1090" alt="Background Image">
+				</figure>
+				<div class="content">
+					<div class="logo">
+						<img class="logo-image lazyload" src="/logo-digimarc.webp" width="290" height="61" alt="Logo">
+					</div>
+					<h2 class="h3">
+						<span class="art art--circleWhite">27%</span>
+						increase on click-through rates.
+					</h2>
+					<a href="/" class="button button--link">View case study</a>
+				</div>
+			</div>
+		</div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+	</div>
+</div>
+
+<script>
+	import Swiper from 'swiper'
+	import { Navigation, A11y, Autoplay, Pagination } from 'swiper/modules'
+	import 'swiper/css'
+	import 'swiper/css/autoplay'
+	import 'swiper/css/a11y'
+	import 'swiper/css/navigation'
+
+	const sliderSelector = '.swiper';
+	const slider = document.querySelector(sliderSelector);
+
+	if (slider) {
+		const parameters = {
+			modules: [Navigation, A11y, Autoplay, Pagination],
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev'
+			},
+			slidesPerView: 1,
+			speed: 400,
+			spaceBetween: 0,
+			breakpoints: {
+				992: {
+					slidesPerView: 2
+				},
+				1200: {
+					noSwiping: true,
+					noSwipingClass: 'swiper-slide',
+					slidesPerView: 2
+				}
+			}
+		}
+		
+		const swiper = new Swiper(sliderSelector, parameters)
+	}
+</script>
