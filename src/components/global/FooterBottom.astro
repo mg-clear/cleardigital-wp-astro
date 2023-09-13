@@ -12,7 +12,40 @@ const {
 
 <div class="footer-bottom">
 	<div class="container">
-		FooterBottom.astro
+		<div class="wrapper">
+            <div class="logo-outer">
+                <div class="logo-inner-wrap">
+                    <a href="/" data-cursor-expand="">
+                        <img src="/public/clear.svg" alt="clear">
+                    </a>
+                </div>
+            </div>
+            <div class="copyright-list">
+                <ul>
+                    <li>
+                        <a href="" class="footer-link-sm" data-cursor-expand="">© 2023 Clear
+                            Digital , Inc.</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link-sm" data-cursor-expand="">Email
+                            Subscriptions</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link-sm" data-cursor-expand="">Terms of Use </a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link-sm" data-cursor-expand="">Privacy </a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link-sm" data-cursor-expand="">Cookie Policy</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link-sm" data-cursor-expand="">Cookie
+                            Settings</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 	</div>
 </div>
 
@@ -20,5 +53,73 @@ const {
 	.footer-bottom {
 		background: var(--color-white);
 		color: var(--color-grey);
-	}
+		padding: 20px 0;
+ @mixin tablet_min {
+    padding: 30px 0 20px;
+  }
+  .wrapper {
+    display: flex;
+    align-items: center;
+   @mixin tablet_min {
+      display: block;
+      width: 100%;
+    }
+    .logo-outer {
+      width: 30%;
+      @mixin desktop_min {
+        width: 20%;
+      }
+     @mixin tablet_min {
+        display: block;
+      }
+      .logo-inner-wrap {
+        max-width: 30px;
+        height: 30px;
+        overflow: hidden;
+       @mixin tablet_min {
+          max-width: 40px;
+          height: 38px;
+          margin-bottom: 25px;
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+    .copyright-list {
+      width: 70%;
+      @mixin desktop_min {
+        width: 80%;
+      }
+     @mixin tablet_min {
+        width: 100%;
+      }
+      ul {
+        display: flex;
+       @mixin tablet_min {
+          display: block;
+        }
+        li {
+          position: relative;
+          list-style: none;
+          padding-right: 20px;
+          margin-bottom: 10px;
+          a {
+            transition: all 0.3s linear;
+			color: var(--color-grey);
+			text-decoration: none;
+            &:hover {
+              color: var(--color-pink) !important;
+            }
+          }
+         @mixin tablet_min {
+            margin-bottom: 13px;
+          }
+        }
+      }
+    }
+  }
+}
 </style>

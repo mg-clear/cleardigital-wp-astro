@@ -1,17 +1,85 @@
 ---
+import CTAButton from "../CTAButton.astro";
 
 interface Props {
-
+	ctaLabel: 'Learn More';
+	ctaHref: '/';
+	ctaTarget: '_self';
 }
 
 const {
-
+	ctaLabel, ctaHref, ctaTarget
 } = Astro.props;
 
 ---
 
 <div class="footer-myrious">
 	<div class="container">
-		FooterMyrious.astro
+		<div class="content-wrapper">
+            <div class="logo-wrap">
+                <a href="/" data-cursor-expand="">
+                    <img src="/src/images/myrious_logo.png" alt="Myrious">
+                </a>
+            </div>
+            <div class="title-wrap">
+                <p class="subtitle">Clear Digital is a founding member of Myrious Group’s expertise-driven agencies.</p>
+                <p class="body-default">Myrious Group is an independent holding company enabling forward-thinking brands
+                    to achieve breakthrough performance through power of orchestration. </p>
+                <div class="bten-wrap">
+					<!-- <CTAButton
+								label={ctaLabel}
+								href={ctaHref}
+								target={ctaTarget}
+							/> -->
+							<a href="/" class="cta-button button-large">Download</a>
+                </div>
+            </div>
+        </div>
 	</div>
 </div>
+
+
+<style lang="scss">
+	.footer-myrious{
+		border-top: 1px solid var(--color-white);
+		padding-bottom: 150px;
+	}
+	 .content-wrapper {
+    display: flex;
+    padding-top: 48px;
+   @mixin tablet_min {
+      display: block;
+      padding-top: 39px;
+    }
+    .logo-wrap {
+      max-width: 115px;
+      height: 75px;
+      overflow: hidden;
+     @mixin tablet_min {
+        max-width: 107px;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    .title-wrap {
+      padding-left: 54px;
+      max-width: 1083px;
+     @mixin tablet_min {
+        padding-left: 0;
+        margin: 25px 0;
+      }
+      p {
+        padding-bottom: 22px;
+      }
+      .body-default {
+        max-width: 921px;
+       @mixin tablet_min {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+</style>
