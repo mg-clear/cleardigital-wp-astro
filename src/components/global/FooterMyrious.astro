@@ -2,13 +2,11 @@
 import CTAButton from "../CTAButton.astro";
 
 interface Props {
-	ctaLabel: 'Learn More';
-	ctaHref: '/';
-	ctaTarget: '_self';
+
 }
 
 const {
-	ctaLabel, ctaHref, ctaTarget
+	
 } = Astro.props;
 
 ---
@@ -26,12 +24,12 @@ const {
                 <p class="body-default">Myrious Group is an independent holding company enabling forward-thinking brands
                     to achieve breakthrough performance through power of orchestration. </p>
                 <div class="bten-wrap">
-					<!-- <CTAButton
-								label={ctaLabel}
-								href={ctaHref}
-								target={ctaTarget}
-							/> -->
-							<a href="/" class="cta-button button-large">Download</a>
+                  <CTAButton
+                  label = "Learn More"
+                  href = "/"
+                  target = "_self"
+                />
+						
                 </div>
             </div>
         </div>

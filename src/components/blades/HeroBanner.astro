@@ -1,5 +1,5 @@
 ---
-
+import CTAButton from '../CTAButton.astro';
 interface Props {
 
 }
@@ -15,7 +15,11 @@ const {
 		<div class="content-wrap">
 			<div class="subtitle">Hello! We are Clear Digital.</div>
 			<h1 class="h2">We build websites and <span class="graphic-effect-underline" data-underline-image="white-1">digital</span> brand experiences for modern B2B organizations.</h1>
-			<a href="/our-approach/" class="cta-button button-large">Our Approach</a>
+			<CTAButton
+			label = "Our Approach"
+			href = "/"
+			target = "_self"
+		  />
 		</div>
 	</div>
 	<div class="bg-container overlay">

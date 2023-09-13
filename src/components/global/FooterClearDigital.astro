@@ -1,12 +1,10 @@
 ---
 import CTAButton from '../CTAButton.astro';
 interface Props {
-	ctaLabel: 'Download';
-	ctaHref: '/';
-	ctaTarget: '_self';
+  
 }
 
-const {ctaLabel, ctaHref, ctaTarget
+const {
 
 } = Astro.props;
 
@@ -116,12 +114,12 @@ const {ctaLabel, ctaHref, ctaTarget
                             nunc non, tempus
                             blandit enim. Vivamus gravida velit lorem ipsum dolor sit amet.</p>
                         <div class="bten-wrap">
-							<!-- <CTAButton
-								label={ctaLabel}
-								href={ctaHref}
-								target={ctaTarget}
-							/> -->
-							<a href="/" class="cta-button button-large">Download</a>
+                          <CTAButton
+                          label = "Download"
+                          href = "/"
+                          target = "_self"
+                        />
+							
                         </div>
                     </div>
                 </div>
