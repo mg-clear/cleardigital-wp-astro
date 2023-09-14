@@ -12,11 +12,14 @@ const {
 
 ---
 
-<header class="active">
+<header>
 	<div class="container">
-		<a href="/set-1/homepage/" class="site-logo-link">
-			<img src="/Clear_black.svg" alt="Clear Digital">
-		</a>
+		<div class="img-wrap">
+			<a href="/set-1/homepage/" class="site-logo-link" data-cursor-expand>
+				<img src="/Clear_black.svg" alt="Clear Digital">
+				<img src="/Clear_logo_pink.svg" alt="Cleardigital">
+			</a>
+		</div>
 		<nav>
 			<ul>
 				<li><span><a href="/work" data-cursor-expand>Work</a></span>
@@ -181,7 +184,7 @@ const {
 		justify-content: space-between;
 		align-items: center;
         position: static;
-		max-width: 1450px;
+		// max-width: 1450px;
 		.site-logo-link {
 			display: block;
 			font-size: 0;
@@ -451,7 +454,6 @@ const {
 				}
 			}
 
-			.nav-wrapper{
 				.img-wrap{
 					a{
 						img {
@@ -464,7 +466,7 @@ const {
 						}
 					}
 				}
-			}
+			
 			.toggler{
 				svg{
 					fill: var(--color-black);;
@@ -474,5 +476,97 @@ const {
 				}
 			}
 		}
+		.img-wrap{
+        a{
+          img {
+            &:first-child {
+              display: none;
+            }
+          }
+        }
+      }
+	  &.slide-up{
+		top: -130px;
+		@mixin tablet_min {
+		top: 0;
+		}
+      }
 	}
 </style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+
+    jQuery(function () {
+        var toggler = jQuery('header .toggler');
+        var subMenu = jQuery('header .links-outer ul > li > span');
+        var lastScrollVal = 0;
+        mobileMenu();
+
+
+        jQuery(window).on('resize', function () {
+            var winWidth = jQuery(window).width();
+
+            if (winWidth > 992) {
+                var menu = jQuery('header .links-outer');
+                menu.removeAttr('style');
+
+                jQuery('header .links-outer ul .sub-menu').removeAttr('style');
+            }
+        });
+
+        jQuery(window).on('scroll', function () {
+            navScroll();
+        });
+
+        function mobileMenu() {
+            toggler.on('click', function () {
+                jQuery(this).toggleClass('active');
+                var winWidth = jQuery(window).width();
+                if (winWidth < 992) {
+                    var menu = jQuery('header .links-outer');
+                    
+                    if (menu.height() == 0) {
+                        menu.css({
+                            height: `100vh`,
+                            overflowY: `scroll`
+                        });
+                    }
+                    else {
+                        menu.css({
+                            height: 0,
+                            overflow: `hidden`
+                        });
+                    }
+                    jQuery('header').addClass('active slideup');
+                }
+            });
+
+            subMenu.on('click', function () {
+                var getSubMenu = jQuery(this).siblings('.sub-menu');
+                jQuery(this).parent().siblings().find('.sub-menu').slideUp();
+                getSubMenu.slideToggle();
+                jQuery(this).toggleClass('active');
+            });
+
+
+        }
+
+        function navScroll() {
+            var scrollValue = jQuery(window).scrollTop();
+
+            if (scrollValue > lastScrollVal) {
+                jQuery('header').addClass('slide-up active');
+            }
+            else if(scrollValue == 0){
+                jQuery('header').removeClass('active');
+            }
+            else {
+                jQuery('header').removeClass('slide-up');
+            }
+
+            lastScrollVal = scrollValue;
+        }
+
+    });
+
+</script>
