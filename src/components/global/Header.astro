@@ -20,7 +20,8 @@ const {
 				<img src="/Clear_logo_pink.svg" alt="Cleardigital">
 			</a>
 		</div>
-		<nav>
+    <div class="links-outer">
+		 <nav>
 			<ul>
 				<li><span><a href="/work" data-cursor-expand>Work</a></span>
 					<div class="sub-menu">
@@ -173,6 +174,19 @@ const {
 				<a href="#" class="btn-default" data-cursor-expand>Let’s talk</a>
 			</div>
 		</nav>
+    </div>
+    <div id="toggleButton" class="toggler">
+      <svg width="35" height="35" viewBox="0 0 35 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="open">
+      <rect x="5" width="30" height="4" rx="2" fill="white"></rect>
+      <rect y="11" width="35" height="4" rx="2" fill="white"></rect>
+      <rect x="11" y="22" width="24" height="4" rx="2" fill="white"></rect>
+      </svg>
+      <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg" class="close">
+<path d="M26.25 8.75L8.75 26.25" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M8.75 8.75L26.25 26.25" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+
+      </div>
 	</div>
 </header>
 
@@ -192,6 +206,21 @@ const {
 			padding: 0;
 		}
 	}
+  .links-outer{
+    @media screen and (max-width: 992px) {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background-color: var(--color-white);
+      padding: 0;
+      overflow: hidden;
+      transition: 0.4s;
+      //opacity: 0;
+      //visibility: hidden;
+    }
+  }
 
 	nav {
       display: flex;
@@ -305,7 +334,7 @@ const {
         overflow: hidden;
         transition: all 0.4s ease-in-out;
 
-        @mixin desktop_min {
+        @media screen and (max-width: 992px) {
           position: relative;
           display: none;
           height: auto;
@@ -395,7 +424,8 @@ const {
     transition: all 0.1s ease-in-out;
     cursor: pointer;
 
-    @mixin desktop_min  {
+    @media screen and (max-width: 992px){
+      
       display: inline-block;
     }
     .close{
@@ -493,80 +523,72 @@ const {
       }
 	}
 </style>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
 
-    jQuery(function () {
-        var toggler = jQuery('header .toggler');
-        var subMenu = jQuery('header .links-outer ul > li > span');
+        var toggler = document.querySelector("header .toggler");
+        var subMenu = document.querySelector('header .links-outer ul > li > span');
         var lastScrollVal = 0;
         mobileMenu();
 
 
-        jQuery(window).on('resize', function () {
-            var winWidth = jQuery(window).width();
+        window.addEventListener('resize', function () {
+            var winWidth = screen.availWidth;
 
             if (winWidth > 992) {
-                var menu = jQuery('header .links-outer');
-                menu.removeAttr('style');
+                var menu = document.querySelector('header .links-outer');
+                menu.removeAttribute('style');
 
-                jQuery('header .links-outer ul .sub-menu').removeAttr('style');
+                document.querySelector('header .links-outer ul .sub-menu').removeAttribute('style');
             }
         });
 
-        jQuery(window).on('scroll', function () {
+        window.addEventListener('scroll', function () {
             navScroll();
         });
 
         function mobileMenu() {
-            toggler.on('click', function () {
-                jQuery(this).toggleClass('active');
-                var winWidth = jQuery(window).width();
+          if (toggler) {
+            toggler.addEventListener('click', function () {
+                this.classList.toggle('active');
+                var winWidth = screen.availWidth;
                 if (winWidth < 992) {
-                    var menu = jQuery('header .links-outer');
-                    
-                    if (menu.height() == 0) {
-                        menu.css({
-                            height: `100vh`,
-                            overflowY: `scroll`
-                        });
+                    var menu = document.querySelector('header .links-outer');
+                    var menuhght = menu.clientHeight;
+                    if (menuhght == 0) {
+                      menu.setAttribute("style", "height: 100vh; overflowY: scroll;");
                     }
                     else {
-                        menu.css({
-                            height: 0,
-                            overflow: `hidden`
-                        });
+                      menu.setAttribute("style", "height: 0; overflow: hidden;");
                     }
-                    jQuery('header').addClass('active slideup');
+                    document.querySelector('header').classList.add('active','slideup');
                 }
             });
-
-            subMenu.on('click', function () {
-                var getSubMenu = jQuery(this).siblings('.sub-menu');
-                jQuery(this).parent().siblings().find('.sub-menu').slideUp();
+          }
+          if (subMenu) {
+            subMenu.addEventListener('click', function () {
+                var getSubMenu = this.siblings('.sub-menu');
+                this.parent().siblings().find('.sub-menu').slideUp();
                 getSubMenu.slideToggle();
-                jQuery(this).toggleClass('active');
+                this.toggleClass('active');
             });
-
+          }
 
         }
 
         function navScroll() {
-            var scrollValue = jQuery(window).scrollTop();
+            var scrollValue = document.documentElement.scrollTop
 
             if (scrollValue > lastScrollVal) {
-                jQuery('header').addClass('slide-up active');
+              document.querySelector('header').classList.add('slide-up','active');
             }
             else if(scrollValue == 0){
-                jQuery('header').removeClass('active');
+              document.querySelector('header').classList.remove('active');
             }
             else {
-                jQuery('header').removeClass('slide-up');
+              document.querySelector('header').classList.remove('slide-up');
             }
 
             lastScrollVal = scrollValue;
         }
-
-    });
 
 </script>
