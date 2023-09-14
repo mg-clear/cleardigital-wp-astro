@@ -1,5 +1,5 @@
 ---
-
+import CTAButton from '../CTAButton.astro';
 interface Props {
 
 }
@@ -196,7 +196,12 @@ const {
 			.logo-image {
 				height: 100%;
 				object-fit: contain;
+				width: 100%;
 			}
+		}
+		.h3{
+			color: #fff;
+			margin-bottom: 20px;
 		}
 	}
 </style>
@@ -222,7 +227,11 @@ const {
 						<span class="art art--circleWhite">27%</span>
 						increase on click-through rates.
 					</h2>
-					<a href="/" class="button button--link">View case study</a>
+					<CTAButton
+						label = "View Case Study"
+						href = "/"
+						target = "_self"
+					/>
 				</div>
 			</div>
 			<div class="column swiper-slide">
@@ -236,7 +245,11 @@ const {
 					<h2 class="h3">53%
 						<span class="marker marker--crossout">increase</span>
 						on engagement metrics.</h2>
-					<a href="/" class="button button--link">View case study</a>
+						<CTAButton
+						label = "View Case Study"
+						href = "/"
+						target = "_self"
+					/>
 				</div>
 			</div>
 			<div class="column swiper-slide">
@@ -255,7 +268,11 @@ const {
 						<span class="art art--circleWhite">27%</span>
 						increase on click-through rates.
 					</h2>
-					<a href="/" class="button button--link">View case study</a>
+					<CTAButton
+						label = "View Case Study"
+						href = "/"
+						target = "_self"
+					/>
 				</div>
 			</div>
 		</div>
