@@ -325,7 +325,7 @@ const {
 			}
 
 			&-outer {
-				@include col(11);
+				@include col(12);
 				margin-right: $gutter-width * 2;
 
 				@media (min-width: $breakpoint-tablet) {
@@ -569,18 +569,18 @@ const {
 	import 'swiper/css/navigation'
 	import 'swiper/css/pagination'
 
-	const sliderSelector = '.swiper';
+	const sliderSelector = '[is="flynt-slider-posts"] .swiper';
 	const slider = document.querySelector(sliderSelector);
 
 	if (slider) {
 		const parameters = {
 			modules: [Navigation, A11y, Autoplay, Pagination],
 			navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
+        nextEl: '[is="flynt-slider-posts"] .swiper-button-next',
+        prevEl: '[is="flynt-slider-posts"] .swiper-button-prev'
       },
       pagination: {
-        el: '.swiper-pagination',
+        el: '[is="flynt-slider-posts"] .swiper-pagination',
         type: 'progressbar'
       },
       slidesPerView: 'auto',

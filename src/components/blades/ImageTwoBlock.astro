@@ -289,15 +289,15 @@ const {
 	import 'swiper/css/a11y'
 	import 'swiper/css/navigation'
 
-	const sliderSelector = '.swiper';
+	const sliderSelector = '[is="flynt-block-image-two-col"] .swiper';
 	const slider = document.querySelector(sliderSelector);
 
 	if (slider) {
 		const parameters = {
 			modules: [Navigation, A11y, Autoplay, Pagination],
 			navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev'
+				nextEl: '[is="flynt-block-image-two-col"] .swiper-button-next',
+				prevEl: '[is="flynt-block-image-two-col"] .swiper-button-prev'
 			},
 			slidesPerView: 1,
 			speed: 400,
