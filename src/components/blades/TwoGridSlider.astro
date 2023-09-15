@@ -1,4 +1,5 @@
 ---
+import CTAButton from '../CTAButton.astro';
 
 interface Props {
 
@@ -13,6 +14,211 @@ const {
 <style lang="scss">
 	@import 'src/styles/variables';
 	@import 'src/styles/mixins';
+
+	// Button
+
+	button {
+		appearance: none;
+		background-color: transparent;
+		border: 0;
+		color: inherit;
+		font-family: inherit;
+		font-size: inherit;
+		line-height: inherit;
+		padding: 0;
+		text-align: inherit;
+	}
+
+	.button {
+		appearance: none;
+		background-color: $color-accent;
+		border: 0.2rem solid $color-accent;
+		color: $color-background;
+		cursor: pointer;
+		display: inline-block;
+		font-family: inherit;
+		font-size: 1.6rem;
+		font-weight: 700;
+		letter-spacing: 0;
+		line-height: 1;
+		margin: 3rem 0 0;
+		padding: 1.5rem 2rem;
+		text-align: center;
+		text-decoration: none;
+		transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+		user-select: none;
+
+		@media (max-width: $breakpoint-tablet) {
+			margin-top: 2rem;
+		}
+
+		&:disabled,
+		&--disabled {
+			border-color: $color-contrast;
+			color: $color-contrast;
+			cursor: default;
+			opacity: 0.7;
+			pointer-events: none;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: transparent;
+			border-color: $color-accent;
+			color: $color-accent;
+		}
+
+		&--outline,
+		&--ghost {
+			background-color: transparent;
+			border-color: $color-background-dark;
+			color: $color-background-dark;
+
+			&:hover,
+			&:focus {
+				background-color: $color-background-dark;
+				border-color: $color-background-dark;
+				color: $color-background;
+			}
+		}
+
+		&--small {
+			font-size: 1.6rem;
+		}
+
+		&--link {
+			align-items: center;
+			background-color: transparent;
+			border: 0;
+			color: $color-background-dark;
+			display: inline-flex;
+			padding: 0;
+			position: relative;
+			text-transform: none;
+			transition: color 0.2s ease-out;
+
+			&:hover,
+			&:focus {
+				background-color: transparent;
+				color: $color-background-dark;
+
+				&::after {
+					background-position: right center;
+				}
+			}
+
+			&::after {
+				$color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
+
+				background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.16663 10H15.8333" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+				background-position: left center;
+				background-repeat: no-repeat;
+				background-size: contain;
+				content: '';
+				display: inline-block;
+				height: 2rem;
+				margin-left: 0.5rem;
+				transition: background-position 0.2s ease-out;
+				width: 2.2rem;
+			}
+		}
+
+		&--linkBlack {
+			align-items: center;
+			background-color: transparent;
+			border: 0;
+			color: $color-text;
+			display: inline-flex;
+			padding: 0;
+			position: relative;
+			text-transform: none;
+			transition: color 0.2s ease-out;
+
+			&:hover,
+			&:focus {
+				background-color: transparent;
+				color: $color-text;
+
+				&::after {
+					background-position: right center;
+				}
+			}
+
+			&::after {
+				$color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
+
+				background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.16663 10H15.8333" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+				background-position: left center;
+				background-repeat: no-repeat;
+				background-size: contain;
+				content: '';
+				display: inline-block;
+				height: 2rem;
+				margin-left: 0.5rem;
+				transition: background-position 0.2s ease-out;
+				width: 2.2rem;
+			}
+		}
+	}
+
+	/* Swiper styling overrides */
+
+	.swiper {
+		--swiper-theme-color: #{$color-brand};
+		position: relative;
+	}
+
+	.swiper-wrapper {
+		height: auto !important;
+	}
+
+	.swiper-pagination-progressbar {
+		background: transparent !important;
+		height: 0.8rem !important;
+		margin-top: 4rem;
+		position: relative !important;
+
+		@media (min-width: $breakpoint-tablet) {
+			margin-top: 5rem;
+		}
+
+		&::before {
+			background-color: $color-background-dark;
+			content: '';
+			display: block;
+			height: 0.1rem;
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 100%;
+		}
+	}
+
+	.swiper-button-prev,
+	.swiper-button-next {
+		height: 100% !important;
+		margin-top: 0 !important;
+		top: 0 !important;
+		width: 100% !important;
+
+		&::after {
+			display: none !important;
+		}
+
+		&.swiper-button-disabled {
+			opacity: 1 !important;
+		}
+	}
+
+	.swiper-button-prev,
+	.swiper-container-rtl .swiper-button-next {
+		left: -100% !important;
+	}
+
+	.swiper-button-next,
+	.swiper-container-rtl .swiper-button-prev {
+		right: -100% !important;
+	}
 
 	[is='flynt-slider-posts'] {
 		min-height: 100vh;
@@ -58,6 +264,7 @@ const {
 
 			&-outer {
 				@include col(12);
+				overflow: visible;
 
 				@media (min-width: $breakpoint-tablet-horizontal) {
 					@include col(6);
@@ -139,6 +346,7 @@ const {
 				img {
 					height: 100%;
 					object-fit: cover;
+					width: 100%;
 				}
 			}
 
@@ -155,6 +363,19 @@ const {
 						display: block;
 					}
 				}
+
+				&.boxPadding {
+					@include reset-content-margins;
+					padding: 4rem;
+
+					@media (min-width: $breakpoint-tablet) {
+						padding: 5rem;
+					}
+				}
+			}
+
+			&.themeDark {
+				color: $color-background;
 			}
 		}
 
@@ -215,7 +436,7 @@ const {
 	}
 </style>
 
-<div is="flynt-slider-posts">
+<div class="blade" is="flynt-slider-posts">
 	<div class="container">
 		<div class="content">
 			<div class="intro">
@@ -235,7 +456,12 @@ const {
 							<div class="post-content boxPadding">
 								<h4 class="text-white">Google Analytics 4 is Coming. Is Your B2B Ready?</h4>
 								<p class="body-default text-white mt-4 mt-lg-5">Sed sollicitudin odio ac ornare consequat. Ut massa justo, hendrerit vel nunc non, tempus blandit enim. Vivamus gravida velit lorem ipsum dolor sit amet.</p>
-								<a href="#" class="button button--link" data-cursor-expand>Read more</a>
+								<CTAButton
+									label = "Read more"
+									href = "/"
+									target = "_self"
+								/>
+								<!-- <a href="#" class="button button--link" data-cursor-expand>Read more</a> -->
 							</div>
 						</article>
 					</div>
@@ -248,7 +474,12 @@ const {
 								<h4 class="text-white">Google Analytics 4 is Coming. Is Your B2B Ready?</h4>
 								<p class="body-default text-white mt-4 mt-lg-5">Sed sollicitudin odio ac ornare consequat. Ut massa justo, hendrerit vel nunc non, tempus blandit enim. Vivamus gravida velit lorem ipsum dolor sit amet.</p>
 								<div class="buttons">
-									<a href="#" class="button button--link" data-cursor-expand>Read more</a>
+									<CTAButton
+										label = "Read more"
+										href = "/"
+										target = "_self"
+									/>
+									<!-- <a href="#" class="button button--link" data-cursor-expand></a> -->
 								</div>
 							</div>
 						</article>
@@ -262,7 +493,12 @@ const {
 								<h4 class="text-white">Google Analytics 4 is Coming. Is Your B2B Ready?</h4>
 								<p class="body-default text-white mt-4 mt-lg-5">Sed sollicitudin odio ac ornare consequat. Ut massa justo, hendrerit vel nunc non, tempus blandit enim. Vivamus gravida velit lorem ipsum dolor sit amet.</p>
 								<div class="buttons">
-									<a href="#" class="button button--link" data-cursor-expand>Read more</a>
+									<CTAButton
+										label = "Read more"
+										href = "/"
+										target = "_self"
+									/>
+									<!-- <a href="#" class="button button--link" data-cursor-expand>Read more</a> -->
 								</div>
 							</div>
 						</article>
@@ -276,7 +512,12 @@ const {
 								<h4 class="text-white">Google Analytics 4 is Coming. Is Your B2B Ready?</h4>
 								<p class="body-default text-white mt-4 mt-lg-5">Sed sollicitudin odio ac ornare consequat. Ut massa justo, hendrerit vel nunc non, tempus blandit enim. Vivamus gravida velit lorem ipsum dolor sit amet.</p>
 								<div class="buttons">
-									<a href="#" class="button button--link" data-cursor-expand>Read more</a>
+									<CTAButton
+										label = "Read more"
+										href = "/"
+										target = "_self"
+									/>
+									<!-- <a href="#" class="button button--link" data-cursor-expand>Read more</a> -->
 								</div>
 							</div>
 						</article>
@@ -326,6 +567,7 @@ const {
 	import 'swiper/css/autoplay'
 	import 'swiper/css/a11y'
 	import 'swiper/css/navigation'
+	import 'swiper/css/pagination'
 
 	const sliderSelector = '.swiper';
 	const slider = document.querySelector(sliderSelector);
