@@ -1218,10 +1218,8 @@ const {} = Astro.props;
     }
 
     function handleCloseButton (e) {
-			console.log('test', e.target)
 			if (e.target.classList.contains('tab-closeButton')) {
 				let closeButton = e.target
-				console.log(closeButton)
 				closeButton.closest('.tab-body').style.display = 'none'
 				closeButton.closest('.tabs-with-content').querySelector('.tabs-with-content-items').style.display = 'block'
 			}
