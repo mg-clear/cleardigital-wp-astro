@@ -1115,7 +1115,7 @@ const {} = Astro.props;
         right: 0;
         top: 5rem;
         width: 3rem;
-				padding: 0;
+				padding: 0!important;
 
         @media (min-width: $breakpoint-tablet) {
           display: inline-block;
@@ -1180,11 +1180,10 @@ const {} = Astro.props;
 
   if (tabsWithContent) {
     const tabTitle = tabsWithContent.querySelectorAll(".tab-head");
-    const tabBody = tabsWithContent.querySelectorAll(
+    const tabBodyElement = tabsWithContent.querySelectorAll(
       ".tabs-with-content-content .tab-body"
     );
 		const tabsList = document.querySelector('.tabs-with-content .tabs-list');
-		const contentWrapper = document.querySelector('.tabs-with-content .tabs-with-content-content');
 
 		// Loop through each element and add an "data-id" attribute
 		
@@ -1219,17 +1218,19 @@ const {} = Astro.props;
     }
 
     function handleCloseButton (e) {
-			if (e.target.classList.contain('.tab-closeButton')) {
+			console.log('test', e.target)
+			if (e.target.classList.contains('tab-closeButton')) {
 				let closeButton = e.target
+				console.log(closeButton)
 				closeButton.closest('.tab-body').style.display = 'none'
 				closeButton.closest('.tabs-with-content').querySelector('.tabs-with-content-items').style.display = 'block'
 			}
     }
 
     addIdOnInnerMenu(tabTitle, 'data-tab', 'tab-')
-    addIdOnInnerMenu(tabBody, 'data-tab-body', 'tab-')
+    addIdOnInnerMenu(tabBodyElement, 'data-tab-body', 'tab-')
 		
-		contentWrapper.addEventListener('click', handleCloseButton)
+		tabsWithContent.addEventListener('click', handleCloseButton)
 		tabsList.addEventListener('click', handleTabClick)
   }
 </script>
