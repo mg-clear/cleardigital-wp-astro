@@ -32,6 +32,10 @@
 	position: relative;
 }
 
+.container {
+	z-index: 5;
+}
+
 .blade-content {
 	z-index: 2;
 }
