@@ -33,7 +33,7 @@ const {
 										nunc
 										non, tempus blandit enim. Vivamus gravida velit lorem ipsum dolor sit
 										amet.</p>
-									<a class="link-default" href="#" data-cursor-expand>Overview</a>
+									<a class="link-default link-black" href="#" data-cursor-expand>Overview</a>
 								</div>
 							</div>
 							<div class="col-two">
@@ -59,7 +59,7 @@ const {
 										nunc
 										non, tempus blandit enim. Vivamus gravida velit lorem ipsum dolor sit
 										amet.</p>
-									<a class="link-default" href="#" data-cursor-expand>Overview</a>
+									<a class="link-default link-black" href="#" data-cursor-expand>Overview</a>
 								</div>
 							</div>
 							<div class="col-two">
@@ -84,7 +84,7 @@ const {
 										nunc
 										non, tempus blandit enim. Vivamus gravida velit lorem ipsum dolor sit
 										amet.</p>
-									<a class="link-default" href="#" data-cursor-expand>Overview</a>
+									<a class="link-default link-black" href="#" data-cursor-expand>Overview</a>
 								</div>
 							</div>
 							<div class="col-two">
@@ -117,7 +117,7 @@ const {
 										nunc
 										non, tempus blandit enim. Vivamus gravida velit lorem ipsum dolor sit
 										amet.</p>
-									<a class="link-default" href="#" data-cursor-expand>Overview</a>
+									<a class="link-default link-black" href="#" data-cursor-expand>Overview</a>
 								</div>
 							</div>
 							<div class="col-two">
@@ -147,7 +147,7 @@ const {
 										nunc
 										non, tempus blandit enim. Vivamus gravida velit lorem ipsum dolor sit
 										amet.</p>
-									<a class="link-default" href="#" data-cursor-expand>Overview</a>
+									<a class="link-default link-black" href="#" data-cursor-expand>Overview</a>
 								</div>
 							</div>
 							<div class="col-two">
@@ -560,7 +560,7 @@ const {
                     else {
                       menu.setAttribute("style", "height: 0; overflow: hidden;");
                     }
-                    document.querySelector('header').classList.add('active','slideup');
+                    document.querySelector('header').classList.add('active');
                 }
             });
           }
@@ -579,14 +579,14 @@ const {
             var scrollValue = document.documentElement.scrollTop
 
             if (scrollValue > lastScrollVal) {
-              document.querySelector('header').classList.add('slide-up','active');
+              document.querySelector('header').classList.add('active');
             }
             else if(scrollValue == 0){
               document.querySelector('header').classList.remove('active');
             }
-            else {
-              document.querySelector('header').classList.remove('slide-up');
-            }
+            // else {
+            //   document.querySelector('header').classList.remove('slide-up');
+            // }
 
             lastScrollVal = scrollValue;
         }

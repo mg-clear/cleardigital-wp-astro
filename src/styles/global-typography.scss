@@ -145,3 +145,38 @@ h6, .h6 {
 		font-size: 1.4rem;
 	}
 }
+
+
+
+
+//Links Buttons
+
+.link-black{
+	display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color-black);
+    position: relative;
+    padding-right: 2.6rem;
+    transition: color 0.3s ease-in-out;
+	&:after{
+		content: "";
+		height: 1.6rem;
+		width: 1.6rem;
+		position: absolute;
+		right: 0.5rem;
+		top: 50%;
+		transform: translateY(-50%);
+		background-image: url(/black_link.svg);
+		background-repeat: no-repeat;
+		background-size: contain;
+		transition: right 0.3s ease-in-out,background-image 0.3s ease-in-out;
+	}
+	&:hover{
+		color: var(--color-pink);
+		&:after{
+			background-image: url(/pink_link.svg);
+			right: 0;
+		}
+	}
+}
