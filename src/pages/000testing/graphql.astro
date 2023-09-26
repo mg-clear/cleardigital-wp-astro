@@ -1,0 +1,75 @@
+---
+
+import Page from "src/layouts/Page.astro";
+import BannerBlade from "@components/blades/testing/BannerBlade.astro";
+import ContentBlade from "@components/blades/testing/ContentBlade.astro";
+
+const response = await fetch('https://dev-clear-astro-wp.pantheonsite.io/graphql', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      query: `
+	  query NewQuery {
+  pageBy(pageId: 87) {
+    title
+    integrationTesting {
+      blades {
+        ... on Page_Integrationtesting_Blades_BannerBlade {
+          ctaText
+          ctaUrl
+          eyebrow
+          fieldGroupName
+          headline
+		  backgroundImage {
+            sourceUrl
+          }
+        }
+        ... on Page_Integrationtesting_Blades_ContentBlade {
+          fieldGroupName
+          textContent
+          image {
+            altText
+            sourceUrl
+          }
+        }
+      }
+    }
+  }
+}
+      `
+    }),
+  });
+
+const json = await response.json();
+const { blades } = json.data.pageBy.integrationTesting;
+
+---
+
+{
+	blades.map((blade)=>{
+		const ComponentName = blade.fieldGroupName.replace('Page_Integrationtesting_Blades_', '');
+		switch(ComponentName) {
+			case 'BannerBlade':
+				return <BannerBlade
+					eyebrow = {blade.eyebrow},
+					headline = {blade.headline},
+					ctaText = {blade.ctaText},
+					ctaUrl = {blade.ctaUrl},
+					backgroundImage = {blade.backgroundImage.sourceUrl},
+				/>
+
+			case 'ContentBlade':
+				const imgObj = {
+					href: blade.image.sourceUrl,
+					altText: blade.image.altText,
+				};
+				return <ContentBlade
+					textContent = {blade.textContent},
+					image = {imgObj},
+				/>
+			
+			default:
+				break;
+		}
+	})
+}

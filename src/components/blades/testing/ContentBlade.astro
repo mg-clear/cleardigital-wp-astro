@@ -1,0 +1,43 @@
+---
+
+interface Props {
+	textContent?: string,
+	image?: array,
+}
+
+const {
+	textContent = null,
+	image = null,
+} = Astro.props;
+
+---
+
+<div class="blade content-blade">
+	<div class="blade-content">
+		{image && 
+			<img src={image.href} alt={image.altText} />
+		}
+		{textContent && 
+			<Fragment set:html={textContent} />
+		}
+	</div>
+</div>
+
+<style>
+	.blade, .blade-content {
+		position: relative;
+	}
+
+	.blade {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding-block: 150px;
+	}
+
+	.blade-content {
+		z-index: 1;
+		padding-inline: 20px;
+	}
+</style>

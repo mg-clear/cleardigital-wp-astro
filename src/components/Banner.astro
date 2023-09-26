@@ -1,0 +1,94 @@
+---
+
+import Headline from '@components/Headline.astro';
+import CTALink from '@components/CTALink.astro';
+import BladeBackground from '@components/BladeBackground.astro';
+
+interface Props {
+	theme?: string,
+	eyebrow?: string,
+	headline?: string,
+	headlineTag?: string,
+	headlineStyle?: string,
+	description?: string,
+	ctaText?: string,
+	ctaType?: string,
+	ctaURL?: string,
+	ctaAction?: string,
+	ctaTarget?: string,
+	backgroundGrid?: boolean,
+	backgroundImage?: string,
+	backgroundVideo?: string,
+	backgroundVideoType?: string,
+}
+
+const {
+	theme = 'dark',
+	eyebrow = null,
+	headline = null,
+	headlineTag = 'h2',
+	headlineStyle = null,
+	description = null,
+	ctaText = null,
+	ctaType = 'text',
+	ctaURL = null,
+	ctaAction = null,
+	ctaTarget = '_self',
+	backgroundGrid = true,
+	backgroundImage = null,
+	backgroundVideo = null,
+	backgroundVideoType = null,
+} = Astro.props;
+
+---
+
+<div class:list={['banner blade', theme, {"has-grid-bg": backgroundGrid, "has-video-bg": backgroundVideo!==null}]}>
+	<div class="container blade-content">
+		<div class="content-wrap">
+			{
+				()=>{
+					if(eyebrow!==null){
+						return <div class="subtitle">{eyebrow}</div>
+					}
+				}
+			}
+			{
+				()=>{
+					if(headline!==null){
+						return <Headline set:html={headline} tag={headlineTag} style={headlineStyle} />
+					}
+				}
+			}
+			{
+				()=>{
+					if(description!==null){
+						return <div class="description body-large" set:html={description} />
+					}
+				}
+			}
+			{
+				()=>{
+					if(ctaText!==null){
+						return <CTALink text={ctaText} type={ctaType} href={ctaURL} action={ctaAction} target={ctaTarget} />
+					}
+				}
+			}
+		</div>
+	</div>
+	{
+		()=>{
+			if(backgroundImage!==null){
+				return <BladeBackground image={backgroundImage} video={backgroundVideo} videoType={backgroundVideoType} />
+			}
+		}
+	}
+</div>
+
+<style>
+	.subtitle {
+		margin-block-end: var(--padding-unit-20);
+	}
+	:global(.cta-button) {
+		margin-block-start: var(--padding-unit-30);
+	}
+</style>

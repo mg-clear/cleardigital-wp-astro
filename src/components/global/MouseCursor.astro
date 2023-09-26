@@ -1,0 +1,70 @@
+---
+
+---
+
+<div id="mouseCursor" data-expanded="false" data-offscreen="true">
+	<div class="circle">
+
+	</div>
+</div>
+
+<style lang="scss">
+	#mouseCursor {
+		width: 0px;
+		height: 0px;
+		position: fixed;
+		overflow: visible;
+		top: 100px;
+		left: 100px;
+		z-index: 9999;
+		pointer-events: none;
+
+		&[data-offscreen="true"] {
+			display: none;
+		}
+
+		* {
+			pointer-events: none;
+		}
+
+		.circle {
+			position: absolute;
+			width: 24px;
+			height: 24px;
+			border: 8px solid var(--color-pink);
+			border-radius: 100px;
+			transform: translateX(-50%) translateY(-50%);
+			transition: 180ms width ease, 180ms height ease;
+		}
+
+		&[data-expanded="true"] {
+
+			.circle {
+				width: 48px;
+				height: 48px;
+			}
+		}
+	}
+</style>
+
+<script>
+	(function(){
+		const html = document.getElementsByTagName('html')[0];
+		const cursor = document.getElementById('mouseCursor');
+		const handleCursorMove = function(event) {
+			cursor.style.left = event.clientX.toString() + 'px';
+			cursor.style.top = event.clientY.toString() + 'px';
+		}
+		document.addEventListener('mousemove', handleCursorMove);
+
+		const hideCursor = function() {
+			cursor.dataset.offscreen = "true";
+		}
+		html.addEventListener('mouseleave', hideCursor);
+
+		const showCursor = function() {
+			cursor.dataset.offscreen = "false";
+		}
+		html.addEventListener('mouseenter', showCursor);
+	})();
+</script>

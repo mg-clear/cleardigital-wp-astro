@@ -1,0 +1,61 @@
+---
+
+interface Props {
+	text: string,
+	type?: string,
+	href?: string,
+	action?: string,
+	target?: string,
+}
+
+const {
+	text,
+	type = 'text',
+	href = null,
+	action = null,
+	target = '_self',
+} = Astro.props;
+
+---
+
+<a href={href} class:list={['cta-button', type]} target={target} data-action={action}>{text}</a>
+<style lang="scss">
+  .cta-button {
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    padding-right: 2.6rem;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .cta-button::after {
+    content: "";
+    height: 1.6rem;
+    width: 1.6rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url(/white_link.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: right 0.3s ease-in-out, background-image 0.3s ease-in-out;
+  }
+
+  .cta-button:focus,
+  .cta-button:hover {
+    color: var(--color-pink);
+  }
+
+  .cta-button:focus-visible {
+    outline: 2px solid var(--color-pink);
+  }
+
+  .cta-button:hover::after,
+  .cta-button:focus::after {
+    background-image: url(/hover_right.svg);
+    right: 0;
+  }
+</style>
