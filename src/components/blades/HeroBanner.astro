@@ -32,10 +32,171 @@ const {
 	</div>
 </section>
 
+<section class="video-overlay">
+    <div class="v-middle-inner">
+        <div class="v-middle">
+            <div class="video-wrap">
+                <div class="video-container">
+                    <iframe src="" allow="autoplay"></iframe>
+                </div>
+                <button class="closeVideo">
+                    <img loading="eager" src="/wp-content/themes/cleardigital/templates/assets/images/cross-icon-white.svg"
+                         alt="clear">
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
 <style lang="scss">
 	.hero-banner{
        .h2{
 		padding: 20px 0;
 	   }
 	}
+
+	/*
+ * Video-Overlay-forms
+ */
+
+.video-overlay {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.8);
+  transition: opacity 0.3s ease;
+  z-index: -1;
+
+  &.active {
+    opacity: 1;
+    z-index: 99;
+    visibility: visible;
+  }
+  .video-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    @media screen and (min-height: 300px) and (max-height: 420px) {
+      width: 60%;
+    }
+    .closeVideo {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      background: none;
+      outline: none;
+      // cursor: pointer;
+      right: 65px;
+      top: 31px;
+      border: none;
+    }
+  }
+  .v-middle-inner{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    top: 50%;
+    justify-content: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .video-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
+    > iframe {
+      width: 1140px;
+      height: 600px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid #E5E5D9;
+      z-index: 5;
+    //   @include desktop{
+    //     width: 900px;
+    //     height: 500px;
+    //   }
+    //   @include desktop-mid{
+    //     width: 900px;
+    //     height: 500px;
+    //   }
+    //   @include tablet{
+    //     width: 682px;
+    //     height: 400px;
+    //   }
+    //   @include phablet{
+    //     width: 485px;
+    //     height: 346px;
+    //   }
+    //   @include phablet-down{
+    //     width: 100%;
+    //     height: 272px;
+    //   }
+    }
+
+    .video-js {
+      @media screen and (min-height: 300px) and (max-height: 450px) {
+        height: 240px;
+        padding: 0;
+      }
+      .vjs-endscreen-overlay-content {
+        background: none;
+        img {
+          width: 200px;
+        }
+      }
+      .vjs-control-bar .vjs-share-control {
+        display: none !important;
+      }
+      .vjs-social-overlay .vjs-social-title {
+        text-align: left;
+      }
+      .vjs-modal-dialog .vjs-modal-dialog-content {
+        padding: 50px 50px;
+      }
+      .bcvideocta {
+        padding-top: 10px;
+      }
+      .vjs-custom-endscreen-overlay {
+        background: black;
+      }
+      .vjs-button > .vjs-icon-placeholder:before {
+        font-size: 1.8em;
+        top: 26px;
+        left: 0;
+      }
+      .video-js .vjs-picture-in-picture-control .vjs-icon-placeholder:before {
+        font-size: 1.8em;
+      }
+      .video-js .vjs-mute-control .vjs-icon-placeholder:before {
+        font-size: 1.8em;
+        top: 38px;
+      }
+      .vjs-volume-control.vjs-control.vjs-volume-horizontal {
+        top: 25px;
+      }
+      .vjs-time-divider {
+        left: 49.3%;
+        @media screen and (min-width: 1300px) and (max-width: 1399px) {
+          left: 50%;
+        }
+        // @include desktop-mid {
+        //   top: 66%;
+        //   left: 50.2%;
+        // }
+      }
+    }
+  }
+}
+
 </style>
+
+
+
