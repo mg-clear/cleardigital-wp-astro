@@ -1,8 +1,7 @@
 ---
-
 interface Props {
 	eyebrow?: string,
-	headline: string,
+	headline?: string,
 	ctaText?: string,
 	ctaUrl?: string,
 	backgroundImage?: string,
@@ -16,8 +15,7 @@ const {
 	backgroundImage,
 } = Astro.props;
 
-const cssImg = `url(${backgroundImage})`;
-
+const cssImg = `url(${backgroundImage.sourceUrl})`;
 ---
 
 <div class="blade banner-blade">
