@@ -14,7 +14,7 @@ const {
 	<div class="container blade-content">
 		<div class="content-wrap">
 			<div class="subtitle">Hello! We are Clear Digital.</div>
-			<h1 class="h2">We build websites and <span class="graphic-effect-underline" data-underline-image="white-1">digital</span> brand experiences for modern B2B organizations.</h1>
+			<h1>We build B2B websites and <span class="graphic-effect-underline" data-underline-image="white-1">digital</span> brand experiences.</h1>
 			<CTAButton
 			label = "Our Approach"
 			href = "/"
@@ -49,8 +49,27 @@ const {
 </section>
 <style lang="scss">
 	.hero-banner{
-       .h2{
-		padding: 20px 0;
+       h1{
+		    margin-block: var(--padding-unit-20) var(--padding-unit-30);
+        
+        .graphic-effect-underline {
+          color: var(--color-pink);
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0.33em;
+            width: 102%;
+            background-image: url(/images/marker-underline-white.svg);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            pointer-events: none;
+          }
+        }
 	   }
 	}
 

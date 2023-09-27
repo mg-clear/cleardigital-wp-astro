@@ -68,6 +68,25 @@ const {
 			}
 		}
 	}
+
+	.marker--underline {
+          color: var(--color-pink);
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0.33em;
+            width: 102%;
+            background-image: url(/images/marker-underline-black.svg);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            pointer-events: none;
+          }
+        }
 </style>
 
 <div class="content-with-grid has-grid-bg blade" is="flynt-block-three-col-content">

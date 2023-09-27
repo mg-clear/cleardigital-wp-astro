@@ -3,12 +3,13 @@ interface Props {
   label: string;
   href: string;
   target: string;
+  style?: string;
 }
 
-const { label, href, target = '_self' } = Astro.props;
+const { label, href, target = '_self', style } = Astro.props;
 ---
 
-<a href={href} class="cta-button button-large" target={target}>{label}</a>
+<a href={href} class:list={["cta-button button-large", style]} target={target}>{label}</a>
 <style lang="scss">
   .cta-button {
     display: inline-block;
@@ -47,5 +48,21 @@ const { label, href, target = '_self' } = Astro.props;
   .cta-button:focus::after {
     background-image: url(/hover_right.svg);
     right: 0;
+  }
+
+  .cta-button.button {
+    padding: 1.5rem;
+    border: 2px solid var(--color-pink);
+    background-color: var(--color-pink);
+    color: white;
+
+    &::after {
+      display: none;
+    }
+
+    &:focus, &:hover {
+      background-color: transparent;
+      color: var(--color-pink);
+    }
   }
 </style>
