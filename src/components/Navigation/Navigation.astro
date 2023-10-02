@@ -1,5 +1,7 @@
 ---
-import CTAButton from "src/widgets/CTAButton.astro";
+
+import CTAButton from 'src/widgets/CTAButton.astro';
+
 ---
 
 <div class="main-navigation">
@@ -19,6 +21,7 @@ import CTAButton from "src/widgets/CTAButton.astro";
             <a data-cursor-expand href="/work" class="link">Work</a><span
               class="expand-btn d-lg-none"></span>
             <div class="megamenu megamenu-dropdown">
+							<span class="side-bg side-bg--left"></span>
               <div class="container">
                 <div class="megamenu-items">
                   <div class="megamenu-content-outer">
@@ -34,7 +37,7 @@ import CTAButton from "src/widgets/CTAButton.astro";
                         justo, hendrerit vel nunc non, tempus blandit enim.
                         Vivamus gravida velit lorem ipsum dolor sit amet.
                       </p>
-                      <CTAButton label="Overview" href="/" target="_self" />
+											<a class="button button--text" href="/">Overview</a>
                     </div>
                   </div>
                   <div class="megamenu-link-lists-outer">
@@ -61,6 +64,7 @@ import CTAButton from "src/widgets/CTAButton.astro";
                   </div>
                 </div>
               </div>
+							<span class="side-bg side-bg--right"></span>
             </div>
           </li>
           <li class="main-menu-item">
@@ -82,7 +86,7 @@ import CTAButton from "src/widgets/CTAButton.astro";
                         justo, hendrerit vel nunc non, tempus blandit enim.
                         Vivamus gravida velit lorem ipsum dolor sit amet.
                       </p>
-                      <CTAButton label="Overview" href="/" target="_self" />
+											<a class="button button--text" href="/">Overview</a>
                     </div>
                   </div>
                   <div class="megamenu-link-lists-outer">
@@ -133,7 +137,7 @@ import CTAButton from "src/widgets/CTAButton.astro";
                         justo, hendrerit vel nunc non, tempus blandit enim.
                         Vivamus gravida velit lorem ipsum dolor sit amet.
                       </p>
-                      <CTAButton label="Overview" href="/" target="_self" />
+                      <a class="button button--text" href="/">Overview</a>
                     </div>
                   </div>
                   <div class="megamenu-link-lists-outer">
@@ -207,7 +211,7 @@ import CTAButton from "src/widgets/CTAButton.astro";
                         justo, hendrerit vel nunc non, tempus blandit enim.
                         Vivamus gravida velit lorem ipsum dolor sit amet.
                       </p>
-                      <CTAButton label="Overview" href="/" target="_self" />
+                      <a class="button button--text" href="/">Overview</a>
                     </div>
                   </div>
                   <div class="megamenu-link-lists-outer">
@@ -252,6 +256,7 @@ import CTAButton from "src/widgets/CTAButton.astro";
             <a data-cursor-expand href="/about">About</a><span
               class="expand-btn d-lg-none"></span>
             <div class="megamenu megamenu-dropdown">
+
               <div class="container">
                 <div class="megamenu-items">
                   <div class="megamenu-content-outer">
@@ -267,7 +272,7 @@ import CTAButton from "src/widgets/CTAButton.astro";
                         justo, hendrerit vel nunc non, tempus blandit enim.
                         Vivamus gravida velit lorem ipsum dolor sit amet.
                       </p>
-                      <CTAButton label="Overview" href="/" target="_self" />
+                      <a class="button button--text" href="/">Overview</a>
                     </div>
                   </div>
                   <div class="megamenu-link-lists-outer">
@@ -320,7 +325,6 @@ import CTAButton from "src/widgets/CTAButton.astro";
             target="_self"
             style="button"
           />
-          <!-- <a data-cursor-expand href="/" class="button">Let's Talk</a> -->
         </div>
       </nav>
       <div class="hamburger">
@@ -352,6 +356,26 @@ import CTAButton from "src/widgets/CTAButton.astro";
     > .container {
       @media (min-width: $breakpoint-desktop) {
         position: static !important;
+				&:before {
+          content: "";
+          background-color: $color-background;
+          height: 100%;
+          left: -94%;
+          width: 100%;
+          position: absolute;
+					z-index: -1;
+        }
+
+        &:after {
+          content: "";
+          background-color: $color-background;
+          height: 100%;
+          right: -94%;
+          width: 100%;
+          position: absolute;
+					top: 0;
+					z-index: -1;
+        }
       }
     }
 
@@ -359,31 +383,29 @@ import CTAButton from "src/widgets/CTAButton.astro";
       &-items {
         align-items: center;
         display: flex;
-        position: relative;
+        // position: relative;
 
         @media (max-width: $breakpoint-tablet-horizontal) {
           justify-content: space-between;
         }
-
-        &:before {
-          content: "";
-          background-color: $color-background;
-          height: 100%;
-          left: -100%;
-          width: 100%;
-          position: absolute;
-        }
-
-        &:after {
-          content: "";
-          background-color: $color-background;
-          height: 100%;
-          right: -100%;
-          width: 100%;
-          position: absolute;
-        }
       }
     }
+
+		.side-bg {
+			background-color: $color-background;
+			height: 100%;
+			width: 42%;
+			position: absolute;
+			top: 0;
+
+			&--left {
+				left: -40%;
+			}
+
+			&--right {
+				right: -40%;
+			}
+		}
 
     .main-menu {
       display: flex;
@@ -405,7 +427,7 @@ import CTAButton from "src/widgets/CTAButton.astro";
 
         &:hover {
           .megamenu-dropdown {
-            height: 400px;
+            height: 44rem;
           }
         }
       }
@@ -492,7 +514,7 @@ import CTAButton from "src/widgets/CTAButton.astro";
         padding: 1.5rem 0 3rem;
 
         @media (min-width: $breakpoint-tablet-horizontal) {
-          padding: 5rem 0;
+          padding: 6rem 0;
         }
       }
 
@@ -564,7 +586,7 @@ import CTAButton from "src/widgets/CTAButton.astro";
 
             &:not(:first-child) {
               @media (min-width: $breakpoint-tablet) {
-                margin-top: 1.5rem;
+                margin-top: 3rem;
               }
             }
           }
