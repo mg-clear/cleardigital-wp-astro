@@ -1,0 +1,53 @@
+---
+interface Props {
+  href: string;
+	iconSrc: string;
+  title: string;
+  body: string;
+  linkText: string;
+}
+
+const { href, iconSrc, title, body, linkText } = Astro.props;
+---
+
+<div class="primary-card">
+  <a href={href}>
+		<div class="primary-card__icon">
+			<img src={iconSrc} alt="">
+		</div>
+    <h2>
+      {title}
+    </h2>
+    <p>
+      {body}
+    </p>
+    <span class="button">{linkText}</span>
+  </a>
+<div>
+<style lang="scss">
+	 @import "@styles/abstracts/_variables.scss";
+
+	.primary-card {
+		background-color: $color-background;
+		min-height: 51.5rem;
+
+		&__icon {
+			width: 10rem;
+			height: 10rem;
+			margin-bottom: 3rem;
+			
+			img {
+				object-fit: contain;
+				height: 100%
+			}
+		}
+
+		h2 {
+			margin-bottom: 2rem;
+		}
+
+		span {
+			margin-top: 2rem;
+		}
+	}
+</style>
