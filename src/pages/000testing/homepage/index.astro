@@ -1,8 +1,8 @@
 ---
 import BladeHeroBanner from "../../../components/BladeHeroBanner.astro";
-import CTAButton from "../../../components/CTAButton.astro";
-import Eyebrow from "../../../components/Eyebrow.astro";
-import Page from "../../../layouts/Page.astro";
+import CTAButton from "../../../widgets/CTAButton.astro";
+import Eyebrow from "../../../widgets/Eyebrow.astro";
+import Page from "../../../layouts/Page/Page.astro";
 
 const res = await fetch(
   `https://dev-clear-astro-wp.pantheonsite.io/graphql`,
@@ -50,8 +50,6 @@ const res = await fetch(
 );
 const json = await res.json();
 const page = json.data.page;
-
-console.log(page)
 ---
 
 <Page metadescription={page.seo.metaDesc} ogimage={page.seo.opengraphImage.sourceUrl} title={page.title}>

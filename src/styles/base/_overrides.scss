@@ -1,0 +1,61 @@
+/**
+* Plugin Overrides
+*/
+
+// Swiper styling overrides
+.swiper {
+  --swiper-theme-color: #{$color-brand};
+  position: relative;
+}
+
+.swiper-wrapper {
+  height: auto !important;
+}
+
+.swiper-pagination-progressbar {
+  background: transparent !important;
+  height: 0.8rem !important;
+  margin-top: 4rem;
+  position: relative !important;
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-top: 5rem;
+  }
+
+  &::before {
+    background-color: $color-background-dark;
+    content: '';
+    display: block;
+    height: 0.1rem;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  height: 100% !important;
+  margin-top: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+
+  &::after {
+    display: none !important;
+  }
+
+  &.swiper-button-disabled {
+    opacity: 1 !important;
+  }
+}
+
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+  left: -100% !important;
+}
+
+.swiper-button-next,
+.swiper-container-rtl .swiper-button-prev {
+  right: -100% !important;
+}

@@ -1,5 +1,7 @@
 ---
-import CTAButton from '../CTAButton.astro';
+import CTAButton from '../../widgets/CTAButton.astro';
+import girlInVrHeadset from '@assets/images/ImageTwoBlock/girl-in-vr-headset.webp';
+
 interface Props {
 
 }
@@ -7,12 +9,10 @@ interface Props {
 const {
 
 } = Astro.props;
-
 ---
 
 <style lang="scss">
-	@import 'src/styles/variables';
-	@import 'src/styles/mixins';
+	@import 'src/styles/abstracts/variables';
 
 	/* Swiper styling overrides */
 
@@ -253,7 +253,7 @@ const {
 				</div>
 			</div>
 			<div class="column swiper-slide">
-				<video class="video" width="640" height="640" aria-hidden="true" autoplay muted loop poster="/girl-in-vr-headset.webp">
+				<video class="video" width="640" height="640" aria-hidden="true" autoplay muted loop poster={girlInVrHeadset.src}>
 					<source src="/videos/video-dummy.mp4" type="video/mp4">
 					<source src="/videos/video-dummy.webm" type="video/webm">
 				</video>
