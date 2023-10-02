@@ -1,22 +1,241 @@
 ---
-
-import LogoCarousel from '../../widgets/LogoCarousel.astro';
-
-interface Props {
-
-}
-
-const {
-
-} = Astro.props;
-
+import { Image } from 'astro:assets';
+import logoCisco from '@assets/images/SliderWithContent/logo-cisco.svg';
+import logoVmware from '@assets/images/SliderWithContent/logo-vmware.svg';
+import logoMcafee from '@assets/images/SliderWithContent/logo-mcafee.svg';
+import logoTenable from '@assets/images/SliderWithContent/logo-tenable.svg';
+import logoStanford from '@assets/images/SliderWithContent/logo-stanford.svg';
+import logoCohesity from '@assets/images/SliderWithContent/logo-cohesity.svg';
+import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-hexagon-green.webp';
 ---
 
-<section class="slider-with-content blade dark">
-	<div class="container blade-content">
-		SliderWithContent.astro
-	</div>
-	<LogoCarousel
+<div class="flyntComponent componentSpacing" data-theme="dark" is="flynt-slider-quote">
+	<div class="container">
+    <div class="testimonials-slider swiper">
+      <div class="testimonials swiper-wrapper">
+        <div class="testimonial-outer swiper-slide">
+          <div class="testimonial">
+            <div class="testimonial-image">
+              <figure class="testimonial-figure">
+								<Image class="testimonial-figureImage" src={patternHexagonGreenImage} alt="Quote Image"></Image>
+              </figure>
+            </div>
+            <div class="testimonial-content">
+              <span class="art art--arrowWhite"></span>
+              <span class="art art--quote"></span>
+              <blockquote class="testimonial-text">
+                <h3>Aenean aliquet malesuada quam et placerat. Suspendisse pellentesque. Interdum et malesuada fames ac ante ipsum primis in.</h3>
+              </blockquote>
+              <p class="testimonial-author"><strong>Jane Doe</strong>, <span>CEO</span></p>
+              <div class="testimonial-author-logo">
+								<Image src={logoCohesity} alt="Author Company"></Image>
+              </div>
+              <a href="/" class="testimonial-link button button--text">View case study</a>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-outer swiper-slide">
+          <div class="testimonial">
+            <div class="testimonial-image">
+              <figure class="testimonial-figure">
+                <Image class="testimonial-figureImage" src={patternHexagonGreenImage} alt="Quote Image"></Image>
+              </figure>
+            </div>
+            <div class="testimonial-content">
+              <span class="art art--arrowWhite"></span>
+              <span class="art art--quote"></span>
+              <blockquote class="testimonial-text">
+                <h3>Aenean aliquet malesuada quam et placerat. Suspendisse pellentesque. Interdum et malesuada fames ac ante ipsum primis in.</h3>
+              </blockquote>
+              <p class="testimonial-author"><strong>Jane Doe</strong>, <span>CEO</span></p>
+              <div class="testimonial-author-logo">
+                <Image src={logoCohesity} alt="Author Company"></Image>
+              </div>
+              <a href="/" class="testimonial-link button button--text">View case study</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-sliderProgressbar swiper-pagination"></div>
+      <div class="testimonial-sliderArrow testimonial-sliderArrow--prev swiper-button-prev"></div>
+      <div class="testimonial-sliderArrow testimonial-sliderArrow--next swiper-button-next"></div>
+    </div>
+  </div>
+	<div class="logos">
+		<ul class="logos-list">
+			<li class="logos-item">
+				<div class="logo">
+					<Image class="logo-image" src={logoCisco} alt="Logo"></Image>
+				</div>
+			</li>
+			<li class="logos-item">
+				<div class="logo">
+					<Image class="logo-image" src={logoVmware} alt="Logo"></Image>
+				</div>
+			</li>
+			<li class="logos-item">
+				<div class="logo">
+					<Image class="logo-image" src={logoMcafee} alt="Logo"></Image>
+				</div>
+			</li>
+			<li class="logos-item">
+				<div class="logo">
+					<Image class="logo-image" src={logoTenable} alt="Logo"></Image>
+				</div>
+			</li>
+			<li class="logos-item">
+				<div class="logo">
+					<Image class="logo-image" src={logoStanford} alt="Logo"></Image>
+				</div>
+			</li>
+		</ul>
+	</div>		
+</div>
+<style lang="scss">
+	@import 'src/styles/abstracts/variables';
 
-	/>
-</section>
+	[is='flynt-slider-quote'] {
+  overflow: hidden;
+
+  .intro {
+		margin-bottom: var(--flow-space-medium);
+  }
+
+  .testimonials {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .testimonial {
+    @include row;
+
+    &-outer {
+      @include col(12);
+    }
+
+    &-image {
+      @include col(12);
+      height: 100%;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        @include col(5);
+      }
+    }
+
+    &-figure {
+      height: 100%;
+      margin: 0;
+    }
+
+    &-figureImage {
+      height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+    }
+
+    &-content {
+      @include col;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 4rem;
+      position: relative;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        @include offset(1);
+        margin-top: 0;
+      }
+    }
+
+    &-text {
+			border: 0;
+      font-style: normal;
+      margin: 0;
+      padding: 0;
+    }
+
+    &-author {
+			color: var(--color-accent);
+      margin-top: var(--flow-space-medium);
+    }
+
+    &-author-logo {
+			height: 2.2rem;
+      margin-top: var(--flow-space);
+      max-width: 15.7rem;
+
+      img {
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    &-link {
+      margin-top: var(--flow-space-small);
+    }
+
+    &-sliderArrow {
+      &--prev,
+      &--next {
+        background-color: $color-background-dark;
+      }
+    }
+  }
+
+	.logos {
+		margin-top: var(--flow-space-large);
+
+		&::before {
+			content: '';
+			position: absolute;
+			width: var(--padding-unit-150);
+			background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+			top: 0;
+			bottom: 0;
+			left: 0;
+			height: 100%;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			width: var(--padding-unit-150);
+			background: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+			top: 0;
+			bottom: 0;
+			right: 0;
+			height: 100%;
+		}
+
+    &-list {
+      @include reset-list;
+      @include row;
+      // @include row-cols(2);
+
+      // @media (min-width: $breakpoint-tablet) {
+      //   @include row-cols(3);
+      // }
+
+      // @media (min-width: $breakpoint-tablet) {
+      //   @include row-cols(4);
+      // }
+
+      // @media (min-width: $breakpoint-tablet) {
+      //   @include row-cols(5);
+      // }
+    }
+  }
+
+	.logo {
+    height: 8.4rem;
+    margin: auto;
+    max-width: 19.3rem;
+    text-align: center;
+
+    &-image {
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+</style>
