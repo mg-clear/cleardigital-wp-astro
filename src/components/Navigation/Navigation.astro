@@ -1,6 +1,8 @@
 ---
 
-import CTAButton from 'src/widgets/CTAButton.astro';
+import CTAButton from '@widgets/CTAButton.astro';
+import { Image } from 'astro:assets';
+import siteLogo from "src/assets/logo/clear-logo-transparent.svg"; 
 
 ---
 
@@ -9,6 +11,7 @@ import CTAButton from 'src/widgets/CTAButton.astro';
     <div class="main-navigation-items">
       <div class="site-logo">
         <a data-cursor-expand href="/">
+					<!-- <Image src={siteLogo} alt="Cleardigital logo" /> -->
           <img
             src="/logos/clear-logo-transparent.svg"
             alt="cleardigital logo transparent"
@@ -418,7 +421,20 @@ import CTAButton from 'src/widgets/CTAButton.astro';
         > a {
           color: $color-text;
           font-weight: 700;
+					position: relative;
           text-decoration: none;
+
+					&:after {
+						background-color: $color-brand;
+						bottom: -206%;
+						content: '';
+						width: 0;
+						height: 8px;
+						left: 0;
+						position: absolute;
+						transition: width 0.3s ease-in-out;
+						z-index: 21;
+					}
 
           &:hover {
             color: $color-brand;
@@ -429,6 +445,12 @@ import CTAButton from 'src/widgets/CTAButton.astro';
           .megamenu-dropdown {
             height: 44rem;
           }
+
+					> a {
+						&:after {
+							width: 100%;
+						}
+					} 
         }
       }
 
@@ -524,6 +546,7 @@ import CTAButton from 'src/widgets/CTAButton.astro';
         width: 100%;
 
         @media (min-width: $breakpoint-tablet-horizontal) {
+					border-top: 1px solid $color-background-light;
           height: 0;
           left: 0;
           overflow: hidden;
