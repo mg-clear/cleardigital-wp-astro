@@ -17,8 +17,32 @@ import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-h
           <div class="testimonial">
             <div class="testimonial-image">
               <figure class="testimonial-figure">
-								<Image class="testimonial-figureImage" src={patternHexagonGreenImage} alt="Quote Image"></Image>
+                <Image class="testimonial-figureImage" src={patternHexagonGreenImage} alt="Quote Image"></Image>
               </figure>
+            </div>
+            <div class="testimonial-content">
+              <span class="art art--arrowWhite"></span>
+              <span class="art art--quote"></span>
+              <blockquote class="testimonial-text">
+                <h3>Aenean aliquet malesuada quam et placerat. Suspendisse pellentesque. Interdum et malesuada fames ac ante ipsum primis in.</h3>
+              </blockquote>
+              <p class="testimonial-author"><strong>Jane Doe</strong>, <span>CEO</span></p>
+              <div class="testimonial-author-logo">
+                <Image src={logoCohesity} alt="Author Company"></Image>
+              </div>
+              <a href="/" class="testimonial-link button button--text">View case study</a>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-outer swiper-slide">
+          <div class="testimonial">
+            <div class="testimonial-statistics">
+              <div class="testimonial-counter">
+                <span class="testimonial-counterPrefix"></span>
+                <span class="testimonial-counterNumber h1">113</span>
+                <span class="testimonial-counterSuffix h1">%</span>
+              </div>
+              <p class="h6">Aenean aliquet malesuada quam et placerat.</p>
             </div>
             <div class="testimonial-content">
               <span class="art art--arrowWhite"></span>
@@ -36,11 +60,6 @@ import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-h
         </div>
         <div class="testimonial-outer swiper-slide">
           <div class="testimonial">
-            <div class="testimonial-image">
-              <figure class="testimonial-figure">
-                <Image class="testimonial-figureImage" src={patternHexagonGreenImage} alt="Quote Image"></Image>
-              </figure>
-            </div>
             <div class="testimonial-content">
               <span class="art art--arrowWhite"></span>
               <span class="art art--quote"></span>
@@ -61,29 +80,29 @@ import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-h
       <div class="testimonial-sliderArrow testimonial-sliderArrow--next swiper-button-next"></div>
     </div>
   </div>
-	<div class="logos">
-		<ul class="logos-list">
-			<li class="logos-item">
+	<div class="logos swiperLogos">
+		<ul class="logos-list swiper-wrapper">
+			<li class="logos-item swiper-slide">
 				<div class="logo">
 					<Image class="logo-image" src={logoCisco} alt="Logo"></Image>
 				</div>
 			</li>
-			<li class="logos-item">
+			<li class="logos-item swiper-slide">
 				<div class="logo">
 					<Image class="logo-image" src={logoVmware} alt="Logo"></Image>
 				</div>
 			</li>
-			<li class="logos-item">
+			<li class="logos-item swiper-slide">
 				<div class="logo">
 					<Image class="logo-image" src={logoMcafee} alt="Logo"></Image>
 				</div>
 			</li>
-			<li class="logos-item">
+			<li class="logos-item swiper-slide">
 				<div class="logo">
 					<Image class="logo-image" src={logoTenable} alt="Logo"></Image>
 				</div>
 			</li>
-			<li class="logos-item">
+			<li class="logos-item swiper-slide">
 				<div class="logo">
 					<Image class="logo-image" src={logoStanford} alt="Logo"></Image>
 				</div>
@@ -95,147 +114,225 @@ import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-h
 	@import 'src/styles/abstracts/variables';
 
 	[is='flynt-slider-quote'] {
-  overflow: hidden;
+    overflow: hidden;
 
-  .intro {
-		margin-bottom: var(--flow-space-medium);
-  }
-
-  .testimonials {
-    display: flex;
-    flex-wrap: nowrap;
-  }
-
-  .testimonial {
-    @include row;
-
-    &-outer {
-      @include col(12);
+    .intro {
+      margin-bottom: var(--flow-space-medium);
     }
 
-    &-image {
-      @include col(12);
-      height: 100%;
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        @include col(5);
-      }
-    }
-
-    &-figure {
-      height: 100%;
-      margin: 0;
-    }
-
-    &-figureImage {
-      height: 100%;
-      object-fit: cover;
-      overflow: hidden;
-    }
-
-    &-content {
-      @include col;
+    .testimonials {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      margin-top: 4rem;
-      position: relative;
+      flex-wrap: nowrap;
+    }
 
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        @include offset(1);
-        margin-top: 0;
+    .testimonial {
+      @include row;
+
+      &-outer {
+        @include col(12);
+      }
+
+      &-image,
+      &-statistics {
+        @include col(12);
+        height: 100%;
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          @include col(6);
+        }
+      }
+
+      &-figure,
+      &-counter {
+        height: 100%;
+        margin: 0;
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          margin-right: calc(((var(--content-max-width-full) - (var(--container-spacing) * 2)) / 12));
+        }
+      }
+
+      &-figureImage {
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+      }
+
+      &-statistics {
+        p {
+          font-weight: normal;
+          margin-top: var(--flow-space);
+        }
+      }
+
+      &-counterNumber,
+      &-counterSuffix {
+        color: var(--color-accent);
+      }
+
+      &-content {
+        @include col;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 4rem;
+        position: relative;
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          margin-top: 0;
+        }
+      }
+
+      &-text {
+        border: 0;
+        font-style: normal;
+        margin: 0;
+        padding: 0;
+      }
+
+      &-author {
+        color: var(--color-accent);
+        margin-top: var(--flow-space-medium);
+      }
+
+      &-author-logo {
+        height: 2.2rem;
+        margin-top: var(--flow-space);
+        max-width: 15.7rem;
+
+        img {
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      &-link {
+        margin-top: var(--flow-space-small);
+      }
+
+      &-sliderArrow {
+        &--prev,
+        &--next {
+          background-color: $color-background-dark;
+        }
+      }
+
+      &-sliderProgressbar {
+        margin-top: var(--flow-space-large);
       }
     }
 
-    &-text {
-			border: 0;
-      font-style: normal;
-      margin: 0;
-      padding: 0;
+    .logos {
+      margin-top: var(--flow-space-large);
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: var(--padding-unit-150);
+        background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+        top: 0;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: var(--padding-unit-150);
+        background: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+        top: 0;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+      }
+
+      &-list {
+        @include reset-list;
+        @include row;
+        // @include row-cols(2);
+
+        // @media (min-width: $breakpoint-tablet) {
+        //   @include row-cols(3);
+        // }
+
+        // @media (min-width: $breakpoint-tablet) {
+        //   @include row-cols(4);
+        // }
+
+        // @media (min-width: $breakpoint-tablet) {
+        //   @include row-cols(5);
+        // }
+      }
+
+      .swiper-wrapper {
+        transition-timing-function: linear;
+      }
+
+      .swiper-slide {
+        width: auto;
+      }
     }
 
-    &-author {
-			color: var(--color-accent);
-      margin-top: var(--flow-space-medium);
-    }
+    .logo {
+      height: 8.4rem;
+      margin: auto;
+      max-width: 19.3rem;
+      text-align: center;
 
-    &-author-logo {
-			height: 2.2rem;
-      margin-top: var(--flow-space);
-      max-width: 15.7rem;
-
-      img {
+      &-image {
         height: 100%;
         object-fit: contain;
       }
     }
-
-    &-link {
-      margin-top: var(--flow-space-small);
-    }
-
-    &-sliderArrow {
-      &--prev,
-      &--next {
-        background-color: $color-background-dark;
-      }
-    }
   }
-
-	.logos {
-		margin-top: var(--flow-space-large);
-
-		&::before {
-			content: '';
-			position: absolute;
-			width: var(--padding-unit-150);
-			background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
-			top: 0;
-			bottom: 0;
-			left: 0;
-			height: 100%;
-		}
-
-		&::after {
-			content: '';
-			position: absolute;
-			width: var(--padding-unit-150);
-			background: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
-			top: 0;
-			bottom: 0;
-			right: 0;
-			height: 100%;
-		}
-
-    &-list {
-      @include reset-list;
-      @include row;
-      // @include row-cols(2);
-
-      // @media (min-width: $breakpoint-tablet) {
-      //   @include row-cols(3);
-      // }
-
-      // @media (min-width: $breakpoint-tablet) {
-      //   @include row-cols(4);
-      // }
-
-      // @media (min-width: $breakpoint-tablet) {
-      //   @include row-cols(5);
-      // }
-    }
-  }
-
-	.logo {
-    height: 8.4rem;
-    margin: auto;
-    max-width: 19.3rem;
-    text-align: center;
-
-    &-image {
-      height: 100%;
-      object-fit: contain;
-    }
-  }
-}
 </style>
+<script>
+  import Swiper from 'swiper'
+	import { Navigation, A11y, Autoplay, Pagination, Grid } from 'swiper/modules'
+	import 'swiper/css'
+	import 'swiper/css/autoplay'
+  import 'swiper/css/a11y'
+	import 'swiper/css/navigation'
+	import 'swiper/css/grid'
+
+	const sliderSelector = '[is="flynt-slider-quote"]  .swiper';
+	const slider = document.querySelector(sliderSelector);
+
+	if (slider) {
+		const parameters = {
+			modules: [Navigation, A11y, Autoplay, Pagination],
+			navigation: {
+				nextEl: '[is="flynt-slider-quote"] .swiper-button-next',
+				prevEl: '[is="flynt-slider-quote"] .swiper-button-prev'
+			},
+      pagination: {
+        el: '[is="flynt-slider-quote"]  .swiper-pagination',
+        type: 'progressbar'
+      },
+			slidesPerView: 1,
+			speed: 400,
+			spaceBetween: 30,
+		}
+		
+		const swiper = new Swiper(sliderSelector, parameters)
+	}
+
+  // const logoSliderSelector = '[is="flynt-slider-quote"]  .swiperLogos';
+	// const logoSlider = document.querySelector(logoSliderSelector);
+
+	// if (logoSlider) {
+	// 	const logoParameters = {
+	// 		modules: [Autoplay, Grid],
+  //     autoplay: {
+  //       enabled: true,
+  //       delay: 1000
+  //     },
+  //     loop: true,
+  //     slidesPerView: 2,
+	// 		spaceBetween: 20,
+	// 	}
+		
+	// 	const logoSwiper = new Swiper(logoSliderSelector, logoParameters)
+	// }
+</script>
