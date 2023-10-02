@@ -1,8 +1,7 @@
 ---
-import Head from "@widgets/Head.astro";
-import Header from "../../components/Header/Header.astro";
-import Navigation from "../../components/Navigation/Navigation.astro";
-import Footer from "../../components/Footer/Footer.astro";
+import Head from "../widgets/Head.astro";
+import Header from "../components/Header/Header.astro";
+import Footer from "../components/Footer/Footer.astro";
 
 interface Props {
   title: string;
@@ -22,8 +21,7 @@ const { title, metadescription, ogimage } = Astro.props;
   />
   <body>
     <main>
-      <!-- <Header /> -->
-      <Navigation />
+      <Header />
       <slot />
       <Footer />
     </main>
