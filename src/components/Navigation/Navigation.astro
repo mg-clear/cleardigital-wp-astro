@@ -352,33 +352,40 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
     width: 100%;
     z-index: 40;
 
-    @media (max-width: $breakpoint-tablet-horizontal) {
-      display: none;
-    }
+    // @media (max-width: $breakpoint-tablet-horizontal) {
+    //   display: none;
+    // }
 
     > .container {
+			&:before {
+				content: "";
+				background-color: $color-background;
+				height: 100%;
+				left: -94%;
+				width: 100%;
+				position: absolute;
+				z-index: -1;
+				@media (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet-horizontal) {
+					left: 95.7%
+				}
+			}
+
+			&:after {
+				content: "";
+				background-color: $color-background;
+				height: 100%;
+				right: -94%;
+				width: 100%;
+				position: absolute;
+				top: 0;
+				z-index: -1;
+
+				@media (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet-horizontal) {
+					right: 95.7%
+				}
+			}
       @media (min-width: $breakpoint-desktop) {
         position: static !important;
-				&:before {
-          content: "";
-          background-color: $color-background;
-          height: 100%;
-          left: -94%;
-          width: 100%;
-          position: absolute;
-					z-index: -1;
-        }
-
-        &:after {
-          content: "";
-          background-color: $color-background;
-          height: 100%;
-          right: -94%;
-          width: 100%;
-          position: absolute;
-					top: 0;
-					z-index: -1;
-        }
       }
     }
 
@@ -390,6 +397,7 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
 
         @media (max-width: $breakpoint-tablet-horizontal) {
           justify-content: space-between;
+					padding: 3rem 0;
         }
       }
     }
