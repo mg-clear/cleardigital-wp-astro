@@ -4,7 +4,7 @@ interface Props {
 	headline?: string,
 	ctaText?: string,
 	ctaUrl?: string,
-	backgroundImage?: string,
+	backgroundImage?: {sourceUrl},
 }
 
 const {
@@ -15,7 +15,8 @@ const {
 	backgroundImage,
 } = Astro.props;
 
-const cssImg = `url(${backgroundImage.sourceUrl})`;
+const cssImg = (typeof backgroundImage === 'object' && backgroundImage !== null) ? `url(${backgroundImage.sourceUrl})` : '';
+
 ---
 
 <div class="blade banner-blade">
@@ -26,14 +27,10 @@ const cssImg = `url(${backgroundImage.sourceUrl})`;
 			</div>
 		}
 		{headline && 
-			<h2 class="h1">
-				{headline}
-			</h2>
+			<h2 class="h1" set:html={headline}></h2>
 		}
 		{ctaUrl && ctaText && 
-			<a href={ctaUrl}>
-				{ctaText}
-			</a>
+			<a href={ctaUrl} set:text={ctaText}></a>
 		}
 	</div>
 	<div class="bg-container"></div>

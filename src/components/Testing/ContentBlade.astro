@@ -1,12 +1,12 @@
 ---
 interface Props {
 	textContent?: string,
-	image?: Array
+	image?: {sourceUrl, altText}
 }
 
 const {
-	textContent = null,
-	image = null,
+	textContent,
+	image,
 } = Astro.props;
 ---
 
