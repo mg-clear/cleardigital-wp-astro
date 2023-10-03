@@ -653,6 +653,12 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
           animation: fadeIn 0.2s ease-in-out;
           display: none;
         }
+
+        > .container {
+          @media (max-width: $breakpoint-tablet-horizontal) {
+            padding-inline: 0;
+          }
+        }
       }
 
       &-content-outer {
@@ -831,10 +837,10 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
 
 <script>
 
-  const hamburger = document.querySelector("header .hamburger");
-  const dropdownMenu = document.querySelector('header .megamenu-dropdown');
-  const nav = document.querySelector('header nav');
-  const mainMenuLink = document.querySelector('header .main-menu-item');
+  const hamburger = document.querySelector("header .hamburger")
+  const dropdownMenu = document.querySelectorAll('header .megamenu-dropdown')
+  const nav = document.querySelector('header nav')
+  const mainMenuLink = document.querySelectorAll('header .main-menu-item')
 
   // window.addEventListener('resize', function () {
   //     var winWidth = screen.availWidth;
@@ -847,25 +853,27 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
   // });
 
   function mobileMenuHandler() {
-    let element = this;
+    let element = this
 
     if (element) {
-      element.classList.toggle('active');
-      nav.classList.toggle('active');
+      element.classList.toggle('active')
+      nav.classList.toggle('active')
     }
   }
 
-  // function menuLinkClickHandler() {
-  //   var getmegaMenu = this.nextElementSibling.querySelectorAll('.megamenu-dropdown');
+  function menuLinkClickHandler() {
+    dropdownMenu.forEach(function(item) {
+      item.classList.remove('megamenu--isOpen');
+    });
 
-  //   console.log(getmegaMenu)
+    this.querySelector('.megamenu-dropdown').classList.add('megamenu--isOpen');
+  }
 
-  //   // this.parent().siblings().find('.megamenu-dropdown').slideUp();
-  //   // getmegaMenu.slideToggle();
-  //   // this.toggleClass('active');
-  // }
+  hamburger.addEventListener('click', mobileMenuHandler)
 
-  hamburger.addEventListener('click', mobileMenuHandler);
-  // mainMenuLink.addEventListener('click', menuLinkClickHandler);
+  // mainMenuLink.forEach(function(item) {
+  //   item.addEventListener('click', menuLinkClickHandler);
+
+  // })
 
 </script>
