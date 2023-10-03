@@ -831,12 +831,10 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
 
 <script>
 
-  // const hamburger = document.querySelector("header .hamburger");
-  // const megaMenu = document.querySelector('header .megamenu-dropdown');
-  // const nav = document.querySelector('header nav');
-
-  // mobileMenuHandler();
-
+  const hamburger = document.querySelector("header .hamburger");
+  const dropdownMenu = document.querySelector('header .megamenu-dropdown');
+  const nav = document.querySelector('header nav');
+  const mainMenuLink = document.querySelector('header .main-menu-item');
 
   // window.addEventListener('resize', function () {
   //     var winWidth = screen.availWidth;
@@ -848,31 +846,26 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
   //     }
   // });
 
-  // function mobileMenuHandler() {
-  //   if (hamburger) {
-  //     hamburger.addEventListener('click', function () {
-  //         this.classList.toggle('active');
-  //         var winWidth = screen.availWidth;
-  //         if (winWidth < 992) {
-  //             var menu = document.querySelector('header nav');
-  //             var menuHeight = menu.clientHeight;
-  //             if (menuHeight == 0) {
-  //               menu.setAttribute("style", "height: 100vh; overflowY: scroll;");
-  //             }
-  //             else {
-  //               menu.setAttribute("style", "height: 0; overflow: hidden;");
-  //             }
-  //         }
-  //     });
-  //   }
+  function mobileMenuHandler() {
+    let element = this;
+
+    if (element) {
+      element.classList.toggle('active');
+      nav.classList.toggle('active');
+    }
+  }
+
+  // function menuLinkClickHandler() {
+  //   var getmegaMenu = this.nextElementSibling.querySelectorAll('.megamenu-dropdown');
+
+  //   console.log(getmegaMenu)
+
+  //   // this.parent().siblings().find('.megamenu-dropdown').slideUp();
+  //   // getmegaMenu.slideToggle();
+  //   // this.toggleClass('active');
   // }
 
-  // if (megaMenu) {
-  //     megaMenu.addEventListener('click', function () {
-  //         var getmegaMenu = this.siblings('.sub-menu');
-  //         this.parent().siblings().find('.sub-menu').slideUp();
-  //         getmegaMenu.slideToggle();
-  //         this.toggleClass('active');
-  //     });
-  //   }
+  hamburger.addEventListener('click', mobileMenuHandler);
+  // mainMenuLink.addEventListener('click', menuLinkClickHandler);
+
 </script>
