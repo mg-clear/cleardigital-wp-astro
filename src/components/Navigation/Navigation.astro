@@ -367,6 +367,10 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
 				@media (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet-horizontal) {
 					left: 95.7%
 				}
+
+        @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-tablet-horizontal) {
+          left: 17.8rem;
+        }
 			}
 
 			&:after {
@@ -382,6 +386,10 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
 				@media (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet-horizontal) {
 					right: 95.7%
 				}
+
+        @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-tablet-horizontal) {
+          right: calc(100% - 6.8rem);
+        }
 			}
       @media (min-width: $breakpoint-desktop) {
         position: static !important;
@@ -392,7 +400,6 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
       &-items {
         align-items: center;
         display: flex;
-        // position: relative;
 
         @media (max-width: $breakpoint-tablet-horizontal) {
           justify-content: space-between;
@@ -481,6 +488,11 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
         right: 0;
         bottom: -98%;
         position: absolute;
+
+        @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-tablet-horizontal) {
+          height: 80%;
+          bottom: -86%;
+        }
       }
 
       &::after {
