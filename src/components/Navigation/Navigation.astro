@@ -419,6 +419,10 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
 			position: absolute;
 			top: 0;
 
+      @media (max-width: $breakpoint-tablet-horizontal) {
+        display: none;
+      }
+
 			&--left {
 				left: -40%;
 			}
@@ -539,6 +543,17 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
           }
         }
       }
+
+      &--active {
+        > a {
+          color: $color-brand;;
+        }
+        .expand-btn {
+          &::after {
+            display: none;
+          }
+        }
+      }
     }
 
     .site-logo {
@@ -553,7 +568,7 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
         width: 100%;
         height: 94%;
         right: 0;
-        bottom: -98%;
+        bottom: -100%;
         position: absolute;
 
         @media (max-width: $breakpoint-tablet-horizontal) {
@@ -702,12 +717,12 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
 
         ul {
           li {
-            @media (max-width: $breakpoint-tablet) {
+            @media (max-width: $breakpoint-tablet-horizontal) {
               margin-top: 3rem;
             }
 
             &:not(:first-child) {
-              @media (min-width: $breakpoint-tablet) {
+              @media (min-width: $breakpoint-tablet-horizontal) {
                 margin-top: 3rem;
               }
             }
@@ -838,19 +853,20 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
 <script>
 
   const hamburger = document.querySelector("header .hamburger")
-  const dropdownMenu = document.querySelectorAll('header .megamenu-dropdown')
   const nav = document.querySelector('header nav')
   const mainMenuLink = document.querySelectorAll('header .main-menu-item')
 
-  // window.addEventListener('resize', function () {
-  //     var winWidth = screen.availWidth;
+  function initMenu() {
+    if (screen.availWidth > 992) {
+      nav.classList.remove('active')
+      hamburger.classList.remove('active')
 
-  //     if (winWidth > 992) {
-  //         nav.removeAttribute('style');
-
-  //         document.querySelector('header .links-outer ul .sub-menu').removeAttribute('style');
-  //     }
-  // });
+      mainMenuLink.forEach(function(item) {
+        item.classList.remove('main-menu--active')
+        item.querySelector('.megamenu-dropdown').classList.remove('megamenu--isOpen')
+      })
+    }
+  }
 
   function mobileMenuHandler() {
     let element = this
@@ -862,18 +878,32 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
   }
 
   function menuLinkClickHandler() {
-    dropdownMenu.forEach(function(item) {
-      item.classList.remove('megamenu--isOpen');
-    });
+    let winWidth = screen.availWidth;
+    if (winWidth > 992) return
 
-    this.querySelector('.megamenu-dropdown').classList.add('megamenu--isOpen');
+    if (!this.classList.contains('main-menu--active')) {
+      let children = this.parentNode.querySelectorAll('.main-menu-item')
+
+      children.forEach(function(item) {
+        item.classList.remove('main-menu--active')
+        item.querySelector('.megamenu-dropdown').classList.remove('megamenu--isOpen')
+      });
+
+      this.classList.add('main-menu--active')
+      this.querySelector('.megamenu-dropdown').classList.add('megamenu--isOpen')
+    } else {
+      mainMenuLink.forEach(function(item) {
+        item.classList.remove('main-menu--active')
+        item.querySelector('.megamenu-dropdown').classList.remove('megamenu--isOpen')
+      })
+    }
   }
 
   hamburger.addEventListener('click', mobileMenuHandler)
+  window.addEventListener('resize', initMenu)
 
-  // mainMenuLink.forEach(function(item) {
-  //   item.addEventListener('click', menuLinkClickHandler);
-
-  // })
+  mainMenuLink.forEach(function(item) {
+    item.addEventListener('click', menuLinkClickHandler);
+  })
 
 </script>
