@@ -2,7 +2,7 @@
 
 import CTAButton from '@widgets/CTAButton.astro';
 import { Image } from 'astro:assets';
-import siteLogo from "src/assets/logo/clear-logo-transparent.svg"; 
+import siteLogo from "@assets/logo/clear-logo-transparent.svg"; 
 
 ---
 
@@ -11,11 +11,11 @@ import siteLogo from "src/assets/logo/clear-logo-transparent.svg";
     <div class="main-navigation-items">
       <div class="site-logo">
         <a data-cursor-expand href="/">
-					<!-- <Image src={siteLogo} alt="Cleardigital logo" /> -->
-          <img
+					<Image src={siteLogo} alt="Cleardigital logo" />
+          <!-- <img
             src="/logos/clear-logo-transparent.svg"
             alt="cleardigital logo transparent"
-          />
+          /> -->
         </a>
       </div>
       <nav class="">

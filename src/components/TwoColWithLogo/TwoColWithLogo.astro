@@ -1,0 +1,84 @@
+---
+
+import { Image } from 'astro:assets';
+import vmWareLogo from '@assets/logo/vmware-logo-black.svg';
+import bgBlue from '@assets/images/TwoColWithLogo/blue-bg.png';
+
+interface Props {
+
+}
+
+const {
+
+} = Astro.props;
+
+---
+
+<section class="twocolwithlogo blade">
+  <div class="container">
+		<div class="twocolwithlogo__item">
+			<div class="twocolwithlogo__bg-outer">
+				<div class="twocolwithlogo__bg">
+					<Image src={bgBlue} alt="bg Blue" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="twocolwithlogo__logo-outer">
+					<div class="twocolwithlogo__logo">
+						<Image src={vmWareLogo} alt="vmWareLogo" />
+					</div>
+				</div>
+				<div class="twocolwithlogo__content-outer">
+					<div class="twocolwithlogo__content">
+						<h3>80% vel consequat est. Donec semper neque quam eget.</h3>
+						<p>Torem ipsum dolor sit amet, consectetur adipiscing at elit. Nunc vulputate libero dolore aliqua et.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style lang="scss">
+	@import "@styles/abstracts/_variables.scss";
+
+	.twocolwithlogo {
+		.row {
+			@include row;
+			align-items: center;
+		}
+
+		&__item {
+			padding: 10rem 0;
+		}
+
+		&__bg-outer {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+
+		&__bg {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+		}
+
+		&__logo-outer {
+			@media (min-width: $breakpoint-tablet) {
+				@include col(6)
+			}
+		}
+
+		&__content-outer {
+			@media (min-width: $breakpoint-tablet) {
+				@include col(6)
+			}
+		}
+	}
+</style>
