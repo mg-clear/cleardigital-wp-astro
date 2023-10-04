@@ -1,34 +1,39 @@
 ---
-
 interface Props {
-	tag?: string,
-	style?: string,
+  tag?: string;
+  content: string;
+  typography?: string;
 }
 
-const {
-	tag = 'h2',
-	style = null,
-} = Astro.props;
+const { content = "", tag = "h2", typography = "" } = Astro.props;
 
 ---
 
 {
-	()=>{
-		switch(tag){
-			case 'h1':
-				return <h1 class:list={[style]}><slot /></h1>
-			case 'h2':
-				return <h2 class:list={[style]}><slot /></h2>
-			case 'h3':
-				return <h3 class:list={[style]}><slot /></h3>
-			case 'h4':
-				return <h4 class:list={[style]}><slot /></h4>
-			case 'h5':
-				return <h5 class:list={[style]}><slot /></h5>
-			case 'h6':
-				return <h6 class:list={[style]}><slot /></h6>
-			default:
-				return <h2 class:list={[style]}><slot /></h2>
-		}
-	}
+  ()=>{
+    switch (tag) {
+      case 'h1':
+        return <h1 class:list={typography} set:html={content} />
+      case 'h2':
+        return <h2 class:list={typography} set:html={content} />
+      case 'h3':
+        return <h3 class:list={typography} set:html={content} />
+      case 'h4':
+        return <h4 class:list={typography} set:html={content} />
+      case 'h5':
+        return <h5 class:list={typography} set:html={content} />
+      case 'h6':
+        return <h6 class:list={typography} set:html={content} />
+      default:
+        return <h2 class:list={typography} set:html={content} />
+    }
+  }
 }
+
+<style lang="scss">
+  h1, h2, h3, h4, h5, h6 {
+    :global(.underline) {
+      color: var(--color-pink);
+    }
+  }
+</style>

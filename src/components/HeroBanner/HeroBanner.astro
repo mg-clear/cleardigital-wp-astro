@@ -1,25 +1,62 @@
 ---
-import CTAButton from '../../widgets/CTAButton.astro';
+import CTAButton from '@widgets/CTAButton.astro';
+import Headline from '@widgets/Headline.astro';
 interface Props {
-
+  bladeCssId?: string,
+  bladeAdditionalCssClasses?: string,
+  ctaLightboxVideoUrl?: string,
+  ctaStyle?: string,
+  ctaTarget?: string,
+  ctaText?: string,
+  ctaUrl?: string,
+  description?: string,
+  eyebrow?: string,
+  fieldGroupName?: string,
+  headline?: string,
+  headlineTag?: string,
+  headlineTypography?: string,
 }
 
 const {
-
+  bladeCssId = null,
+  bladeAdditionalCssClasses = null,
+  ctaLightboxVideoUrl = null,
+  ctaStyle = null,
+  ctaTarget = null,
+  ctaText = null,
+  ctaUrl = null,
+  description = null,
+  eyebrow = null,
+  fieldGroupName = null,
+  headline = null,
+  headlineTag = null,
+  headlineTypography = null
 } = Astro.props;
+
+/*
+bladeCssId
+bladeAdditionalCssClasses
+ctaLightboxVideoUrl
+ctaStyle
+ctaTarget
+ctaText
+ctaUrl
+description
+eyebrow
+fieldGroupName
+headline
+headlineTag
+headlineTypography
+*/
 
 ---
 
-<section class="hero-banner blade dark has-grid-bg has-video-bg">
+<section id={bladeCssId} class="hero-banner blade dark has-grid-bg has-video-bg">
 	<div class="container blade-content">
 		<div class="content-wrap">
-			<div class="subtitle">Hello! We are Clear Digital.</div>
-			<h1>We build B2B websites and <span class="graphic-effect-underline" data-underline-image="white-1">digital</span> brand experiences.</h1>
-			<CTAButton
-			label = "Our Approach"
-			href = "/"
-			target = "_self"
-		  />
+      {eyebrow && <div class="subtitle">{eyebrow}</div>}
+			{headline && <Headline content={headline} tag={headlineTag} typography={headlineTypography} />}
+      {ctaText && <CTAButton label={ctaText} href={ctaUrl} target={ctaTarget} />}
 		</div>
 	</div>
 	<div class="bg-container overlay">

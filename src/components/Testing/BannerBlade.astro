@@ -1,68 +1,57 @@
 ---
 interface Props {
-	eyebrow?: string,
-	headline?: string,
-	ctaText?: string,
-	ctaUrl?: string,
-	backgroundImage?: {sourceUrl},
+  eyebrow?: string;
+  headline?: string;
+  ctaText?: string;
+  ctaUrl?: string;
+  backgroundImage?: { sourceUrl };
 }
 
-const {
-	eyebrow,
-	headline,
-	ctaText,
-	ctaUrl,
-	backgroundImage,
-} = Astro.props;
+const { eyebrow, headline, ctaText, ctaUrl, backgroundImage } = Astro.props;
 
-const cssImg = (typeof backgroundImage === 'object' && backgroundImage !== null) ? `url(${backgroundImage.sourceUrl})` : '';
-
+const cssImg =
+  typeof backgroundImage === "object" && backgroundImage !== null
+    ? `url(${backgroundImage.sourceUrl})`
+    : "";
 ---
 
 <div class="blade banner-blade">
-	<div class="blade-content">
-		{eyebrow && 
-			<div class="h4">
-				{eyebrow}
-			</div>
-		}
-		{headline && 
-			<h2 class="h1" set:html={headline}></h2>
-		}
-		{ctaUrl && ctaText && 
-			<a href={ctaUrl} set:text={ctaText}></a>
-		}
-	</div>
-	<div class="bg-container"></div>
+  <div class="blade-content">
+    {eyebrow && <div class="h4">{eyebrow}</div>}
+    {headline && <h2 class="h1" set:html={headline} />}
+    {ctaUrl && ctaText && <a href={ctaUrl} set:text={ctaText} />}
+  </div>
+  <div class="bg-container"></div>
 </div>
 
 <style define:vars={{ cssImg }}>
-	.blade, .blade-content {
-		position: relative;
-	}
+  .blade,
+  .blade-content {
+    position: relative;
+  }
 
-	.blade {
-		min-height: 100vh;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		padding-block: 150px;
-	}
+  .blade {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 150px;
+  }
 
-	.blade-content {
-		z-index: 1;
-		color: white;
-		padding-inline: 20px;
-	}
+  .blade-content {
+    z-index: 1;
+    color: white;
+    padding-inline: 20px;
+  }
 
-	.bg-container {
-		background-image: var(--cssImg);
-		background-size: cover;
-		position: absolute;
-		width: 100%;
-		height:100%;
-		top: 0;
-		left:0;
-		z-index: 0;
-	}
+  .bg-container {
+    background-image: var(--cssImg);
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
 </style>
