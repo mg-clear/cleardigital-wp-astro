@@ -4,6 +4,11 @@ import Page from "src/layouts/Page/Page.astro";
 import BannerBlade from "@components/testing/BannerBlade.astro";
 import ContentBlade from "@components/testing/ContentBlade.astro";
 
+
+const endpoint = import.meta.env.SECRET_GRAPHQL_ENDPOINT;
+console.log(endpoint, 'a');
+
 ---
 
+<Fragment set:text={endpoint} />
 <BannerBlade />
