@@ -1,11 +1,14 @@
 ---
 
-import CTAButton from '@widgets/CTAButton.astro';
 import { Image } from 'astro:assets';
+import CTAButton from '@widgets/CTAButton.astro';
 import vmWareLogo from '@assets/logo/vmware-logo-black.svg';
+import vmWareLogoWhite from '@assets/logo/vmware-logo-white.svg';
 import mcafeeLogo from '@assets/logo/mc-afee-logo-black.svg';
+import mcafeeLogoWhite from '@assets/logo/mc-afee-logo-white.svg';
 import ciscoLogo from '@assets/logo/cisco-logo-black.svg';
-import bgBlue from '@assets/images/TwoColWithLogo/blue-bg.png';
+import ciscoLogoWhite from '@assets/logo/cisco-logo-white.svg';
+import backgroundImage from '@assets/images/TwoColWithLogo/blue-bg.png'
 
 interface Props {
 
@@ -45,14 +48,15 @@ const {
 	<div class="twocolwithlogo__item">
 		<div class="twocolwithlogo__bg-outer">
 			<div class="twocolwithlogo__bg">
-				<Image src={bgBlue} alt="bg Blue" />
+				<Image src={backgroundImage} alt="bg Blue" />
 			</div>
 		</div>
 		<div class="container">
 			<div class="row twocolwithlogo__items-outer">
 				<div class="twocolwithlogo__logo-outer">
 					<div class="twocolwithlogo__logo">
-						<Image src={vmWareLogo} alt="vmWareLogo" />
+						<Image class="twocolwithlogo__logo-black" src={vmWareLogo} alt="vmWareLogo" />
+						<Image class="twocolwithlogo__logo-white" src={vmWareLogoWhite} alt="vmWareLogo" />
 					</div>
 				</div>
 				<div class="twocolwithlogo__content-outer">
@@ -67,14 +71,15 @@ const {
 	<div class="twocolwithlogo__item">
 		<div class="twocolwithlogo__bg-outer">
 			<div class="twocolwithlogo__bg">
-				<Image src={bgBlue} alt="bg Blue" />
+				<Image src={backgroundImage} alt="bg Blue" />
 			</div>
 		</div>
 		<div class="container">
 			<div class="row twocolwithlogo__items-outer">
 				<div class="twocolwithlogo__logo-outer">
 					<div class="twocolwithlogo__logo">
-						<Image src={mcafeeLogo} alt="mcafeeLogo" />
+						<Image class="twocolwithlogo__logo-black" src={mcafeeLogo} alt="mcafeeLogo" />
+						<Image class="twocolwithlogo__logo-white" src={mcafeeLogoWhite} alt="mcafeeLogo" />
 					</div>
 				</div>
 				<div class="twocolwithlogo__content-outer">
@@ -89,14 +94,15 @@ const {
 	<div class="twocolwithlogo__item">
 		<div class="twocolwithlogo__bg-outer">
 			<div class="twocolwithlogo__bg">
-				<Image src={bgBlue} alt="bg Blue" />
+				<Image src={backgroundImage} alt="bg Blue" />
 			</div>
 		</div>
 		<div class="container">
 			<div class="row twocolwithlogo__items-outer">
 				<div class="twocolwithlogo__logo-outer">
 					<div class="twocolwithlogo__logo">
-						<Image src={ciscoLogo} alt="ciscoLogo" />
+						<Image class="twocolwithlogo__logo-black" src={ciscoLogo} alt="ciscoLogo" />
+						<Image class="twocolwithlogo__logo-white" src={ciscoLogoWhite} alt="ciscoLogo" />
 					</div>
 				</div>
 				<div class="twocolwithlogo__content-outer">
@@ -111,14 +117,15 @@ const {
 	<div class="twocolwithlogo__item">
 		<div class="twocolwithlogo__bg-outer">
 			<div class="twocolwithlogo__bg">
-				<Image src={bgBlue} alt="bg Blue" />
+				<Image src={backgroundImage} alt="bg Blue" />
 			</div>
 		</div>
 		<div class="container">
 			<div class="row twocolwithlogo__items-outer">
 				<div class="twocolwithlogo__logo-outer">
 					<div class="twocolwithlogo__logo">
-						<Image src={vmWareLogo} alt="vmWareLogo" />
+						<Image class="twocolwithlogo__logo-black" src={vmWareLogo} alt="vmWareLogo" />
+						<Image class="twocolwithlogo__logo-white" src={vmWareLogoWhite} alt="vmWareLogo" />
 					</div>
 				</div>
 				<div class="twocolwithlogo__content-outer">
@@ -133,14 +140,15 @@ const {
 	<div class="twocolwithlogo__item">
 		<div class="twocolwithlogo__bg-outer">
 			<div class="twocolwithlogo__bg">
-				<Image src={bgBlue} alt="bg Blue" />
+				<Image src={backgroundImage} alt="bg Blue" />
 			</div>
 		</div>
 		<div class="container">
 			<div class="row twocolwithlogo__items-outer">
 				<div class="twocolwithlogo__logo-outer">
 					<div class="twocolwithlogo__logo">
-						<Image src={mcafeeLogo} alt="mcafeeLogo" />
+						<Image class="twocolwithlogo__logo-black" src={mcafeeLogo} alt="mcafeeLogo" />
+						<Image class="twocolwithlogo__logo-white" src={mcafeeLogoWhite} alt="mcafeeLogo" />
 					</div>
 				</div>
 				<div class="twocolwithlogo__content-outer">
@@ -158,6 +166,8 @@ const {
 	@import "@styles/abstracts/_variables.scss";
 
 	.twocolwithlogo {
+		$self: &;
+
 		padding-bottom: 0;
 		.row {
 			@include row;
@@ -203,6 +213,21 @@ const {
 			padding: var(--flow-space-small) 0;
 			position: relative;
 			min-height: calc(100vh / 3);
+			transition: color 0.3s ease-in-out;
+
+			&:hover {
+				color: $color-background;
+				#{$self}__bg {
+					opacity: 1;
+				}
+
+				#{ $self }__logo-black {
+					display: none;
+				}
+				#{ $self }__logo-white {
+					display: block;
+				}
+			}
 		}
 
 		&__bg-outer {
@@ -216,10 +241,12 @@ const {
 		&__bg {
 			position: absolute;
 			inset: 0;
+			opacity: 0;
 			width: 100%;
 			height: 100%;
 			display: flex;
 			align-items: center;
+			transition: opacity 0.3s ease-in-out;
 
 			img {
 				height: 100%;
@@ -250,6 +277,12 @@ const {
 				height: 100%;
 				width: 100%
 			}
+		}
+		&__logo-white {
+			display: none;
+		}
+		&__logo-black {
+			display: block;
 		}
 
 		&__content-outer {
