@@ -1,0 +1,39 @@
+---
+
+import Page from "@layouts/Page/Page.astro";
+
+import HeroBanner from "@components/HeroBanner/HeroBanner.astro";
+import TwoColWithLogo from "@components/TwoColWithLogo/TwoColWithLogo.astro";
+import TabsWithContent from "@components/TabsWithContent/TabsWithContent.astro";
+import SliderWithContent from "@components/SliderWithContent/SliderWithContent.astro";
+import TwoGridSlider from "@components/TwoGridSlider/TwoGridSlider.astro";
+import FooterCTA from "@components/FooterCta/FooterCTA.astro";
+
+---
+
+<Page title="Our Work | Set 2" metadescription="Our work" ogimage="">
+	<HeroBanner
+		bladeCssId="workHeroBanner"
+		bladeAdditionalCssClasses=""
+		ctaLightboxVideoUrl={null}
+		ctaStyle={null}
+		ctaTarget="_self"
+		ctaText="Let's get started"
+		ctaUrl="/work/start"
+		description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+		eyebrow="Lorem ipsum dolor sit"
+		headline="Our work is our <span class=''>passion</span>."
+		headlineTag="h1"
+		headlineTypography="h1"
+		backgroundTheme="dark"
+		backgroundVideoType="mp4"
+		backgroundVideoUrl={null}
+		backgroundImage={{sourceUrl:""}}
+		hasGridBackgroundTexture={true}
+	/>
+	<TwoColWithLogo />
+	<TabsWithContent />
+	<SliderWithContent />
+	<TwoGridSlider />
+	<FooterCTA />
+</Page>
