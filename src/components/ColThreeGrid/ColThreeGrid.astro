@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import brandGraphicsSupportImage from '@assets/images/ColThreeGrid/brand-graphics-support.png';
 import brandStrategyLogoImage from '@assets/images/ColThreeGrid/brand-strategy.svg';
 import contentDevelopmentLogoImage from '@assets/images/ColThreeGrid/content-development.svg';
 import creativeServicesLogoImage from '@assets/images/ColThreeGrid/creative-services.svg';
@@ -11,7 +12,10 @@ import supportLogoImage from '@assets/images/ColThreeGrid/support.svg';
 import webDevelopmentLogoImage from '@assets/images/ColThreeGrid/web-development.svg';
 ---
 
-<div class="colThreeGrid componentSpacing">
+<div class="colThreeGrid componentSpacing blade has-grid-bg">
+  <div class="colThreeGrid-bg">
+    <Image src={brandGraphicsSupportImage} alt=""></Image>
+  </div>
   <div class="container">
     <div class="colThreeCards">
       <div class="colThreeCard-outer">
@@ -111,7 +115,16 @@ import webDevelopmentLogoImage from '@assets/images/ColThreeGrid/web-development
 	@import 'src/styles/abstracts/variables';
 
   .colThreeGrid {
-    padding-top: calc(var(--component-spacing) * 3);
+    padding-top: calc(var(--component-spacing) * 2.7);
+
+    &-bg {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 3;
+    }
 
     .colThreeCards {
       @include row;
@@ -164,6 +177,16 @@ import webDevelopmentLogoImage from '@assets/images/ColThreeGrid/web-development
 
       &-button {
         color: var(--color-accent);
+        font-size: 1.8rem;
+        line-height: 1.5;
+
+        @media (min-width: $breakpoint-tablet) {
+          font-size: 2rem;
+        }
+
+        &::after {
+          background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.16663 10H15.8333" stroke="rgb(250, 25, 141)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="rgb(250, 25, 141)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        }
       }
 
       &:hover {
