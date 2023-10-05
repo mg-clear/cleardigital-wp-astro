@@ -1,7 +1,10 @@
 ---
 
+import CTAButton from '@widgets/CTAButton.astro';
 import { Image } from 'astro:assets';
 import vmWareLogo from '@assets/logo/vmware-logo-black.svg';
+import mcafeeLogo from '@assets/logo/mc-afee-logo-black.svg';
+import ciscoLogo from '@assets/logo/cisco-logo-black.svg';
 import bgBlue from '@assets/images/TwoColWithLogo/blue-bg.png';
 
 interface Props {
@@ -16,16 +19,118 @@ const {
 
 <section class="twocolwithlogo blade">
   <div class="container">
+		<div class="intro">
+			<div class="row">
+				<div class="intro__content-outer">
+					<div class="intro__content">
+						<span class="subtitle">
+							Case studies
+						</span>
+						<h3>Nisl <span class="marker marker--underline">pulvinar</span> consectet nec lipsum dolor</h3>
+					</div>
+				</div>
+				<div class="intro__action-outer">
+					<div class="intro__action">
+						<CTAButton
+            label="View all case studies"
+            href="/"
+            target="_self"
+            style="button"
+          	/>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="twocolwithlogo__item">
 			<div class="twocolwithlogo__bg-outer">
 				<div class="twocolwithlogo__bg">
 					<Image src={bgBlue} alt="bg Blue" />
 				</div>
 			</div>
-			<div class="row">
+			<div class="row twocolwithlogo__items-outer">
 				<div class="twocolwithlogo__logo-outer">
 					<div class="twocolwithlogo__logo">
 						<Image src={vmWareLogo} alt="vmWareLogo" />
+					</div>
+				</div>
+				<div class="twocolwithlogo__content-outer">
+					<div class="twocolwithlogo__content">
+						<h3>80% vel consequat est. Donec semper neque quam eget.</h3>
+						<p>Torem ipsum dolor sit amet, consectetur adipiscing at elit. Nunc vulputate libero dolore aliqua et.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="twocolwithlogo__item">
+			<div class="twocolwithlogo__bg-outer">
+				<div class="twocolwithlogo__bg">
+					<Image src={bgBlue} alt="bg Blue" />
+				</div>
+			</div>
+			<div class="row twocolwithlogo__items-outer">
+				<div class="twocolwithlogo__logo-outer">
+					<div class="twocolwithlogo__logo">
+						<Image src={mcafeeLogo} alt="mcafeeLogo" />
+					</div>
+				</div>
+				<div class="twocolwithlogo__content-outer">
+					<div class="twocolwithlogo__content">
+						<h3>80% vel consequat est. Donec semper neque quam eget.</h3>
+						<p>Torem ipsum dolor sit amet, consectetur adipiscing at elit. Nunc vulputate libero dolore aliqua et.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="twocolwithlogo__item">
+			<div class="twocolwithlogo__bg-outer">
+				<div class="twocolwithlogo__bg">
+					<Image src={bgBlue} alt="bg Blue" />
+				</div>
+			</div>
+			<div class="row twocolwithlogo__items-outer">
+				<div class="twocolwithlogo__logo-outer">
+					<div class="twocolwithlogo__logo">
+						<Image src={ciscoLogo} alt="ciscoLogo" />
+					</div>
+				</div>
+				<div class="twocolwithlogo__content-outer">
+					<div class="twocolwithlogo__content">
+						<h3>80% vel consequat est. Donec semper neque quam eget.</h3>
+						<p>Torem ipsum dolor sit amet, consectetur adipiscing at elit. Nunc vulputate libero dolore aliqua et.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="twocolwithlogo__item">
+			<div class="twocolwithlogo__bg-outer">
+				<div class="twocolwithlogo__bg">
+					<Image src={bgBlue} alt="bg Blue" />
+				</div>
+			</div>
+			<div class="row twocolwithlogo__items-outer">
+				<div class="twocolwithlogo__logo-outer">
+					<div class="twocolwithlogo__logo">
+						<Image src={vmWareLogo} alt="vmWareLogo" />
+					</div>
+				</div>
+				<div class="twocolwithlogo__content-outer">
+					<div class="twocolwithlogo__content">
+						<h3>80% vel consequat est. Donec semper neque quam eget.</h3>
+						<p>Torem ipsum dolor sit amet, consectetur adipiscing at elit. Nunc vulputate libero dolore aliqua et.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="twocolwithlogo__item">
+			<div class="twocolwithlogo__bg-outer">
+				<div class="twocolwithlogo__bg">
+					<Image src={bgBlue} alt="bg Blue" />
+				</div>
+			</div>
+			<div class="row twocolwithlogo__items-outer">
+				<div class="twocolwithlogo__logo-outer">
+					<div class="twocolwithlogo__logo">
+						<Image src={mcafeeLogo} alt="mcafeeLogo" />
 					</div>
 				</div>
 				<div class="twocolwithlogo__content-outer">
@@ -48,8 +153,44 @@ const {
 			align-items: center;
 		}
 
+		.intro {
+			margin-bottom: var(--flow-space-large);
+			.subtitle {
+				display: inline-block;
+				margin-bottom: 2rem;
+			}
+			&__content-outer {
+				@media (min-width: $breakpoint-tablet) {
+					@include col(6);
+				}
+			}
+
+			&__action-outer {
+				@media (min-width: $breakpoint-tablet) {
+					@include col(6);
+				}
+			}
+
+			&__action {
+				@media (min-width: $breakpoint-tablet) {
+					text-align: right;
+				}
+			}
+		}
+
+		&__items-outer {
+			position: relative;
+			z-index: 2;
+		}
+
 		&__item {
-			padding: 10rem 0;
+			border-top: 1px solid $color-contrast;
+			border-bottom: 1px solid $color-contrast;
+			display: flex;
+			align-items: center;
+			padding: var(--flow-space-small) 0;
+			position: relative;
+			min-height: calc(100vh / 3);
 		}
 
 		&__bg-outer {
@@ -67,11 +208,35 @@ const {
 			height: 100%;
 			display: flex;
 			align-items: center;
+
+			img {
+				height: 100%;
+				width: 100%;
+			}
 		}
 
 		&__logo-outer {
 			@media (min-width: $breakpoint-tablet) {
 				@include col(6)
+			}
+		}
+
+		&__logo {
+			max-width: 19rem;
+    	max-height: 7rem;
+			margin-bottom: 3rem;
+    	height: 100%;
+			width: 100%;
+
+			@media (min-width: $breakpoint-tablet) {
+				margin-left: 6rem;
+				margin-bottom: 0;
+			}
+
+			img {
+				object-fit: contain;
+				height: 100%;
+				width: 100%
 			}
 		}
 
