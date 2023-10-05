@@ -55,14 +55,6 @@ const {
 		</div>
 	</div>
   <BladeBackground image={backgroundImage && (backgroundImage.sourceUrl ?? '')} video={backgroundVideoUrl} videoType={backgroundVideoType} />
-	<!-- <div class="bg-container overlay">
-		<video class="video-bg overlay" autoplay loop muted>
-			<source
-				src="https://media.istockphoto.com/id/1372283447/video/attractive-woman-wearing-virtual-reality-headset-augmented-reality-creative-lady-swiping.mp4?s=mp4-640x640-is&k=20&c=Flz0Jza76gPaFZyEJ8X6114fy__lJc1m_4_yKZRZsVo="
-				type="video/mp4"
-			/>
-		</video>
-	</div> -->
 </section>
 
 <section class="video-overlay">
@@ -84,6 +76,10 @@ const {
     .description {
       margin-block-start: var(--padding-unit-30);
       width: 66.67%;
+    }
+
+    .subtitle {
+      margin-block-end: var(--padding-unit-20);
     }
   }
 

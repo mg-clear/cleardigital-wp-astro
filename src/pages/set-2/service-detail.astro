@@ -12,10 +12,46 @@ import FooterCTA from "../../components/FooterCta/FooterCTA.astro";
 ---
 
 <Page title="Service Detail | Set 2" metadescription="Homepage" ogimage="">
-	<HeroBanner />
+	<HeroBanner
+		bladeCssId="workHeroBanner"
+		bladeAdditionalCssClasses=""
+		ctaLightboxVideoUrl={null}
+		ctaStyle={null}
+		ctaTarget="_self"
+		ctaText="Let's get started"
+		ctaUrl="/work/start"
+		description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+		eyebrow="Brand strategy"
+		headline="Analytics and <span class='marker-effect marker-underline'>innovation</span> driving digital strategy."
+		headlineTag="h1"
+		headlineTypography="h1"
+		backgroundTheme="dark"
+		backgroundVideoType="mp4"
+		backgroundVideoUrl={null}
+		backgroundImage={{sourceUrl:""}}
+		hasGridBackgroundTexture={true}
+	/>
 	<TwoColWithLogo />
 	<TabsWithContent />
 	<SliderWithContent />
 	<TwoGridSlider />
-	<FooterCTA />
+	<HeroBanner
+		bladeCssId="workCTA"
+		bladeAdditionalCssClasses=""
+		ctaLightboxVideoUrl={null}
+		ctaStyle="button"
+		ctaTarget="_self"
+		ctaText="Contact Us"
+		ctaUrl="/contact/"
+		description={null}
+		eyebrow="Lorem ipsum dolor."
+		headline="Let’s talk."
+		headlineTag="h2"
+		headlineTypography="h1"
+		backgroundTheme="dark"
+		backgroundVideoType="mp4"
+		backgroundVideoUrl={null}
+		backgroundImage={{sourceUrl:"https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/cta-bg.webp"}}
+		hasGridBackgroundTexture={true}
+	/>
 </Page>

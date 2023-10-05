@@ -14,9 +14,25 @@ import FooterCTA from "../../components/FooterCta/FooterCTA.astro";
 
 ---
 
-<Page title="Homepage | Set 1" metadescription="Homepage">
+<Page title="Services | Set 2" metadescription="meta" ogimage="">
 	<HeroBanner
-
+		bladeCssId="workHeroBanner"
+		bladeAdditionalCssClasses=""
+		ctaLightboxVideoUrl={null}
+		ctaStyle={null}
+		ctaTarget="_self"
+		ctaText={null}
+		ctaUrl={null}
+		description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+		eyebrow="Our Services"
+		headline="A <span class='marker-effect marker-underline'>solution</span> for every challenge."
+		headlineTag="h1"
+		headlineTypography="h1"
+		backgroundTheme="dark"
+		backgroundVideoType="mp4"
+		backgroundVideoUrl={null}
+		backgroundImage={{sourceUrl:"https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/services-overview-bg.png"}}
+		hasGridBackgroundTexture={true}
 	/>
 	<StickyNav
 
@@ -33,7 +49,23 @@ import FooterCTA from "../../components/FooterCta/FooterCTA.astro";
 	<TwoGridSlider
 
 	/>
-	<FooterCTA
-
+	<HeroBanner
+		bladeCssId="workCTA"
+		bladeAdditionalCssClasses=""
+		ctaLightboxVideoUrl={null}
+		ctaStyle="button"
+		ctaTarget="_self"
+		ctaText="Contact Us"
+		ctaUrl="/contact/"
+		description={null}
+		eyebrow="Lorem ipsum dolor."
+		headline="Let’s talk."
+		headlineTag="h2"
+		headlineTypography="h1"
+		backgroundTheme="dark"
+		backgroundVideoType="mp4"
+		backgroundVideoUrl={null}
+		backgroundImage={{sourceUrl:"https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/cta-bg.webp"}}
+		hasGridBackgroundTexture={true}
 	/>
 </Page>
