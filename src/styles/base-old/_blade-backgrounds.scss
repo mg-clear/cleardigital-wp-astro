@@ -55,11 +55,15 @@
         bottom: 0;
         right: 0;
         background-color: black;
-        opacity: 0.4;
+        opacity: 0.5;
         z-index: 1;
     }
 
     .video-bg {
         object-fit: cover;
     }
+}
+
+header.main-navigation + .blade .bg-container.overlay::before {
+    opacity: 0.7;
 }

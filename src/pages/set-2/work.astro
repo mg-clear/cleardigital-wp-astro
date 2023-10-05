@@ -22,18 +22,60 @@ import FooterCTA from "@components/FooterCta/FooterCTA.astro";
 		ctaUrl="/work/start"
 		description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 		eyebrow="Lorem ipsum dolor sit"
-		headline="Our work is our <span class=''>passion</span>."
+		headline="Our work is our <span class='marker-effect marker-underline'>passion</span>."
 		headlineTag="h1"
 		headlineTypography="h1"
 		backgroundTheme="dark"
 		backgroundVideoType="mp4"
 		backgroundVideoUrl={null}
-		backgroundImage={{sourceUrl:""}}
+		backgroundImage={{sourceUrl:"https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/summit-bg.webp"}}
 		hasGridBackgroundTexture={true}
 	/>
-	<TwoColWithLogo />
-	<TabsWithContent />
-	<SliderWithContent />
-	<TwoGridSlider />
-	<FooterCTA />
+	<TwoColWithLogo
+	
+	/>
+	<HeroBanner
+		bladeCssId="workAwardsBanner"
+		bladeAdditionalCssClasses=""
+		ctaLightboxVideoUrl={null}
+		ctaStyle="button"
+		ctaTarget="_self"
+		ctaText="View Our Awards"
+		ctaUrl="/awards/"
+		description="The Clear Digital Velocity Workshops is our unique and dynamic methodology that flips the traditional agency models by transforming project discovery conversations into focused project planning and road mapping exercises."
+		eyebrow={null}
+		headline="Over 100 awards."
+		headlineTag="h2"
+		headlineTypography="h1"
+		backgroundTheme="dark"
+		backgroundVideoType="mp4"
+		backgroundVideoUrl={null}
+		backgroundImage={{sourceUrl:"https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/awards-bg.webp"}}
+		hasGridBackgroundTexture={false}
+	/>
+	<SliderWithContent
+	
+	/>
+	<TwoGridSlider
+
+	/>
+	<HeroBanner
+		bladeCssId="workCTA"
+		bladeAdditionalCssClasses=""
+		ctaLightboxVideoUrl={null}
+		ctaStyle="button"
+		ctaTarget="_self"
+		ctaText="Contact Us"
+		ctaUrl="/contact/"
+		description={null}
+		eyebrow="Lorem ipsum dolor."
+		headline="Let’s talk."
+		headlineTag="h2"
+		headlineTypography="h1"
+		backgroundTheme="dark"
+		backgroundVideoType="mp4"
+		backgroundVideoUrl={null}
+		backgroundImage={{sourceUrl:"https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/cta-bg.webp"}}
+		hasGridBackgroundTexture={true}
+	/>
 </Page>

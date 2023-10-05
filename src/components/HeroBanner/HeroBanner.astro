@@ -50,8 +50,8 @@ const {
 		<div class="content-wrap">
       {eyebrow && <div class="subtitle">{eyebrow}</div>}
 			{headline && <Headline content={headline} tag={headlineTag} typography={headlineTypography} />}
-      {description && <div class="description"><Fragment set:html={description} /></div>}
-      {ctaText && <CTAButton label={ctaText} href={ctaUrl} target={ctaTarget} style={ctaStyle} lightboxVideo={ctaLightboxVideoUrl} />}
+      {description && <div class="description body-large"><Fragment set:html={description} /></div>}
+      {ctaText && <CTAButton class="margin-start-30" label={ctaText} href={ctaUrl} target={ctaTarget} style={ctaStyle} lightboxVideo={ctaLightboxVideoUrl}  />}
 		</div>
 	</div>
   <BladeBackground image={backgroundImage && (backgroundImage.sourceUrl ?? '')} video={backgroundVideoUrl} videoType={backgroundVideoType} />
@@ -81,7 +81,10 @@ const {
 </section>
 <style lang="scss">
   .hero-banner{
-    
+    .description {
+      margin-block-start: var(--padding-unit-30);
+      width: 66.67%;
+    }
   }
 
 	/*
