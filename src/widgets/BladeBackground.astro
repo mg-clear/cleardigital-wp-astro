@@ -1,0 +1,35 @@
+---
+
+interface Props {
+	image: string,
+	video?: string,
+	videoType?: string,
+}
+
+const {
+	image,
+	video = null,
+	videoType = null,
+} = Astro.props;
+
+const cssImg = 'url(' + image + ')';
+---
+
+<div class="bg-container overlay">
+	{
+		()=>{
+			if(video!==null){
+				return <video class="video-bg overlay" poster={image} autoplay loop muted>
+					<source src={video} type={'video/' + videoType} />
+				</video>;
+			}
+		}
+	}
+</div>
+
+<style define:vars={{ cssImg }}>
+	.bg-container {
+		background-image: var(--cssImg);
+		background-size: cover;
+	}
+</style>

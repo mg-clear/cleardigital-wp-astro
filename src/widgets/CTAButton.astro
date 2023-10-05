@@ -4,9 +4,10 @@ interface Props {
   href: string;
   target: string;
   style?: string;
+  lightboxVideo?: string;
 }
 
-const { label, href, target = '_self', style } = Astro.props;
+const { label, href, target = '_self', style, lightboxVideo } = Astro.props;
 ---
 
 <a href={href} class:list={["cta-button button-large", style]} target={target}>{label}</a>
@@ -19,6 +20,8 @@ const { label, href, target = '_self', style } = Astro.props;
     position: relative;
     padding-right: 2.6rem;
     transition: color 0.3s ease-in-out;
+    line-height: 1;
+    margin-block-start: var(--padding-unit-30);
   }
 
   .cta-button::after {
@@ -61,7 +64,7 @@ const { label, href, target = '_self', style } = Astro.props;
     }
 
     &:focus, &:hover {
-      background-color: transparent;
+      background-color: var(--color-white);
       color: var(--color-pink);
     }
   }

@@ -35,6 +35,9 @@ const response = await fetch(import.meta.env.SECRET_GRAPHQL_ENDPOINT, {
 							backgroundVideoUrl
 							backgroundVideoType
 							backgroundTheme
+							backgroundImage {
+								sourceUrl
+							}
 						}
 						... on Page_Astropagecontent_AstroBlades_LargeSliderBlade {
 							bladeCssId

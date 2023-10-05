@@ -1,6 +1,8 @@
 ---
 import CTAButton from '@widgets/CTAButton.astro';
 import Headline from '@widgets/Headline.astro';
+import BladeBackground from '@widgets/BladeBackground.astro';
+
 interface Props {
   bladeCssId?: string,
   bladeAdditionalCssClasses?: string,
@@ -11,10 +13,14 @@ interface Props {
   ctaUrl?: string,
   description?: string,
   eyebrow?: string,
-  fieldGroupName?: string,
   headline?: string,
   headlineTag?: string,
   headlineTypography?: string,
+  backgroundTheme?: string,
+  backgroundVideoType?: string,
+  backgroundVideoUrl?: string,
+  backgroundImage?: {sourceUrl?: string},
+  hasGridBackgroundTexture?: boolean,
 }
 
 const {
@@ -27,46 +33,36 @@ const {
   ctaUrl = null,
   description = null,
   eyebrow = null,
-  fieldGroupName = null,
   headline = null,
   headlineTag = null,
-  headlineTypography = null
+  headlineTypography = null,
+  backgroundTheme = 'dark',
+  backgroundVideoType = null,
+  backgroundVideoUrl = null,
+  backgroundImage = {sourceUrl: null},
+  hasGridBackgroundTexture = true,
 } = Astro.props;
-
-/*
-bladeCssId
-bladeAdditionalCssClasses
-ctaLightboxVideoUrl
-ctaStyle
-ctaTarget
-ctaText
-ctaUrl
-description
-eyebrow
-fieldGroupName
-headline
-headlineTag
-headlineTypography
-*/
 
 ---
 
-<section id={bladeCssId} class="hero-banner blade dark has-grid-bg has-video-bg">
+<section id={bladeCssId} class:list={["hero-banner blade has-video-bg", backgroundTheme, {'has-grid-bg': hasGridBackgroundTexture}, {bladeAdditionalCssClasses}]}>
 	<div class="container blade-content">
 		<div class="content-wrap">
       {eyebrow && <div class="subtitle">{eyebrow}</div>}
 			{headline && <Headline content={headline} tag={headlineTag} typography={headlineTypography} />}
-      {ctaText && <CTAButton label={ctaText} href={ctaUrl} target={ctaTarget} />}
+      {description && <div class="description"><Fragment set:html={description} /></div>}
+      {ctaText && <CTAButton label={ctaText} href={ctaUrl} target={ctaTarget} style={ctaStyle} lightboxVideo={ctaLightboxVideoUrl} />}
 		</div>
 	</div>
-	<div class="bg-container overlay">
+  <BladeBackground image={backgroundImage && (backgroundImage.sourceUrl ?? '')} video={backgroundVideoUrl} videoType={backgroundVideoType} />
+	<!-- <div class="bg-container overlay">
 		<video class="video-bg overlay" autoplay loop muted>
 			<source
 				src="https://media.istockphoto.com/id/1372283447/video/attractive-woman-wearing-virtual-reality-headset-augmented-reality-creative-lady-swiping.mp4?s=mp4-640x640-is&k=20&c=Flz0Jza76gPaFZyEJ8X6114fy__lJc1m_4_yKZRZsVo="
 				type="video/mp4"
 			/>
 		</video>
-	</div>
+	</div> -->
 </section>
 
 <section class="video-overlay">
@@ -84,30 +80,9 @@ headlineTypography
     </div>
 </section>
 <style lang="scss">
-	.hero-banner{
-       h1{
-		    margin-block: var(--padding-unit-20) var(--padding-unit-30);
-        
-        .graphic-effect-underline {
-          color: var(--color-pink);
-          position: relative;
-
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 0.33em;
-            width: 102%;
-            background-image: url(/images/marker-underline-white.svg);
-            background-size: 100%;
-            background-repeat: no-repeat;
-            pointer-events: none;
-          }
-        }
-	   }
-	}
+  .hero-banner{
+    
+  }
 
 	/*
  * Video-Overlay-forms
