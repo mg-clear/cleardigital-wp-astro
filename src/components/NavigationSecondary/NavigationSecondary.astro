@@ -1,0 +1,64 @@
+<div class="navigationSecondary">
+  <div class="container">
+    <ul class="navigationSecondary-menu">
+      <li class="navigationSecondary-menuItem"><a class="paragraph active" href="#">Services</a></li>
+      <li class="navigationSecondary-menuItem"><a class="paragraph" href="#">Velocity Workshop</a></li>
+      <li class="navigationSecondary-menuItem"><a class="paragraph" href="#">Case Studies</a></li>
+      <li class="navigationSecondary-menuItem"><a class="paragraph" href="#">FAQ</a></li>
+    </ul>
+  </div>
+</div>
+<style lang="scss">
+  @import 'src/styles/abstracts/variables';
+
+  .navigationSecondary {
+    display: none;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      display: block;
+      border-bottom: solid 0.1rem $color-text;
+      padding-top: var(--flow-space-medium);
+      z-index: 2;
+    }
+
+    &-menu {
+      display: inline-flex;
+      flex-wrap: wrap;
+      padding: 0;
+    }
+
+    &-menuItem {
+      display: inline-block;
+      margin-top: 0;
+      vertical-align: top;
+
+      &:not(:first-child) {
+        margin-left: var(--flow-space-medium);
+      }
+
+      a {
+        display: inline-block;
+        font-weight: 700;
+        padding-bottom: var(--flow-space-medium);
+        position: relative;
+
+        &:after {
+          bottom: 0;
+          background-color: var(--color-accent);
+          content: '';
+          height: 1rem;
+          left: 0;
+          position: absolute;
+          opacity: 0;
+          width: 100%;
+        }
+
+        &.active {
+          &:after {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+</style>
