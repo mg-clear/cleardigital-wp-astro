@@ -8,6 +8,7 @@ import TabsWithContent from "../../components/TabsWithContent/TabsWithContent.as
 import SliderWithContent from "../../components/SliderWithContent/SliderWithContent.astro";
 import TwoGridSlider from "../../components/TwoGridSlider/TwoGridSlider.astro";
 import FooterCTA from "../../components/FooterCta/FooterCTA.astro";
+import ContentWithGrid from "@components/ContentWithGrid/ContentWithGrid.astro";
 
 ---
 
@@ -30,6 +31,52 @@ import FooterCTA from "../../components/FooterCta/FooterCTA.astro";
 		backgroundVideoUrl={null}
 		backgroundImage={{sourceUrl:""}}
 		hasGridBackgroundTexture={true}
+	/>
+	<ContentWithGrid
+		bladeCssId=""
+		bladeExtraClasses=""
+		description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim."
+		eyebrow="Overview"
+		headline="Great digital strategy answers critical questions"
+		headlineTag="h2"
+		headlineTypography="h2"
+		contentItems={
+			[
+				{
+					image: {
+						altText: "ov1",
+						sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/overview-1.png"
+					},
+					headline: "Lorem ipsum amet dolor sit.",
+					headlineTag: "h3",
+					headlineTypography: "h4",
+					description: "1Torem ipsum dolor sit amet, consectetur adipiscing at elit. Nunc vulputate libero dolore aliqua et.",
+					linkUrl: "/?overview1"
+				},
+				{
+					image: {
+						altText: "ov2",
+						sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/overview-2.png"
+					},
+					headline: "Lorem ipsum amet dolor sit.",
+					headlineTag: "h3",
+					headlineTypography: "h4",
+					description: "2Torem ipsum dolor sit amet, consectetur adipiscing at elit. Nunc vulputate libero dolore aliqua et.",
+					linkUrl: "/?overview2"
+				},
+				{
+					image: {
+						altText: "ov3",
+						sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/overview-3.png"
+					},
+					headline: "Lorem ipsum amet dolor sit.",
+					headlineTag: "h3",
+					headlineTypography: "h4",
+					description: "3Torem ipsum dolor sit amet, consectetur adipiscing at elit. Nunc vulputate libero dolore aliqua et.",
+					linkUrl: "/?overview3"
+				},
+			]
+		}
 	/>
 	<TwoColWithLogo />
 	<TabsWithContent />

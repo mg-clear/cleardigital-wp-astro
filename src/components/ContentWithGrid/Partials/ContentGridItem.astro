@@ -1,0 +1,69 @@
+---
+import Headline from '@widgets/Headline.astro';
+
+interface Props { 
+	image: {
+		altText,
+		sourceUrl
+	}
+	headline,
+	headlineTag,
+	headlineTypography,
+	description,
+	linkUrl
+}
+
+const {
+	image = {
+		altText: '',
+		sourceUrl: ''
+	},
+	headline = '',
+	headlineTag = '',
+	headlineTypography = '',
+	description = '',
+	linkUrl = '',
+} = Astro.props;
+
+---
+
+<div class="feature">
+	<a href={linkUrl}>
+	<div class="icon-wrap">
+		<img src={image.sourceUrl} width="80" height="80" alt={image.altText}>
+	</div>
+	<Headline content={headline} tag={headlineTag} typography={headlineTypography} />
+	<p>{description}</p>
+</div>
+
+<style lang="scss">
+	@import 'src/styles/abstracts/variables';
+	.feature {
+			@include col(12);
+			@include spacing('large');
+
+			@media (min-width: $breakpoint-tablet) {
+				@include col(6);
+			}
+
+			@media (min-width: $breakpoint-tablet-horizontal) {
+				@include col(4);
+				padding-right: 8.33333%;
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			.icon-wrap {
+				height: 80px;
+				margin-bottom: 2rem;
+				max-width: 80px;
+			}
+
+			p {
+				margin-top: 1rem;
+			}
+		}
+</style>

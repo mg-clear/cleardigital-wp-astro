@@ -1,13 +1,64 @@
 ---
+import Headline from '@widgets/Headline.astro';
+import ContentGridItem from './Partials/ContentGridItem.astro';
+
+/*
+bladeCssId
+fieldGroupName
+bladeExtraClasses
+description
+eyebrow
+headline
+headlineTag
+headlineTypography
+contentItems {
+	image {
+		altText
+		sourceUrl
+	}
+	headline
+	headlineTag
+	headlineTypography
+	description
+	linkUrl
+}
+*/
 
 interface Props {
-
+	bladeCssId?: string,
+	fieldGroupName?: string,
+	bladeExtraClasses?: string,
+	description?: string,
+	eyebrow?: string,
+	headline?: string,
+	headlineTag?: string,
+	headlineTypography?: string,
+	contentItems?: {
+		image: {
+			altText,
+			sourceUrl
+		}
+		headline,
+		headlineTag,
+		headlineTypography,
+		description,
+		linkUrl
+	}[]
 }
 
 const {
-
+	bladeCssId = '',
+	bladeExtraClasses = '',
+	description = '',
+	eyebrow = '',
+	headline = '',
+	headlineTag = '',
+	headlineTypography = '',
+	contentItems = []
 } = Astro.props;
 
+
+console.log(contentItems);
 ---
 
 <style lang="scss">
@@ -37,35 +88,6 @@ const {
 				padding-right: 0;
 			}
 		}
-
-		.feature {
-			@include col(12);
-			@include spacing('large');
-
-			@media (min-width: $breakpoint-tablet) {
-				@include col(6);
-			}
-
-			@media (min-width: $breakpoint-tablet-horizontal) {
-				@include col(4);
-				padding-right: 8.33333%;
-			}
-
-			a {
-				color: inherit;
-				text-decoration: none;
-			}
-
-			.icon-wrap {
-				height: 80px;
-				margin-bottom: 2rem;
-				max-width: 80px;
-			}
-
-			p {
-				margin-top: 1rem;
-			}
-		}
 	}
 
 	.marker--underline {
@@ -88,45 +110,28 @@ const {
         }
 </style>
 
-<div class="content-with-grid has-grid-bg blade" is="flynt-block-three-col-content">
+<div id={bladeCssId} class:list={["content-with-grid has-grid-bg blade", {bladeExtraClasses}]} is="flynt-block-three-col-content">
 	<div class="container">
 		<div class="intro">
-			<span class="intro-eyebrow">20+ years of success.</span>
-			<h2 class="intro-headline">
-        <span class="art art--rocket">We deliver results-driven digital experiences that get you to what’s
-				<span class="marker marker--underline">next</span>.</span>
-      </h2>
-			<p class="intro-blurb">Clear Digital is a Silicon Valley-based website design agency that helps you build and accelerate your web, brand, and digital marketing by providing expert, strategic, and data-informed solutions that deliver results.</p>
+			{eyebrow && <div class="intro-eyebrow">{eyebrow}</div>}
+			{headline && <Headline content={headline} tag={headlineTag} typography={headlineTypography} />}
+			{description && <div class="intro-blurb" set:html={description} /> }
 		</div>
-		<div class="features">
-      <span class="art art--arrow"></span>
-			<div class="feature">
-        <a href="/">
-          <div class="icon-wrap">
-            <img src="/icon-collaboration-focus.svg" width="80" height="80" alt="Logo">
-          </div>
-          <h2 class="h4">Collaboration focus.</h2>
-          <p>Torem ipsum dolor sit amet, consectetur adipiscing at elit. Nunc vulputate libero dolore aliqua et.</p>
-        </a>
+		{ Object.keys(contentItems).length > 0 &&
+			<div class="features">
+				<span class="art art--arrow"></span>
+				 { contentItems.map((item) => {
+					return <ContentGridItem
+						image={item.image}
+						headline={item.headline}
+						headlineTag={item.headlineTag}
+						headlineTypography={item.headlineTypography}
+						description={item.description}
+						linkUrl={item.linkUrl}
+					/>
+				 }) }
+				
 			</div>
-			<div class="feature">
-        <a href="/">
-          <div class="icon-wrap">
-            <img src="/icon-b2b-performance.svg" width="80" height="80" alt="Logo">
-          </div>
-          <h2 class="h4">B2B performance driven.</h2>
-          <p>Torem ipsum dolor sit amet, consectetur adipiscing at elit. Nunc vulputate libero dolore aliqua et.</p>
-				</a>
-			</div>
-			<div class="feature">
-        <a href="/">
-          <div class="icon-wrap">
-            <img src="/icon-design-development.svg" width="80" height="80" alt="Logo">
-          </div>
-          <h2 class="h4">Design + development excellence.</h2>
-          <p>Torem ipsum dolor sit amet, consectetur adipiscing at elit. Nunc vulputate libero dolore aliqua et.</p>
-				</a>
-			</div>
-		</div>
+		}
 	</div>
 </div>

@@ -46,6 +46,23 @@ const response = await fetch(import.meta.env.SECRET_GRAPHQL_ENDPOINT, {
 						... on Page_Astropagecontent_AstroBlades_ContentWithThreeColumnGridSubcontentBlade {
 							bladeCssId
 							fieldGroupName
+							bladeExtraClasses
+							description
+							eyebrow
+							headline
+							headlineTag
+							headlineTypography
+							contentItems {
+								image {
+									altText
+									sourceUrl
+								}
+								headline
+								headlineTag
+								headlineTypography
+								description
+								linkUrl
+							}
 						}
 						... on Page_Astropagecontent_AstroBlades_TwoColumnAccordionBlade {
 							bladeCssId
@@ -92,6 +109,7 @@ const componentMapping = {
 			'backgroundVideoUrl',
 			'backgroundVideoType',
 			'backgroundTheme',
+			'backgroundImage',
 		],
 	},
 	'Page_Astropagecontent_AstroBlades_LargeSliderBlade': {
@@ -130,7 +148,8 @@ const generateBladeQuery = function(name) {
 	return queryPart;
 }
 
-console.log(generateBladeQuery('Page_Astropagecontent_AstroBlades_BannerBlade'));
+// console.log(generateBladeQuery('Page_Astropagecontent_AstroBlades_BannerBlade'));
+// console.log(astroBlades);
 
 ---
 
