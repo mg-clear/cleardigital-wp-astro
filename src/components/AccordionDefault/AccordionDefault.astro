@@ -1,0 +1,77 @@
+<div class="blade accordionDefault" data-theme="light">
+  <div class="container">
+    <div class="intro">
+			<h3 class="intro-headline">FAQs</h3>
+		</div>
+    <div class="accordion">
+      <div class="accordion-item">
+        <h4 class="accordion-header"><button class="accordion-button" type="button" aria-expanded="true">Accordion Item #1</button></h4>
+        <div class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h4 class="accordion-header"><button class="accordion-button" type="button" aria-expanded="true">Accordion Item #2</button></h4>
+        <div class="accordion-collapse collapse">
+          <div class="accordion-body">
+            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style lang="scss">
+  .accordion {
+    &-button {
+      align-items: center;
+      background-color: inherit;
+      border: 0;
+      border-radius: 0;
+      color: inherit;
+      cursor: pointer;
+      display: flex;
+      font-size: inherit;
+      overflow-anchor: none;
+      padding: var(--flow-space-medium) 0;
+      position: relative;
+      text-align: left;
+      width: 100%;
+    }
+
+    &-collapse {
+      &.collapse:not(.show) {
+        display: none;
+      }
+
+      &.collapsing {
+        height: 0;
+        overflow: hidden;
+        transition: 0.35s height ease;
+      }
+    }
+  }
+</style>
+<script>
+  const accordionItemButtons = document.querySelectorAll('.accordionDefault .accordion-button');
+
+  accordionItemButtons.forEach(accordionItemButton => {
+    accordionItemButton.addEventListener('click', (e) => {
+      const thisButton = e.target;
+      const closestCollapse = thisButton.closest('.accordion-item').querySelector('.accordion-collapse');
+
+      if (closestCollapse.classList.contains('show')) {
+        closestCollapse.classList.add('collapsing');
+        closestCollapse.classList.remove('show');
+      } else {
+        const closestCollapseHeight = closestCollapse.querySelector('.accordion-body').offsetHeight;
+
+        closestCollapse.classList.add('collapsing');
+        closestCollapse.style.height = closestCollapseHeight;
+        closestCollapse.classList.add('show');
+      }
+    });
+  });
+</script>
