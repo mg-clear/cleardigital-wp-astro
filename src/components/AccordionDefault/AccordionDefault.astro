@@ -87,43 +87,59 @@
   }
 </style>
 <script>
-  const accordionItemButtons = document.querySelectorAll('.accordionDefault .accordion-button');
+  const accordionItemButtons = document.querySelectorAll(
+    '.accordionDefault .accordion-button'
+  );
 
-  accordionItemButtons.forEach(accordionItemButton => {
+  accordionItemButtons.forEach((accordionItemButton) => {
     accordionItemButton.addEventListener('click', (e) => {
-      const thisButton = e.target;
-      const closestCollapse = thisButton.closest('.accordion-item').querySelector('.accordion-collapse');
+      const allCollapses = document.querySelectorAll(
+        '.accordionDefault .accordion-collapse'
+      );
+      const closestCollapse = e.target
+        .closest('.accordion-item')
+        .querySelector('.accordion-collapse');
+
+      allCollapses.forEach((collapse) => {
+        if (collapse !== closestCollapse) {
+          slideUp(collapse);
+        }
+      });
 
       if (closestCollapse.classList.contains('show')) {
-        closestCollapse.classList.add('collapsing');
-        closestCollapse.removeAttribute('style');
-
-        thisButton.removeAttribute('aria-expanded');
-
-        setTimeout(() => {
-          closestCollapse.classList.remove('collapsing');
-          closestCollapse.classList.remove('show');
-        }, 350);
+        slideUp(closestCollapse);
       } else {
-        closestCollapse.classList.add('show');
-        closestCollapse.classList.add('collapsing');
-        closestCollapse.style.height = `${closestCollapse.scrollHeight}px`;
+        slideDown(closestCollapse);
+      }
 
-        thisButton.setAttribute('aria-expanded', 'true');
+      function slideDown(collapse) {
+        collapse.classList.add('show');
+        collapse.classList.add('collapsing');
+        collapse.style.height = `${collapse.scrollHeight}px`;
+
+        collapse
+          .closest('.accordion-item')
+          .querySelector('.accordion-button')
+          .setAttribute('aria-expanded', 'true');
 
         setTimeout(() => {
-          closestCollapse.classList.remove('collapsing');
+          collapse.classList.remove('collapsing');
         }, 350);
       }
 
-      function removeOpenedContent(index) {
-        accordionContent.forEach((item2, index2) => {
-          if (index != index2) {
-            item2.classList.remove('active');
-            let descrip = item2.querySelector('.text-outer');
-            descrip.style.height = '0px';
-          }
-        });
+      function slideUp(collapse) {
+        collapse.classList.add('collapsing');
+        collapse.removeAttribute('style');
+
+        collapse
+          .closest('.accordion-item')
+          .querySelector('.accordion-button')
+          .removeAttribute('aria-expanded');
+
+        setTimeout(() => {
+          collapse.classList.remove('collapsing');
+          collapse.classList.remove('show');
+        }, 350);
       }
     });
   });
