@@ -197,16 +197,30 @@ similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
 		.Accordion{
 		.content-outer{
 	       border-bottom: solid 0.1rem var(--color-text);
-           padding:var(--flow-space-medium) 5rem var(--flow-space-medium)  0 ;
+           padding:var(--flow-space)  4rem  var(--flow-space) 0 ;
            position: relative;
 
+
+         @media (min-width: $breakpoint-tablet) {
+              padding:var(--flow-space-small) 4rem var(--flow-space-small)  0 ;
+                 }
          @media (min-width: $breakpoint-desktop) {
-         }
+          padding:var(--flow-space-medium) 5rem var(--flow-space-medium)  0 ;
+          }
 
        @media (min-width: $breakpoint-tablet) {
-           padding-right: 5rem;
-           max-width: 126.6rem; }
+              padding-right: 11rem;
+              max-width: 134.1rem;
+            }
+
+		&:hover{
+		cursor: zoom-in;
+		}
 		&.active{
+		cursor: zoom-out;
+		&:hover{
+		cursor: zoom-out;
+		}
 		.text-outer{
 		display: block;
 		}
@@ -219,22 +233,29 @@ similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
         right: 0rem;
         top: 4rem;
          @media (min-width: $breakpoint-tablet) {
-                 right: -6rem;
+                 right: -4rem;
                  top: 6rem;
-                 width: 6rem;
-                 height: 6rem;
+                 width: 5rem;
+                 height: 5rem;
+                 }
+           @media (min-width: $breakpoint-tablet-horizontal){
+                  right: -6rem;
+                   top: 6rem;
+                   width: 7rem;
+                    height: 7rem;
                  }
          @media (min-width: $breakpoint-desktop) {
-                  right: -10.5rem;
+                  right: -2.5rem;
                   top: 6rem;
                   width: 8rem;
                   height: 8rem;
                   }
 
          svg{
-    width: 100%;
-    height: 100%;
-    }}
+           width: 100%;
+           height: 100%;
+    }
+    }
 		.text-outer{
 		display: none;
         margin-top:  0;
@@ -244,6 +265,9 @@ similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
 		}
 		p{
 		margin: 1rem 0;
+		   @media (min-width: $breakpoint-desktop) {
+		   max-width: 126.5rem;
+		   }
 		&:last-of-type{
 		margin-bottom: 0;
 		}
