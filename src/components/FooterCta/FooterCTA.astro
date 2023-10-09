@@ -2,12 +2,44 @@
 import CTAButton from 'src/widgets/CTAButton.astro';
 
 interface Props {
-
+	
 }
 
 const {
 
 } = Astro.props;
+
+const response = await fetch(
+  'https://tbd-clear-astro-wp.pantheonsite.io/graphql',
+  {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `
+				query NewQuery {
+					page(id: "7", idType: DATABASE_ID) {
+						pageComponents {
+							pageComponents {
+								... on Page_Pagecomponents_PageComponents_FooterCta {
+									ctaText
+									ctaUrl
+									eyebrow
+									headline
+									fieldGroupName
+									backgroundImage {
+										altText
+										sourceUrl
+									}
+								}
+							}
+						}
+					}
+				}
+      `,
+    }),
+  }
+);
+
 
 ---
 

@@ -1,0 +1,155 @@
+---
+
+import { Image } from 'astro:assets';
+import ourProcess from '@assets/images/TwoColVerticalSlide/our-process.png';
+import planing from '@assets/images/TwoColVerticalSlide/planing.png';
+import designing from '@assets/images/TwoColVerticalSlide/designing.png';
+
+interface Props {
+
+}
+
+const {
+
+} = Astro.props;
+---
+
+<div class="two-col-vertical-slide" is="TwoColVerticalSlide" data-theme="light">
+  <div class="items-wrapper">
+    <div class="items-left-outer">
+      <div class="section-item-left">
+        <div class="section-item-left-inner">
+          <div class="heading-wrapper">
+            <div class="subtitle">Our process</div>
+            <h3>Nisl pulvinar consectet nec set adipiscing</h3>
+          </div>
+          <div class="description-wrapper">
+            <h5>Lorem ipsum dolor sit amet consectetur</h5>
+            <p>Lorem ipsum dolor sit amet consectetur. Pharetra dictum faucibus proin turpis sit. Tortor amet sit nunc libero 
+              non nec suscipit volutpat in. Viverra adipiscing dolor amet vitae. Malesuada vitae consectetur erat risus ac nibh. 
+              Lectus egestas adipiscing interdum hendrerit vitae consequat odio. Mattis imperdiet vitae tellus fringilla. Magna.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="section-item-left">
+        <div class="section-item-left-inner">
+          <div class="heading-wrapper">
+            <div class="subtitle">Our process</div>
+            <h3>Nisl pulvinar consectet nec set adipiscing</h3>
+          </div>
+          <div class="description-wrapper">
+            <h5>Lorem ipsum dolor sit amet consectetur</h5>
+            <p>Lorem ipsum dolor sit amet consectetur. Pharetra dictum faucibus proin turpis sit. Tortor amet sit nunc libero 
+              non nec suscipit volutpat in. Viverra adipiscing dolor amet vitae. Malesuada vitae consectetur erat risus ac nibh. 
+              Lectus egestas adipiscing interdum hendrerit vitae consequat odio. Mattis imperdiet vitae tellus fringilla. Magna.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="section-item-left">
+        <div class="section-item-left-inner">
+          <div class="heading-wrapper">
+            <div class="subtitle">Our process</div>
+            <h3>Nisl pulvinar consectet nec set adipiscing</h3>
+          </div>
+          <div class="description-wrapper">
+            <h5>Lorem ipsum dolor sit amet consectetur</h5>
+            <p>Lorem ipsum dolor sit amet consectetur. Pharetra dictum faucibus proin turpis sit. Tortor amet sit nunc libero 
+              non nec suscipit volutpat in. Viverra adipiscing dolor amet vitae. Malesuada vitae consectetur erat risus ac nibh. 
+              Lectus egestas adipiscing interdum hendrerit vitae consequat odio. Mattis imperdiet vitae tellus fringilla. Magna.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="items-right-outer">
+      <div class="section-item-right">
+        <div class="section-item-right-inner">
+          <div class="img-wrapper">
+            <img src="" alt="">
+            <Image src={ourProcess} alt='ourProcess image'></Image>
+          </div>
+        </div>
+      </div>
+      <div class="section-item-right">
+        <div class="section-item-right-inner">
+          <div class="img-wrapper">
+            <img src="" alt="">
+            <Image src={planing} alt='ourProcess image'></Image>
+          </div>
+        </div>
+      </div>
+      <div class="section-item-right">
+        <div class="section-item-right-inner">
+          <div class="img-wrapper">
+            <img src="" alt="">
+            <Image src={designing} alt='ourProcess image'></Image>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  @import 'src/styles/abstracts/variables';
+
+  [is="TwoColVerticalSlide"] {
+    
+    .subtitle {
+      margin-bottom: var( --flow-space);
+    }
+
+    .description-wrapper {
+      padding-top: 15rem
+    }
+
+    .items {
+      &-wrapper {
+        @include row;
+      }
+
+      &-left-outer {
+        background-color: var(--color-background);
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          @include col(6);
+        }
+      }
+
+      &-right-outer {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          @include col(6);
+        }
+      }
+    }
+
+    .section-item {
+      &-left {
+        margin-left: auto;
+        padding-top: var(--component-spacing);
+        padding-bottom: var(--component-spacing);
+        padding-right: 10rem;
+        
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          max-width: 69rem;
+        }
+      }
+
+      &-left-inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      &-right {
+
+      }
+    }
+  }
+  
+</style>
