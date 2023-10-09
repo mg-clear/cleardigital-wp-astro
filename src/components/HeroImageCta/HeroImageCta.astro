@@ -1,0 +1,84 @@
+---
+
+const { fieldGroupName, theme, backgroundVideo, backgroundImage, eyebrow, headline, ctaText, ctaUrl, ctaVariant } = Astro.props;
+---
+
+<div class="flyntComponent componentSpacing themeDark overlay-grid" is="flynt-hero-image-cta">
+  <video class="video" width="640" height="640" aria-hidden="true" autoplay muted loop poster={backgroundImage.sourceUrl}>
+    <!-- <source src={backgroundVideo} type="video/mp4"> -->
+  </video>
+  <div class="container">
+    <div class="intro">
+      <p class="intro-eyebrow">Hello! We are Clear Digital. {eyebrow}</p>
+      <h1 class="h2 intro-headline">We build websites and
+        <span class="marker marker--underline">digital</span>
+        brand experiences for modern B2B organizations.</h1>
+      <a href="/" class:list={['intro-cta button', ctaVariant]}>Our approach</a>
+    </div>
+  </div>
+  <div class="container container--playButton">
+  <a href="https://youtu.be/UtoQ1TsQLpE" class="playButton video--playInModal" target="_blank" aria-label="Play video">asdas</a>
+  </div>
+</div>
+
+<style lang="scss">
+  @import 'src/styles/abstracts/variables';
+
+  [is='flynt-hero-image-cta'] {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    .video,
+    .picture {
+      inset: 0;
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .video,
+    .video-fallbackImage,
+    .picture-fallbackImage {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .container {
+      margin-bottom: auto;
+      margin-top: auto;
+
+      &--playButton {
+        margin-bottom: 0;
+        width: 100%;
+
+        @media (min-width: $breakpoint-desktop) {
+          inset: 0;
+          margin: 0;
+          padding: 0;
+          position: absolute;
+          z-index: 4;
+        }
+      }
+    }
+
+    .intro {
+      &-eyebrow {
+        @include typography-eyebrow;
+      }
+
+      &-cta {
+        @include spacing('medium');
+      }
+    }
+
+    .playButton {
+      @media (min-width: $breakpoint-desktop) {
+        font-size: 0;
+        inset: 0;
+        position: absolute;
+        z-index: 4;
+      }
+    }
+  }
+</style>
