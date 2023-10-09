@@ -283,7 +283,7 @@ similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
 		visibility: hidden;
 	    margin-top:  0;
 	    height: 0px;
-	    oveflow: hidden;
+	    overflow: hidden;
 		}
 		h4{
 		margin-bottom: 2rem;
@@ -311,7 +311,7 @@ similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
         const accordionContent = document.querySelectorAll(".content-outer");
 
         accordionContent.forEach((item,index)=>{
-       // let header = item.querySelector("header");
+         //removeOpenedContent(index);
         item.addEventListener("click", ()=>{
             item.classList.toggle("active");
 
@@ -320,13 +320,12 @@ similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
             	// Scrollheight property return the height of
                 // an element including padding
                 description.style.height=`${description.scrollHeight}px`;
-                //item.querySelector("i").classList.replace("fa-plus","fa-minus");
             }else{
                 description.style.height = "0px";
               //item.querySelector("i").classList.replace("fa-minus","fa-plus");
             }
             //function to pass the index number of clicked header
-            removeOpenedContent(index);
+       removeOpenedContent(index);
 
         function removeOpenedContent(index){
         accordionContent.forEach((item2,index2)=>{
@@ -334,7 +333,6 @@ similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
                 item2.classList.remove("active");
                 let descrip = item2.querySelector(".text-outer");
                 descrip.style.height="0px";
-                //item2.querySelector("i").classList.replace("fa-minus","fa-plus");
             }
         })
         }
