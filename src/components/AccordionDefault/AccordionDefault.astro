@@ -1,22 +1,42 @@
 <div class="blade accordionDefault" data-theme="light">
   <div class="container">
     <div class="intro">
-			<h3 class="intro-headline">FAQs</h3>
-		</div>
+      <h3 class="intro-headline">FAQs</h3>
+    </div>
     <div class="accordion">
       <div class="accordion-item">
-        <h4 class="accordion-header"><button class="accordion-button" type="button" aria-expanded="true">Accordion Item #1</button></h4>
-        <div class="accordion-collapse collapse show">
+        <h4 class="accordion-header">
+          <button class="accordion-button" type="button">Sed ut perspiciatis unde omnis iste natus error sit voluptate accusantium?</button>
+        </h4>
+        <div class="accordion-collapse collapse">
           <div class="accordion-body">
-            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
+            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+            <a href="#"class="button button--outlined">Learn more</a>
           </div>
         </div>
       </div>
       <div class="accordion-item">
-        <h4 class="accordion-header"><button class="accordion-button" type="button" aria-expanded="true">Accordion Item #2</button></h4>
+        <h4 class="accordion-header">
+          <button class="accordion-button" type="button" aria-expanded="true">Corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</button>
+        </h4>
         <div class="accordion-collapse collapse">
           <div class="accordion-body">
-            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
+            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+            <a href="#"class="button button--outlined">Learn more</a>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h4 class="accordion-header">
+          <button class="accordion-button" type="button" aria-expanded="true">Sed ut perspiciatis unde omnis iste natus error sit voluptatem?</button>
+        </h4>
+        <div class="accordion-collapse collapse">
+          <div class="accordion-body">
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
+            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+            <a href="#"class="button button--outlined">Learn more</a>
           </div>
         </div>
       </div>
@@ -25,6 +45,11 @@
 </div>
 <style lang="scss">
   .accordion {
+    &-item {
+      border-bottom: 0.1rem solid var(--color-text);
+      padding-bottom: var(--flow-space-small);
+    }
+
     &-button {
       align-items: center;
       background-color: inherit;
@@ -35,13 +60,16 @@
       display: flex;
       font-size: inherit;
       overflow-anchor: none;
-      padding: var(--flow-space-medium) 0;
+      max-width: 1170px;
+      padding: var(--flow-space-medium) 0 var(--flow-space);
       position: relative;
       text-align: left;
       width: 100%;
     }
 
     &-collapse {
+      margin-block-start: 0;
+
       &.collapse:not(.show) {
         display: none;
       }
@@ -51,6 +79,10 @@
         overflow: hidden;
         transition: 0.35s height ease;
       }
+    }
+
+    &-body {
+      max-width: 1170px;
     }
   }
 </style>
@@ -64,14 +96,401 @@
 
       if (closestCollapse.classList.contains('show')) {
         closestCollapse.classList.add('collapsing');
-        closestCollapse.classList.remove('show');
-      } else {
-        const closestCollapseHeight = closestCollapse.querySelector('.accordion-body').offsetHeight;
+        closestCollapse.removeAttribute('style');
 
-        closestCollapse.classList.add('collapsing');
-        closestCollapse.style.height = closestCollapseHeight;
+        thisButton.removeAttribute('aria-expanded');
+
+        setTimeout(() => {
+          closestCollapse.classList.remove('collapsing');
+          closestCollapse.classList.remove('show');
+        }, 350);
+      } else {
         closestCollapse.classList.add('show');
+        closestCollapse.classList.add('collapsing');
+        closestCollapse.style.height = `${closestCollapse.scrollHeight}px`;
+
+        thisButton.setAttribute('aria-expanded', 'true');
+
+        setTimeout(() => {
+          closestCollapse.classList.remove('collapsing');
+        }, 350);
+      }
+
+      function removeOpenedContent(index) {
+        accordionContent.forEach((item2, index2) => {
+          if (index != index2) {
+            item2.classList.remove('active');
+            let descrip = item2.querySelector('.text-outer');
+            descrip.style.height = '0px';
+          }
+        });
       }
     });
   });
 </script>
+
+<!-- TBD -->
+<!-- <div class="Accordion blade" data-theme="light">
+  <div class="container">
+    <div class="info-outer">
+      <h3>FAQs
+      </h3>
+      <div class="content-outer active">
+        <h4>Sed ut perspiciatis unde omnis iste natus error sit voluptate accusantium?</h4>
+        <span class="close-icon">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="36" transform="rotate(180 40 40)" stroke="#FA198C" stroke-width="8" />
+            <path d="M48.75 40L31.25 40" stroke="#FA198C" stroke-width="5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </span>
+        <div class=text-outer>
+          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+            atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
+            sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
+          <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi
+            optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est,
+            omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
+            eveniet ut e
+            t voluptates repudiandae sint et molestiae non recusandae.</p>
+          <a href="#" class="button--ghost button">Learn more</a>
+        </div>
+      </div>
+      <div class="content-outer">
+        <h4>Sed ut perspiciatis unde omnis iste natus error sit voluptate accusantium?</h4>
+        <span class="close-icon">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="36" transform="rotate(180 40 40)" stroke="#FA198C" stroke-width="8" />
+            <path d="M48.75 40L31.25 40" stroke="#FA198C" stroke-width="5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </span>
+        <div class="text-outer">
+          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+            atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
+            sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
+          <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi
+            optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est,
+            omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
+            eveniet ut e
+            t voluptates repudiandae sint et molestiae non recusandae.</p>
+          <a href="#" class="button--ghost button">Learn more</a>
+        </div>
+      </div>
+      <div class="content-outer">
+        <h4>Sed ut perspiciatis unde omnis iste natus error sit voluptate accusantium?</h4>
+        <span class="close-icon">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="36" transform="rotate(180 40 40)" stroke="#FA198C" stroke-width="8" />
+            <path d="M48.75 40L31.25 40" stroke="#FA198C" stroke-width="5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </span>
+        <div class="text-outer">
+          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+            atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident,
+            similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
+          <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi
+            optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est,
+            omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
+            eveniet ut e
+            t voluptates repudiandae sint et molestiae non recusandae.</p>
+          <a href="#" class="button--ghost button">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style lang="scss">
+  @import 'src/styles/abstracts/variables';
+
+  button {
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    padding: 0;
+    text-align: inherit;
+  }
+
+  .button {
+    appearance: none;
+    background-color: $color-accent;
+    border: 0.2rem solid $color-accent;
+    color: $color-background;
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1;
+    margin: 3rem 0 0;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    user-select: none;
+
+    @media (max-width: $breakpoint-tablet) {
+      margin-top: 2rem;
+    }
+
+    &:disabled,
+    &--disabled {
+      border-color: $color-contrast;
+      color: $color-contrast;
+      cursor: default;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      border-color: $color-accent;
+      color: $color-accent;
+    }
+
+    &--outline,
+    &--ghost {
+      background-color: transparent;
+      border-color: $color-background-dark;
+      color: $color-background-dark;
+
+      &:hover,
+      &:focus {
+        background-color: $color-background-dark;
+        border-color: $color-background-dark;
+        color: $color-background;
+      }
+    }
+
+    &--small {
+      font-size: 1.6rem;
+    }
+
+    &--link {
+      align-items: center;
+      background-color: transparent;
+      border: 0;
+      color: $color-background-dark;
+      display: inline-flex;
+      padding: 0;
+      position: relative;
+      text-transform: none;
+      transition: color 0.2s ease-out;
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        color: $color-background-dark;
+
+        &::after {
+          background-position: right center;
+        }
+      }
+
+      &::after {
+        $color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
+
+        background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.16663 10H15.8333" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        content: '';
+        display: inline-block;
+        height: 2rem;
+        margin-left: 0.5rem;
+        transition: background-position 0.2s ease-out;
+        width: 2.2rem;
+      }
+    }
+
+    &--linkBlack {
+      align-items: center;
+      background-color: transparent;
+      border: 0;
+      color: $color-text;
+      display: inline-flex;
+      padding: 0;
+      position: relative;
+      text-transform: none;
+      transition: color 0.2s ease-out;
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        color: $color-text;
+
+        &::after {
+          background-position: right center;
+        }
+      }
+
+      &::after {
+        $color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
+        background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.16663 10H15.8333" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        content: '';
+        display: inline-block;
+        height: 2rem;
+        margin-left: 0.5rem;
+        transition: background-position 0.2s ease-out;
+        width: 2.2rem;
+      }
+    }
+  }
+
+  .Accordion {
+    .content-outer {
+      border-bottom: solid 0.1rem var(--color-text);
+      padding: var(--flow-space) 4rem var(--flow-space) 0;
+      position: relative;
+
+
+      @media (min-width: $breakpoint-tablet) {
+        padding: var(--flow-space-small) 4rem var(--flow-space-small) 0;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        padding: var(--flow-space-medium) 5rem var(--flow-space-medium) 0;
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        padding-right: 11rem;
+        max-width: 134.1rem;
+      }
+
+      &:hover {
+        cursor: zoom-in;
+      }
+
+      &.active {
+        cursor: zoom-out;
+
+        &:hover {
+          cursor: zoom-out;
+        }
+
+        .text-outer {
+          position: relative;
+          opacity: 1;
+          visibility: visible;
+          height: auto;
+          transition: opacity 0.3s ease-in-out;
+
+        }
+
+        .close-icon {
+          opacity: 1;
+          transition: opacity 0.3s ease-in-out;
+        }
+      }
+    }
+
+    .close-icon {
+      position: absolute;
+      width: 4rem;
+      height: 4rem;
+      right: 0rem;
+      top: 4rem;
+
+      @media (min-width: $breakpoint-tablet) {
+        right: -4rem;
+        top: 6rem;
+        width: 5rem;
+        height: 5rem;
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        right: -6rem;
+        top: 6rem;
+        width: 7rem;
+        height: 7rem;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        right: -2.5rem;
+        top: 6rem;
+        width: 8rem;
+        height: 8rem;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .text-outer {
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      margin-top: 0;
+      height: 0px;
+      overflow: hidden;
+    }
+
+    h4 {
+      margin-bottom: 2rem;
+    }
+
+    p {
+      margin: 1rem 0;
+
+      @media (min-width: $breakpoint-desktop) {
+        max-width: 126.5rem;
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    .button {
+      margin-top: var(--flow-space-small);
+    }
+  }
+
+  .close-icon {
+    opacity: 0;
+  }
+</style>
+<script>
+  const accordionContent = document.querySelectorAll(".content-outer");
+
+  accordionContent.forEach((item, index) => {
+    //removeOpenedContent(index);
+    item.addEventListener("click", () => {
+      item.classList.toggle("active");
+
+      let description = item.querySelector(".text-outer");
+      if (item.classList.contains("active")) {
+        // Scrollheight property return the height of
+        // an element including padding
+        description.style.height = `${description.scrollHeight}px`;
+      } else {
+        description.style.height = "0px";
+        //item.querySelector("i").classList.replace("fa-minus","fa-plus");
+      }
+      //function to pass the index number of clicked header
+      removeOpenedContent(index);
+
+      function removeOpenedContent(index) {
+        accordionContent.forEach((item2, index2) => {
+          if (index != index2) {
+            item2.classList.remove("active");
+            let descrip = item2.querySelector(".text-outer");
+            descrip.style.height = "0px";
+          }
+        })
+      }
+    })
+  })
+</script> -->
