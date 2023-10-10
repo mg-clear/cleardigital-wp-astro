@@ -2,7 +2,8 @@
 
 import CTAButton from '@widgets/CTAButton.astro';
 import { Image } from 'astro:assets';
-import siteLogo from "@assets/logo/clear-logo-transparent.svg"; 
+import siteLogoTransparent from "@assets/logo/clear-logo-transparent.svg"; 
+import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg"; 
 
 ---
 
@@ -11,19 +12,18 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
     <div class="main-navigation-items">
       <div class="site-logo">
         <a data-cursor-expand href="/">
-					<Image src={siteLogo} alt="Cleardigital logo" />
-          <!-- <img
-            src="/logos/clear-logo-transparent.svg"
-            alt="cleardigital logo transparent"
-          /> -->
+					<Image class='site-logo-transparent' src={siteLogoTransparent} alt="Cleardigital logo Transparent" />
+					<Image class='site-logo-white' src={siteLogoWhite} alt="Cleardigital logo White" />
         </a>
       </div>
       <nav class="">
         <ul class="main-menu">
           <li class="main-menu-item">
-            <a data-cursor-expand href="/work" class="link">Work</a><span
-              class="expand-btn"></span>
-            <div class="megamenu megamenu-dropdown">
+            <div class="main-menu-item-inner">
+              <a data-cursor-expand href="/work" class="link">Work</a><span
+                class="expand-btn"></span>
+            </div>
+            <div class="megamenu megamenu-dropdown collapse">
 							<span class="side-bg side-bg--left"></span>
               <div class="container">
                 <div class="megamenu-items">
@@ -71,9 +71,11 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
             </div>
           </li>
           <li class="main-menu-item">
-            <a data-cursor-expand href="/approach">Approach</a><span
-              class="expand-btn"></span>
-            <div class="megamenu megamenu-dropdown">
+            <div class="main-menu-item-inner">
+              <a data-cursor-expand href="/approach">Approach</a><span
+                class="expand-btn"></span>
+            </div>
+            <div class="megamenu megamenu-dropdown collapse">
               <div class="container">
                 <div class="megamenu-items">
                   <div class="megamenu-content-outer">
@@ -122,9 +124,11 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
             </div>
           </li>
           <li class="main-menu-item">
-            <a data-cursor-expand href="/services">Services</a><span
-              class="expand-btn"></span>
-            <div class="megamenu megamenu-dropdown">
+            <div class="main-menu-item-inner">
+              <a data-cursor-expand href="/services">Services</a><span
+                class="expand-btn"></span>
+            </div>
+            <div class="megamenu megamenu-dropdown collapse">
               <div class="container">
                 <div class="megamenu-items">
                   <div class="megamenu-content-outer">
@@ -196,9 +200,11 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
             </div>
           </li>
           <li class="main-menu-item">
-            <a data-cursor-expand href="/insights">Insights</a><span
-              class="expand-btn"></span>
-            <div class="megamenu megamenu-dropdown">
+            <div class="main-menu-item-inner">
+              <a data-cursor-expand href="/insights">Insights</a><span
+                class="expand-btn"></span>
+            </div>
+            <div class="megamenu megamenu-dropdown collapse">
               <div class="container">
                 <div class="megamenu-items">
                   <div class="megamenu-content-outer">
@@ -256,9 +262,11 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
             </div>
           </li>
           <li class="main-menu-item">
-            <a data-cursor-expand href="/about">About</a><span
-              class="expand-btn"></span>
-            <div class="megamenu megamenu-dropdown">
+            <div class="main-menu-item-inner">
+              <a data-cursor-expand href="/about">About</a><span
+                class="expand-btn"></span>
+            </div>
+            <div class="megamenu megamenu-dropdown collapse">
 
               <div class="container">
                 <div class="megamenu-items">
@@ -487,16 +495,38 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
       }
 
       &-item {
-        padding: 3rem 0;
         border-bottom: 1px solid rgba($color-contrast, 0.5);
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
         @media (min-width: $breakpoint-tablet-horizontal) {
           border-bottom: 0;
           margin-left: 5rem;
           padding: 4rem 0;
+        }
+
+        &:hover {
+          .megamenu-dropdown {
+            @media (min-width: $breakpoint-tablet-horizontal) {
+              height: 44rem;
+            }
+          }
+
+          .main-menu-item-inner {
+            > a {
+              &:after {
+                @media (min-width: $breakpoint-tablet-horizontal) {
+                  width: 100%;
+                }
+              }
+            } 
+          }
+        }
+      }
+      &-item-inner {
+        @media (max-width: $breakpoint-tablet-horizontal) {
+          padding: 3rem 0;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: center;
         }
 
         > a {
@@ -520,20 +550,6 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
           &:hover {
             color: $color-brand;
           }
-        }
-
-        &:hover {
-          .megamenu-dropdown {
-            height: 44rem;
-          }
-
-					> a {
-						&:after {
-              @media (min-width: $breakpoint-tablet-horizontal) {
-                width: 100%;
-              }
-						}
-					} 
         }
       }
 
@@ -602,6 +618,14 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
         margin-left: -1px;
         margin-right: -1px;
         width: calc(100% + 2px);
+      }
+
+      &-white {
+        display: none;
+      }
+
+      &-transparent {
+        display: block;
       }
 
       img {
@@ -678,14 +702,25 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
         }
 
         @media (max-width: $breakpoint-tablet-horizontal) {
-          animation: fadeIn 0.2s ease-in-out;
-          display: none;
+          // animation: fadeIn 0.2s ease-in-out;
+          // display: none;
         }
 
         > .container {
           @media (max-width: $breakpoint-tablet-horizontal) {
             padding-inline: 0;
           }
+        }
+        &.collapse:not(.show) {
+          @media (max-width: $breakpoint-tablet-horizontal) {
+            display: none;
+          }
+        }
+
+        &.collapsing {
+          height: 0;
+          overflow: hidden;
+          transition: 0.35s height ease;
         }
       }
 
@@ -818,55 +853,20 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
         }
       }
     }
-    &.main-navigation--active {
-      background-color: $color-background;
-      color: $color-background-dark;
-
-      .site-logo {
-        &-white {
-          display: none;
-        }
-
-        &-black {
-          display: block;
-        }
-      }
-
-      nav {
-        @media (max-width: $breakpoint-tablet-horizontal) {
-          border-top: 0.1rem solid $color-background-light;
-        }
-      }
-
-      .megamenu {
-        @media (min-width: $breakpoint-tablet-horizontal) {
-          border-top: 0.1rem solid $color-background-light;
-        }
-      }
-
-      .main-menu-item {
-        > a {
-          color: $color-background-dark;
-
-          &:hover {
-            color: $color-brand;
-          }
-        }
-      }
-
-      .hamburger {
-        span {
-          background-color: $color-background-dark;
-        }
-      }
-    }
 
     &.scroll-near-top:not(:hover) {
       --header-background-color: transparent;
       --header-top-link-color: var(--color-white);
 
-      .site-logo img {
-        opacity: 0;
+      .site-logo {
+
+        &-transparent {
+          display: none;
+        }
+
+        &-white {
+          display: block;
+        }
       }
 
       .megamenu-dropdown {
@@ -880,7 +880,8 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
 
   const hamburger = document.querySelector("header .hamburger")
   const nav = document.querySelector('header nav')
-  const mainMenuLink = document.querySelectorAll('header .main-menu-item')
+  const mainMenuLink = document.querySelectorAll('header .main-menu-item-inner')
+  const megaMenuDropdown = document.querySelectorAll('header .megamenu-dropdown')
   const header = document.querySelector('header.main-navigation')
 
   function initMenu() {
@@ -890,9 +891,10 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
 
       mainMenuLink.forEach(function(item) {
         item.classList.remove('main-menu--active')
-        item.querySelector('.megamenu-dropdown').classList.remove('megamenu--isOpen')
+        item.querySelector('.megamenu-dropdown').classList.remove('collapse')
+        item.querySelector('.megamenu-dropdown').removeAttribute('style')
       })
-    }
+    } 
   }
 
   function mobileMenuHandler() {
@@ -904,35 +906,6 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
     }
   }
 
-  function menuLinkClickHandler() {
-    let winWidth = screen.availWidth;
-    if (winWidth > 992) return
-
-    if (!this.classList.contains('main-menu--active')) {
-      let children = this.parentNode.querySelectorAll('.main-menu-item')
-
-      children.forEach(function(item) {
-        item.classList.remove('main-menu--active')
-        item.querySelector('.megamenu-dropdown').classList.remove('megamenu--isOpen')
-      });
-
-      this.classList.add('main-menu--active')
-      this.querySelector('.megamenu-dropdown').classList.add('megamenu--isOpen')
-    } else {
-      mainMenuLink.forEach(function(item) {
-        item.classList.remove('main-menu--active')
-        item.querySelector('.megamenu-dropdown').classList.remove('megamenu--isOpen')
-      })
-    }
-  }
-
-  hamburger.addEventListener('click', mobileMenuHandler)
-  window.addEventListener('resize', initMenu)
-
-  mainMenuLink.forEach(function(item) {
-    item.addEventListener('click', menuLinkClickHandler);
-  })
-
   function handleHeaderScroll() {
     if(5 >= window.scrollY) {
       header.classList.add('scroll-near-top')
@@ -940,7 +913,60 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
       header.classList.remove('scroll-near-top')
     }
   }
-  window.addEventListener('scroll', handleHeaderScroll);
-  handleHeaderScroll()
+
+  function menuLinkClickHandler(e) {
+    let winWidth = screen.availWidth;
+
+    if (winWidth > 992) return
+
+    const closestCollapse = e.target.closest('.main-menu-item')
+        .querySelector('.megamenu-dropdown');
+
+      megaMenuDropdown.forEach((collapse) => {
+        if (collapse !== closestCollapse) {
+          slideUp(collapse);
+        }
+      });
+
+      if (closestCollapse.classList.contains('show')) {
+        slideUp(closestCollapse);
+      } else {
+        slideDown(closestCollapse);
+      }
+  }
+
+  function slideDown(collapse) {
+    collapse.classList.add('show')
+    collapse.classList.add('collapsing')
+    collapse.style.height = `${collapse.scrollHeight}px`
+
+    collapse
+      .closest('.main-menu-item').classList.add('main-menu--active')
+
+    setTimeout(() => {
+      collapse.classList.remove('collapsing')
+    }, 350)
+  }
+
+  function slideUp(collapse) {
+    collapse.classList.add('collapsing')
+    collapse.removeAttribute('style')
+
+    collapse
+      .closest('.main-menu-item').classList.remove('main-menu--active')
+
+    setTimeout(() => {
+      collapse.classList.remove('collapsing')
+      collapse.classList.remove('show')
+    }, 350)
+  }
+
+  hamburger.addEventListener('click', mobileMenuHandler)
+  window.addEventListener('resize', initMenu)
+  window.addEventListener('scroll', handleHeaderScroll)
+
+  mainMenuLink.forEach(function(item) {
+    item.addEventListener('click', menuLinkClickHandler);
+  })
 
 </script>
