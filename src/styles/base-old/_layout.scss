@@ -2,11 +2,13 @@
 	--content-width: 100%;
 	--content-side-padding: 2rem;
 	--column-gutter-width: 1.6rem;
+	--blade-view-height: calc(100vh - 9.5rem);
 
 	@media(min-width: $desktop_min) {
 		--content-width: 141rem;
 		--content-side-padding: 2rem;
 		--column-gutter-width: 3rem;
+		--blade-view-height: calc(100vh - 10.4rem);
 	}
 }
 
@@ -17,6 +19,14 @@
 	justify-content: center;
     position: relative;
 	padding-block: var(--padding-unit-150);
+	min-height: var(--blade-view-height);
+
+	&.not-screen-height {
+		min-height: unset;
+	}
+}
+
+header.main-navigation + .blade {
 	min-height: 100vh;
 
 	&.not-screen-height {

@@ -1,7 +1,7 @@
 html {
 	font-size: 62.5%; /* This is set so that 1rem is 10px when viewport is at 100% zoom level */
 
-	@media(min-width: $desktop_min) {
+	@media(min-width: $desktop_min) and (max-width: $desktop_max) {
 		font-size: 0.625vw; /* This is normalized such that at 1600px viewport width, 1rem is 10px when viewport is at 100% zoom level; and the font size scales linearly with the viewport from 1200px and higher */
 	}
 }

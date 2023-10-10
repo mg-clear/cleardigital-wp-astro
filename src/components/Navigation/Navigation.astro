@@ -350,14 +350,18 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
     top: 0;
     width: 100%;
     z-index: 40;
+    --header-background-color: var(--color-white);
+    --header-top-link-color: var(--color-black);
+    --header-color-transition: background-color 140ms ease-in-out;
 
     > .container {
 			&:before {
 				content: "";
-				background-color: $color-background;
+				background-color: var(--header-background-color);
+        transition: var(--header-color-transition);
 				height: 100%;
-				left: -94%;
-				width: 100%;
+				left: 0;
+				width: max(calc(0.5 * (100% - var(--content-width)) - var(--container-spacing)), var(--container-spacing));
 				position: absolute;
 				z-index: -1;
 				@media (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet-horizontal) {
@@ -366,19 +370,22 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
 
         @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-tablet-horizontal) {
           left: 17.8rem;
+          width: 100%;
         }
 
         @media (max-width: $breakpoint-tablet) {
           left: 12rem;
+          width: 100%;
         }
 			}
 
 			&:after {
 				content: "";
-				background-color: $color-background;
+				background-color: var(--header-background-color);
+        transition: var(--header-color-transition);
 				height: 100%;
-				right: -94%;
-				width: 100%;
+				right: 0;
+				width: max(calc(0.5 * (100% - var(--content-width)) - var(--container-spacing)), var(--container-spacing));
 				position: absolute;
 				top: 0;
 				z-index: -1;
@@ -413,7 +420,8 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
     }
 
 		.side-bg {
-			background-color: $color-background;
+			background-color: var(--header-background-color);
+      transition: var(--header-color-transition);
 			height: 100%;
 			width: 42%;
 			position: absolute;
@@ -492,7 +500,7 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
         }
 
         > a {
-          color: $color-text;
+          color: var(--header-top-link-color);
           font-weight: 700;
 					position: relative;
           text-decoration: none;
@@ -563,7 +571,8 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
       position: relative;
 
       &::before {
-        background-color: $color-background;
+        background-color: var(--header-background-color);
+        transition: var(--header-color-transition);
         content: "";
         width: 100%;
         height: 94%;
@@ -578,7 +587,8 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
       }
 
       &::after {
-        background-color: $color-background;
+        background-color: var(--header-background-color);
+        transition: var(--header-color-transition);
         content: "";
         width: 100%;
         height: 100%;
@@ -597,20 +607,23 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
       img {
         height: 100%;
         object-fit: contain;
+        transition: opacity 140ms ease-in-out;
+        opacity: 1;
       }
     }
 
     nav {
       align-items: center;
-      background-color: $color-background;
+      background-color: var(--header-background-color);
+      transition: var(--header-color-transition);
       display: flex;
       flex-basis: calc(100% - 11.1rem);
       justify-content: flex-end;
       max-width: calc(100% - 11.1rem);
 
       @media (max-width: $breakpoint-tablet-horizontal) {
-        background: $color-background;
-        border-top: 1px solid $color-background-light;
+        background: var(--header-background-color);
+        border-top: 1px solid var(--header-background-color);
         display: none;
         flex: 0 0 100%;
         height: 100vh;
@@ -847,6 +860,19 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
         }
       }
     }
+
+    &.scroll-near-top:not(:hover) {
+      --header-background-color: transparent;
+      --header-top-link-color: var(--color-white);
+
+      .site-logo img {
+        opacity: 0;
+      }
+
+      .megamenu-dropdown {
+        border-top: none;
+      }
+    }
   }
 </style>
 
@@ -855,6 +881,7 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
   const hamburger = document.querySelector("header .hamburger")
   const nav = document.querySelector('header nav')
   const mainMenuLink = document.querySelectorAll('header .main-menu-item')
+  const header = document.querySelector('header.main-navigation')
 
   function initMenu() {
     if (screen.availWidth > 992) {
@@ -905,5 +932,15 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
   mainMenuLink.forEach(function(item) {
     item.addEventListener('click', menuLinkClickHandler);
   })
+
+  function handleHeaderScroll() {
+    if(5 >= window.scrollY) {
+      header.classList.add('scroll-near-top')
+    }else{
+      header.classList.remove('scroll-near-top')
+    }
+  }
+  window.addEventListener('scroll', handleHeaderScroll);
+  handleHeaderScroll()
 
 </script>
