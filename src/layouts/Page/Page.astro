@@ -3,6 +3,7 @@ import Head from "@widgets/Head.astro";
 import Header from "../../components/Header/Header.astro";
 import Navigation from "../../components/Navigation/Navigation.astro";
 import Footer from "../../components/Footer/Footer.astro";
+import MouseCursor from "@widgets/MouseCursor.astro";
 
 interface Props {
   title: string;
@@ -26,5 +27,6 @@ const { title, metadescription, ogimage } = Astro.props;
       <slot />
       <Footer />
     </main>
+    <!-- <MouseCursor /> -->
   </body>
 </html>

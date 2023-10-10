@@ -132,6 +132,56 @@ import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-h
 					<Image class="logo-image" src={logoStanford} alt="Logo"></Image>
 				</div>
 			</li>
+			<li class="logos-item swiper-slide">
+				<div class="logo">
+					<Image class="logo-image" src={logoCisco} alt="Logo"></Image>
+				</div>
+			</li>
+			<li class="logos-item swiper-slide">
+				<div class="logo">
+					<Image class="logo-image" src={logoVmware} alt="Logo"></Image>
+				</div>
+			</li>
+			<li class="logos-item swiper-slide">
+				<div class="logo">
+					<Image class="logo-image" src={logoMcafee} alt="Logo"></Image>
+				</div>
+			</li>
+			<li class="logos-item swiper-slide">
+				<div class="logo">
+					<Image class="logo-image" src={logoTenable} alt="Logo"></Image>
+				</div>
+			</li>
+			<li class="logos-item swiper-slide">
+				<div class="logo">
+					<Image class="logo-image" src={logoStanford} alt="Logo"></Image>
+				</div>
+			</li>
+			<li class="logos-item swiper-slide">
+				<div class="logo">
+					<Image class="logo-image" src={logoCisco} alt="Logo"></Image>
+				</div>
+			</li>
+			<li class="logos-item swiper-slide">
+				<div class="logo">
+					<Image class="logo-image" src={logoVmware} alt="Logo"></Image>
+				</div>
+			</li>
+			<li class="logos-item swiper-slide">
+				<div class="logo">
+					<Image class="logo-image" src={logoMcafee} alt="Logo"></Image>
+				</div>
+			</li>
+			<li class="logos-item swiper-slide">
+				<div class="logo">
+					<Image class="logo-image" src={logoTenable} alt="Logo"></Image>
+				</div>
+			</li>
+			<li class="logos-item swiper-slide">
+				<div class="logo">
+					<Image class="logo-image" src={logoStanford} alt="Logo"></Image>
+				</div>
+			</li>
 		</ul>
 	</div>		
 </div>
@@ -253,27 +303,31 @@ import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-h
 
     .logos {
       margin-top: var(--flow-space-large);
+      position: relative;
+      --gradient-fade-size: 25%;
 
       &::before {
         content: '';
         position: absolute;
-        width: var(--padding-unit-150);
+        width: var(--gradient-fade-size);
         background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
         top: 0;
         bottom: 0;
         left: 0;
         height: 100%;
+        z-index: 2;
       }
 
       &::after {
         content: '';
         position: absolute;
-        width: var(--padding-unit-150);
+        width: var(--gradient-fade-size);
         background: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
         top: 0;
         bottom: 0;
         right: 0;
         height: 100%;
+        z-index: 2;
       }
 
       &-list {
@@ -281,6 +335,7 @@ import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-h
         // @include row;
         display: inline-flex;
         flex-wrap: nowrap;
+        z-index: 1;
         // @include row-cols(2);
 
         // @media (min-width: $breakpoint-tablet) {
@@ -294,6 +349,10 @@ import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-h
         // @media (min-width: $breakpoint-tablet) {
         //   @include row-cols(5);
         // }
+      }
+
+      &-item {
+        flex-basis: 17%;
       }
 
       .swiper-wrapper {
