@@ -890,9 +890,8 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
       hamburger.classList.remove('active')
 
       mainMenuLink.forEach(function(item) {
-        item.classList.remove('main-menu--active')
-        item.querySelector('.megamenu-dropdown').classList.remove('collapse')
-        item.querySelector('.megamenu-dropdown').removeAttribute('style')
+        item.closest('.main-menu-item').classList.remove('main-menu--active')
+        item.closest('.main-menu-item').querySelector('.megamenu-dropdown').removeAttribute('style')
       })
     } 
   }
