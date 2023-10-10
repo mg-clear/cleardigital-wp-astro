@@ -15,9 +15,9 @@ const {} = Astro.props;
           <div class="tab">
             <div class="tab-head" data-cursor-icon="plus" data-cursor-expand>
               <h4>Brand strategy</h4>
-              <span class="tab-expandButton"></span>
+              <span class="expand-btn"></span>
             </div>
-            <div class="tab-body">
+            <div class="tab-body collapse">
               <div class="tab-bodyInner">
                 <div class="tab-image">
                   <picture class="tab-figure">
@@ -61,9 +61,9 @@ const {} = Astro.props;
           <div class="tab">
             <div class="tab-head" data-cursor-icon="plus" data-cursor-expand>
               <h4>Website design</h4>
-              <span class="tab-expandButton"></span>
+              <span class="expand-btn"></span>
             </div>
-            <div class="tab-body">
+            <div class="tab-body collapse">
               <div class="tab-bodyInner">
                 <div class="tab-image">
                   <picture class="tab-figure">
@@ -107,9 +107,9 @@ const {} = Astro.props;
           <div class="tab">
             <div class="tab-head" data-cursor-icon="plus" data-cursor-expand>
               <h4>Motion graphics</h4>
-              <span class="tab-expandButton"></span>
+              <span class="expand-btn"></span>
             </div>
-            <div class="tab-body">
+            <div class="tab-body collapse">
               <div class="tab-bodyInner">
                 <div class="tab-image">
                   <picture class="tab-figure">
@@ -153,9 +153,9 @@ const {} = Astro.props;
           <div class="tab">
             <div class="tab-head" data-cursor-icon="plus" data-cursor-expand>
               <h4>Creative services</h4>
-              <span class="tab-expandButton"></span>
+              <span class="expand-btn"></span>
             </div>
-            <div class="tab-body">
+            <div class="tab-body collapse">
               <div class="tab-bodyInner">
                 <div class="tab-image">
                   <picture class="tab-figure">
@@ -199,9 +199,9 @@ const {} = Astro.props;
           <div class="tab">
             <div class="tab-head" data-cursor-icon="plus" data-cursor-expand>
               <h4>Digital strategy</h4>
-              <span class="tab-expandButton"></span>
+              <span class="expand-btn"></span>
             </div>
-            <div class="tab-body">
+            <div class="tab-body collapse">
               <div class="tab-bodyInner">
                 <div class="tab-image">
                   <picture class="tab-figure">
@@ -245,9 +245,9 @@ const {} = Astro.props;
           <div class="tab">
             <div class="tab-head" data-cursor-icon="plus" data-cursor-expand>
               <h4>Web development</h4>
-              <span class="tab-expandButton"></span>
+              <span class="expand-btn"></span>
             </div>
-            <div class="tab-body">
+            <div class="tab-body collapse">
               <div class="tab-bodyInner">
                 <div class="tab-image">
                   <picture class="tab-figure">
@@ -291,9 +291,9 @@ const {} = Astro.props;
           <div class="tab">
             <div class="tab-head" data-cursor-icon="plus" data-cursor-expand>
               <h4>Website design</h4>
-              <span class="tab-expandButton"></span>
+              <span class="expand-btn"></span>
             </div>
-            <div class="tab-body">
+            <div class="tab-body collapse">
               <div class="tab-bodyInner">
                 <div class="tab-image">
                   <picture class="tab-figure">
@@ -337,9 +337,9 @@ const {} = Astro.props;
           <div class="tab">
             <div class="tab-head" data-cursor-icon="plus" data-cursor-expand>
               <h4>UX/UI design</h4>
-              <span class="tab-expandButton"></span>
+              <span class="expand-btn"></span>
             </div>
-            <div class="tab-body">
+            <div class="tab-body collapse">
               <div class="tab-bodyInner">
                 <div class="tab-image">
                   <picture class="tab-figure">
@@ -383,9 +383,9 @@ const {} = Astro.props;
           <div class="tab">
             <div class="tab-head" data-cursor-icon="plus" data-cursor-expand>
               <h4>Digital marketing</h4>
-              <span class="tab-expandButton"></span>
+              <span class="expand-btn"></span>
             </div>
-            <div class="tab-body">
+            <div class="tab-body collapse">
               <div class="tab-bodyInner">
                 <div class="tab-image">
                   <picture class="tab-figure">
@@ -429,9 +429,9 @@ const {} = Astro.props;
           <div class="tab">
             <div class="tab-head" data-cursor-icon="plus" data-cursor-expand>
               <h4>Support subscriptions</h4>
-              <span class="tab-expandButton"></span>
+              <span class="expand-btn"></span>
             </div>
-            <div class="tab-body">
+            <div class="tab-body collapse">
               <div class="tab-bodyInner">
                 <div class="tab-image">
                   <picture class="tab-figure">
@@ -851,152 +851,46 @@ const {} = Astro.props;
 <style lang="scss">
   @import 'src/styles/abstracts/variables';
 
-	button {
-		appearance: none;
-		background-color: transparent;
-		border: 0;
-		color: inherit;
-		font-family: inherit;
-		font-size: inherit;
-		line-height: inherit;
-		padding: 0;
-		text-align: inherit;
-	}
-
-	.button {
-		appearance: none;
-		background-color: $color-accent;
-		border: 0.2rem solid $color-accent;
-		color: $color-background;
-		cursor: pointer;
-		display: inline-block;
-		font-family: inherit;
-		font-size: 1.6rem;
-		font-weight: 700;
-		letter-spacing: 0;
-		line-height: 1;
-		margin: 3rem 0 0;
-		padding: 1.5rem 2rem;
-		text-align: center;
-		text-decoration: none;
-		transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-		user-select: none;
-
-		@media (max-width: $breakpoint-tablet) {
-			margin-top: 2rem;
-		}
-
-		&:disabled,
-		&--disabled {
-			border-color: $color-contrast;
-			color: $color-contrast;
-			cursor: default;
-			opacity: 0.7;
-			pointer-events: none;
-		}
-
-		&:hover,
-		&:focus {
-			background-color: transparent;
-			border-color: $color-accent;
-			color: $color-accent;
-		}
-
-		&--outline,
-		&--ghost {
-			background-color: transparent;
-			border-color: $color-background-dark;
-			color: $color-background-dark;
-
-			&:hover,
-			&:focus {
-				background-color: $color-background-dark;
-				border-color: $color-background-dark;
-				color: $color-background;
-			}
-		}
-
-		&--small {
-			font-size: 1.6rem;
-		}
-
-		&--link {
-			align-items: center;
-			background-color: transparent;
-			border: 0;
-			color: $color-background-dark;
-			display: inline-flex;
-			padding: 0;
-			position: relative;
-			text-transform: none;
-			transition: color 0.2s ease-out;
-
-			&:hover,
-			&:focus {
-				background-color: transparent;
-				color: $color-background-dark;
-
-				&::after {
-					background-position: right center;
-				}
-			}
-
-			&::after {
-				$color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
-
-				background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.16663 10H15.8333" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-				background-position: left center;
-				background-repeat: no-repeat;
-				background-size: contain;
-				content: '';
-				display: inline-block;
-				height: 2rem;
-				margin-left: 0.5rem;
-				transition: background-position 0.2s ease-out;
-				width: 2.2rem;
-			}
-		}
-
-		&--linkBlack {
-			align-items: center;
-			background-color: transparent;
-			border: 0;
-			color: $color-text;
-			display: inline-flex;
-			padding: 0;
-			position: relative;
-			text-transform: none;
-			transition: color 0.2s ease-out;
-
-			&:hover,
-			&:focus {
-				background-color: transparent;
-				color: $color-text;
-
-				&::after {
-					background-position: right center;
-				}
-			}
-
-			&::after {
-				$color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
-
-				background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.16663 10H15.8333" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-				background-position: left center;
-				background-repeat: no-repeat;
-				background-size: contain;
-				content: '';
-				display: inline-block;
-				height: 2rem;
-				margin-left: 0.5rem;
-				transition: background-position 0.2s ease-out;
-				width: 2.2rem;
-			}
-		}
-	}
   .tabs-with-content {
     background-color: $color-background-light;
 
+    .expand-btn {
+      border: 0.4rem solid $color-brand;
+      border-radius: 50%;
+      display: inline-block;
+      height: 3.5rem;
+      position: relative;
+      width: 3.5rem;
+
+      @media (min-width: $breakpoint-tablet) {
+        display: none;
+      }
+
+      &::before {
+        background-color: $color-brand;
+        border-radius: 1rem;
+        content: "";
+        height: 0.4rem;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 1.3rem;
+      }
+
+      &::after {
+        background-color: $color-brand;
+        border-radius: 1rem;
+        content: "";
+        height: 1.3rem;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: opacity 0.3s ease-in-out;
+        width: 0.4rem;
+      }
+    }
     .intro {
       h3 {
         margin-bottom: 0;
@@ -1012,6 +906,10 @@ const {} = Astro.props;
       &-content {
         .tab-body {
           @include spacing("medium");
+
+          @media (max-width: $breakpoint-tablet - 1px) {
+            display: none;
+          }
         }
       }
     }
@@ -1052,7 +950,6 @@ const {} = Astro.props;
       &-body {
         background-color: $color-background-light;
         border-bottom: 0.1rem solid rgba($color-border, 0.5);
-        display: none;
         height: 100%;
         padding-bottom: 5rem;
         position: relative;
@@ -1060,6 +957,19 @@ const {} = Astro.props;
         @media (min-width: $breakpoint-tablet) {
           border-top: 0.1rem solid $color-border;
           padding: 5rem 0;
+          display: none;
+        }
+
+        &.collapse:not(.show) {
+          @media (max-width: $breakpoint-tablet - 1px) {
+            display: none;
+          }
+        }
+
+        &.collapsing {
+          height: 0;
+          overflow: hidden;
+          transition: 0.35s height ease;
         }
       }
 
@@ -1123,47 +1033,11 @@ const {} = Astro.props;
         }
       }
 
-      &-expandButton {
-        border: 0.4rem solid $color-brand;
-        border-radius: 50%;
-        display: inline-block;
-        height: 3.5rem;
-        position: relative;
-        width: 3.5rem;
-
-        @media (min-width: $breakpoint-tablet) {
-          display: none;
-        }
-
-        &::before {
-          background-color: $color-brand;
-          border-radius: 1rem;
-          content: "";
-          height: 0.4rem;
-          left: 50%;
-          position: absolute;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          width: 1.3rem;
-        }
-
-        &::after {
-          background-color: $color-brand;
-          border-radius: 1rem;
-          content: "";
-          height: 1.3rem;
-          left: 50%;
-          position: absolute;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          transition: opacity 0.3s ease-in-out;
-          width: 0.4rem;
-        }
-      }
-
       &-isOpen {
         .tab-head {
-          border-bottom: 0;
+          @media (max-width: $breakpoint-tablet - 1px) {
+            border-bottom: 0;
+          }
         }
 
         .expand-btn {
@@ -1184,6 +1058,10 @@ const {} = Astro.props;
     const tabBodyElement = tabsWithContent.querySelectorAll(
       ".tabs-with-content-content .tab-body"
     );
+    const tabBodyElementMobile = document.querySelectorAll(
+      ".tabs-with-content .tabs-list .tab-body"
+    );
+
 		const tabsList = document.querySelector('.tabs-with-content .tabs-list');
 
 		// Loop through each element and add an "data-id" attribute
@@ -1195,7 +1073,7 @@ const {} = Astro.props;
     }
 
     function handleTabClick(e) {
-			if (e.target.classList.contains('tab-head') || e.target.tagName === 'H4') {
+			if (e.target.classList.contains('tab-head') || e.target.tagName === 'H4' || e.target.classList.contains('expand-btn')) {
 				let tabHead = e.target
 				let tabId = e.target.tagName === 'H4' ? tabHead.closest('.tab-head').getAttribute('data-tab') :  tabHead.getAttribute('data-tab')
 				let windowWidth = window.innerWidth
@@ -1203,19 +1081,49 @@ const {} = Astro.props;
 				if (windowWidth > 767) {
 					tabHead.closest('.tabs-with-content-items').style.display = 'none'
 					tabHead.closest('.tabs-with-content').querySelector(`.tabs-with-content-content .tab-body[data-tab-body='${tabId}'`).style.display = 'block'
-				} 
-				// else {
-				// 	if (!tabHead.closest('.tab').classList.contains('tab-isOpen')) {
-				// 		document.querySelector('.tabs-with-content .tab').classList.remove('tab-isOpen')
-				// 		document.querySelector('.tabs-with-content .tab-body').stop(true, true).slideUp()
-				// 		tabHead.closest('.tab').classList.add('tab-isOpen')
-				// 		tabHead.closest('.tab').querySelector('.tab-body').stop(true, true).slideDown()
-				// 	} else {
-				// 		document.querySelector('.tab').classList.remove('tab-isOpen')
-				// 		document.querySelector('.tab-body').stop(true, true).slideUp()
-				// 	}
-				// }
+				} else {
+          const closestCollapse = e.target.closest('.tab')
+                        .querySelector('.tab-body');
+
+          tabBodyElementMobile.forEach((collapse) => {
+            if (collapse !== closestCollapse) {
+              slideUp(collapse)
+            }
+          });
+
+          if (closestCollapse.classList.contains('show')) {
+            slideUp(closestCollapse)
+          } else {
+            slideDown(closestCollapse)
+          }
+        }
 			}
+    }
+
+    function slideDown(collapse) {
+      collapse.classList.add('show')
+      collapse.classList.add('collapsing')
+      collapse.style.height = `${collapse.scrollHeight}px`
+
+      collapse
+        .closest('.tab').classList.add('tab-isOpen')
+
+      setTimeout(() => {
+        collapse.classList.remove('collapsing')
+      }, 350)
+    }
+
+    function slideUp(collapse) {
+      collapse.classList.add('collapsing')
+      collapse.removeAttribute('style')
+
+      collapse
+        .closest('.tab').classList.remove('tab-isOpen')
+
+      setTimeout(() => {
+        collapse.classList.remove('collapsing')
+        collapse.classList.remove('show')
+      }, 350)
     }
 
     function handleCloseButton (e) {
