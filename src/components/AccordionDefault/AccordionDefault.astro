@@ -1,77 +1,190 @@
-<div class="blade accordionDefault" data-theme="light">
+<astro-accordion-default class="astroComponent componentSpacing" data-theme="light">
   <div class="container">
     <div class="intro">
-			<h3 class="intro-headline">FAQs</h3>
-		</div>
+      <h3 class="intro-headline">FAQs</h3>
+    </div>
     <div class="accordion">
       <div class="accordion-item">
-        <h4 class="accordion-header"><button class="accordion-button" type="button" aria-expanded="true">Accordion Item #1</button></h4>
-        <div class="accordion-collapse collapse show">
+        <h4 class="accordion-header">
+          <button class="accordion-button" type="button">Sed ut perspiciatis unde omnis iste natus error sit voluptate
+            accusantium?</button>
+        </h4>
+        <div class="accordion-collapse collapse">
           <div class="accordion-body">
-            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+              atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
+              sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
+            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est
+              eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas
+              assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum
+              necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+            <a href="#" class="button button--outlined">Learn more</a>
           </div>
         </div>
       </div>
       <div class="accordion-item">
-        <h4 class="accordion-header"><button class="accordion-button" type="button" aria-expanded="true">Accordion Item #2</button></h4>
+        <h4 class="accordion-header">
+          <button class="accordion-button" type="button" aria-expanded="true">Corporis suscipit laboriosam, nisi ut
+            aliquid ex ea commodi consequatur?</button>
+        </h4>
         <div class="accordion-collapse collapse">
           <div class="accordion-body">
-            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+              atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
+              sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
+            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est
+              eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas
+              assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum
+              necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+            <a href="#" class="button button--outlined">Learn more</a>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h4 class="accordion-header">
+          <button class="accordion-button" type="button" aria-expanded="true">Sed ut perspiciatis unde omnis iste natus
+            error sit voluptatem?</button>
+        </h4>
+        <div class="accordion-collapse collapse">
+          <div class="accordion-body">
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+              atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
+              sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
+            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est
+              eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas
+              assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum
+              necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+            <a href="#" class="button button--outlined">Learn more</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</astro-accordion-default>
 <style lang="scss">
-  .accordion {
-    &-button {
-      align-items: center;
-      background-color: inherit;
-      border: 0;
-      border-radius: 0;
-      color: inherit;
-      cursor: pointer;
-      display: flex;
-      font-size: inherit;
-      overflow-anchor: none;
-      padding: var(--flow-space-medium) 0;
-      position: relative;
-      text-align: left;
-      width: 100%;
-    }
+  astro-accordion-default {
+    min-height: var(--blade-view-height);
 
-    &-collapse {
-      &.collapse:not(.show) {
-        display: none;
+    .accordion {
+      &-item {
+        border-bottom: 0.1rem solid var(--color-text);
+        padding-bottom: var(--flow-space-small);
       }
 
-      &.collapsing {
-        height: 0;
-        overflow: hidden;
-        transition: 0.35s height ease;
+      &-button {
+        align-items: center;
+        background-color: inherit;
+        border: 0;
+        border-radius: 0;
+        color: inherit;
+        cursor: pointer;
+        display: flex;
+        font-size: inherit;
+        overflow-anchor: none;
+        max-width: 1170px;
+        padding: var(--flow-space-medium) 0 var(--flow-space);
+        position: relative;
+        text-align: left;
+        width: 100%;
+      }
+
+      &-collapse {
+        margin-block-start: 0;
+
+        &.collapse:not(.show) {
+          display: none;
+        }
+
+        &.collapsing {
+          height: 0;
+          overflow: hidden;
+          transition: 0.35s height ease;
+        }
+      }
+
+      &-body {
+        max-width: 1170px;
       }
     }
   }
 </style>
 <script>
-  const accordionItemButtons = document.querySelectorAll('.accordionDefault .accordion-button');
+  class AstroAccordionDefault extends HTMLElement {
+    constructor(...args) {
+      const self = super(...args);
+      self.init();
+      return self;
+    }
 
-  accordionItemButtons.forEach(accordionItemButton => {
-    accordionItemButton.addEventListener('click', (e) => {
-      const thisButton = e.target;
-      const closestCollapse = thisButton.closest('.accordion-item').querySelector('.accordion-collapse');
+    init() {
+      this.resolveElements();
+      this.bindFunctions();
+      this.bindEvents();
+    }
+
+    resolveElements() {
+      this.accordionItemButtons = this.querySelectorAll('.accordion-button');
+      this.accordionCollapses = this.querySelectorAll('.accordion-collapse');
+    }
+
+    bindFunctions() {
+      this.toggleAccordion = this.toggleAccordion.bind(this);
+    }
+
+    bindEvents() {
+      this.accordionItemButtons.forEach((accordionItemButton) => {
+        accordionItemButton.addEventListener('click', this.toggleAccordion);
+      });
+    }
+
+    toggleAccordion(e) {
+      const closestCollapse = e.target
+        .closest('.accordion-item')
+        .querySelector('.accordion-collapse');
+
+      this.accordionCollapses.forEach((collapse) => {
+        if (collapse !== closestCollapse) {
+          this.slideUp(collapse);
+        }
+      });
 
       if (closestCollapse.classList.contains('show')) {
-        closestCollapse.classList.add('collapsing');
-        closestCollapse.classList.remove('show');
+        this.slideUp(closestCollapse);
       } else {
-        const closestCollapseHeight = closestCollapse.querySelector('.accordion-body').offsetHeight;
-
-        closestCollapse.classList.add('collapsing');
-        closestCollapse.style.height = closestCollapseHeight;
-        closestCollapse.classList.add('show');
+        this.slideDown(closestCollapse);
       }
-    });
-  });
+    }
+
+    slideDown(collapse) {
+      collapse.classList.add('show');
+      collapse.classList.add('collapsing');
+      collapse.style.height = `${collapse.scrollHeight}px`;
+
+      collapse
+        .closest('.accordion-item')
+        .querySelector('.accordion-button')
+        .setAttribute('aria-expanded', 'true');
+
+      setTimeout(() => {
+        collapse.classList.remove('collapsing');
+      }, 350);
+    }
+
+    slideUp(collapse) {
+      collapse.classList.add('collapsing');
+      collapse.removeAttribute('style');
+
+      collapse
+        .closest('.accordion-item')
+        .querySelector('.accordion-button')
+        .removeAttribute('aria-expanded');
+
+      setTimeout(() => {
+        collapse.classList.remove('collapsing');
+        collapse.classList.remove('show');
+      }, 350);
+    }
+  }
+
+  customElements.define('astro-accordion-default', AstroAccordionDefault);
 </script>

@@ -1,8 +1,8 @@
 ---
 
-import CTAButton from '@widgets/CTAButton.astro';
 import { Image } from 'astro:assets';
-import siteLogo from "@assets/logo/clear-logo-transparent.svg"; 
+import siteLogoTransparent from "@assets/logo/clear-logo-transparent.svg"; 
+import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg"; 
 
 ---
 
@@ -11,19 +11,18 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
     <div class="main-navigation-items">
       <div class="site-logo">
         <a data-cursor-expand href="/">
-					<Image src={siteLogo} alt="Cleardigital logo" />
-          <!-- <img
-            src="/logos/clear-logo-transparent.svg"
-            alt="cleardigital logo transparent"
-          /> -->
+					<Image class='site-logo-transparent' src={siteLogoTransparent} alt="Cleardigital logo Transparent" />
+					<Image class='site-logo-white' src={siteLogoWhite} alt="Cleardigital logo White" />
         </a>
       </div>
       <nav class="">
         <ul class="main-menu">
           <li class="main-menu-item">
-            <a data-cursor-expand href="/work" class="link">Work</a><span
-              class="expand-btn"></span>
-            <div class="megamenu megamenu-dropdown">
+            <div class="main-menu-item-inner">
+              <a data-cursor-expand href="/work" class="link">Work</a><span
+                class="expand-btn"></span>
+            </div>
+            <div class="megamenu megamenu-dropdown collapse">
 							<span class="side-bg side-bg--left"></span>
               <div class="container">
                 <div class="megamenu-items">
@@ -71,9 +70,11 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
             </div>
           </li>
           <li class="main-menu-item">
-            <a data-cursor-expand href="/approach">Approach</a><span
-              class="expand-btn"></span>
-            <div class="megamenu megamenu-dropdown">
+            <div class="main-menu-item-inner">
+              <a data-cursor-expand href="/approach">Approach</a><span
+                class="expand-btn"></span>
+            </div>
+            <div class="megamenu megamenu-dropdown collapse">
               <div class="container">
                 <div class="megamenu-items">
                   <div class="megamenu-content-outer">
@@ -122,9 +123,11 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
             </div>
           </li>
           <li class="main-menu-item">
-            <a data-cursor-expand href="/services">Services</a><span
-              class="expand-btn"></span>
-            <div class="megamenu megamenu-dropdown">
+            <div class="main-menu-item-inner">
+              <a data-cursor-expand href="/services">Services</a><span
+                class="expand-btn"></span>
+            </div>
+            <div class="megamenu megamenu-dropdown collapse">
               <div class="container">
                 <div class="megamenu-items">
                   <div class="megamenu-content-outer">
@@ -196,9 +199,11 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
             </div>
           </li>
           <li class="main-menu-item">
-            <a data-cursor-expand href="/insights">Insights</a><span
-              class="expand-btn"></span>
-            <div class="megamenu megamenu-dropdown">
+            <div class="main-menu-item-inner">
+              <a data-cursor-expand href="/insights">Insights</a><span
+                class="expand-btn"></span>
+            </div>
+            <div class="megamenu megamenu-dropdown collapse">
               <div class="container">
                 <div class="megamenu-items">
                   <div class="megamenu-content-outer">
@@ -256,9 +261,11 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
             </div>
           </li>
           <li class="main-menu-item">
-            <a data-cursor-expand href="/about">About</a><span
-              class="expand-btn"></span>
-            <div class="megamenu megamenu-dropdown">
+            <div class="main-menu-item-inner">
+              <a data-cursor-expand href="/about">About</a><span
+                class="expand-btn"></span>
+            </div>
+            <div class="megamenu megamenu-dropdown collapse">
 
               <div class="container">
                 <div class="megamenu-items">
@@ -322,12 +329,7 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
           </li>
         </ul>
         <div class="main-menu-action">
-          <CTAButton
-            label="Let's Talk"
-            href="/"
-            target="_self"
-            style="button"
-          />
+          <a href="/" class="button button-large">Let's Talk</a>
         </div>
       </nav>
       <div class="hamburger">
@@ -350,14 +352,19 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
     top: 0;
     width: 100%;
     z-index: 40;
+    --header-background-color: var(--color-white);
+    --header-hamburger-color: var(--color-black);
+    --header-top-link-color: var(--color-black);
+    --header-color-transition: background-color 140ms ease-in-out;
 
     > .container {
 			&:before {
 				content: "";
-				background-color: $color-background;
+				background-color: var(--header-background-color);
+        transition: var(--header-color-transition);
 				height: 100%;
-				left: -94%;
-				width: 100%;
+				left: 0;
+				width: max(calc(0.5 * (100% - var(--content-width)) - var(--container-spacing)), var(--container-spacing));
 				position: absolute;
 				z-index: -1;
 				@media (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet-horizontal) {
@@ -366,19 +373,22 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
 
         @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-tablet-horizontal) {
           left: 17.8rem;
+          width: 100%;
         }
 
-        @media (max-width: $breakpoint-tablet) {
+        @media (max-width: $breakpoint-tablet - 1px) {
           left: 12rem;
+          width: 100%;
         }
 			}
 
 			&:after {
 				content: "";
-				background-color: $color-background;
+				background-color: var(--header-background-color);
+        transition: var(--header-color-transition);
 				height: 100%;
-				right: -94%;
-				width: 100%;
+				right: 0;
+				width: max(calc(0.5 * (100% - var(--content-width)) - var(--container-spacing)), var(--container-spacing));
 				position: absolute;
 				top: 0;
 				z-index: -1;
@@ -391,7 +401,7 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
           right: calc(100% - 6.8rem);
         }
 
-        @media (max-width: $breakpoint-tablet) {
+        @media (max-width: $breakpoint-tablet - 1px) {
           right: calc(100% - 1.6rem);
         }
 			}
@@ -413,7 +423,8 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
     }
 
 		.side-bg {
-			background-color: $color-background;
+			background-color: var(--header-background-color);
+      transition: var(--header-color-transition);
 			height: 100%;
 			width: 42%;
 			position: absolute;
@@ -479,20 +490,42 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
       }
 
       &-item {
-        padding: 3rem 0;
         border-bottom: 1px solid rgba($color-contrast, 0.5);
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
         @media (min-width: $breakpoint-tablet-horizontal) {
           border-bottom: 0;
           margin-left: 5rem;
           padding: 4rem 0;
         }
 
+        &:hover {
+          .megamenu-dropdown {
+            @media (min-width: $breakpoint-tablet-horizontal) {
+              height: 44rem;
+            }
+          }
+
+          .main-menu-item-inner {
+            > a {
+              &:after {
+                @media (min-width: $breakpoint-tablet-horizontal) {
+                  width: 100%;
+                }
+              }
+            } 
+          }
+        }
+      }
+      &-item-inner {
+        @media (max-width: $breakpoint-tablet-horizontal) {
+          padding: 3rem 0;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: center;
+        }
+
         > a {
-          color: $color-text;
+          color: var(--header-top-link-color);
           font-weight: 700;
 					position: relative;
           text-decoration: none;
@@ -512,20 +545,6 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
           &:hover {
             color: $color-brand;
           }
-        }
-
-        &:hover {
-          .megamenu-dropdown {
-            height: 44rem;
-          }
-
-					> a {
-						&:after {
-              @media (min-width: $breakpoint-tablet-horizontal) {
-                width: 100%;
-              }
-						}
-					} 
         }
       }
 
@@ -563,7 +582,8 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
       position: relative;
 
       &::before {
-        background-color: $color-background;
+        background-color: var(--header-background-color);
+        transition: var(--header-color-transition);
         content: "";
         width: 100%;
         height: 94%;
@@ -578,7 +598,8 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
       }
 
       &::after {
-        background-color: $color-background;
+        background-color: var(--header-background-color);
+        transition: var(--header-color-transition);
         content: "";
         width: 100%;
         height: 100%;
@@ -594,23 +615,34 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
         width: calc(100% + 2px);
       }
 
+      &-white {
+        display: none;
+      }
+
+      &-transparent {
+        display: block;
+      }
+
       img {
         height: 100%;
         object-fit: contain;
+        transition: opacity 140ms ease-in-out;
+        opacity: 1;
       }
     }
 
     nav {
       align-items: center;
-      background-color: $color-background;
+      background-color: var(--header-background-color);
+      transition: var(--header-color-transition);
       display: flex;
       flex-basis: calc(100% - 11.1rem);
       justify-content: flex-end;
       max-width: calc(100% - 11.1rem);
 
       @media (max-width: $breakpoint-tablet-horizontal) {
-        background: $color-background;
-        border-top: 1px solid $color-background-light;
+        background: var(--header-background-color);
+        border-top: 1px solid rgba($color-contrast, 0.5);
         display: none;
         flex: 0 0 100%;
         height: 100vh;
@@ -641,7 +673,7 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
     .megamenu {
       &-items {
         @include row;
-        padding: 1.5rem 0 3rem;
+        padding: 0 0 3rem;
 
         @media (min-width: $breakpoint-tablet-horizontal) {
           padding: 6rem 0;
@@ -665,14 +697,25 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
         }
 
         @media (max-width: $breakpoint-tablet-horizontal) {
-          animation: fadeIn 0.2s ease-in-out;
-          display: none;
+          // animation: fadeIn 0.2s ease-in-out;
+          // display: none;
         }
 
         > .container {
           @media (max-width: $breakpoint-tablet-horizontal) {
             padding-inline: 0;
           }
+        }
+        &.collapse:not(.show) {
+          @media (max-width: $breakpoint-tablet-horizontal) {
+            display: none;
+          }
+        }
+
+        &.collapsing {
+          height: 0;
+          overflow: hidden;
+          transition: 0.35s height ease;
         }
       }
 
@@ -692,6 +735,11 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
 
           @media (max-width: $breakpoint-tablet-horizontal) {
             display: none;
+          }
+        }
+        >p {
+          @media (max-width: $breakpoint-tablet-horizontal) {
+            margin-top: 0;
           }
         }
       }
@@ -743,13 +791,12 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
 
       &-action {
         margin-top: 3rem;
-      }
 
-      &--isOpen {
-        display: block;
-        opacity: 1;
-        transform: scaleY(1);
-        visibility: visible;
+        .button {
+          @media (max-width: $breakpoint-mobile-horizontal) {
+            width: 100% !important;
+          }
+        }
       }
     }
     .hamburger {
@@ -761,7 +808,7 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
       }
 
       span {
-        background-color: $color-background-dark;
+        background-color: var(--header-hamburger-color);
         border-radius: 0.3rem;
         display: block;
         height: 0.3rem;
@@ -805,46 +852,25 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
         }
       }
     }
-    &.main-navigation--active {
-      background-color: $color-background;
-      color: $color-background-dark;
+
+    &.scroll-near-top:not(:hover) {
+      --header-background-color: transparent;
+      --header-top-link-color: var(--color-white);
+      --header-hamburger-color: var(--color-white);
 
       .site-logo {
-        &-white {
+
+        &-transparent {
           display: none;
         }
 
-        &-black {
+        &-white {
           display: block;
         }
       }
 
-      nav {
-        @media (max-width: $breakpoint-tablet-horizontal) {
-          border-top: 0.1rem solid $color-background-light;
-        }
-      }
-
-      .megamenu {
-        @media (min-width: $breakpoint-tablet-horizontal) {
-          border-top: 0.1rem solid $color-background-light;
-        }
-      }
-
-      .main-menu-item {
-        > a {
-          color: $color-background-dark;
-
-          &:hover {
-            color: $color-brand;
-          }
-        }
-      }
-
-      .hamburger {
-        span {
-          background-color: $color-background-dark;
-        }
+      .megamenu-dropdown {
+        border-top: none;
       }
     }
   }
@@ -854,7 +880,9 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
 
   const hamburger = document.querySelector("header .hamburger")
   const nav = document.querySelector('header nav')
-  const mainMenuLink = document.querySelectorAll('header .main-menu-item')
+  const mainMenuLink = document.querySelectorAll('header .main-menu-item-inner')
+  const megaMenuDropdown = document.querySelectorAll('header .megamenu-dropdown')
+  const header = document.querySelector('header.main-navigation')
 
   function initMenu() {
     if (screen.availWidth > 992) {
@@ -862,10 +890,10 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
       hamburger.classList.remove('active')
 
       mainMenuLink.forEach(function(item) {
-        item.classList.remove('main-menu--active')
-        item.querySelector('.megamenu-dropdown').classList.remove('megamenu--isOpen')
+        item.closest('.main-menu-item').classList.remove('main-menu--active')
+        item.closest('.main-menu-item').querySelector('.megamenu-dropdown').removeAttribute('style')
       })
-    }
+    } 
   }
 
   function mobileMenuHandler() {
@@ -877,30 +905,64 @@ import siteLogo from "@assets/logo/clear-logo-transparent.svg";
     }
   }
 
-  function menuLinkClickHandler() {
+  function handleHeaderScroll() {
+    if(5 >= window.scrollY) {
+      header.classList.add('scroll-near-top')
+    }else{
+      header.classList.remove('scroll-near-top')
+    }
+  }
+
+  function menuLinkClickHandler(e) {
     let winWidth = screen.availWidth;
+
     if (winWidth > 992) return
 
-    if (!this.classList.contains('main-menu--active')) {
-      let children = this.parentNode.querySelectorAll('.main-menu-item')
+    const closestCollapse = e.target.closest('.main-menu-item')
+        .querySelector('.megamenu-dropdown');
 
-      children.forEach(function(item) {
-        item.classList.remove('main-menu--active')
-        item.querySelector('.megamenu-dropdown').classList.remove('megamenu--isOpen')
+      megaMenuDropdown.forEach((collapse) => {
+        if (collapse !== closestCollapse) {
+          slideUp(collapse);
+        }
       });
 
-      this.classList.add('main-menu--active')
-      this.querySelector('.megamenu-dropdown').classList.add('megamenu--isOpen')
-    } else {
-      mainMenuLink.forEach(function(item) {
-        item.classList.remove('main-menu--active')
-        item.querySelector('.megamenu-dropdown').classList.remove('megamenu--isOpen')
-      })
-    }
+      if (closestCollapse.classList.contains('show')) {
+        slideUp(closestCollapse);
+      } else {
+        slideDown(closestCollapse);
+      }
+  }
+
+  function slideDown(collapse) {
+    collapse.classList.add('show')
+    collapse.classList.add('collapsing')
+    collapse.style.height = `${collapse.scrollHeight}px`
+
+    collapse
+      .closest('.main-menu-item').classList.add('main-menu--active')
+
+    setTimeout(() => {
+      collapse.classList.remove('collapsing')
+    }, 350)
+  }
+
+  function slideUp(collapse) {
+    collapse.classList.add('collapsing')
+    collapse.removeAttribute('style')
+
+    collapse
+      .closest('.main-menu-item').classList.remove('main-menu--active')
+
+    setTimeout(() => {
+      collapse.classList.remove('collapsing')
+      collapse.classList.remove('show')
+    }, 350)
   }
 
   hamburger.addEventListener('click', mobileMenuHandler)
   window.addEventListener('resize', initMenu)
+  window.addEventListener('scroll', handleHeaderScroll)
 
   mainMenuLink.forEach(function(item) {
     item.addEventListener('click', menuLinkClickHandler);
