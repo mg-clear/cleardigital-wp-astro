@@ -9,7 +9,7 @@ import logoCohesity from '@assets/images/SliderWithContent/logo-cohesity.svg';
 import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-hexagon-green.webp';
 ---
 
-<div class="flyntComponent componentSpacing" data-theme="dark" is="flynt-slider-quote">
+<astro-slider-quote class="astroComponent componentSpacing" data-theme="dark">
 	<div class="container">
     <div class="testimonials-slider swiper">
       <div class="testimonials swiper-wrapper">
@@ -184,11 +184,11 @@ import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-h
 			</li>
 		</ul>
 	</div>		
-</div>
+</astro-slider-quote>
 <style lang="scss">
 	@import 'src/styles/abstracts/variables';
 
-	[is='flynt-slider-quote'] {
+	astro-slider-quote {
     overflow: hidden;
 
     .intro {
@@ -371,65 +371,93 @@ import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-h
 </style>
 <script>
   import Swiper from 'swiper';
-	import { Navigation, A11y, Autoplay, Pagination } from 'swiper/modules'
-	import 'swiper/css'
-	import 'swiper/css/autoplay'
-  import 'swiper/css/a11y'
-	import 'swiper/css/navigation'
+  import { Navigation, A11y, Autoplay, Pagination } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/autoplay';
+  import 'swiper/css/a11y';
+  import 'swiper/css/navigation';
 
-	const sliderSelector = '[is="flynt-slider-quote"]  .swiper';
-	const slider = document.querySelector(sliderSelector);
+  class AstroSliderQuote extends HTMLElement {
+    constructor(...args) {
+      const self = super(...args);
+      self.init();
+      return self;
+    }
 
-	if (slider) {
-		const parameters = {
-			modules: [Navigation, A11y, Autoplay, Pagination],
-      autoHeight: true,
-			navigation: {
-				nextEl: '[is="flynt-slider-quote"] .swiper-button-next',
-				prevEl: '[is="flynt-slider-quote"] .swiper-button-prev'
-			},
-      pagination: {
-        el: '[is="flynt-slider-quote"]  .swiper-pagination',
-        type: 'progressbar' as 'progressbar'
-      },
-			slidesPerView: 1,
-			speed: 400,
-			spaceBetween: 30
-		}
-		
-		const swiper = new Swiper(sliderSelector, parameters)
-	}
+    init() {
+      this.resolveElements();
+    }
 
-  const logoSliderSelector = '[is="flynt-slider-quote"]  .swiperLogos';
-	const logoSlider = document.querySelector(logoSliderSelector);
-  const countLogos = document.querySelectorAll('[is="flynt-slider-quote"]  .swiperLogos .logos-item.swiper-slide').length;
+    resolveElements() {
+      this.slider = this.querySelector('.swiper');
+      this.sliderNextEl = this.slider.querySelector('.swiper-button-next');
+      this.sliderPrevEl = this.slider.querySelector('.swiper-button-prev');
+      this.sliderProgressBarEl = this.slider.querySelector('.swiper-pagination');
+      this.logoSlider = this.querySelector('.swiperLogos');
+      this.countLogos = this.querySelectorAll(
+        '.swiperLogos .logos-item.swiper-slide'
+      ).length;
+    }
 
-	if (logoSlider) {
-		const logoParameters = {
-      modules: [Autoplay],
-			autoplay: {
-        delay: 0
-      },
-      loop: true,
-			slidesPerView: 2,
-			spaceBetween: 20,
-      speed: 2000,
-      breakpoints: {
-        576: {
-          slidesPerView: 3,
-        },
-        768: {
-          slidesPerView: 4,
-        },
-        992: {
-          slidesPerView: 5,
-        },
-        1200: {
-          slidesPerView: 6,
-        }
+    connectedCallback() {
+      if (this.slider) {
+        this.initSlider();
       }
-		}
-		
-		const logoSwiper = new Swiper(logoSliderSelector, logoParameters)
-	}
+
+      if (this.logoSlider) {
+        this.initLogoSlider();
+      }
+    }
+
+    initSlider() {
+      const parameters = {
+        modules: [Navigation, A11y, Autoplay, Pagination],
+        autoHeight: true,
+        navigation: {
+          nextEl: this.sliderNextEl,
+          prevEl: this.sliderPrevEl,
+        },
+        pagination: {
+          el: this.sliderProgressBarEl,
+          type: 'progressbar',
+        },
+        slidesPerView: 1,
+        speed: 400,
+        spaceBetween: 30,
+      };
+
+      const swiper = new Swiper(this.slider, parameters);
+    }
+
+    initLogoSlider() {
+      const logoParameters = {
+        modules: [Autoplay],
+        autoplay: {
+          delay: 0,
+        },
+        loop: true,
+        slidesPerView: 2,
+        spaceBetween: 20,
+        speed: 2000,
+        breakpoints: {
+          576: {
+            slidesPerView: 3,
+          },
+          768: {
+            slidesPerView: 4,
+          },
+          992: {
+            slidesPerView: 5,
+          },
+          1200: {
+            slidesPerView: 6,
+          },
+        },
+      };
+
+      const logoSwiper = new Swiper(this.logoSlider, logoParameters);
+    }
+  }
+
+  customElements.define('astro-slider-quote', AstroSliderQuote);
 </script>
