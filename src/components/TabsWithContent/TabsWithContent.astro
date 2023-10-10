@@ -1072,6 +1072,14 @@ const {} = Astro.props;
 			});
     }
 
+    function inIt() {
+      document.querySelector('.tabs-with-content-items').removeAttribute('style')
+
+      tabBodyElement.forEach((element) => {
+        element.removeAttribute('style')
+      });
+    }
+
     function handleTabClick(e) {
 			if (e.target.classList.contains('tab-head') || e.target.tagName === 'H4' || e.target.classList.contains('expand-btn')) {
 				let tabHead = e.target
@@ -1137,6 +1145,7 @@ const {} = Astro.props;
     addIdOnInnerMenu(tabTitle, 'data-tab', 'tab-')
     addIdOnInnerMenu(tabBodyElement, 'data-tab-body', 'tab-')
 		
+		window.addEventListener('resize', inIt)
 		tabsWithContent.addEventListener('click', handleCloseButton)
 		tabsList.addEventListener('click', handleTabClick)
   }
