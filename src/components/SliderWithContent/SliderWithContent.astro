@@ -351,10 +351,6 @@ import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-h
         // }
       }
 
-      &-item {
-        flex-basis: 17%;
-      }
-
       .swiper-wrapper {
         transition-timing-function: linear;
       }
@@ -415,10 +411,23 @@ import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-h
         delay: 0
       },
       loop: true,
-      loopedSlides: 2,
-			slidesPerView: countLogos / 2,
+			slidesPerView: 2,
 			spaceBetween: 20,
-      speed: 4000
+      speed: 2000,
+      breakpoints: {
+        576: {
+          slidesPerView: 3,
+        },
+        768: {
+          slidesPerView: 4,
+        },
+        992: {
+          slidesPerView: 5,
+        },
+        1200: {
+          slidesPerView: 6,
+        }
+      }
 		}
 		
 		const logoSwiper = new Swiper(logoSliderSelector, logoParameters)
