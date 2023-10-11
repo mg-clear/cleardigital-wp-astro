@@ -10,11 +10,25 @@ import motionGraphicsLogoImage from '@assets/images/ColThreeGrid/motion-graphics
 import systemsLogoImage from '@assets/images/ColThreeGrid/systems.svg';
 import supportLogoImage from '@assets/images/ColThreeGrid/support.svg';
 import webDevelopmentLogoImage from '@assets/images/ColThreeGrid/web-development.svg';
+import BackgroundMarqueeText from './Partials/BackgroundMarqueeText.astro';
 ---
 
 <div class="colThreeGrid componentSpacing blade has-grid-bg">
   <div class="colThreeGrid-bg">
-    <Image src={brandGraphicsSupportImage} alt=""></Image>
+    <!-- <Image src={brandGraphicsSupportImage} alt=""></Image> -->
+    <BackgroundMarqueeText
+      lines={[
+        {
+          "html": "Brand strategy & <strong>Website</strong>"
+        },
+        {
+          "html": "<strong>Motion graphics</strong> & Content development>"
+        },
+        {
+          "html": "<strong>Support subscriptions</strong> & Development"
+        },
+      ]}
+    />
   </div>
   <div class="container">
     <div class="colThreeCards">
@@ -198,5 +212,4 @@ import webDevelopmentLogoImage from '@assets/images/ColThreeGrid/web-development
       }
     }
   }
-
 </style>

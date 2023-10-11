@@ -1,0 +1,119 @@
+---
+import type { log } from 'node_modules/astro/dist/core/logger/core';
+import type { log } from 'node_modules/astro/dist/core/logger/core';
+import type ImageTwoBlock from '@components/ImageTwoBlock/ImageTwoBlock.astro';
+
+interface Props {
+  lines?: {
+	html: string,
+  }[],
+}
+
+const {
+  lines = null,
+} = Astro.props;
+
+---
+
+{lines && lines.length > 0 &&
+	<div class="bg-text-lines">
+		{lines.map((line, i)=>{
+			return <div set:html={line.html + ' ' + line.html + ' ' + line.html + ' ' + line.html + ' ' + line.html} class:list={['marquee-text-line h1', (i%2!=0 ? 'even' : 'odd')]} data-line={(i+1).toString()} />
+		})}
+	</div>
+}
+
+<style lang="scss">
+	.bg-text-lines {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		align-items: center;
+		width: 100%;
+		min-height: 100vh;
+		--marquee-animation-delay: 0ms;
+
+		.marquee-text-line {
+			margin-block-start: 0;
+			position: relative;
+			white-space: nowrap;
+			color: var(--color-light-grey);
+			pointer-events: none;
+			user-select: none;
+			animation-duration: 1001ms;
+			animation-timing-function: ease-in-out;
+			animation-delay: var(--marquee-animation-delay);
+			animation-play-state: paused;
+
+			&.odd {
+				animation-name: marquee-line-move-rtl;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+			}
+
+			&.even {
+				animation-name: marquee-line-move-ltr;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+			}
+
+			:global(strong) {
+				color: var(--color-black);
+			}
+		}
+	}
+
+	@keyframes marquee-line-move-rtl {
+		from {
+			left: 0;
+		}
+
+		to {
+			left: -50vw;
+		}
+	}
+
+	@keyframes marquee-line-move-ltr {
+		from {
+			right: 0;
+		}
+
+		to {
+			right: -50vw;
+		}
+	}
+</style>
+
+<script>
+	const marqueeTextClassname = "bg-text-lines"
+	const marqueeTextContainers = document.querySelectorAll(`.${marqueeTextClassname}`);
+
+	if(marqueeTextContainers.length > 0) {
+		const marqueeTextCallback = function(entries, observer) {
+			const viewportHeight = window.innerHeight
+			entries.forEach((entry)=>{
+				let bottom = entry.boundingClientRect.bottom
+				let compareHeight = entry.boundingClientRect.height + viewportHeight
+				let diff = compareHeight - bottom
+				if(diff < 0) {
+					diff = 0
+				}
+				if(diff > compareHeight) {
+					diff = compareHeight
+				}
+				let ratio =  (diff / compareHeight * -1000)
+				entry.target.style.setProperty("--marquee-animation-delay", ratio.toString() + 'ms')
+			})
+		}
+		const percentages = [];
+		for(let i = 0; i <= 1000; i++) {
+			percentages.push(i * 0.001);
+		}
+		let observer = new IntersectionObserver(marqueeTextCallback, {
+			threshold: percentages
+		})
+		for(const container of marqueeTextContainers) {
+			observer.observe(container)
+		}
+	}
+</script>

@@ -67,3 +67,14 @@
 header.main-navigation + .blade .bg-container.overlay::before {
     opacity: 0.5;
 }
+
+header.main-navigation + .blade .bg-container.overlay::after {
+    content: '';
+    position: absolute;
+    height: 33vh;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.83), rgba(0,0,0,0));
+}
