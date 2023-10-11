@@ -34,18 +34,16 @@ const {
 				</div>
 				<div class="intro__action-outer">
 					<div class="intro__action">
-						<CTAButton
-            label="View all case studies"
-            href="/"
-            target="_self"
-            style="button"
-          	/>
+						<a href="/" class="button button-large">
+							View all case studies
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="twocolwithlogo__item">
+		<a href="/" class="twocolwithlogo__item-link" aria-label="card-link"></a>
 		<div class="twocolwithlogo__bg-outer">
 			<div class="twocolwithlogo__bg">
 				<Image src={backgroundImage} alt="bg Blue" />
@@ -69,6 +67,7 @@ const {
 		</div>
 	</div>
 	<div class="twocolwithlogo__item">
+		<a href="/" class="twocolwithlogo__item-link" aria-label="card-link"></a>
 		<div class="twocolwithlogo__bg-outer">
 			<div class="twocolwithlogo__bg">
 				<Image src={backgroundImage} alt="bg Blue" />
@@ -92,6 +91,7 @@ const {
 		</div>
 	</div>
 	<div class="twocolwithlogo__item">
+		<a href="/" class="twocolwithlogo__item-link" aria-label="card-link"></a>
 		<div class="twocolwithlogo__bg-outer">
 			<div class="twocolwithlogo__bg">
 				<Image src={backgroundImage} alt="bg Blue" />
@@ -115,6 +115,7 @@ const {
 		</div>
 	</div>
 	<div class="twocolwithlogo__item">
+		<a href="/" class="twocolwithlogo__item-link" aria-label="card-link"></a>
 		<div class="twocolwithlogo__bg-outer">
 			<div class="twocolwithlogo__bg">
 				<Image src={backgroundImage} alt="bg Blue" />
@@ -138,6 +139,7 @@ const {
 		</div>
 	</div>
 	<div class="twocolwithlogo__item">
+		<a href="/" class="twocolwithlogo__item-link" aria-label="card-link"></a>
 		<div class="twocolwithlogo__bg-outer">
 			<div class="twocolwithlogo__bg">
 				<Image src={backgroundImage} alt="bg Blue" />
@@ -228,6 +230,13 @@ const {
 					display: block;
 				}
 			}
+		}
+
+		&__item-link {
+			cursor: pointer;
+			position: absolute;
+			inset: 0;
+			z-index: 6;
 		}
 
 		&__bg-outer {
