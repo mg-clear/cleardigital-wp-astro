@@ -165,7 +165,8 @@ const {
 </section>
 
 <style lang="scss">
-	@import "@styles/abstracts/_variables.scss";
+	@import 'src/styles/abstracts/variables';
+	@import 'src/styles/abstracts/mixins';
 
 	.twocolwithlogo {
 		$self: &;
@@ -208,8 +209,8 @@ const {
 		}
 
 		&__item {
-			border-top: 1px solid $color-contrast;
-			border-bottom: 1px solid $color-contrast;
+			border-top: 1px solid var(--color-background-secondary);
+			border-bottom: 1px solid var(--color-background-secondary);
 			display: flex;
 			align-items: center;
 			padding: var(--flow-space-small) 0;
@@ -218,7 +219,7 @@ const {
 			transition: color 0.3s ease-in-out;
 
 			&:hover {
-				color: $color-background;
+				color: var(--color-background);
 				#{$self}__bg {
 					opacity: 1;
 				}

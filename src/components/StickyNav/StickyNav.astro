@@ -10,13 +10,14 @@
 </div>
 <style lang="scss">
   @import 'src/styles/abstracts/variables';
+  @import 'src/styles/abstracts/mixins';
 
   .stickyNav {
     display: none;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       display: block;
-      border-bottom: solid 0.1rem $color-text;
+      border-bottom: solid 0.1rem var(--color-text);
       padding-top: var(--flow-space-medium);
       z-index: 2;
     }
