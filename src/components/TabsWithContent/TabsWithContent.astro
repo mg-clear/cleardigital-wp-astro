@@ -4,7 +4,6 @@ interface Props {}
 const {} = Astro.props;
 ---
 
-
 <tabs-with-content class="astroComponent componentSpacing" data-theme="light">
   <div class="container blade-content">
     <div class="intro">
@@ -1080,67 +1079,67 @@ const {} = Astro.props;
   //     });
   //   }
 
-    function handleTabClick(e) {
-			if (e.target.classList.contains('tab-head') || e.target.tagName === 'H4' || e.target.classList.contains('expand-btn')) {
-				let tabHead = e.target
-				let tabId = e.target.tagName === 'H4' ? tabHead.closest('.tab-head').getAttribute('data-tab') :  tabHead.getAttribute('data-tab')
-				let windowWidth = window.innerWidth
+    // function handleTabClick(e) {
+		// 	if (e.target.classList.contains('tab-head') || e.target.tagName === 'H4' || e.target.classList.contains('expand-btn')) {
+		// 		let tabHead = e.target
+		// 		let tabId = e.target.tagName === 'H4' ? tabHead.closest('.tab-head').getAttribute('data-tab') :  tabHead.getAttribute('data-tab')
+		// 		let windowWidth = window.innerWidth
 
-				if (windowWidth > 767) {
-					tabHead.closest('.tabs-with-content-items').style.display = 'none'
-					tabHead.closest('.tabs-with-content').querySelector(`.tabs-with-content-content .tab-body[data-tab-body='${tabId}'`).style.display = 'block'
-				} else {
-          const closestCollapse = e.target.closest('.tab')
-                        .querySelector('.tab-body');
+		// 		if (windowWidth > 767) {
+		// 			tabHead.closest('.tabs-with-content-items').style.display = 'none'
+		// 			tabHead.closest('.tabs-with-content').querySelector(`.tabs-with-content-content .tab-body[data-tab-body='${tabId}'`).style.display = 'block'
+		// 		} else {
+    //       const closestCollapse = e.target.closest('.tab')
+    //                     .querySelector('.tab-body');
 
-          tabBodyElementMobile.forEach((collapse) => {
-            if (collapse !== closestCollapse) {
-              slideUp(collapse)
-            }
-          });
+    //       tabBodyElementMobile.forEach((collapse) => {
+    //         if (collapse !== closestCollapse) {
+    //           slideUp(collapse)
+    //         }
+    //       });
 
-          if (closestCollapse.classList.contains('show')) {
-            slideUp(closestCollapse)
-          } else {
-            slideDown(closestCollapse)
-          }
-        }
-			}
-    }
+    //       if (closestCollapse.classList.contains('show')) {
+    //         slideUp(closestCollapse)
+    //       } else {
+    //         slideDown(closestCollapse)
+    //       }
+    //     }
+		// 	}
+    // }
 
-    function slideDown(collapse) {
-      collapse.classList.add('show')
-      collapse.classList.add('collapsing')
-      collapse.style.height = `${collapse.scrollHeight}px`
+    // function slideDown(collapse) {
+    //   collapse.classList.add('show')
+    //   collapse.classList.add('collapsing')
+    //   collapse.style.height = `${collapse.scrollHeight}px`
 
-      collapse
-        .closest('.tab').classList.add('tab-isOpen')
+    //   collapse
+    //     .closest('.tab').classList.add('tab-isOpen')
 
-      setTimeout(() => {
-        collapse.classList.remove('collapsing')
-      }, 350)
-    }
+    //   setTimeout(() => {
+    //     collapse.classList.remove('collapsing')
+    //   }, 350)
+    // }
 
-    function slideUp(collapse) {
-      collapse.classList.add('collapsing')
-      collapse.removeAttribute('style')
+    // function slideUp(collapse) {
+    //   collapse.classList.add('collapsing')
+    //   collapse.removeAttribute('style')
 
-      collapse
-        .closest('.tab').classList.remove('tab-isOpen')
+    //   collapse
+    //     .closest('.tab').classList.remove('tab-isOpen')
 
-      setTimeout(() => {
-        collapse.classList.remove('collapsing')
-        collapse.classList.remove('show')
-      }, 350)
-    }
+    //   setTimeout(() => {
+    //     collapse.classList.remove('collapsing')
+    //     collapse.classList.remove('show')
+    //   }, 350)
+    // }
 
-    function handleCloseButton (e) {
-			if (e.target.classList.contains('tab-closeButton')) {
-				let closeButton = e.target
-				closeButton.closest('.tab-body').style.display = 'none'
-				closeButton.closest('.tabs-with-content').querySelector('.tabs-with-content-items').style.display = 'block'
-			}
-    }
+    // function handleCloseButton (e) {
+		// 	if (e.target.classList.contains('tab-closeButton')) {
+		// 		let closeButton = e.target
+		// 		closeButton.closest('.tab-body').style.display = 'none'
+		// 		closeButton.closest('.tabs-with-content').querySelector('.tabs-with-content-items').style.display = 'block'
+		// 	}
+    // }
 
   //   addIdOnInnerMenu(tabTitle, 'data-tab', 'tab-')
   //   addIdOnInnerMenu(tabBodyElement, 'data-tab-body', 'tab-')
@@ -1169,14 +1168,14 @@ const {} = Astro.props;
       ".tabs-with-content-content .tab-body"
       )
       this.tabBodyElementMobile = this.querySelectorAll(
-      ".tabs-with-content .tabs-list .tab-body"
+      ".tabs-list .tab-body"
       )
-		  this.tabsList = this.querySelector('.tabs-with-content .tabs-list')
+		  this.tabsList = this.querySelector('.tabs-list')
     }
 
     bindFunctions() { 
       this.addIdOnInnerMenu = this.addIdOnInnerMenu(this.tabTitle, 'data-tab', 'tab-')
-      // this.addIdOnInnerMenu = this.addIdOnInnerMenu(this.tabBodyElement, 'data-tab-body', 'tab-')
+      this.addIdOnBody = this.addIdOnBody(this.tabBodyElement, 'data-tab-body', 'tab-')
       this.handleTabClick = this.handleTabClick.bind(this)
       this.handleCloseButton = this.handleCloseButton.bind(this)
     }
@@ -1192,6 +1191,8 @@ const {} = Astro.props;
 			});
     }
 
+    addIdOnBody = this.addIdOnInnerMenu
+
     handleTabClick(e) {
 			if (e.target.classList.contains('tab-head') || e.target.tagName === 'H4' || e.target.classList.contains('expand-btn')) {
 				let tabHead = e.target
@@ -1200,7 +1201,7 @@ const {} = Astro.props;
 
 				if (windowWidth > 767) {
 					tabHead.closest('.tabs-with-content-items').style.display = 'none'
-					tabHead.closest('.tabs-with-content').querySelector(`.tabs-with-content-content .tab-body[data-tab-body='${tabId}'`).style.display = 'block'
+					tabHead.closest('tabs-with-content').querySelector(`.tabs-with-content-content .tab-body[data-tab-body='${tabId}'`).style.display = 'block'
 				} else {
           const closestCollapse = e.target.closest('.tab')
                         .querySelector('.tab-body');
@@ -1224,7 +1225,7 @@ const {} = Astro.props;
 			if (e.target.classList.contains('tab-closeButton')) {
 				let closeButton = e.target
 				closeButton.closest('.tab-body').style.display = 'none'
-				closeButton.closest('.tabs-with-content').querySelector('.tabs-with-content-items').style.display = 'block'
+				closeButton.closest('tabs-with-content').querySelector('.tabs-with-content-items').style.display = 'block'
 			}
     }
 
