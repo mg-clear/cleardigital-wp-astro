@@ -11,434 +11,6 @@ const {
 
 ---
 
-<style lang="scss">
-	@import 'src/styles/abstracts/variables';
-
-	// Button
-
-	button {
-		appearance: none;
-		background-color: transparent;
-		border: 0;
-		color: inherit;
-		font-family: inherit;
-		font-size: inherit;
-		line-height: inherit;
-		padding: 0;
-		text-align: inherit;
-	}
-
-	.button {
-		appearance: none;
-		background-color: $color-accent;
-		border: 0.2rem solid $color-accent;
-		color: $color-background;
-		cursor: pointer;
-		display: inline-block;
-		font-family: inherit;
-		font-size: 1.6rem;
-		font-weight: 700;
-		letter-spacing: 0;
-		line-height: 1;
-		margin: 3rem 0 0;
-		padding: 1.5rem 2rem;
-		text-align: center;
-		text-decoration: none;
-		transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-		user-select: none;
-
-		@media (max-width: $breakpoint-tablet) {
-			margin-top: 2rem;
-		}
-
-		&:disabled,
-		&--disabled {
-			border-color: $color-contrast;
-			color: $color-contrast;
-			cursor: default;
-			opacity: 0.7;
-			pointer-events: none;
-		}
-
-		&:hover,
-		&:focus {
-			background-color: transparent;
-			border-color: $color-accent;
-			color: $color-accent;
-		}
-
-		&--outline,
-		&--ghost {
-			background-color: transparent;
-			border-color: $color-background-dark;
-			color: $color-background-dark;
-
-			&:hover,
-			&:focus {
-				background-color: $color-background-dark;
-				border-color: $color-background-dark;
-				color: $color-background;
-			}
-		}
-
-		&--small {
-			font-size: 1.6rem;
-		}
-
-		&--link {
-			align-items: center;
-			background-color: transparent;
-			border: 0;
-			color: $color-background-dark;
-			display: inline-flex;
-			padding: 0;
-			position: relative;
-			text-transform: none;
-			transition: color 0.2s ease-out;
-
-			&:hover,
-			&:focus {
-				background-color: transparent;
-				color: $color-background-dark;
-
-				&::after {
-					background-position: right center;
-				}
-			}
-
-			&::after {
-				$color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
-
-				background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.16663 10H15.8333" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-				background-position: left center;
-				background-repeat: no-repeat;
-				background-size: contain;
-				content: '';
-				display: inline-block;
-				height: 2rem;
-				margin-left: 0.5rem;
-				transition: background-position 0.2s ease-out;
-				width: 2.2rem;
-			}
-		}
-
-		&--linkBlack {
-			align-items: center;
-			background-color: transparent;
-			border: 0;
-			color: $color-text;
-			display: inline-flex;
-			padding: 0;
-			position: relative;
-			text-transform: none;
-			transition: color 0.2s ease-out;
-
-			&:hover,
-			&:focus {
-				background-color: transparent;
-				color: $color-text;
-
-				&::after {
-					background-position: right center;
-				}
-			}
-
-			&::after {
-				$color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
-
-				background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.16663 10H15.8333" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="rgb(#{$color-background-dark-rgb})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-				background-position: left center;
-				background-repeat: no-repeat;
-				background-size: contain;
-				content: '';
-				display: inline-block;
-				height: 2rem;
-				margin-left: 0.5rem;
-				transition: background-position 0.2s ease-out;
-				width: 2.2rem;
-			}
-		}
-	}
-
-	/* Swiper styling overrides */
-
-	.swiper {
-		--swiper-theme-color: #{$color-brand};
-		position: relative;
-	}
-
-	.swiper-wrapper {
-		height: auto !important;
-	}
-
-	.swiper-pagination-progressbar {
-		background: transparent !important;
-		height: 0.8rem !important;
-		margin-top: 4rem;
-		position: relative !important;
-
-		@media (min-width: $breakpoint-tablet) {
-			margin-top: 5rem;
-		}
-
-		&::before {
-			background-color: $color-background-dark;
-			content: '';
-			display: block;
-			height: 0.1rem;
-			position: relative;
-			top: 50%;
-			transform: translateY(-50%);
-			width: 100%;
-		}
-	}
-
-	.swiper-button-prev,
-	.swiper-button-next {
-		height: 100% !important;
-		margin-top: 0 !important;
-		top: 0 !important;
-		width: 100% !important;
-
-		&::after {
-			display: none !important;
-		}
-
-		&.swiper-button-disabled {
-			opacity: 1 !important;
-		}
-	}
-
-	.swiper-button-prev,
-	.swiper-container-rtl .swiper-button-next {
-		left: -100% !important;
-	}
-
-	.swiper-button-next,
-	.swiper-container-rtl .swiper-button-prev {
-		right: -100% !important;
-	}
-
-	[is='flynt-slider-posts'] {
-		min-height: 100vh;
-		overflow: hidden;
-
-		.content {
-			@include row;
-
-			&--logos {
-				align-items: center;
-				margin-top: 6rem;
-
-				@media (min-width: $breakpoint-tablet) {
-					margin-top: $component-spacing-tablet;
-				}
-
-				@media (min-width: $breakpoint-desktop) {
-					margin-top: $component-spacing-desktop;
-				}
-			}
-		}
-
-		.intro {
-			@include col(12);
-
-			@media (min-width: $breakpoint-tablet-horizontal) {
-				@include col(5);
-			}
-
-			p {
-				@include typography-blurb;
-			}
-		}
-
-		.posts {
-			display: flex;
-			flex-wrap: nowrap;
-			margin-top: 4rem;
-
-			@media (min-width: $breakpoint-tablet-horizontal) {
-				margin-top: 0;
-			}
-
-			&-outer {
-				@include col(12);
-				overflow: visible;
-
-				@media (min-width: $breakpoint-tablet-horizontal) {
-					@include col(6);
-					@include offset(1);
-				}
-			}
-		}
-
-		.swiper {
-			position: relative;
-
-			@media (min-width: $breakpoint-tablet) {
-				clip-path: inset(-100vw -100vw -100vw 0.2rem);
-			}
-
-			&-container-initialized {
-				.swiper-wrapper {
-					display: flex;
-					flex-wrap: nowrap;
-				}
-			}
-
-			&-button {
-				&-next {
-					right: calc(-100% + 16.66667%) !important;
-				}
-
-				&-prev {
-					left: calc(-100% + 8.33333%) !important;
-				}
-
-				&-prev {
-					&.swiper-button-disabled {
-						opacity: 1;
-					}
-				}
-			}
-		}
-
-		.post {
-			height: 30.9rem;
-			position: relative;
-
-			@media (min-width: $breakpoint-mobile-horizontal) {
-				height: 49.3rem;
-			}
-
-			@media (min-width: $breakpoint-tablet-horizontal) {
-				height: 51.1rem;
-			}
-
-			@media (min-width: $breakpoint-tablet-horizontal) {
-				height: 36rem;
-			}
-
-			@media (min-width: $breakpoint-desktop) {
-				height: 55rem;
-			}
-
-			&-outer {
-				@include col(12);
-
-				&:not(:last-child) {
-					margin-right: $gutter-width * 2;
-
-					@media (min-width: $breakpoint-tablet) {
-						margin-right: $gutter-width-tablet * 2;
-					}
-
-					@media (min-width: $breakpoint-desktop) {
-						margin-right: $gutter-width-desktop * 2;
-					}
-				}
-			}
-
-			&-image {
-				display: block;
-				height: 100%;
-				overflow: hidden;
-				position: relative;
-
-				img {
-					height: 100%;
-					object-fit: cover;
-					width: 100%;
-				}
-			}
-
-			&-content {
-				bottom: 0;
-				left: 0;
-				position: absolute;
-
-				p {
-					@include spacing('medium');
-					display: none;
-					margin-bottom: 2rem;
-
-					@media (min-width: $breakpoint-tablet) {
-						display: block;
-					}
-				}
-
-				&.boxPadding {
-					@include reset-content-margins;
-					padding: 4rem;
-
-					@media (min-width: $breakpoint-tablet) {
-						padding: 5rem;
-					}
-				}
-			}
-
-			&.themeDark {
-				color: $color-background;
-			}
-		}
-
-		.logos {
-			@include col(12);
-
-			@media (min-width: $breakpoint-tablet-horizontal) {
-				@include col(8);
-			}
-
-			&-heading {
-				@include col(12);
-
-				@media (min-width: $breakpoint-tablet-horizontal) {
-					@include col(4);
-				}
-			}
-
-			&-list {
-				@include reset-list;
-				@include row;
-				align-items: center;
-
-				.logos-item {
-					@include col(6);
-					align-items: center;
-					display: flex;
-					justify-content: center;
-					margin-top: $spacing-large;
-
-					@media (min-width: $breakpoint-tablet) {
-						@include col(3);
-					}
-
-					@media (min-width: $breakpoint-tablet-horizontal) {
-						margin-top: 0;
-					}
-				}
-			}
-		}
-
-		.logo {
-			align-items: center;
-			display: flex;
-			height: 4.6rem;
-			max-width: 11.3rem;
-
-			@media (min-width: $breakpoint-tablet) {
-				max-width: 15.3rem;
-			}
-
-			&-image {
-				height: 100%;
-				object-fit: contain;
-				overflow: hidden;
-			}
-		}
-	}
-</style>
-
 <div class="blade" is="flynt-slider-posts">
 	<div class="container">
 		<div class="content">
@@ -562,7 +134,224 @@ const {
 		</div>
 	</div>
 </div>
+<style lang="scss">
+	@import 'src/styles/abstracts/variables';
+	@import 'src/styles/abstracts/mixins';
 
+	[is='flynt-slider-posts'] {
+		min-height: 100vh;
+		overflow: hidden;
+
+		.content {
+			@include row;
+
+			&--logos {
+				align-items: center;
+				margin-top: 6rem;
+
+				@media (min-width: $breakpoint-tablet) {
+					margin-top: var(--component-spacing);
+				}
+			}
+		}
+
+		.intro {
+			@include col(12);
+
+			@media (min-width: $breakpoint-tablet-horizontal) {
+				@include col(5);
+			}
+
+			p {
+				@include typography-blurb;
+			}
+		}
+
+		.posts {
+			display: flex;
+			flex-wrap: nowrap;
+			margin-top: 4rem;
+
+			@media (min-width: $breakpoint-tablet-horizontal) {
+				margin-top: 0;
+			}
+
+			&-outer {
+				@include col(12);
+				overflow: visible;
+
+				@media (min-width: $breakpoint-tablet-horizontal) {
+					@include col(6);
+					@include offset(1);
+				}
+			}
+		}
+
+		.swiper {
+			position: relative;
+
+			@media (min-width: $breakpoint-tablet) {
+				clip-path: inset(-100vw -100vw -100vw 0.2rem);
+			}
+
+			&-container-initialized {
+				.swiper-wrapper {
+					display: flex;
+					flex-wrap: nowrap;
+				}
+			}
+
+			&-button {
+				&-next {
+					right: calc(-100% + 16.66667%) !important;
+				}
+
+				&-prev {
+					left: calc(-100% + 8.33333%) !important;
+				}
+
+				&-prev {
+					&.swiper-button-disabled {
+						opacity: 1;
+					}
+				}
+			}
+		}
+
+		.post {
+			height: 30.9rem;
+			position: relative;
+
+			@media (min-width: $breakpoint-mobile-horizontal) {
+				height: 49.3rem;
+			}
+
+			@media (min-width: $breakpoint-tablet-horizontal) {
+				height: 51.1rem;
+			}
+
+			@media (min-width: $breakpoint-tablet-horizontal) {
+				height: 36rem;
+			}
+
+			@media (min-width: $breakpoint-desktop) {
+				height: 55rem;
+			}
+
+			&-outer {
+				@include col(12);
+
+				&:not(:last-child) {
+					margin-right: $gutter-width * 2;
+
+					@media (min-width: $breakpoint-tablet) {
+						margin-right: $gutter-width-tablet * 2;
+					}
+
+					@media (min-width: $breakpoint-desktop) {
+						margin-right: $gutter-width-desktop * 2;
+					}
+				}
+			}
+
+			&-image {
+				display: block;
+				height: 100%;
+				overflow: hidden;
+				position: relative;
+
+				img {
+					height: 100%;
+					object-fit: cover;
+					width: 100%;
+				}
+			}
+
+			&-content {
+				bottom: 0;
+				left: 0;
+				position: absolute;
+
+				p {
+					display: none;
+					margin-top: var(--flow-space-medium);
+					margin-bottom: 2rem;
+
+					@media (min-width: $breakpoint-tablet) {
+						display: block;
+					}
+				}
+
+				&.boxPadding {
+					padding: 4rem;
+
+					@media (min-width: $breakpoint-tablet) {
+						padding: 5rem;
+					}
+				}
+			}
+
+			&.themeDark {
+				color: var(--color-background);
+			}
+		}
+
+		.logos {
+			@include col(12);
+
+			@media (min-width: $breakpoint-tablet-horizontal) {
+				@include col(8);
+			}
+
+			&-heading {
+				@include col(12);
+
+				@media (min-width: $breakpoint-tablet-horizontal) {
+					@include col(4);
+				}
+			}
+
+			&-list {
+				@include reset-list;
+				@include row;
+				align-items: center;
+
+				.logos-item {
+					@include col(6);
+					align-items: center;
+					display: flex;
+					justify-content: center;
+					margin-top: var(--flow-space-large);
+
+					@media (min-width: $breakpoint-tablet) {
+						@include col(3);
+					}
+
+					@media (min-width: $breakpoint-tablet-horizontal) {
+						margin-top: 0;
+					}
+				}
+			}
+		}
+
+		.logo {
+			align-items: center;
+			display: flex;
+			height: 4.6rem;
+			max-width: 11.3rem;
+
+			@media (min-width: $breakpoint-tablet) {
+				max-width: 15.3rem;
+			}
+
+			&-image {
+				height: 100%;
+				object-fit: contain;
+				overflow: hidden;
+			}
+		}
+	}
+</style>
 <script>
 	import Swiper from 'swiper'
 	import { Navigation, A11y, Autoplay, Pagination } from 'swiper/modules'

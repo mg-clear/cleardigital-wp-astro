@@ -3,14 +3,14 @@ import Headline from '@widgets/Headline.astro';
 
 interface Props { 
 	image: {
-		altText,
-		sourceUrl
+		altText?: string,
+		sourceUrl?: string
 	}
-	headline,
-	headlineTag,
-	headlineTypography,
-	description,
-	linkUrl
+	headline?: string,
+	headlineTag?: string,
+	headlineTypography?: string,
+	description?: string,
+	linkUrl?: string
 }
 
 const {
@@ -38,9 +38,11 @@ const {
 
 <style lang="scss">
 	@import 'src/styles/abstracts/variables';
+	@import 'src/styles/abstracts/mixins';
+
 	.feature {
 			@include col(12);
-			@include spacing('large');
+			margin-top: var(--flow-space-large);
 
 			@media (min-width: $breakpoint-tablet) {
 				@include col(6);

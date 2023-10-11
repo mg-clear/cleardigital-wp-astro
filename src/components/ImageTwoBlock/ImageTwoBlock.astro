@@ -11,202 +11,7 @@ const {
 } = Astro.props;
 ---
 
-<style lang="scss">
-	@import 'src/styles/abstracts/variables';
-
-	/* Swiper styling overrides */
-
-	.swiper {
-		--swiper-theme-color: #{$color-brand};
-		position: relative;
-	}
-
-	.swiper-wrapper {
-		height: auto !important;
-	}
-
-	.swiper-pagination-progressbar {
-		background: transparent !important;
-		height: 0.8rem !important;
-		margin-top: 4rem;
-		position: relative !important;
-
-		@media (min-width: $breakpoint-tablet) {
-			margin-top: 5rem;
-		}
-
-		&::before {
-			background-color: $color-background-dark;
-			content: '';
-			display: block;
-			height: 0.1rem;
-			position: relative;
-			top: 50%;
-			transform: translateY(-50%);
-			width: 100%;
-		}
-	}
-
-	.swiper-button-prev,
-	.swiper-button-next {
-		height: 100% !important;
-		margin-top: 0 !important;
-		top: 0 !important;
-		width: 100% !important;
-
-		&::after {
-			display: none !important;
-		}
-
-		&.swiper-button-disabled {
-			opacity: 1 !important;
-		}
-	}
-
-	.swiper-button-prev,
-	.swiper-container-rtl .swiper-button-next {
-		left: -100% !important;
-	}
-
-	.swiper-button-next,
-	.swiper-container-rtl .swiper-button-prev {
-		right: -100% !important;
-	}
-
-
-	[is='flynt-block-image-two-col'] {
-		background-color: $color-background-dark;
-		min-height: var(--blade-view-height);
-		overflow: hidden;
-		padding: 0 !important;
-
-		.columns {
-			@include row(0);
-
-			&-outer {
-				&.swiper {
-					.swiper-wrapper {
-						@media (min-width: $breakpoint-tablet) {
-							flex-wrap: nowrap;
-						}
-					}
-				}
-
-				.swiper-button-next,
-				.swiper-button-prev {
-					display: none;
-
-					@media (min-width: $breakpoint-tablet-horizontal) {
-						display: block;
-					}
-				}
-
-				.swiper-button-next {
-					right: calc(-100% + #{$container-padding-mobile}) !important;
-
-					@media (min-width: $breakpoint-tablet) {
-						right: calc(-100% + #{$container-padding-tablet}) !important;
-					}
-
-					@media (min-width: $breakpoint-desktop) {
-						right: calc(-100% + #{$container-padding-desktop}) !important;
-					}
-				}
-
-				.swiper-button-prev {
-					left: calc(-100% + #{$container-padding-mobile}) !important;
-
-					@media (min-width: $breakpoint-tablet) {
-						left: calc(-100% + #{$container-padding-tablet}) !important;
-					}
-
-					@media (min-width: $breakpoint-desktop) {
-						left: calc(-100% + #{$container-padding-desktop}) !important;
-					}
-				}
-			}
-		}
-
-		.column {
-			@include col(12);
-			height: var(--blade-view-height);
-			position: relative;
-
-			@media (min-width: $breakpoint-tablet) {
-				@include col(6);
-			}
-		}
-
-		.figure {
-			height: 100%;
-			margin: 0;
-			overflow: hidden;
-			position: relative;
-
-			.figure-image {
-				height: 100%;
-				object-fit: cover;
-				width: 100%;
-			}
-		}
-
-		video {
-			height: var(--blade-view-height);
-			margin: 0;
-			object-fit: cover;
-			overflow: hidden;
-			position: relative;
-			width: 100%;
-		}
-
-		.content {
-			bottom: $component-spacing-mobile;
-			left: 0;
-			padding-left: $container-padding-mobile;
-			padding-right: $container-padding-mobile;
-			position: absolute;
-			width: auto;
-
-			@media (min-width: $breakpoint-tablet) {
-				bottom: $component-spacing-tablet;
-				padding-left: $container-padding-tablet;
-				padding-right: $container-padding-tablet;
-			}
-
-			@media (min-width: $breakpoint-desktop) {
-				bottom: $component-spacing-desktop;
-				max-width: 99%;
-				padding-left: $container-padding-desktop;
-				padding-right: $container-padding-desktop;
-			}
-
-			.marker {
-				color: $color-background;
-			}
-		}
-
-		.logo {
-			@include spacing('medium');
-			display: inline-block;
-			height: 4rem;
-			max-width: 19.5rem;
-			overflow: hidden;
-			width: 100%;
-
-			.logo-image {
-				height: 100%;
-				object-fit: contain;
-				width: 100%;
-			}
-		}
-		.h3{
-			color: #fff;
-			margin-bottom: 20px;
-		}
-	}
-</style>
-
-<div class="flyntComponent componentSpacing" is="flynt-block-image-two-col">
+<div class="astroComponent componentSpacing" is="flynt-block-image-two-col">
 	<div class="columns-outer swiper">
 		<div class="columns swiper-wrapper">
 			<div class="column swiper-slide">
@@ -274,7 +79,116 @@ const {
 		<div class="swiper-button-next"></div>
 	</div>
 </div>
+<style lang="scss">
+	@import 'src/styles/abstracts/variables';
+	@import 'src/styles/abstracts/mixins';
 
+	[is='flynt-block-image-two-col'] {
+		background-color: var(--color-background);
+		min-height: var(--blade-view-height);
+		overflow: hidden;
+		padding: 0 !important;
+
+		.columns {
+			@include row(0);
+
+			&-outer {
+				&.swiper {
+					.swiper-wrapper {
+						@media (min-width: $breakpoint-tablet) {
+							flex-wrap: nowrap;
+						}
+					}
+				}
+
+				.swiper-button-next,
+				.swiper-button-prev {
+					display: none;
+
+					@media (min-width: $breakpoint-tablet-horizontal) {
+						display: block;
+					}
+				}
+
+				.swiper-button-next {
+					right: calc(-100% + var(--container-spacing)) !important;
+				}
+
+				.swiper-button-prev {
+					left: calc(-100% + var(--container-spacing)) !important;
+				}
+			}
+		}
+
+		.column {
+			@include col(12);
+			height: var(--blade-view-height);
+			position: relative;
+
+			@media (min-width: $breakpoint-tablet) {
+				@include col(6);
+			}
+		}
+
+		.figure {
+			height: 100%;
+			margin: 0;
+			overflow: hidden;
+			position: relative;
+
+			.figure-image {
+				height: 100%;
+				object-fit: cover;
+				width: 100%;
+			}
+		}
+
+		video {
+			height: var(--blade-view-height);
+			margin: 0;
+			object-fit: cover;
+			overflow: hidden;
+			position: relative;
+			width: 100%;
+		}
+
+		.content {
+			bottom: var(--component-spacing);
+			left: 0;
+			padding-left: var(--container-spacing);
+			padding-right: var(--container-spacing);
+			position: absolute;
+			width: auto;
+
+			@media (min-width: $breakpoint-desktop) {
+				max-width: 99%;
+			}
+
+			.marker {
+				color: var(--color-background);
+			}
+		}
+
+		.logo {
+			display: inline-block;
+			height: 4rem;
+			margin-top: var(--flow-space-medium);
+			max-width: 19.5rem;
+			overflow: hidden;
+			width: 100%;
+
+			.logo-image {
+				height: 100%;
+				object-fit: contain;
+				width: 100%;
+			}
+		}
+		.h3{
+			color: #fff;
+			margin-bottom: 20px;
+		}
+	}
+</style>
 <script>
 	import Swiper from 'swiper'
 	import { Navigation, A11y, Autoplay, Pagination } from 'swiper/modules'

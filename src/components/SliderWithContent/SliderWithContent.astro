@@ -187,6 +187,7 @@ import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-h
 </astro-slider-quote>
 <style lang="scss">
 	@import 'src/styles/abstracts/variables';
+  @import 'src/styles/abstracts/mixins';
 
 	astro-slider-quote {
     overflow: hidden;
@@ -292,7 +293,7 @@ import patternHexagonGreenImage from '@assets/images/SliderWithContent/pattern-h
       &-sliderArrow {
         &--prev,
         &--next {
-          background-color: $color-background-dark;
+          background-color: var(--color-background);
         }
       }
 

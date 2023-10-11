@@ -2,28 +2,6 @@
 import Headline from '@widgets/Headline.astro';
 import ContentGridItem from './Partials/ContentGridItem.astro';
 
-/*
-bladeCssId
-fieldGroupName
-bladeExtraClasses
-description
-eyebrow
-headline
-headlineTag
-headlineTypography
-contentItems {
-	image {
-		altText
-		sourceUrl
-	}
-	headline
-	headlineTag
-	headlineTypography
-	description
-	linkUrl
-}
-*/
-
 interface Props {
 	bladeCssId?: string,
 	fieldGroupName?: string,
@@ -35,14 +13,14 @@ interface Props {
 	headlineTypography?: string,
 	contentItems?: {
 		image: {
-			altText,
-			sourceUrl
+			altText?: string,
+			sourceUrl?: string
 		}
-		headline,
-		headlineTag,
-		headlineTypography,
-		description,
-		linkUrl
+		headline?: string,
+		headlineTag?: string,
+		headlineTypography?: string,
+		description?: string,
+		linkUrl?: string
 	}[]
 }
 
@@ -56,13 +34,11 @@ const {
 	headlineTypography = '',
 	contentItems = []
 } = Astro.props;
-
-
-// console.log(contentItems);
 ---
 
 <style lang="scss">
 	@import 'src/styles/abstracts/variables';
+	@import 'src/styles/abstracts/mixins';
 
 	[is='flynt-block-three-col-content'] {
 		min-height: 100vh;
@@ -76,7 +52,7 @@ const {
 
 			&-blurb {
 				@include typography-blurb;
-				@include spacing('large');
+				margin-top: var(--flow-space-large);
 			}
 		}
 

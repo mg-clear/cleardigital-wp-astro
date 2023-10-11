@@ -2,8 +2,7 @@
  * Buttons
  */
 
-.button,
-.wp-block-button > .wp-block-button__link {
+.button {
   --button-background-color: var(--color-accent);
   --button-border-color: var(--color-accent);
   --button-border-width: 0.2rem;
@@ -82,21 +81,6 @@
       &::after {
         background-position: right center;
       }
-    }
-  }
-}
-
-.wp-block-button {
-  color: var(--button-text-color);
-
-  &.is-style-outline {
-    --button-text-color: var(--color-accent);
-
-    .wp-block-button__link {
-      --button-text-color: var(--color-accent);
-      border: solid var(--button-border-width) var(--color-accent);
-      color: var(--button-text-color);
-      padding: var(--button-padding-block) var(--button-padding-inline);
     }
   }
 }

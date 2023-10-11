@@ -342,7 +342,8 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
 </header>
 
 <style lang="scss">
-  @import "@styles/abstracts/_variables.scss";
+  @import "@styles/abstracts/variables";
+  @import "@styles/abstracts/mixins";
 
   .main-navigation {
     $self: &;
@@ -444,7 +445,7 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
 		}
 
     .expand-btn {
-      border: 0.4rem solid $color-brand;
+      border: 0.4rem solid var(--color-accent);
       border-radius: 50%;
       display: inline-block;
       height: 3.5rem;
@@ -456,7 +457,7 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
       }
 
       &::before {
-        background-color: $color-brand;
+        background-color: var(--color-accent);
         border-radius: 1rem;
         content: '';
         height: 0.4rem;
@@ -468,7 +469,7 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
       }
 
       &::after {
-        background-color: $color-brand;
+        background-color: var(--color-accent);
         border-radius: 1rem;
         content: '';
         height: 1.3rem;
@@ -490,7 +491,7 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
       }
 
       &-item {
-        border-bottom: 1px solid rgba($color-contrast, 0.5);
+        border-bottom: 1px solid rgba(var(--color-background-secondary), 0.5);
         @media (min-width: $breakpoint-tablet-horizontal) {
           border-bottom: 0;
           margin-left: 5rem;
@@ -531,7 +532,7 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
           text-decoration: none;
 
 					&:after {
-						background-color: $color-brand;
+						background-color: var(--color-accent);
 						bottom: -206%;
 						content: '';
 						width: 0;
@@ -543,7 +544,7 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
 					}
 
           &:hover {
-            color: $color-brand;
+            color: var(--color-accent);
           }
         }
       }
@@ -565,7 +566,7 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
 
       &--active {
         > a {
-          color: $color-brand;;
+          color: var(--color-accent);
         }
         .expand-btn {
           &::after {
@@ -642,7 +643,7 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
 
       @media (max-width: $breakpoint-tablet-horizontal) {
         background: var(--header-background-color);
-        border-top: 1px solid rgba($color-contrast, 0.5);
+        border-top: 1px solid rgba(var(--color-background-secondary), 0.5);
         display: none;
         flex: 0 0 100%;
         height: 100vh;
@@ -681,12 +682,12 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
       }
 
       &-dropdown {
-        background-color: $color-background;
+        background-color: var(--color-background);
         position: relative;
         width: 100%;
 
         @media (min-width: $breakpoint-tablet-horizontal) {
-					border-top: 1px solid $color-background-light;
+					border-top: 1px solid var(--color-background)-light;
           height: 0;
           left: 0;
           overflow: hidden;
@@ -777,13 +778,13 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
           }
 
           a {
-            color: $color-background-dark;
+            color: var(--color-background)-dark;
             font-weight: 700;
             text-decoration: none;
             transition: color 0.3s ease-in-out;
 
             &:hover {
-              color: $color-accent;
+              color: var(--color-accent);
             }
           }
         }
