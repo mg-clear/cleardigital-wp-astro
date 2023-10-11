@@ -1,6 +1,6 @@
 ---
 import CTAButton from '../../widgets/CTAButton.astro';
-import girlInVrHeadset from '@assets/images/ImageTwoBlock/girl-in-vr-headset.webp';
+import ImageContentColumn from './Partials/ImageContentColumn.astro';
 
 interface Props {
 
@@ -11,7 +11,7 @@ const {
 } = Astro.props;
 ---
 
-<div class="astroComponent componentSpacing" is="flynt-block-image-two-col">
+<astro-image-two-block class="astroComponent componentSpacing" data-theme="dark">
 	<div class="columns-outer swiper">
 		<div class="columns swiper-wrapper">
 			<div class="column swiper-slide">
@@ -51,40 +51,17 @@ const {
 					/>
 				</div>
 			</div>
-			<div class="column swiper-slide">
-				<video class="video" width="640" height="640" aria-hidden="true" autoplay muted loop poster={girlInVrHeadset.src}>
-					<source src="/videos/video-dummy.mp4" type="video/mp4">
-					<source src="/videos/video-dummy.webm" type="video/webm">
-				</video>
-				<!-- <figure class="figure">
-					<img class="figure-image lazyload" src="/man-holding-phone.webp" width="800" height="1090" alt="Background Image">
-				</figure> -->
-				<div class="content">
-					<div class="logo">
-						<img class="logo-image lazyload" src="/logo-digimarc.webp" width="290" height="61" alt="Logo">
-					</div>
-					<h2 class="h3">
-						<span class="art art--circleWhite">27%</span>
-						increase on click-through rates.
-					</h2>
-					<CTAButton
-						label = "View Case Study"
-						href = "/"
-						target = "_self"
-					/>
-				</div>
-			</div>
+			<ImageContentColumn />
 		</div>
 		<div class="swiper-button-prev"></div>
 		<div class="swiper-button-next"></div>
 	</div>
-</div>
+</astro-image-two-block>
 <style lang="scss">
 	@import 'src/styles/abstracts/variables';
 	@import 'src/styles/abstracts/mixins';
 
-	[is='flynt-block-image-two-col'] {
-		background-color: var(--color-background);
+	astro-image-two-block {
 		min-height: var(--blade-view-height);
 		overflow: hidden;
 		padding: 0 !important;
@@ -163,10 +140,6 @@ const {
 			@media (min-width: $breakpoint-desktop) {
 				max-width: 99%;
 			}
-
-			.marker {
-				color: var(--color-background);
-			}
 		}
 
 		.logo {
@@ -183,13 +156,10 @@ const {
 				width: 100%;
 			}
 		}
-		.h3{
-			color: #fff;
-			margin-bottom: 20px;
-		}
 	}
 </style>
 <script>
+	// @ts-nocheck
 	import Swiper from 'swiper'
 	import { Navigation, A11y, Autoplay, Pagination } from 'swiper/modules'
 	import 'swiper/css'
@@ -197,31 +167,54 @@ const {
 	import 'swiper/css/a11y'
 	import 'swiper/css/navigation'
 
-	const sliderSelector = '[is="flynt-block-image-two-col"] .swiper';
-	const slider = document.querySelector(sliderSelector);
+	class AstroImageTwoBlock extends HTMLElement {
+    constructor(...args) {
+      const self = super(...args);
+      self.init();
+      return self;
+    }
 
-	if (slider) {
-		const parameters = {
-			modules: [Navigation, A11y, Autoplay, Pagination],
-			navigation: {
-				nextEl: '[is="flynt-block-image-two-col"] .swiper-button-next',
-				prevEl: '[is="flynt-block-image-two-col"] .swiper-button-prev'
-			},
-			slidesPerView: 1,
-			speed: 400,
-			spaceBetween: 0,
-			breakpoints: {
-				992: {
-					slidesPerView: 2
-				},
-				1200: {
-					noSwiping: true,
-					noSwipingClass: 'swiper-slide',
-					slidesPerView: 2
-				}
+    init() {
+      this.resolveElements();
+    }
+
+    resolveElements() {
+			this.slider = this.querySelector('.swiper');
+			this.sliderNextEl = this.querySelector('.swiper-button-next')
+			this.sliderPrevEl = this.querySelector('.swiper-button-prev')
+    }
+
+		connectedCallback() {
+			if (this.slider) {
+				this.initSlider()
 			}
 		}
-		
-		const swiper = new Swiper(sliderSelector, parameters)
-	}
+
+		initSlider() {
+			const parameters = {
+				modules: [Navigation, A11y, Autoplay, Pagination],
+				navigation: {
+					nextEl: this.sliderNextEl,
+					prevEl: this.sliderPrevEl
+				},
+				slidesPerView: 1,
+				speed: 400,
+				spaceBetween: 0,
+				breakpoints: {
+					992: {
+						slidesPerView: 2
+					},
+					1200: {
+						noSwiping: true,
+						noSwipingClass: 'swiper-slide',
+						slidesPerView: 2
+					}
+				}
+			}
+			
+			const swiper = new Swiper(this.slider, parameters)
+		}
+  }
+
+  customElements.define('astro-image-two-block', AstroImageTwoBlock);	
 </script>

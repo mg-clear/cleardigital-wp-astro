@@ -1,0 +1,87 @@
+---
+import girlInVrHeadset from '@assets/images/ImageTwoBlock/girl-in-vr-headset.webp';
+---
+
+<div class="column swiper-slide">
+  <video class="video" width="640" height="640" aria-hidden="true" autoplay muted loop poster={girlInVrHeadset.src}>
+    <source src="/videos/video-dummy.mp4" type="video/mp4">
+    <source src="/videos/video-dummy.webm" type="video/webm">
+  </video>
+  <!-- <figure class="figure">
+    <img class="figure-image lazyload" src="/man-holding-phone.webp" width="800" height="1090" alt="Background Image">
+  </figure> -->
+  <div class="content">
+    <div class="logo">
+      <img class="logo-image lazyload" src="/logo-digimarc.webp" width="290" height="61" alt="Logo">
+    </div>
+    <h2 class="h3">
+      <span class="art art--circleWhite">27%</span>
+      increase on click-through rates.
+    </h2>
+    <a class="button button--text" href="/">View Case Study</a>
+  </div>
+</div>
+<style lang="scss">
+  @import '@styles/abstracts/variables';
+  @import '@styles/abstracts/mixins';
+
+  .column {
+    @include col(12);
+    height: var(--blade-view-height);
+    position: relative;
+
+    @media (min-width: $breakpoint-tablet) {
+      @include col(6);
+    }
+  }
+
+  .figure {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+
+    .figure-image {
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  video {
+    height: var(--blade-view-height);
+    margin: 0;
+    object-fit: cover;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .content {
+    bottom: var(--component-spacing);
+    left: 0;
+    padding-left: var(--container-spacing);
+    padding-right: var(--container-spacing);
+    position: absolute;
+    width: auto;
+
+    @media (min-width: $breakpoint-desktop) {
+      max-width: 99%;
+    }
+  }
+
+  .logo {
+    display: inline-block;
+    height: 4rem;
+    margin-top: var(--flow-space-medium);
+    max-width: 19.5rem;
+    overflow: hidden;
+    width: 100%;
+
+    .logo-image {
+      height: 100%;
+      object-fit: contain;
+      width: 100%;
+    }
+  }
+</style>
