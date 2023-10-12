@@ -24,7 +24,7 @@ const { title, metadescription, ogimage } = Astro.props;
     ogimage = {ogimage}
   />
   <body>
-    {useCustomMouse && <MouseCursor />}
+    {(useCustomMouse != undefined) && <MouseCursor />}
     <main>
       <Navigation />
       <slot />

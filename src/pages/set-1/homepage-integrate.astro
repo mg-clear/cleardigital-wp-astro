@@ -74,6 +74,34 @@ const response = await fetch(import.meta.env.SECRET_GRAPHQL_ENDPOINT, {
 						}
 						... on Page_Astropagecontent_AstroBlades_InsightsBlade {
 							fieldGroupName
+          					headline
+							headlineTag
+							headlineTypography
+							description
+							ctaUrl
+							ctaText
+							ctaTarget
+							ctaStyle
+							ctaLightboxVideoUrl
+							featuredInGroup {
+								headline
+								headlineTag
+								headlineTypography
+								featuredInLogos {
+									logo {
+										altText
+										sourceUrl
+									}
+								}
+							}
+							cards {
+								ctaUrl
+								cardHeadline
+								cardDescription
+								cardBackground {
+									sourceUrl
+								}
+							}
 						}
 					}
 				}
@@ -147,11 +175,6 @@ const generateBladeQuery = function(name) {
 	queryPart += '}';
 	return queryPart;
 }
-
-// console.log(generateBladeQuery('Page_Astropagecontent_AstroBlades_BannerBlade'));
-// console.log(astroBlades);
-
-
 
 ---
 
