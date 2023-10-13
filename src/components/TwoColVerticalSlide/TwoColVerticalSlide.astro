@@ -14,83 +14,67 @@ const {
 } = Astro.props;
 ---
 
-<div class="two-col-vertical-slide" is="TwoColVerticalSlide" data-theme="light">
-  <div class="items-wrapper">
-    <div class="items-left-outer">
-      <div class="section-item-left">
-        <div class="section-item-left-inner">
-          <div class="heading-wrapper">
-            <div class="subtitle">Our process</div>
-            <h3>Nisl pulvinar consectet nec set adipiscing</h3>
-          </div>
-          <div class="description-wrapper">
-            <h5>Lorem ipsum dolor sit amet consectetur</h5>
-            <p>Lorem ipsum dolor sit amet consectetur. Pharetra dictum faucibus proin turpis sit. Tortor amet sit nunc libero 
-              non nec suscipit volutpat in. Viverra adipiscing dolor amet vitae. Malesuada vitae consectetur erat risus ac nibh. 
-              Lectus egestas adipiscing interdum hendrerit vitae consequat odio. Mattis imperdiet vitae tellus fringilla. Magna.
-            </p>
-          </div>
+<two-col-vertical-slide>
+
+  <div class="scroll-reveal-section">
+    <div class="item">
+      <div class="text-holder">
+        <div class="heading-wrapper">
+          <div class="subtitle">Our process</div>
+          <h3>Nisl pulvinar consectet nec set adipiscing</h3>
+        </div>
+        <div class="description-wrapper">
+          <h5>Lorem ipsum dolor sit amet consectetur</h5>
+          <p>Lorem ipsum dolor sit amet consectetur. Pharetra dictum faucibus proin turpis sit. Tortor amet sit nunc libero 
+            non nec suscipit volutpat in. Viverra adipiscing dolor amet vitae. Malesuada vitae consectetur erat risus ac nibh. 
+            Lectus egestas adipiscing interdum hendrerit vitae consequat odio. Mattis imperdiet vitae tellus fringilla. Magna.
+          </p>
         </div>
       </div>
-      <div class="section-item-left">
-        <div class="section-item-left-inner">
-          <div class="heading-wrapper">
-            <div class="subtitle">Our process</div>
-            <h3>Nisl pulvinar consectet nec set adipiscing</h3>
-          </div>
-          <div class="description-wrapper">
-            <h5>Lorem ipsum dolor sit amet consectetur</h5>
-            <p>Lorem ipsum dolor sit amet consectetur. Pharetra dictum faucibus proin turpis sit. Tortor amet sit nunc libero 
-              non nec suscipit volutpat in. Viverra adipiscing dolor amet vitae. Malesuada vitae consectetur erat risus ac nibh. 
-              Lectus egestas adipiscing interdum hendrerit vitae consequat odio. Mattis imperdiet vitae tellus fringilla. Magna.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="section-item-left">
-        <div class="section-item-left-inner">
-          <div class="heading-wrapper">
-            <div class="subtitle">Our process</div>
-            <h3>Nisl pulvinar consectet nec set adipiscing</h3>
-          </div>
-          <div class="description-wrapper">
-            <h5>Lorem ipsum dolor sit amet consectetur</h5>
-            <p>Lorem ipsum dolor sit amet consectetur. Pharetra dictum faucibus proin turpis sit. Tortor amet sit nunc libero 
-              non nec suscipit volutpat in. Viverra adipiscing dolor amet vitae. Malesuada vitae consectetur erat risus ac nibh. 
-              Lectus egestas adipiscing interdum hendrerit vitae consequat odio. Mattis imperdiet vitae tellus fringilla. Magna.
-            </p>
-          </div>
-        </div>
+      <div class="image-holder">
+        <Image src={ourProcess} alt='ourProcess image'></Image>
       </div>
     </div>
-    <div class="items-right-outer">
-      <div class="section-item-right">
-        <div class="section-item-right-inner">
-          <div class="img-wrapper">
-            <img src="" alt="">
-            <Image src={ourProcess} alt='ourProcess image'></Image>
-          </div>
+  
+    <div class="item">
+      <div class="text-holder">
+        <div class="heading-wrapper">
+          <div class="subtitle">Our process</div>
+          <h3>Nisl pulvinar consectet nec set adipiscing</h3>
+        </div>
+        <div class="description-wrapper">
+          <h5>Lorem ipsum dolor sit amet consectetur</h5>
+          <p>Lorem ipsum dolor sit amet consectetur. Pharetra dictum faucibus proin turpis sit. Tortor amet sit nunc libero 
+            non nec suscipit volutpat in. Viverra adipiscing dolor amet vitae. Malesuada vitae consectetur erat risus ac nibh. 
+            Lectus egestas adipiscing interdum hendrerit vitae consequat odio. Mattis imperdiet vitae tellus fringilla. Magna.
+          </p>
         </div>
       </div>
-      <div class="section-item-right">
-        <div class="section-item-right-inner">
-          <div class="img-wrapper">
-            <img src="" alt="">
-            <Image src={planing} alt='ourProcess image'></Image>
-          </div>
+      <div class="image-holder">
+        <Image src={planing} alt='ourProcess image'></Image>
+      </div>
+    </div>
+    
+    <div class="item">
+      <div class="text-holder">
+        <div class="heading-wrapper">
+          <div class="subtitle">Our process</div>
+          <h3>Nisl pulvinar consectet nec set adipiscing</h3>
+        </div>
+        <div class="description-wrapper">
+          <h5>Lorem ipsum dolor sit amet consectetur</h5>
+          <p>Lorem ipsum dolor sit amet consectetur. Pharetra dictum faucibus proin turpis sit. Tortor amet sit nunc libero 
+            non nec suscipit volutpat in. Viverra adipiscing dolor amet vitae. Malesuada vitae consectetur erat risus ac nibh. 
+            Lectus egestas adipiscing interdum hendrerit vitae consequat odio. Mattis imperdiet vitae tellus fringilla. Magna.
+          </p>
         </div>
       </div>
-      <div class="section-item-right">
-        <div class="section-item-right-inner">
-          <div class="img-wrapper">
-            <img src="" alt="">
-            <Image src={designing} alt='ourProcess image'></Image>
-          </div>
-        </div>
+      <div class="image-holder">
+        <Image src={designing} alt='ourProcess image'></Image>
       </div>
     </div>
   </div>
-</div>
+</two-col-vertical-slide>
 
 <style lang="scss">
   @import 'src/styles/abstracts/variables';
@@ -152,5 +136,78 @@ const {
       }
     }
   }
-  
+
+  two-col-vertical-slide {
+    .item {
+      position: relative;
+
+      &:after {
+        content: "";
+        display: block;
+        height: 100vh;
+        margin-bottom: -100vh;
+      }
+      
+      &:last-of-type {
+        &:after { display: none; }
+        margin-bottom: 0;
+      }
+      
+      .image-holder {
+        position: sticky;
+        top: 0;
+        float: right;
+        overflow: hidden;
+        width: 50%;
+        height: 100vh;
+        img {
+          position: relative;
+          height: 100%;
+          width: auto;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+      
+      .text-holder {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 50%;
+        min-height: 120vh;
+        margin-right: 50%;
+        padding: 1em;
+      }
+    }
+  }
 </style>
+
+<script>
+  class TwoColVerticalSlide extends HTMLElement {
+    constructor(...args) {
+      const self = super(...args);
+      self.init();
+      return self;
+    }
+
+    init() {
+      this.resolveElements();
+      this.bindFunctions();
+      this.bindEvents();
+    }
+
+    resolveElements() {
+      
+    }
+
+    bindFunctions() {
+
+    }
+
+    bindEvents() {
+      
+    }
+  }
+
+  customElements.define('two-col-vertical-slide', TwoColVerticalSlide);
+</script>
