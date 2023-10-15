@@ -241,15 +241,7 @@ const {
 				@include col(12);
 
 				&:not(:last-child) {
-					margin-right: $gutter-width * 2;
-
-					@media (min-width: $breakpoint-tablet) {
-						margin-right: $gutter-width-tablet * 2;
-					}
-
-					@media (min-width: $breakpoint-desktop) {
-						margin-right: $gutter-width-desktop * 2;
-					}
+					margin-right: calc(var(--column-gap) * 2);
 				}
 			}
 
