@@ -2,69 +2,139 @@
 
 ---
 
-<div id="mouseCursor" data-expanded="false" data-offscreen="true">
-	<div class="circle">
-
-	</div>
+<div id="cursor" data-circle-expand="false" data-icon="">
+	<div id="cursorCircle"></div>
+	<div id="cursorIcon"></div>
 </div>
 
 <style lang="scss">
-	#mouseCursor {
-		width: 0px;
-		height: 0px;
-		position: fixed;
-		overflow: visible;
-		top: 100px;
-		left: 100px;
-		z-index: 9999;
-		pointer-events: none;
 
-		&[data-offscreen="true"] {
-			display: none;
-		}
+:global(*) {
+	//cursor: none !important;
+}
 
-		* {
-			pointer-events: none;
-		}
+#cursor, #cursor * {
+    pointer-events: none;
+}
 
-		.circle {
-			position: absolute;
-			width: 24px;
-			height: 24px;
-			border: 8px solid var(--color-pink);
-			border-radius: 100px;
-			transform: translateX(-50%) translateY(-50%);
-			transition: 180ms width ease, 180ms height ease;
-		}
+#cursor {
+    display: block;
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
 
-		&[data-expanded="true"] {
+#cursor.hidden {
+    display: none;
+}
 
-			.circle {
-				width: 48px;
-				height: 48px;
-			}
-		}
-	}
+#cursorCircle {
+    display: block;
+    width: 25px;
+    height: 25px;
+    border: 8px solid var(--color-pink);
+    border-radius: 100%;
+    transition: width 200ms ease-in-out, height 200ms ease-in-out, transform 100ms ease-out;
+}
+
+#cursor.click #cursorCircle {
+    transform: scale(0.63);
+}
+
+#cursor[data-circle-expand="true"] #cursorCircle {
+    width: 100%;
+    height: 100%;
+}
+
+#cursor[data-circle-expand="true"].click #cursorCircle {
+    transform: scale(0.75);
+}
+
+#cursorIcon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%) scale(0);
+    width: 35px;
+    height: 35px;
+    transition: transform 300ms ease-out;
+}
+
+#cursor:not([data-icon=""]) #cursorIcon {
+    transform:  translateX(-50%) translateY(-50%) scale(1);
+    background-position: center;
+    background-size: contain;
+}
+
+#cursor:not([data-icon=""]).click #cursorIcon {
+    transform:  translateX(-50%) translateY(-50%) scale(0.75);
+}
+
+#cursor[data-icon="play"] #cursorIcon {
+    background-image: url('cursors/play.svg');
+}
+
+#cursor[data-icon="plus"] #cursorIcon {
+    background-image: url('cursors/plus.svg');
+}
 </style>
 
 <script>
 	(function(){
-		const html = document.getElementsByTagName('html')[0];
-		const cursor = document.getElementById('mouseCursor');
-		const handleCursorMove = function(event) {
-			cursor.style.left = event.clientX.toString() + 'px';
-			cursor.style.top = event.clientY.toString() + 'px';
-		}
-		document.addEventListener('mousemove', handleCursorMove);
+    window.addEventListener('DOMContentLoaded', function(){
+        const cursor = document.getElementById('cursor');
 
-		const hideCursor = function() {
-			cursor.dataset.offscreen = "true";
-		}
-		html.addEventListener('mouseleave', hideCursor);
+        if(cursor) {
 
-		const showCursor = function() {
-			cursor.dataset.offscreen = "false";
-		}
-		html.addEventListener('mouseenter', showCursor);
-	})();
+            let cursorX = -100;
+            let cursorY = -100;
+            let hoveredElementsExpand = [];
+            let iconElementsExpand = [];
+
+            const cursorSizeOffset = 0.5 * cursor.clientWidth;
+
+            const initializeCursor = function() {
+                document.addEventListener('mousemove', event => {
+                    cursorX = event.clientX - cursorSizeOffset;
+                    cursorY = event.clientY - cursorSizeOffset;
+                });
+
+                document.documentElement.addEventListener('mousedown', () => {
+                    cursor.classList.add('click');
+                });
+
+                document.documentElement.addEventListener('mouseup', () => {
+                    cursor.classList.remove('click');
+                });
+
+                document.documentElement.addEventListener('mouseleave', () => {
+                    cursor.classList.add('hidden');
+                });
+
+                document.documentElement.addEventListener('mouseenter', () => {
+                    cursor.classList.remove('hidden');
+                });
+
+                const moveCursor = function() {
+                    cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+                    hoveredElementsExpand = document.querySelectorAll('[data-cursor-expand]:hover, a:hover, button:hover');
+                    iconElementsExpand = document.querySelectorAll('[data-cursor-icon]:hover');
+                    cursor.dataset.circleExpand = (0 < hoveredElementsExpand.length) ? 'true' : 'false';
+                    cursor.dataset.icon = (0 < iconElementsExpand.length) ? iconElementsExpand[0].dataset.cursorIcon : '';
+    
+                    requestAnimationFrame(moveCursor);
+                }
+    
+                requestAnimationFrame(moveCursor);
+            }
+
+            initializeCursor();
+        }
+
+    });
+})();
 </script>

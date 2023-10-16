@@ -1,16 +1,91 @@
 ---
-import CTAButton from '../../widgets/CTAButton.astro';
+import Headline from '@widgets/Headline.astro';
+import CTAButton from '@widgets/CTAButton.astro';
+import Card from './Partials/Card.astro';
+
+/*
+
+headline
+headlineTag
+headlineTypography
+description
+ctaUrl
+ctaText
+ctaTarget
+ctaStyle
+ctaLightboxVideoUrl
+featuredInGroup {
+	headline
+	headlineTag
+	headlineTypography
+	featuredInLogos {
+		logo {
+			altText
+			sourceUrl
+		}
+	}
+}
+cards {
+	ctaUrl
+	cardHeadline
+	cardDescription
+	cardBackground {
+		sourceUrl
+	}
+}
+
+*/
 
 interface Props {
-
+	headline?: string,
+	headlineTag?: string,
+	headlineTypography?: string,
+	description?: string,
+	ctaUrl?: string,
+	ctaText?: string,
+	ctaTarget?: string,
+	ctaStyle?: string,
+	ctaLightboxVideoUrl?: string,
+	featuredInGroup?: {
+		headline,
+		headlineTag,
+		headlineTypography,
+		featuredInLogos: {
+			sourceUrl,
+			altText
+		}
+	},
+	cards?: {
+		ctaUrl,
+		cardHeadline,
+		cardDescription,
+		cardBackground: {
+			sourceUrl
+		}
+	}[]
 }
 
 const {
-
+	headline = '',
+	headlineTag = '',
+	headlineTypography = '',
+	description = '',
+	ctaUrl = '',
+	ctaText = '',
+	ctaTarget = '',
+	ctaStyle = '',
+	ctaLightboxVideoUrl = '',
+	featuredInGroup = {
+		headline: '',
+		headlineTag:'',
+		headlineTypography:'',
+		featuredInLogos: []
+	},
+	cards = [],
 } = Astro.props;
 ---
 
-<div class="blade" is="flynt-slider-posts">
+<!-- <div class="blade" is="flynt-slider-posts">
 	<div class="container">
 		<div class="content">
 			<div class="intro">
@@ -104,6 +179,70 @@ const {
 		</div>
 		<div class="content content--logos row align-items-center mt-15 mt-lg-36">
 			<div class="logos-heading">
+				<h3 class="star"><span class="art art--star">Featured in:</span></h3>
+			</div>
+			<div class="logos">
+				<ul class="logos-list">
+					<li class="logos-item">
+						<div class="logo">
+							<img class="logo-image lazyload" src="/logo-forbes.svg" width="153" height="47" alt="Logo">
+						</div>
+					</li>
+					<li class="logos-item">
+						<div class="logo">
+							<img class="logo-image lazyload" src="/logo-medium.svg" width="153" height="47" alt="Logo">
+						</div>
+					</li>
+					<li class="logos-item">
+						<div class="logo">
+							<img class="logo-image lazyload" src="/logo-logoipsum.svg" width="153" height="47" alt="Logo">
+						</div>
+					</li>
+					<li class="logos-item">
+						<div class="logo">
+							<img class="logo-image lazyload" src="/logo-hyperbest.svg" width="153" height="47" alt="Logo">
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> -->
+<div class="blade" is="flynt-slider-posts" data-theme="light">
+	<div class="container">
+		<div class="content">
+			<div class="intro">
+				<Headline
+					tag={headlineTag}
+					content={headline}
+					typography={headlineTypography}
+				/>
+				<!-- <h3>Clear Digital news, thoughts, and
+					<span class="marker marker--underline">insights</span>.
+				</h3> -->
+				{description && <p set:html={description} />}
+				{ctaText && <CTAButton class="margin-start-30" label={ctaText} href={ctaUrl} target={ctaTarget} style={ctaStyle} lightboxVideo={ctaLightboxVideoUrl} />}
+			</div>
+			<div class="posts-outer slider swiper">
+				<div class="posts swiper-wrapper">
+					{cards.map((card)=>{
+						return <Card 
+							{... card}
+						/>
+					})}
+				</div>
+				<div class="swiper-pagination"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
+		</div>
+		<div class="content content--logos row align-items-center mt-15 mt-lg-36">
+			<div class="logos-heading">
+				<Headline
+					tag={featuredInGroup.headlineTag}
+					content={featuredInGroup.headline}
+					typography={featuredInGroup.headlineTypography}
+				/>
 				<h3 class="star"><span class="art art--star">Featured in:</span></h3>
 			</div>
 			<div class="logos">

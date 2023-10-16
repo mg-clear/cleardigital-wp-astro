@@ -5,6 +5,8 @@ import Navigation from "../../components/Navigation/Navigation.astro";
 import Footer from "../../components/Footer/Footer.astro";
 import MouseCursor from "@widgets/MouseCursor.astro";
 
+const useCustomMouse = import.meta.env.PUBLIC_USE_CUSTOM_CURSOR;
+
 interface Props {
   title: string;
   metadescription: string;
@@ -22,11 +24,11 @@ const { title, metadescription, ogimage } = Astro.props;
     ogimage = {ogimage}
   />
   <body>
+    {(useCustomMouse != undefined) && <MouseCursor />}
     <main>
       <Navigation />
       <slot />
       <Footer />
     </main>
-    <!-- <MouseCursor /> -->
   </body>
 </html>
