@@ -3,39 +3,6 @@ import Headline from '@widgets/Headline.astro';
 import CTAButton from '@widgets/CTAButton.astro';
 import Card from './Partials/Card.astro';
 
-/*
-
-headline
-headlineTag
-headlineTypography
-description
-ctaUrl
-ctaText
-ctaTarget
-ctaStyle
-ctaLightboxVideoUrl
-featuredInGroup {
-	headline
-	headlineTag
-	headlineTypography
-	featuredInLogos {
-		logo {
-			altText
-			sourceUrl
-		}
-	}
-}
-cards {
-	ctaUrl
-	cardHeadline
-	cardDescription
-	cardBackground {
-		sourceUrl
-	}
-}
-
-*/
-
 interface Props {
 	headline?: string,
 	headlineTag?: string,
@@ -51,9 +18,11 @@ interface Props {
 		headlineTag,
 		headlineTypography,
 		featuredInLogos: {
-			sourceUrl,
-			altText
-		}
+			logo: {
+				sourceUrl,
+				altText
+			}
+		}[]
 	},
 	cards?: {
 		ctaUrl,
@@ -83,8 +52,6 @@ const {
 	},
 	cards = [],
 } = Astro.props;
-
-//console.log();
 
 ---
 
@@ -552,30 +519,16 @@ const {
 					content={featuredInGroup.headline}
 					typography={featuredInGroup.headlineTypography}
 				/>
-				<h3 class="star"><span class="art art--star">Featured in:</span></h3>
 			</div>
 			<div class="logos">
 				<ul class="logos-list">
-					<li class="logos-item">
-						<div class="logo">
-							<img class="logo-image lazyload" src="/logo-forbes.svg" width="153" height="47" alt="Logo">
-						</div>
-					</li>
-					<li class="logos-item">
-						<div class="logo">
-							<img class="logo-image lazyload" src="/logo-medium.svg" width="153" height="47" alt="Logo">
-						</div>
-					</li>
-					<li class="logos-item">
-						<div class="logo">
-							<img class="logo-image lazyload" src="/logo-logoipsum.svg" width="153" height="47" alt="Logo">
-						</div>
-					</li>
-					<li class="logos-item">
-						<div class="logo">
-							<img class="logo-image lazyload" src="/logo-hyperbest.svg" width="153" height="47" alt="Logo">
-						</div>
-					</li>
+					{featuredInGroup.featuredInLogos.map((item)=>{
+						return <li class="logos-item">
+							<div class="logo">
+								<img class="logo-image lazyload" src={item.logo.sourceUrl} width="153" height="47" alt={item.logo.altText} />
+							</div>
+						</li>
+					})}
 				</ul>
 			</div>
 		</div>
