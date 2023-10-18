@@ -1,17 +1,83 @@
 ---
-interface Props {}
 
-const {} = Astro.props;
+import PanelItem from './Partials/PanelItem.astro';
+import PanelContent from './Partials/PanelContent.astro';
+
+/*
+bladeCssId
+bladeExtraClasses
+headline
+headlineTag
+headlineTypography
+contentItems {
+  panelTitle
+  panelImage {
+    altText
+    sourceUrl
+  }
+  panelHeadline
+  panelContent
+  ctaText
+  ctaUrl
+  ctaStyle
+  ctaTarget
+  ctaLightboxVideoUrl
+}
+*/
+
+import Headline from '@widgets/Headline.astro';
+
+interface Props {
+  bladeCssId?: string,
+  bladeExtraClasses?: string,
+  headline?: string,
+  headlineTag?: string,
+  headlineTypography?: string,
+  contentItems?: {
+    panelTitle,
+    panelImage: {
+      altText,
+      sourceUrl,
+    },
+    panelHeadline,
+    panelContent,
+    ctaText,
+    ctaUrl,
+    ctaStyle,
+    ctaTarget,
+    ctaLightboxVideoUrl,
+  }[]
+}
+
+const {
+  bladeCssId = '',
+  bladeExtraClasses = '',
+  headline = '',
+  headlineTag = '',
+  headlineTypography = '',
+  contentItems = []
+} = Astro.props;
+
+console.log()
 ---
 
-<section class="tabs-with-content blade">
+<section id={bladeCssId} class:list={["tabs-with-content blade", bladeExtraClasses]}>
   <div class="container blade-content">
     <div class="intro">
-      <h3>Our services.</h3>
+      { headline && <Headline
+        tag={headlineTag}
+        content={headline}
+        typography={headlineTypography}
+      /> }
     </div>
     <div class="tabs-with-content-items">
       <div class="tabs-list">
-        <div class="tabs-item">
+        {
+          contentItems.map((item)=>{
+            return <PanelItem {... item} />
+          })
+        }
+        <!-- <div class="tabs-item">
           <div class="tab">
             <div class="tab-head" data-cursor-icon="plus" data-cursor-expand>
               <h4>Brand strategy</h4>
@@ -470,11 +536,16 @@ const {} = Astro.props;
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="tabs-with-content-content">
-      <div class="tab-body">
+      {
+        contentItems.map((item)=>{
+          return <PanelContent {... item} />
+        })
+      }
+      <!-- <div class="tab-body">
         <div class="tab-bodyInner">
           <div class="tab-image">
             <picture class="tab-figure">
@@ -843,12 +914,12 @@ const {} = Astro.props;
             data-cursor-icon="minus"
             data-cursor-expand></span>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
 
-<style lang="scss">
+<style lang="scss" is:global>
   @import 'src/styles/abstracts/variables';
 
   .tabs-with-content {
@@ -1081,9 +1152,9 @@ const {} = Astro.props;
     }
 
     function handleTabClick(e) {
-			if (e.target.classList.contains('tab-head') || e.target.tagName === 'H4' || e.target.classList.contains('expand-btn')) {
+			if (e.target.classList.contains('tab-head') || e.target.tagName === 'H3' || e.target.classList.contains('expand-btn')) {
 				let tabHead = e.target
-				let tabId = e.target.tagName === 'H4' ? tabHead.closest('.tab-head').getAttribute('data-tab') :  tabHead.getAttribute('data-tab')
+				let tabId = e.target.tagName === 'H3' ? tabHead.closest('.tab-head').getAttribute('data-tab') :  tabHead.getAttribute('data-tab')
 				let windowWidth = window.innerWidth
 
 				if (windowWidth > 767) {

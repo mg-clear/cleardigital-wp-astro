@@ -65,8 +65,26 @@ const response = await fetch(import.meta.env.SECRET_GRAPHQL_ENDPOINT, {
 							}
 						}
 						... on Page_Astropagecontent_AstroBlades_TwoColumnAccordionBlade {
-							bladeCssId
 							fieldGroupName
+							bladeCssId
+							bladeExtraClasses
+							headline
+							headlineTag
+							headlineTypography
+							contentItems {
+								panelTitle
+								panelImage {
+									altText
+									sourceUrl
+								}
+								panelHeadline
+								panelContent
+								ctaText
+								ctaUrl
+								ctaStyle
+								ctaTarget
+								ctaLightboxVideoUrl
+							}
 						}
 						... on Page_Astropagecontent_AstroBlades_TestimonialsBlade {
 							bladeCssId

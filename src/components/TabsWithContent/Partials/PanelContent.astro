@@ -1,0 +1,72 @@
+---
+import CTAButton from '@widgets/CTAButton.astro';
+import Headline from '@widgets/Headline.astro';
+
+interface Props {
+	panelTitle?: string;
+	panelImage?: {
+		altText;
+		sourceUrl;
+	};
+	panelHeadline?: string;
+	panelContent?: string;
+	ctaText?: string;
+	ctaUrl?: string;
+	ctaStyle?: string;
+	ctaTarget?: string;
+	ctaLightboxVideoUrl?: string;
+}
+
+const {
+	panelTitle = "",
+	panelImage = {
+		altText: "",
+		sourceUrl: "",
+	},
+	panelHeadline = "",
+	panelContent = "",
+	ctaText = "",
+	ctaUrl = "",
+	ctaStyle = "",
+	ctaTarget = "",
+	ctaLightboxVideoUrl = "",
+} = Astro.props;
+---
+
+<div class="tab-body">
+	<div class="tab-bodyInner">
+		<div class="tab-image">
+			<picture class="tab-figure">
+				<source
+					srcset={panelImage.sourceUrl}
+				/>
+				<img
+					src={panelImage.sourceUrl}
+					width="894"
+					height="1071"
+					alt={panelImage.altText}
+				/>
+			</picture>
+		</div>
+		<div class="tab-content">
+			{ panelHeadline && <Headline
+				tag="h4"
+				content={panelHeadline}
+				typography="h4"
+			/> }
+			<div class="body-default" set:html={panelContent}></div>
+			<CTAButton
+				label={ctaText}
+				href={ctaUrl}
+				target={ctaTarget}
+				style={ctaStyle}
+				class="margin-start-30"
+			/>
+		</div>
+		<span
+			class="tab-closeButton"
+			aria-label="close button"
+			data-cursor-icon="minus"
+			data-cursor-expand></span>
+	</div>
+</div>

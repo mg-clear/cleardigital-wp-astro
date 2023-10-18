@@ -3,9 +3,10 @@ interface Props {
   tag?: string;
   content: string;
   typography?: string;
+  theme?: string;
 }
 
-const { content = "", tag = "h2", typography = "" } = Astro.props;
+const { content = "", tag = "h2", typography = "", theme = "" } = Astro.props;
 
 ---
 
@@ -13,25 +14,26 @@ const { content = "", tag = "h2", typography = "" } = Astro.props;
   ()=>{
     switch (tag) {
       case 'h1':
-        return <h1 class:list={typography} set:html={content} />
+        return <h1 class:list={[typography, theme]} set:html={content} />
       case 'h2':
-        return <h2 class:list={typography} set:html={content} />
+        return <h2 class:list={[typography, theme]} set:html={content} />
       case 'h3':
-        return <h3 class:list={typography} set:html={content} />
+        return <h3 class:list={[typography, theme]} set:html={content} />
       case 'h4':
-        return <h4 class:list={typography} set:html={content} />
+        return <h4 class:list={[typography, theme]} set:html={content} />
       case 'h5':
-        return <h5 class:list={typography} set:html={content} />
+        return <h5 class:list={[typography, theme]} set:html={content} />
       case 'h6':
-        return <h6 class:list={typography} set:html={content} />
+        return <h6 class:list={[typography, theme]} set:html={content} />
       default:
-        return <h2 class:list={typography} set:html={content} />
+        return <h2 class:list={[typography, theme]} set:html={content} />
     }
   }
 }
 
 <style lang="scss">
   h1, h2, h3, h4, h5, h6 {
+    --marker-effect-url: url(/images/marker-underline-white.svg);
 
     :global(.marker-effect) {
       position: relative;
@@ -48,16 +50,52 @@ const { content = "", tag = "h2", typography = "" } = Astro.props;
         color: var(--color-pink);
 
         &::after {
-          bottom: 0.15em;
+          bottom: 0.01em;
           left: 0;
           right: 0;
-          height: 0.25em;
+          height: 0.475em;
           width: 102%;
-          background-image: url(/images/marker-underline-white.svg);
+          background-image: var(--marker-effect-url);
+          clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+          transition: 400ms clip-path ease;
+        }
+
+        &.on::after {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         }
       }
 
     }
 
+    &.dark {
+      --marker-effect-url: url(/images/marker-underline-black.svg);
+    }
+
   }
 </style>
+
+<script>
+  const markerEffectClassname = "marker-effect";
+
+  (()=>{
+    const markerElements = document.querySelectorAll(`.${markerEffectClassname}`);
+    if(0 < markerElements.length) {
+      const markerCallback = (entries, observer)=>{
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            entry.target.classList.add('on');
+          }else{
+            entry.target.classList.remove('on');
+          }
+        });
+      }
+      const markerEffectObserver = new IntersectionObserver(markerCallback, {
+        rootMargin: "-25% 0px"
+      });
+      markerElements.forEach(element => {
+        markerEffectObserver.observe(element)
+      });
+      
+    }
+  })()
+</script>

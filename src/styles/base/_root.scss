@@ -39,7 +39,7 @@
 html {
   font-size: 62.5%;
 
-  @media (min-width: $breakpoint-tablet-horizontal) and (max-width: $breakpoint-widescreen) {
+  @media (min-width: $breakpoint-tablet-horizontal) {
     font-size: 0.625vw;
   }
 }

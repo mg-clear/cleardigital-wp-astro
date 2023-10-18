@@ -1,0 +1,99 @@
+---
+import CTAButton from '@widgets/CTAButton.astro';
+import Headline from '@widgets/Headline.astro';
+
+interface Props {
+	panelTitle?: string,
+    panelImage?: {
+      altText,
+      sourceUrl,
+    },
+    panelHeadline?: string,
+    panelContent?: string,
+    ctaText?: string,
+    ctaUrl?: string,
+    ctaStyle?: string,
+    ctaTarget?: string,
+    ctaLightboxVideoUrl?: string
+}
+
+const {
+	panelTitle = '',
+    panelImage = {
+      altText: '',
+      sourceUrl: '',
+    },
+    panelHeadline = '',
+    panelContent = '',
+    ctaText = '',
+    ctaUrl = '',
+    ctaStyle = '',
+    ctaTarget = '',
+    ctaLightboxVideoUrl = '',
+} = Astro.props;
+
+---
+
+<div class="tabs-item">
+	<div class="tab">
+		<div class="tab-head" data-cursor-icon="plus" data-cursor-expand>
+			{ panelTitle && <Headline
+				tag="h3"
+				content={panelTitle}
+				typography="h4"
+			/> }
+			<span class="expand-btn"></span>
+		</div>
+		<div class="tab-body collapse">
+			<div class="tab-bodyInner">
+				<div class="tab-image">
+					<picture class="tab-figure">
+						<source
+							srcset={panelImage.sourceUrl}
+						/>
+						<img
+							src={panelImage.sourceUrl}
+							width="894"
+							height="1071"
+							alt={panelImage.altText}
+						/>
+					</picture>
+				</div>
+				<div class="tab-content">
+					{ panelHeadline && <Headline
+						tag="h4"
+						content={panelHeadline}
+						typography="h4"
+					/> }
+					<!-- <p class="body-default">
+						Our content creators help you develop messaging and
+						imagery that connect, engage, and guide your B2B
+						customers to your solutions
+					</p>
+					<ul>
+						<li>Content Strategy</li>
+						<li>Copywriting / Copyediting</li>
+						<li>Infographics</li>
+						<li>Collateral</li>
+						<li>Ebooks</li>
+					</ul> -->
+					<div class="body-default">
+						{panelContent}
+					</div>
+					<CTAButton
+						label={ctaText}
+						href={ctaUrl}
+						target={ctaTarget}
+						style={ctaStyle}
+					/>
+					<a data-cursor-expand href="/" class="button">Learn more</a>
+				</div>
+				<span
+					class="tab-closeButton"
+					aria-label="close button"
+					data-cursor-icon="minus"
+					data-cursor-expand></span>
+			</div>
+		</div>
+	</div>
+</div>
