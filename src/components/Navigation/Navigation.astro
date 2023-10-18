@@ -352,10 +352,10 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
     top: 0;
     width: 100%;
     z-index: 40;
-    --header-background-color: var(--color-white);
-    --header-hamburger-color: var(--color-black);
-    --header-top-link-color: var(--color-black);
-    --header-color-transition: background-color 140ms ease-in-out;
+    --header-background-color: transparent;
+    --header-top-link-color: var(--color-white);
+    --header-hamburger-color: var(--color-white);    
+    --header-color-transition: background-color 0.3s ease-in-out;
 
     > .container {
 			&:before {
@@ -529,6 +529,7 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
           font-weight: 700;
 					position: relative;
           text-decoration: none;
+          transition: color 0.3s ease-in-out;
 
 					&:after {
 						background-color: $color-brand;
@@ -616,11 +617,11 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
       }
 
       &-white {
-        display: none;
+        display: block;
       }
 
       &-transparent {
-        display: block;
+        display: none;
       }
 
       img {
@@ -684,9 +685,9 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
         background-color: $color-background;
         position: relative;
         width: 100%;
+        transition: border-top 0.3s ease-in-out;
 
         @media (min-width: $breakpoint-tablet-horizontal) {
-					border-top: 1px solid $color-background-light;
           height: 0;
           left: 0;
           overflow: hidden;
@@ -695,12 +696,7 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
           transition: height 0.5s ease;
           z-index: 20;
         }
-
-        @media (max-width: $breakpoint-tablet-horizontal) {
-          // animation: fadeIn 0.2s ease-in-out;
-          // display: none;
-        }
-
+       
         > .container {
           @media (max-width: $breakpoint-tablet-horizontal) {
             padding-inline: 0;
@@ -799,6 +795,7 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
         }
       }
     }
+
     .hamburger {
       display: block;
       position: relative;
@@ -853,24 +850,25 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
       }
     }
 
-    &.scroll-near-top:not(:hover) {
-      --header-background-color: transparent;
-      --header-top-link-color: var(--color-white);
-      --header-hamburger-color: var(--color-white);
+    &-isScrolled {
+      --header-background-color: var(--color-white);
+      --header-hamburger-color: var(--color-black);
+      --header-top-link-color: var(--color-black);
 
       .site-logo {
-
         &-transparent {
-          display: none;
+          display: block;
         }
 
         &-white {
-          display: block;
+          display: none;
         }
       }
 
       .megamenu-dropdown {
-        border-top: none;
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          border-top: 1px solid $color-background-light; 
+        }
       }
     }
   }
@@ -906,10 +904,10 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
   }
 
   function handleHeaderScroll() {
-    if(5 >= window.scrollY) {
-      header.classList.add('scroll-near-top')
-    }else{
-      header.classList.remove('scroll-near-top')
+    if(window.scrollY > 0 ) {
+      header.classList.add('main-navigation-isScrolled')
+    } else{
+      header.classList.remove('main-navigation-isScrolled')
     }
   }
 
