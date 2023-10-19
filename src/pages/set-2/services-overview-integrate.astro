@@ -1,0 +1,114 @@
+---
+import Page from "src/layouts/Page/Page.astro";
+import HeroBanner from "@components/HeroBanner/HeroBanner.astro";
+import ColThreeGrid from "@components/ColThreeGrid/ColThreeGrid.astro";
+import SliderWithContent from "@components/SliderWithContent/SliderWithContent.astro";
+import AccordionDefault from "@components/AccordionDefault/AccordionDefault.astro";
+
+const response = await fetch(import.meta.env.SECRET_GRAPHQL_ENDPOINT, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      query: `
+	  	query NewQuery($id: ID = "8") {
+  			page(id: $id, idType: DATABASE_ID) {
+    			title
+				astroPageContent {
+					astroBlades {
+						... on Page_Astropagecontent_AstroBlades_BannerBlade {
+							bladeCssId
+							bladeAdditionalCssClasses
+							ctaLightboxVideoUrl
+							ctaStyle
+							ctaTarget
+							ctaText
+							ctaUrl
+							description
+							eyebrow
+							fieldGroupName
+							headline
+							headlineTag
+							headlineTypography
+							hasGridBackgroundTexture
+							backgroundVideoUrl
+							backgroundVideoType
+							backgroundTheme
+							backgroundImage {
+								sourceUrl
+							}
+						}
+					}
+				}
+  			}
+		}
+      `
+    }),
+  });
+
+const json = await response.json();
+const { astroBlades } = json.data.page.astroPageContent;
+
+const componentMapping = {
+//   'Page_Integrationtesting_Blades_BannerBlade': BannerBlade,
+//   'Page_Integrationtesting_Blades_ContentBlade': ContentBlade,
+	'Page_Astropagecontent_AstroBlades_BannerBlade': {
+		component: HeroBanner,
+		fields: [
+			'bladeCssId',
+			'bladeAdditionalCssClasses',
+			'ctaLightboxVideoUrl',
+			'ctaStyle',
+			'ctaTarget',
+			'ctaText',
+			'ctaUrl',
+			'description',
+			'eyebrow',
+			'fieldGroupName',
+			'headline',
+			'headlineTag',
+			'headlineTypography',
+			'hasGridBackgroundTexture',
+			'backgroundVideoUrl',
+			'backgroundVideoType',
+			'backgroundTheme',
+			'backgroundImage',
+		],
+	},
+	'Page_Astropagecontent_AstroBlades_ColThreeGrid': {
+		component: ColThreeGrid,
+		fields: ``,
+	},
+	'Page_Astropagecontent_AstroBlades_AccordionDefault': {
+		component: AccordionDefault,
+		fields: ``,
+	},
+	'Page_Astropagecontent_AstroBlades_TestimonialsBlade': {
+		component: SliderWithContent,
+		fields: ``,
+	},
+  // Add more layout types as needed
+};
+
+const generateBladeQuery = function(name) {
+	let queryPart = `... on ${name} {\n`;
+	if(componentMapping.hasOwnProperty(name)) {
+		if(componentMapping[name].fields.length > 0) {
+			for(const field of componentMapping[name].fields) {
+				queryPart += `\t${field}\n`;
+			}
+		}
+	}
+	queryPart += '}';
+	return queryPart;
+}
+
+---
+
+<Page title="" metadescription="" ogimage="">
+  {astroBlades.map((blade) => {
+    const layout = blade.fieldGroupName;
+    const Component = componentMapping[layout].component;
+
+    return <Component {...blade} />
+  })}
+</Page>
