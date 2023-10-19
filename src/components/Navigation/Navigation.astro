@@ -357,6 +357,28 @@ import siteLogoWhite from "@assets/logo/cleardigital-logo-white.svg";
     --header-hamburger-color: var(--color-white);    
     --header-color-transition: background-color 0.3s ease-in-out;
 
+    &:hover {
+      --header-background-color: var(--color-white);
+      --header-hamburger-color: var(--color-black);
+      --header-top-link-color: var(--color-black);
+
+      .site-logo {
+        &-transparent {
+          display: block;
+        }
+
+        &-white {
+          display: none;
+        }
+      }
+
+      .megamenu-dropdown {
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          border-top: 1px solid $color-background-light; 
+        }
+      }
+    }
+
     > .container {
 			&:before {
 				content: "";
