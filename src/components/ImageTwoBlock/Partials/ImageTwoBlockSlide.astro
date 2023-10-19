@@ -1,0 +1,158 @@
+---
+import CTAButton from '@widgets/CTAButton.astro';
+import Headline from '@widgets/Headline.astro';
+import ImageTwoBlockBackgroundImage from './ImageTwoBlockBackgroundImage.astro';
+import ImageTwoBlockBackgroundVideo from './ImageTwoBlockBackgroundVideo.astro';
+
+interface Props {
+	slideLogo?: {
+		altText;
+		sourceUrl;
+	};
+	slideHeadline?: string;
+	slideCtaText?: string;
+	slideCtaUrl?: string;
+	slideBackgroundImage?: {
+		sourceUrl;
+	};
+	slideBackgroundVideoUrl?: string;
+	slideBackgroundVideoType?: string;
+}
+
+const {
+	slideLogo = {
+		altText: "",
+		sourceUrl: "",
+	},
+	slideHeadline = "",
+	slideCtaText = "",
+	slideCtaUrl = "",
+	slideBackgroundImage = {
+		sourceUrl: "",
+	},
+	slideBackgroundVideoUrl = "",
+	slideBackgroundVideoType = "",
+} = Astro.props;
+
+---
+
+<div class="column swiper-slide">
+	{
+		()=>{
+			if(slideBackgroundVideoUrl) {
+				return <ImageTwoBlockBackgroundVideo poster={slideBackgroundImage.sourceUrl} videoUrl={slideBackgroundVideoUrl} videoType={slideBackgroundVideoType} />
+			}else{
+				return <ImageTwoBlockBackgroundImage src={slideBackgroundImage.sourceUrl} />
+			}
+		}
+	}
+	<div class="content">
+		{slideLogo && 
+			<div class="logo">
+				<img
+					class="logo-image lazyload"
+					src={slideLogo.sourceUrl}
+					width="290"
+					height="61"
+					alt={slideLogo.altText}
+				/>
+			</div>
+		}
+		<!-- <h2 class="h3">
+			<span class="art art--circleWhite">27%</span>
+			 increase on click-through rates.
+		</h2> -->
+		<Headline
+			tag="h2"
+			content={slideHeadline}
+			typography="h3"
+		/>
+		<CTAButton
+			label={slideCtaText}
+			href={slideCtaUrl}
+			target="_self" 
+			style="text"
+			class=""
+		/>
+	</div>
+</div>
+
+<style lang="scss">
+	@import 'src/styles/abstracts/variables';
+
+	.figure {
+		height: 100%;
+		margin: 0;
+		overflow: hidden;
+		position: relative;
+
+		.figure-image {
+			height: 100%;
+			object-fit: cover;
+			width: 100%;
+		}
+	}
+
+	video {
+		height: var(--blade-view-height);
+		margin: 0;
+		object-fit: cover;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+	}
+
+	.content {
+		bottom: $component-spacing-mobile;
+		left: 0;
+		padding-left: $container-padding-mobile;
+		padding-right: $container-padding-mobile;
+		position: absolute;
+		width: auto;
+
+		@media (min-width: $breakpoint-tablet) {
+			bottom: $component-spacing-tablet;
+			padding-left: $container-padding-tablet;
+			padding-right: $container-padding-tablet;
+		}
+
+		@media (min-width: $breakpoint-desktop) {
+			bottom: $component-spacing-desktop;
+			max-width: 99%;
+			padding-left: $container-padding-desktop;
+			padding-right: $container-padding-desktop;
+		}
+
+		.marker {
+			color: $color-background;
+		}
+	}
+
+	.logo {
+		@include spacing("medium");
+		display: inline-block;
+		height: 4rem;
+		max-width: 19.5rem;
+		overflow: hidden;
+		width: 100%;
+
+		.logo-image {
+			height: 100%;
+			object-fit: contain;
+			width: 100%;
+		}
+	}
+	:global(.h3) {
+		color: #fff;
+		margin-bottom: 20px;
+	}
+	.column {
+			@include col(12);
+			height: var(--blade-view-height);
+			position: relative;
+
+			@media (min-width: $breakpoint-tablet) {
+				@include col(6);
+			}
+		}
+</style>

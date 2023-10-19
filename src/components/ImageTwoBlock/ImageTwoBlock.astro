@@ -1,13 +1,33 @@
 ---
 import CTAButton from '../../widgets/CTAButton.astro';
 import girlInVrHeadset from '@assets/images/ImageTwoBlock/girl-in-vr-headset.webp';
+import ImageTwoBlockSlide from './Partials/ImageTwoBlockSlide.astro';
 
 interface Props {
-
+	bladeCssId?: string,
+	fieldGroupName?: string,
+	bladeExtraClasses?: string,
+	slideItems?: {
+		slideLogo: {
+			altText,
+			sourceUrl,
+		},
+		slideHeadline,
+		slideCtaText,
+		slideCtaUrl,
+		slideBackgroundImage: {
+			sourceUrl,
+		},
+		slideBackgroundVideoUrl,
+		slideBackgroundVideoType,
+	}[]
 }
 
 const {
-
+	bladeCssId = "",
+	fieldGroupName = "",
+	bladeExtraClasses = "",
+	slideItems = []
 } = Astro.props;
 ---
 
@@ -126,83 +146,6 @@ const {
 				}
 			}
 		}
-
-		.column {
-			@include col(12);
-			height: var(--blade-view-height);
-			position: relative;
-
-			@media (min-width: $breakpoint-tablet) {
-				@include col(6);
-			}
-		}
-
-		.figure {
-			height: 100%;
-			margin: 0;
-			overflow: hidden;
-			position: relative;
-
-			.figure-image {
-				height: 100%;
-				object-fit: cover;
-				width: 100%;
-			}
-		}
-
-		video {
-			height: var(--blade-view-height);
-			margin: 0;
-			object-fit: cover;
-			overflow: hidden;
-			position: relative;
-			width: 100%;
-		}
-
-		.content {
-			bottom: $component-spacing-mobile;
-			left: 0;
-			padding-left: $container-padding-mobile;
-			padding-right: $container-padding-mobile;
-			position: absolute;
-			width: auto;
-
-			@media (min-width: $breakpoint-tablet) {
-				bottom: $component-spacing-tablet;
-				padding-left: $container-padding-tablet;
-				padding-right: $container-padding-tablet;
-			}
-
-			@media (min-width: $breakpoint-desktop) {
-				bottom: $component-spacing-desktop;
-				max-width: 99%;
-				padding-left: $container-padding-desktop;
-				padding-right: $container-padding-desktop;
-			}
-
-			.marker {
-				color: $color-background;
-			}
-		}
-
-		.logo {
-			@include spacing('medium');
-			display: inline-block;
-			height: 4rem;
-			max-width: 19.5rem;
-			overflow: hidden;
-			width: 100%;
-
-			.logo-image {
-				height: 100%;
-				object-fit: contain;
-				width: 100%;
-			}
-		}
-		.h3{
-			color: #fff;
-			margin-bottom: 20px;
-		}
 	}
 </style>
 
@@ -212,10 +155,15 @@ const {
 	</div>
 </section> -->
 
-<div class="flyntComponent componentSpacing" is="flynt-block-image-two-col">
+<div class:list={["flyntComponent componentSpacing", bladeExtraClasses]} id={bladeCssId} is="flynt-block-image-two-col">
 	<div class="columns-outer swiper">
 		<div class="columns swiper-wrapper">
-			<div class="column swiper-slide">
+			{
+				slideItems.map((item)=>{
+					return <ImageTwoBlockSlide {... item} />
+				})
+			}
+			<!-- <div class="column swiper-slide">
 				<figure class="figure">
 					<img class="figure-image lazyload" src="/man-holding-phone.webp" width="800" height="1090" alt="Background Image">
 				</figure>
@@ -231,6 +179,7 @@ const {
 						label = "View Case Study"
 						href = "/"
 						target = "_self"
+						class = ""
 					/>
 				</div>
 			</div>
@@ -249,6 +198,7 @@ const {
 						label = "View Case Study"
 						href = "/"
 						target = "_self"
+						class = ""
 					/>
 				</div>
 			</div>
@@ -257,9 +207,6 @@ const {
 					<source src="/videos/video-dummy.mp4" type="video/mp4">
 					<source src="/videos/video-dummy.webm" type="video/webm">
 				</video>
-				<!-- <figure class="figure">
-					<img class="figure-image lazyload" src="/man-holding-phone.webp" width="800" height="1090" alt="Background Image">
-				</figure> -->
 				<div class="content">
 					<div class="logo">
 						<img class="logo-image lazyload" src="/logo-digimarc.webp" width="290" height="61" alt="Logo">
@@ -272,9 +219,10 @@ const {
 						label = "View Case Study"
 						href = "/"
 						target = "_self"
+						class = ""
 					/>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<div class="swiper-button-prev"></div>
 		<div class="swiper-button-next"></div>

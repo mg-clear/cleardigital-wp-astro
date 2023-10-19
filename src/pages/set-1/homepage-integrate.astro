@@ -42,6 +42,21 @@ const response = await fetch(import.meta.env.SECRET_GRAPHQL_ENDPOINT, {
 						... on Page_Astropagecontent_AstroBlades_LargeSliderBlade {
 							bladeCssId
 							fieldGroupName
+							bladeExtraClasses
+							slideItems {
+								slideLogo {
+									altText
+									sourceUrl
+								}
+								slideHeadline
+								slideCtaText
+								slideCtaUrl
+								slideBackgroundImage {
+									sourceUrl
+								}
+								slideBackgroundVideoUrl
+								slideBackgroundVideoType
+							}
 						}
 						... on Page_Astropagecontent_AstroBlades_ContentWithThreeColumnGridSubcontentBlade {
 							bladeCssId

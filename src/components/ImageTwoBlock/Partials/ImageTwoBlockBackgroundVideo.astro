@@ -1,0 +1,26 @@
+---
+
+interface Props {
+	poster: string,
+	videoUrl: string,
+	videoType: string,
+}
+
+const { poster, videoUrl, videoType } = Astro.props;
+
+---
+
+<video class="video" width="640" height="640" aria-hidden="true" autoplay muted loop poster={poster}>
+	<source src={videoUrl} type={'video/' + videoType}>
+</video>
+
+<style lang="scss">
+	video {
+		height: var(--blade-view-height);
+		margin: 0;
+		object-fit: cover;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+	}
+</style>
