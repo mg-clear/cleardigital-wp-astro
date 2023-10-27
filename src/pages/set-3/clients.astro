@@ -1,0 +1,35 @@
+---
+
+const clientsQuery = `query ClientsQuery($status: PostStatusEnum = PUBLISH) {
+  clients(where: {status: $status}) {
+    nodes {
+      title
+      clientSettings {
+        clientLogo {
+          altText
+          sourceUrl
+        }
+        clientCaseStudy {
+          ... on CaseStudy {
+            slug
+            databaseId
+          }
+        }
+      }
+      industries {
+        nodes {
+          slug
+          parentId
+          termTaxonomyId
+          parent {
+            node {
+              termTaxonomyId
+            }
+          }
+        }
+      }
+    }
+  }
+}`
+
+---

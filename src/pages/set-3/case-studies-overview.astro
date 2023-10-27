@@ -1,0 +1,27 @@
+---
+
+const caseStudyCardQuery = `query CaseStudyCardQuery($slug: String = "case-study-01") {
+  caseStudyBy(slug: $slug) {
+    slug
+    title
+    caseStudySettings {
+      cardBackgroundImage {
+        sourceUrl
+      }
+      cardHeadline
+      cardDescription
+      cardLogos {
+        black {
+          sourceUrl
+          altText
+        }
+        white {
+          altText
+          sourceUrl
+        }
+      }
+    }
+  }
+}`
+
+---
