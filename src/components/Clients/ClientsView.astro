@@ -1,0 +1,104 @@
+---
+
+import Filters from "./Partials/Filters.astro";
+import Tags from "./Partials/Tags.astro";
+import Card from "./Partials/Card.astro";
+
+const response = await fetch(import.meta.env.SECRET_GRAPHQL_ENDPOINT, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      query: `
+        query ClientsQuery($status: PostStatusEnum = PUBLISH) {
+            clients(where: {status: $status}, first: 100) {
+                nodes {
+                    title
+                    clientSettings {
+                        clientLogo {
+                            altText
+                            sourceUrl
+                        }
+                        clientCaseStudy {
+                            ... on CaseStudy {
+                                slug
+                                databaseId
+                            }
+                        }
+                    }
+                    industries {
+                        nodes {
+                            slug
+                            parentId
+                            termTaxonomyId
+                            parent {
+                                node {
+                                    termTaxonomyId
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    `
+    }),
+});
+
+const json = await response.json();
+
+const clients = json.data.clients.nodes;
+
+---
+
+<div class="clients-view blade" is="clients-view">
+    <div class="container">
+        <div class="filters">
+            <Filters />
+        </div>
+        <div class="tags">
+            <Tags />
+        </div>
+        <div class="cards">
+            {
+                clients.map((client)=>{
+                    return <Card {...client.clientSettings.clientLogo} />
+                })
+            }
+        </div>
+    </div>
+</div>
+
+<style lang="scss">
+    .clients-view {
+        background-color: black;
+
+        .container {
+            display: grid;
+            grid-template-areas:
+                "filters tags"
+                "filters cards";
+            grid-template-columns: 4fr 8fr;
+            grid-template-rows: auto;
+            grid-column-gap: var(--padding-unit-50);
+            grid-row-gap: var(--padding-unit-30);
+        }
+
+        .filters {
+            grid-area: filters;
+            background-color: red;
+        }
+
+        .tags {
+            grid-area: tags;
+            background-color: green;
+            min-height: 4.4rem;
+        }
+
+        .cards {
+            grid-area: cards;
+            display: grid;
+            grid-template-columns: repeat(4, 23rem);
+            grid-gap: var(--padding-unit-30);
+        }
+    }
+</style>

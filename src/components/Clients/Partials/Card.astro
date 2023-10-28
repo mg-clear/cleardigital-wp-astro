@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import ArrowLink from "./ArrowLink.astro";
+
+const { sourceUrl, altText } = Astro.props;
+---
+
+<div class="client-card" is="client-card">
+    <div class="client-logo">
+        <Image src={sourceUrl} alt={altText} width="210" height="84" class="client-logo" />
+    </div>
+    <ArrowLink href="#" />
+</div>
+
+<style lang="scss">
+    .client-card {
+        background-color: rgba(255,255,255,0.125);
+        aspect-ratio: 1 / 1;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .client-logo {
+            width: 21rem;
+            height: 8.4rem;
+        }
+    }
+</style>

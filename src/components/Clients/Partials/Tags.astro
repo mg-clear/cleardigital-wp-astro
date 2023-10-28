@@ -1,0 +1,29 @@
+---
+
+import Tag from "./Tag.astro";
+
+---
+
+<div class="client-tags" is="client-tags">
+    <Tag
+        label="SaaS"
+        slug="term-1"
+        termId="1111"
+        taxonomy="industry"
+    />
+    <Tag
+        label="Networking"
+        slug="term-2"
+        termId="1122"
+        taxonomy="industry"
+    />
+</div>
+
+<style lang="scss">
+    .client-tags {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var(--padding-unit-10);
+    }
+</style>

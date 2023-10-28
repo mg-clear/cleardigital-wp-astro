@@ -1,5 +1,10 @@
 ---
 
+import Page from "@layouts/Page/Page.astro";
+import HeroBanner from "@components/HeroBanner/HeroBanner.astro";
+import ClientsView from "@components/Clients/ClientsView.astro";
+
+
 const clientsQuery = `query ClientsQuery($status: PostStatusEnum = PUBLISH) {
   clients(where: {status: $status}) {
     nodes {
@@ -33,3 +38,8 @@ const clientsQuery = `query ClientsQuery($status: PostStatusEnum = PUBLISH) {
 }`
 
 ---
+
+<Page title="Clients" metadescription="" ogimage="">
+  <HeroBanner />
+  <ClientsView />
+</Page>

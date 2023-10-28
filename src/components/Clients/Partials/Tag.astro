@@ -1,0 +1,43 @@
+---
+
+import CloseX from "@assets/images/Clients/x-square.svg";
+
+const { label, slug, taxonomy, termId } = Astro.props;
+
+const cssVars = { closex: `url(${CloseX.src})` };
+
+---
+
+<div class="taxonomy-tag button-small" is="taxonomy-tag" data-taxonomy={taxonomy} data-term-id={termId} data-term-slug={slug}>
+    <Fragment set:text={label} />
+</div>
+
+<style lang="scss" define:vars={cssVars}>
+    .taxonomy-tag {
+        display: block;
+        background-color: white;
+        color: black;
+        padding: calc(1rem + 0.25em) 4rem calc(1rem + 0.25em) 1.5rem;
+        border-radius: 3rem;
+        position: relative;
+        cursor: pointer;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 2.4rem;
+            height: 2.4rem;
+            right: 1rem;
+            top: 50%;
+            position: absolute;
+            transform: scale(1) translateY(-50%);
+            background-image: var(--closex);
+            background-size: cover;
+            background-position: center;
+        }
+
+        &:hover, &:focus {
+            background-color: red;
+        }
+    }
+</style>

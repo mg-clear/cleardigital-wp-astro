@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import ArrowRight from "@assets/images/Clients/arrow-right.svg";
+
+const { href } = Astro.props;
+
+---
+
+<a href={href} class="case-study-arrow-link">
+    <div class="case-study-arrow">
+        <Image src={ArrowRight} alt="" width="24" height="24" />
+    </div>
+</a>
+
+<style lang="scss">
+    .case-study-arrow-link {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        .case-study-arrow {
+            position: absolute;
+            right: var(--padding-unit-20);
+            bottom: var(--padding-unit-20);
+            width: 2.4rem;
+            height: 2.4rem;
+            argin-inline-end: 0;
+            transition: 150ms margin-inline-end ease-in-out;
+        }
+
+        &:hover, &:focus {
+
+            .case-study-arrow {
+                margin-inline-end: -0.8rem;
+            }
+
+        }
+    }
+</style>
