@@ -1,26 +1,29 @@
 ---
 
 import CloseX from "@assets/images/Clients/x-square.svg";
+import CloseXWhite from "@assets/images/Clients/x-square-white.svg";
 
 const { label, slug, taxonomy, termId } = Astro.props;
 
-const cssVars = { closex: `url(${CloseX.src})` };
+const cssVars = { closex: `url(${CloseX.src})`, closexwhite: `url(${CloseXWhite.src})` };
 
 ---
 
-<div class="taxonomy-tag button-small" is="taxonomy-tag" data-taxonomy={taxonomy} data-term-id={termId} data-term-slug={slug}>
+<div class="taxonomy-tag button-small" is="taxonomy-tag" data-cursor-expand data-cursor-icon="x" data-taxonomy={taxonomy} data-term-id={termId} data-term-slug={slug}>
     <Fragment set:text={label} />
 </div>
 
 <style lang="scss" define:vars={cssVars}>
     .taxonomy-tag {
         display: block;
-        background-color: white;
-        color: black;
-        padding: calc(1rem + 0.25em) 4rem calc(1rem + 0.25em) 1.5rem;
+        background-color: var(--color-white);
+        color: var(--color-black);
+        padding: calc(0.8rem + 0.25em) 4rem calc(0.8rem + 0.25em) 1.5rem;
+        border: 0.2rem solid var(--color-white);
         border-radius: 3rem;
         position: relative;
         cursor: pointer;
+        transition: 160ms background-color ease-in-out;
 
         &::after {
             content: '';
@@ -37,7 +40,12 @@ const cssVars = { closex: `url(${CloseX.src})` };
         }
 
         &:hover, &:focus {
-            background-color: red;
+            background-color: transparent;
+            color: var(--color-white);
+
+            &::after {
+                background-image: var(--closexwhite);
+            }
         }
     }
 </style>

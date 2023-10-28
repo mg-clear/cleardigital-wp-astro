@@ -1,7 +1,124 @@
 ---
 
+import FilterSection from "./FilterSection.astro";
+
 ---
 
 <div class="client-filters" is="client-filters">
-    Client Filters
+    <div class="filter-top filter-row">
+        <h2 class="h4">Filter all clients</h2>
+        <div class="client-count-clear-button container">
+            <div class="client-count">
+                500 clients
+            </div>
+            <button class="clear-button">
+                Clear all
+            </button>
+        </div>
+    </div>
+    <div class="filters">
+        <div class="filter-row">
+            <FilterSection
+                label="Techology"
+                taxonomy="industry"
+                termId="1111"
+                slug="technology"
+                children={[
+                    {
+                        label: "SaaS",
+                        termId: "1112",
+                        slug: "saas",
+                    },
+                    {
+                        label: "Cyber Security",
+                        termId: "1113",
+                        slug: "cyber-security",
+                    },
+                    {
+                        label: "Big Data",
+                        termId: "1114",
+                        slug: "big-data",
+                    },
+                    {
+                        label: "ML/AI",
+                        termId: "1115",
+                        slug: "ml-ai",
+                    },
+                    {
+                        label: "Networking",
+                        termId: "1116",
+                        slug: "networking",
+                    },
+                    {
+                        label: "Cloud/Dev Ops",
+                        termId: "1117",
+                        slug: "cloud-dev-ops",
+                    },
+                    {
+                        label: "Services",
+                        termId: "1118",
+                        slug: "services",
+                    },
+                    {
+                        label: "Other",
+                        termId: "1119",
+                        slug: "other-technology",
+                    },
+                ]}
+            />
+        </div>
+        <div class="filter-row">
+            <FilterSection
+                label="Healthcare"
+                taxonomy="industry"
+                termId="1222"
+                slug="healthcare"
+            />
+        </div>
+        <div class="filter-row">
+            <FilterSection
+                label="Financial Services"
+                taxonomy="industry"
+                termId="1333"
+                slug="financia-services"
+            />
+        </div>
+        <div class="filter-row">
+            <FilterSection
+                label="Insurance"
+                taxonomy="industry"
+                termId="1444"
+                slug="insurance"
+            />
+        </div>
+        <div class="filter-row">
+            <FilterSection
+                label="Non-profit"
+                taxonomy="industry"
+                termId="1555"
+                slug="non-profit"
+            />
+        </div>
+        <div class="filter-row">
+            <FilterSection
+                label="Other"
+                taxonomy="industry"
+                termId="1666"
+                slug="other"
+            />
+        </div>
+    </div>
 </div>
+
+<style lang="scss">
+    .filter-row {
+
+        &:not(.filter-top) {
+            border-top: 1px solid var(--color-white);
+        }
+    }
+
+    .filter-top {
+        padding-bottom: var(--padding-unit-30);
+    }
+</style>

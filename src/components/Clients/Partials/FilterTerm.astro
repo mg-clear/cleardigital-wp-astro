@@ -1,0 +1,72 @@
+---
+
+import Check from "@assets/images/Clients/check.svg";
+
+const {
+    label,
+    taxonomy,
+    termId,
+    slug,
+} = Astro.props
+
+const cssVars = {checkImg: `url(${Check.src})`};
+
+---
+
+<label class="filter-term button-small" data-cursor-expand data-cursor-icon="plus">
+    <input type="checkbox" name={`${taxonomy}-term-${termId}`} data-taxonomy={taxonomy} data-slug={slug} data-termId={termId}>
+    <Fragment set:text={label} />
+</label>
+
+<style lang="scss" define:vars={cssVars}>
+    label {
+        color: inherit;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: max-content;
+        padding-block: var(--padding-unit-10);
+    }
+
+    input[type="checkbox"] {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin: 0 var(--padding-unit-20) 0 0;
+        display: block;
+        position: relative;
+
+        &::after{
+            content: '';
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0.2rem solid var(--color-white);
+            top: 0;
+            left: 0;
+            background-color: var(--color-black);
+            background-position: center;
+            background-size: contain;
+        }
+
+        &:checked {
+
+            &::after {
+                background-color: var(--color-white);
+                background-image: var(--checkImg);
+            }
+        }
+    }
+</style>
+
+<script>
+    const filterTerms = document.querySelectorAll("label.filter-term input[type='checkbox']");
+
+    if(filterTerms && filterTerms.length > 0) {
+        for(const filterTerm of filterTerms) {
+            filterTerm.addEventListener("click", function(e){
+                (e.currentTarget as HTMLInputElement).parentElement.dataset.cursorIcon = (e.currentTarget as HTMLInputElement).checked ? "minus" : "plus"
+            });
+        }
+    }
+</script>

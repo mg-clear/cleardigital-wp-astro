@@ -1,0 +1,119 @@
+---
+
+import FilterTerm from './FilterTerm.astro';
+import FilterSectionChildren from './FilterSectionChildren.astro';
+import ChevronUp from "@assets/images/Clients/chevron-up.svg";
+
+interface Props {
+    label: string,
+    taxonomy: string,
+    termId: string,
+    slug: string,
+    children?: {
+        label: string,
+        termId: string,
+        slug: string,
+    }[],
+}
+
+const {
+    label,
+    taxonomy,
+    termId,
+    slug,
+    children = null,
+} = Astro.props
+
+const cssVars = { chevron: `url(${ChevronUp.src})` };
+
+---
+
+<div class:list={["filter-section", {collapsable: children!==null}]}>
+    <div class:list={["parent-row filter-checkbox-row", {"has-children": children!==null}]}>
+        <FilterTerm {...{label, taxonomy, termId, slug}} />
+        <button class:list={["opener"]} set:html={`<span class="sr-only">Expand</span>`} />
+    </div>
+    <div class="opener-target">
+        { children && <FilterSectionChildren {...{taxonomy, children}} /> }
+    </div>
+</div>
+
+<style lang="scss" define:vars={cssVars}>
+    .filter-section {
+        padding: var(--padding-unit-30);
+
+        @media(max-width: 767px) {
+            padding-inline: 0;
+        }
+    }
+
+    .parent-row {
+        position: relative;
+
+        .opener {
+            display: none;
+        }
+
+        &.has-children {
+
+            .opener {
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%) scaleY(-1);
+                width: 2.4rem;
+                height: 2.4rem;
+                padding: 0;
+                background-color: transparent;
+                background-image: var(--chevron);
+                background-size: contain;
+                background-position: center;
+                border: none;
+                outline: none;
+                transition: transform 200ms ease;
+            }
+
+            + .opener-target {
+                position: relative;
+                display: block;
+                overflow: hidden;
+                max-height: 0;
+                transition: max-height 300ms ease-in-out;
+            }
+
+            &.open {
+
+                .opener {
+                    transform: translateY(-50%) scaleY(1);
+                }
+
+                + .opener-target {
+                    max-height: 100vh;
+                }
+            }
+
+        }
+    }
+</style>
+
+<script>
+    const filtersWithChildren = document.querySelectorAll(".filter-section.collapsable");
+
+    if(filtersWithChildren && filtersWithChildren.length > 0) {
+        const filterOpenHandler = function(event) {
+            const button = (event as Event).currentTarget as HTMLElement
+            const target = button.parentNode as HTMLElement
+            target.classList.toggle("open")
+        }
+
+        for(const filter of filtersWithChildren) {
+            const toggleButton = filter.querySelector(".opener");
+            const toggleTarget = filter.querySelector(".child-terms");
+
+            if(toggleButton && toggleTarget) {
+                toggleButton.addEventListener("click", filterOpenHandler)
+            }
+        }
+    }
+</script>

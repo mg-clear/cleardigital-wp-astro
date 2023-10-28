@@ -1,5 +1,21 @@
 ---
 
+import iconX from "@assets/images/MouseCursor/x.svg";
+import iconPlay from "@assets/images/MouseCursor/play.svg";
+import iconArrowRight from "@assets/images/MouseCursor/arrow-right.svg";
+import iconArrowLeft from "@assets/images/MouseCursor/arrow-left.svg";
+import iconPlus from "@assets/images/MouseCursor/plus.svg";
+import iconMinus from "@assets/images/MouseCursor/minus.svg";
+
+const cssVars = {
+    iconX: `url(${iconX.src})`,
+    iconPlay: `url(${iconPlay.src})`,
+    iconArrowRight: `url(${iconArrowRight.src})`,
+    iconArrowLeft: `url(${iconArrowLeft.src})`,
+    iconPlus: `url(${iconPlus.src})`,
+    iconMinus: `url(${iconMinus.src})`,
+};
+
 ---
 
 <div id="cursor" data-circle-expand="false" data-icon="">
@@ -7,7 +23,7 @@
 	<div id="cursorIcon"></div>
 </div>
 
-<style lang="scss">
+<style lang="scss" define:vars={cssVars}>
 
 :global(*) {
 	//cursor: none !important;
@@ -38,7 +54,7 @@
     height: 25px;
     border: 8px solid var(--color-pink);
     border-radius: 100%;
-    transition: width 200ms ease-in-out, height 200ms ease-in-out, transform 100ms ease-out;
+    transition: width 160ms ease-in-out, height 160ms ease-in-out, transform 90ms ease-out;
 }
 
 #cursor.click #cursorCircle {
@@ -61,7 +77,9 @@
     transform: translateX(-50%) translateY(-50%) scale(0);
     width: 35px;
     height: 35px;
-    transition: transform 300ms ease-out;
+    transition: transform 160ms ease-out;
+    background-size: contain;
+    background-position: center;
 }
 
 #cursor:not([data-icon=""]) #cursorIcon {
@@ -74,12 +92,28 @@
     transform:  translateX(-50%) translateY(-50%) scale(0.75);
 }
 
-#cursor[data-icon="play"] #cursorIcon {
-    background-image: url('cursors/play.svg');
+#cursor[data-icon="plus"] #cursorIcon {
+    background-image: var(--iconPlus);
 }
 
-#cursor[data-icon="plus"] #cursorIcon {
-    background-image: url('cursors/plus.svg');
+#cursor[data-icon="minus"] #cursorIcon {
+    background-image: var(--iconMinus);
+}
+
+#cursor[data-icon="arrow-left"] #cursorIcon {
+    background-image: var(--iconArrowLeft);
+}
+
+#cursor[data-icon="arrow-right"] #cursorIcon {
+    background-image: var(--iconArrowRight);
+}
+
+#cursor[data-icon="play"] #cursorIcon {
+    background-image: var(--iconPlay);
+}
+
+#cursor[data-icon="x"] #cursorIcon {
+    background-image: var(--iconX);
 }
 </style>
 
@@ -92,8 +126,8 @@
 
             let cursorX = -100;
             let cursorY = -100;
-            let hoveredElementsExpand = [];
-            let iconElementsExpand = [];
+            let hoveredElementsExpand;
+            let iconElementsExpand;
 
             const cursorSizeOffset = 0.5 * cursor.clientWidth;
 

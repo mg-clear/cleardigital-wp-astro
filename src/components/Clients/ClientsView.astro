@@ -70,7 +70,8 @@ const clients = json.data.clients.nodes;
 
 <style lang="scss">
     .clients-view {
-        background-color: black;
+        background-color: var(--color-black);
+        color: var(--color-white);
 
         .container {
             display: grid;
@@ -85,12 +86,10 @@ const clients = json.data.clients.nodes;
 
         .filters {
             grid-area: filters;
-            background-color: red;
         }
 
         .tags {
             grid-area: tags;
-            background-color: green;
             min-height: 4.4rem;
         }
 
@@ -99,6 +98,18 @@ const clients = json.data.clients.nodes;
             display: grid;
             grid-template-columns: repeat(4, 23rem);
             grid-gap: var(--padding-unit-30);
+
+            @media(max-width: 991px) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @media(max-width: 767px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media(max-width: 599px) {
+                grid-template-columns: 1fr;
+            }
         }
     }
 </style>
