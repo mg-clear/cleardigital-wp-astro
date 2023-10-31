@@ -79,7 +79,7 @@ const clients = json.data.clients.nodes;
                 "filters tags"
                 "filters cards";
             grid-template-columns: 4fr 8fr;
-            grid-template-rows: auto;
+            grid-template-rows: min-content 1fr;
             grid-column-gap: var(--padding-unit-50);
             grid-row-gap: var(--padding-unit-30);
         }
@@ -97,6 +97,7 @@ const clients = json.data.clients.nodes;
             grid-area: cards;
             display: grid;
             grid-template-columns: repeat(4, 23rem);
+            grid-auto-rows: min-content;
             grid-gap: var(--padding-unit-30);
 
             @media(max-width: 991px) {
@@ -113,3 +114,48 @@ const clients = json.data.clients.nodes;
         }
     }
 </style>
+
+<script>
+    window.addEventListener("DOMContentLoaded", function(){
+        const clientView = document.querySelector(".clients-view")
+        if(clientView) {
+            const filters = clientView.querySelector(".filters")
+            const tags = clientView.querySelector(".tags")
+            const cards = clientView.querySelector(".cards")
+            const filterSettings = {
+                caseStudiesOnly: false,
+                taxonomy: {
+                    industry: [],
+                },
+                items: {
+                    all: [],
+                    current: [],
+                },
+            }
+
+            const taxonomyFilterToggle = function(event) {
+                const checkbox = event.target
+                const taxonomy = checkbox.dataset.taxonomy
+                const termId = checkbox.dataset.termId
+                let tag;
+                if(checkbox.checked) {
+                    //add tag to tag list
+                    tag = ''
+                } else {
+                    //remove tag from tag list
+                    tag = tags.querySelector(`.taxonomy-tag[data-taxonomy="${taxonomy}"][data-term-id="${termId}"]`)
+                }
+                if(tag) {
+                    console.log(tag)
+                }
+            }
+
+            const filterTaxonomies = filters.querySelectorAll("input[type=checkbox]")
+            if(filterTaxonomies && filterTaxonomies.length > 0) {
+                for(const checkbox of filterTaxonomies) {
+                    checkbox.addEventListener("click", taxonomyFilterToggle)
+                }
+            }
+        }
+    })
+</script>
