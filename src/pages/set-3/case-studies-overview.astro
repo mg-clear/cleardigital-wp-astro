@@ -1,4 +1,8 @@
 ---
+import Page from "@layouts/Page/Page.astro";
+import HeroBanner from "@components/HeroBanner/HeroBanner.astro";
+import ImageTwoBlock from "../../components/ImageTwoBlock/ImageTwoBlock.astro";
+import SliderWithContent from "@components/SliderWithContent/SliderWithContent.astro";
 
 const caseStudyCardQuery = `query CaseStudyCardQuery($slug: String = "case-study-01") {
   caseStudyBy(slug: $slug) {
@@ -25,3 +29,78 @@ const caseStudyCardQuery = `query CaseStudyCardQuery($slug: String = "case-study
 }`
 
 ---
+
+<Page title="Case Studies" metadescription="" ogimage="">
+  <HeroBanner
+    headline="Case in point —<br/><span class='marker-effect marker-underline'>great</span> results."
+    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    headlineTag="h1"
+    headlineTypography="h1"
+    ctaText="Read story"
+    ctaStyle="button"
+    ctaUrl="/story"
+    backgroundImage={{
+      sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/11/case-studies-bg.webp"
+    }}
+  />
+  <ImageTwoBlock
+    slideItems={[
+      {
+        slideLogo: {
+          altText: "digimarc",
+          sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/logo-digimarc.webp",
+        },
+        slideHeadline: "27% increase on click-through rates.",
+        slideCtaText: "View case study",
+        slideCtaUrl: "/case-study-1",
+        slideBackgroundImage: {
+          sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/man-holding-phone.webp",
+        },
+        slideBackgroundVideoUrl: "",
+        slideBackgroundVideoType: "",
+      },
+      {
+        slideLogo: {
+          altText: "leadspace",
+          sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/logo-leadspace.webp",
+        },
+        slideHeadline: "53% increase on engagement metrics.",
+        slideCtaText: "View case study",
+        slideCtaUrl: "/case-study-2",
+        slideBackgroundImage: {
+          sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/office-discussion.webp",
+        },
+        slideBackgroundVideoUrl: "",
+        slideBackgroundVideoType: "",
+      },
+      {
+        slideLogo: {
+          altText: "digimarc",
+          sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/logo-digimarc.webp",
+        },
+        slideHeadline: "27% increase on click-through rates.",
+        slideCtaText: "View case study",
+        slideCtaUrl: "/case-study-1",
+        slideBackgroundImage: {
+          sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/man-holding-phone.webp",
+        },
+        slideBackgroundVideoUrl: "",
+        slideBackgroundVideoType: "",
+      },
+    ]}
+	/>
+
+  <SliderWithContent />
+  <HeroBanner
+    headline="Let’s talk."
+    eyebrow="Lorem ipsum dolor"
+    ctaText="Contact us"
+    ctaStyle="button"
+    ctaUrl="/contact"
+    headlineTag="h2"
+    headlineTypography="h1"
+    backgroundImage={{
+      sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/cta-bg.webp"
+    }}
+  />
+</Page>

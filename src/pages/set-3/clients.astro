@@ -2,8 +2,8 @@
 
 import Page from "@layouts/Page/Page.astro";
 import HeroBanner from "@components/HeroBanner/HeroBanner.astro";
+import ContentWithGrid from "@components/ContentWithGrid/ContentWithGrid.astro";
 import ClientsView from "@components/Clients/ClientsView.astro";
-
 
 const clientsQuery = `query ClientsQuery($status: PostStatusEnum = PUBLISH) {
   clients(where: {status: $status}) {
@@ -40,6 +40,65 @@ const clientsQuery = `query ClientsQuery($status: PostStatusEnum = PUBLISH) {
 ---
 
 <Page title="Clients" metadescription="" ogimage="">
-  <HeroBanner />
+  <HeroBanner
+    headline="<span class='marker-effect marker-underline'>Great</span> clients.<br/>Many industries."
+    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    headlineTag="h1"
+    headlineTypography="h1"
+  />
+  <ContentWithGrid
+    eyebrow="Customer impact"
+    headline="Curabitur malesuada est tempor <span class='marker-effect marker-underline'>ullamcorper</span> maximus"
+    headlineTag="h2"
+    headlineTypography="h2"
+    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim."
+    contentItems={[
+      {
+        image: {
+          sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/11/Cisco_Logo.svg",
+          altText: "cisco"
+        },
+        headline: "2M",
+        headlineTag: "h3",
+        headlineTypography: "h1",
+        description: "Torem ipsum dolor sit <a href='#'>amet</a>, consectetur adipiscing at elit.",
+        linkUrl: ""
+      },
+      {
+        image: {
+          sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/11/Cisco_Logo.svg",
+          altText: "intel"
+        },
+        headline: "90%",
+        headlineTag: "h3",
+        headlineTypography: "h1",
+        description: "Torem ipsum dolor sit amet, consectetur <a href='#'>adipiscing</a> at elit.",
+        linkUrl: ""
+      },
+      {
+        image: {
+          sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/11/Cisco_Logo.svg",
+          altText: "citrix"
+        },
+        headline: "$1.5M",
+        headlineTag: "h3",
+        headlineTypography: "h1",
+        description: "Torem ipsum dolor sit <a href='#'>amet</a>, consectetur adipiscing at elit.",
+        linkUrl: ""
+      },
+    ]}
+  />
   <ClientsView />
+  <HeroBanner
+    headline="Let’s talk."
+    eyebrow="Lorem ipsum dolor"
+    ctaText="Contact us"
+    ctaStyle="button"
+    ctaUrl="/contact"
+    headlineTag="h2"
+    headlineTypography="h1"
+    backgroundImage={{
+      sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/cta-bg.webp"
+    }}
+  />
 </Page>
