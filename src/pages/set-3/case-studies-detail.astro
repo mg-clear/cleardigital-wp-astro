@@ -1,4 +1,7 @@
 ---
+import Page from "@layouts/Page/Page.astro";
+import HeroBanner from "@components/HeroBanner/HeroBanner.astro";
+import TwoColWithLogo from "@components/TwoColWithLogo/TwoColWithLogo.astro";
 
 const caseStudyCardQuery = `query CaseStudyCardQuery($slug: String = "case-study-01") {
   caseStudyBy(slug: $slug) {
@@ -25,3 +28,31 @@ const caseStudyCardQuery = `query CaseStudyCardQuery($slug: String = "case-study
 }`
 
 ---
+
+<Page title="Case Studies Detail" metadescription="" ogimage="">
+  <HeroBanner
+    headline="Case in point —<br/><span class='marker-effect marker-underline'>great</span> results."
+    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    headlineTag="h1"
+    headlineTypography="h1"
+    ctaText="Read story"
+    ctaStyle="button"
+    ctaUrl="/story"
+    backgroundImage={{
+      sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/11/case-studies-bg.webp"
+    }}
+  />
+  <TwoColWithLogo/>
+  <HeroBanner
+    headline="Let’s talk."
+    eyebrow="Lorem ipsum dolor"
+    ctaText="Contact us"
+    ctaStyle="button"
+    ctaUrl="/contact"
+    headlineTag="h2"
+    headlineTypography="h1"
+    backgroundImage={{
+      sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/cta-bg.webp"
+    }}
+  />
+</Page>
