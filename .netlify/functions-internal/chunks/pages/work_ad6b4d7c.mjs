@@ -1,0 +1,22 @@
+import { c as createAstro, d as createComponent, r as renderTemplate, g as renderComponent } from '../astro_fb3c1bda.mjs';
+import 'clsx';
+import { b as $$Page } from './banner-blade_4e7764d7.mjs';
+import { a as $$HeroBanner, b as $$TwoColWithLogo } from './case-studies-detail_00bd90a5.mjs';
+import { a as $$SliderWithContent } from './case-studies-overview_e06776ba.mjs';
+import { a as $$TwoGridSlider } from './homepage-integrate_c023f436.mjs';
+import 'html-escaper';
+/* empty css                                        *//* empty css                                  *//* empty css                           *//* empty css                                  *//* empty css                                 */import '@astrojs/internal-helpers/path';
+/* empty css                                        */import '../astro-assets-services_6b3983ce.mjs';
+/* empty css                                     *//* empty css                                        *//* empty css                                        */import './clients_d41399b0.mjs';
+/* empty css                                        *//* empty css                             *//* empty css                                        *//* empty css                                        */
+const $$Astro = createAstro();
+const $$Work = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
+  Astro2.self = $$Work;
+  return renderTemplate`${renderComponent($$result, "Page", $$Page, { "title": "Our Work | Set 2", "metadescription": "Our work", "ogimage": "" }, { "default": ($$result2) => renderTemplate`${renderComponent($$result2, "HeroBanner", $$HeroBanner, { "bladeCssId": "workHeroBanner", "bladeAdditionalCssClasses": "", "ctaLightboxVideoUrl": null, "ctaStyle": null, "ctaTarget": "_self", "ctaText": "Let's get started", "ctaUrl": "/work/start", "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "eyebrow": "Lorem ipsum dolor sit", "headline": "Our work is our <span class='marker-effect marker-underline'>passion</span>.", "headlineTag": "h1", "headlineTypography": "h1", "backgroundTheme": "dark", "backgroundVideoType": "mp4", "backgroundVideoUrl": null, "backgroundImage": { sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/summit-bg.webp" }, "hasGridBackgroundTexture": true })}${renderComponent($$result2, "TwoColWithLogo", $$TwoColWithLogo, {})}${renderComponent($$result2, "HeroBanner", $$HeroBanner, { "bladeCssId": "workAwardsBanner", "bladeAdditionalCssClasses": "", "ctaLightboxVideoUrl": null, "ctaStyle": "button", "ctaTarget": "_self", "ctaText": "View Our Awards", "ctaUrl": "/awards/", "description": "The Clear Digital Velocity Workshops is our unique and dynamic methodology that flips the traditional agency models by transforming project discovery conversations into focused project planning and road mapping exercises.", "eyebrow": null, "headline": "Over 100 awards.", "headlineTag": "h2", "headlineTypography": "h1", "backgroundTheme": "dark", "backgroundVideoType": "mp4", "backgroundVideoUrl": null, "backgroundImage": { sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/awards-bg.webp" }, "hasGridBackgroundTexture": false })}${renderComponent($$result2, "SliderWithContent", $$SliderWithContent, {})}${renderComponent($$result2, "TwoGridSlider", $$TwoGridSlider, {})}${renderComponent($$result2, "HeroBanner", $$HeroBanner, { "bladeCssId": "workCTA", "bladeAdditionalCssClasses": "", "ctaLightboxVideoUrl": null, "ctaStyle": "button", "ctaTarget": "_self", "ctaText": "Contact Us", "ctaUrl": "/contact/", "description": null, "eyebrow": "Lorem ipsum dolor.", "headline": "Let\u2019s talk.", "headlineTag": "h2", "headlineTypography": "h1", "backgroundTheme": "dark", "backgroundVideoType": "mp4", "backgroundVideoUrl": null, "backgroundImage": { sourceUrl: "https://dev-clear-astro-wp.pantheonsite.io/wp-content/uploads/2023/10/cta-bg.webp" }, "hasGridBackgroundTexture": true })}` })}`;
+}, "/Users/chander/Sites/cleardigital-wp-astro/src/pages/set-2/work.astro", void 0);
+
+const $$file = "/Users/chander/Sites/cleardigital-wp-astro/src/pages/set-2/work.astro";
+const $$url = "/set-2/work";
+
+export { $$Work as default, $$file as file, $$url as url };
