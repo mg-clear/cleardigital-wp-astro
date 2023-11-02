@@ -7,6 +7,8 @@ import iconArrowLeft from "@assets/images/MouseCursor/arrow-left.svg";
 import iconPlus from "@assets/images/MouseCursor/plus.svg";
 import iconMinus from "@assets/images/MouseCursor/minus.svg";
 
+const useCustomMouse = import.meta.env.PUBLIC_USE_CUSTOM_CURSOR;
+
 const cssVars = {
     iconX: `url(${iconX.src})`,
     iconPlay: `url(${iconPlay.src})`,
@@ -14,6 +16,7 @@ const cssVars = {
     iconArrowLeft: `url(${iconArrowLeft.src})`,
     iconPlus: `url(${iconPlus.src})`,
     iconMinus: `url(${iconMinus.src})`,
+    mouseCursor: (useCustomMouse) ? "none" : "auto",
 };
 
 ---
@@ -26,7 +29,7 @@ const cssVars = {
 <style lang="scss" define:vars={cssVars}>
 
 :global(*) {
-	//cursor: none !important;
+	cursor: none !important;
 }
 
 #cursor, #cursor * {

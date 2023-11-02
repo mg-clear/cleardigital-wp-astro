@@ -66,6 +66,7 @@ const {
 			tag="h2"
 			content={slideHeadline}
 			typography="h3"
+			theme="light"
 		/>
 		<CTAButton
 			label={slideCtaText}
@@ -109,6 +110,7 @@ const {
 		padding-right: $container-padding-mobile;
 		position: absolute;
 		width: auto;
+		color: var(--color-white);
 
 		@media (min-width: $breakpoint-tablet) {
 			bottom: $component-spacing-tablet;
@@ -142,10 +144,7 @@ const {
 			width: 100%;
 		}
 	}
-	:global(.h3) {
-		color: #fff;
-		margin-bottom: 20px;
-	}
+
 	.column {
 			@include col(12);
 			height: var(--blade-view-height);

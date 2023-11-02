@@ -69,6 +69,11 @@ const { content = "", tag = "h2", typography = "", theme = "" } = Astro.props;
 
     &.dark {
       --marker-effect-url: url(/images/marker-underline-black.svg);
+      color: var(--color-black);
+    }
+
+    &.light {
+      color: var(--color-white);
     }
 
   }
