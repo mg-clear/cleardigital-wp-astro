@@ -1,0 +1,23 @@
+---
+
+import Page from "@layouts/Page/Page.astro";
+import Breadcrumbs from "@components/HeroBanner/Partials/Breadcrumbs.astro";
+
+---
+
+<Page metadescription="" ogimage="" title="">
+    <div style="height:300px;"></div>
+    <Breadcrumbs breadcrumbs={[
+        {
+            text: "Link 1",
+            href: "#1"
+        },
+        {
+            text: "Link 2",
+            href: "#2"
+        },
+        {
+            text: "Page 3"
+        }
+    ]} />
+</Page>

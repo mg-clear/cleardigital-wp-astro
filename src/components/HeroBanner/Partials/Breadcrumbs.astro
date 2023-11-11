@@ -1,0 +1,59 @@
+---
+
+interface Props {
+    breadcrumbs: {
+        text: string,
+        href?: string
+    }[]
+}
+
+const {
+    breadcrumbs
+} = Astro.props;
+
+---
+
+<ul class="breadcrumbs">
+    {
+        breadcrumbs.map((breadcrumb)=>{
+            return breadcrumb.href ? <li><a class="breadcrumb" href={breadcrumb.href} set:text={breadcrumb.text} /></li> : <li><span class="breadcrumb" set:text={breadcrumb.text} /></li>;
+        })
+    }
+</ul>
+
+<style lang="scss">
+    .breadcrumbs {
+        --breadcrumb-spacing: 1rem;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        gap: var(--breadcrumb-spacing);
+        color: var(--color-grey);
+
+        li {
+
+            &:not(:first-child) {
+
+                &::before {
+                    content: "\00BB";
+                    margin-inline-end: var(--breadcrumb-spacing);
+                }
+            }
+        }
+    }
+
+    .breadcrumb {
+        color: inherit;
+    }
+
+    a.breadcrumb {
+
+        &:hover, &:focus {
+            color: var(--color-pink);
+            text-decoration: underline;
+        }
+    }
+</style>
