@@ -51,7 +51,7 @@ const {
       {eyebrow && <div class="subtitle">{eyebrow}</div>}
 			{headline && <Headline content={headline} tag={headlineTag} typography={headlineTypography} />}
       {description && <div class="description body-large"><Fragment set:html={description} /></div>}
-      {ctaText && <CTAButton class="margin-start-30" label={ctaText} href={ctaUrl} target={ctaTarget} style={ctaStyle} lightboxVideo={ctaLightboxVideoUrl}  />}
+      {ctaText && <CTAButton class="margin-start-30 white-active" label={ctaText} href={ctaUrl} target={ctaTarget} style={ctaStyle} lightboxVideo={ctaLightboxVideoUrl}  />}
 		</div>
 	</div>
   <BladeBackground image={backgroundImage && (backgroundImage.sourceUrl ?? '')} video={backgroundVideoUrl} videoType={backgroundVideoType} />

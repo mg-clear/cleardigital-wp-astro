@@ -15,24 +15,29 @@ const { label, href, target = '_self', style, lightboxVideo, class: className } 
 <a href={href} class:list={["cta-button button-large", style, className]} target={target}>{label}</a>
 <style lang="scss">
   .cta-button {
+    --btn-main-color: white;
     display: inline-block;
     font-weight: bold;
     text-decoration: none;
-    color: white;
+    color: var(--btn-main-color);
     position: relative;
-    padding-right: 2.6rem;
-    transition: color 0.3s ease-in-out;
+    padding-right: 3.0rem;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
     line-height: 1;
 
     &.margin-start-30 {
       margin-block-start: var(--padding-unit-30);
     }
+
+    &.dark {
+      --btn-main-color: black;
+    }
   }
 
   .cta-button::after {
     content: "";
-    height: 1.6rem;
-    width: 1.6rem;
+    height: 2rem;
+    width: 2rem;
     position: absolute;
     right: 0.5rem;
     top: 50%;
@@ -41,6 +46,10 @@ const { label, href, target = '_self', style, lightboxVideo, class: className } 
     background-repeat: no-repeat;
     background-size: contain;
     transition: right 0.3s ease-in-out, background-image 0.3s ease-in-out;
+  }
+
+  .cta-button.dark::after {
+    background-image: url(/black_link.svg);
   }
 
   .cta-button:focus,
@@ -62,15 +71,20 @@ const { label, href, target = '_self', style, lightboxVideo, class: className } 
     padding: 1.5rem;
     border: 2px solid var(--color-pink);
     background-color: var(--color-pink);
-    color: white;
+    color: var(--btn-main-color);
 
     &::after {
       display: none;
     }
 
     &:focus, &:hover {
-      background-color: var(--color-white);
+      background-color: transparent;
       color: var(--color-pink);
+    }
+
+    &.white-active:focus, &.white-active:hover {
+      border-color: var(--color-white);
+      color: var(--color-white);
     }
   }
 </style>

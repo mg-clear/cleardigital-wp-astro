@@ -147,6 +147,8 @@ const response = await fetch(import.meta.env.SECRET_GRAPHQL_ENDPOINT, {
 const json = await response.json();
 const { astroBlades } = json.data.page.astroPageContent;
 
+console.log(astroBlades);
+
 const componentMapping = {
 //   'Page_Integrationtesting_Blades_BannerBlade': BannerBlade,
 //   'Page_Integrationtesting_Blades_ContentBlade': ContentBlade,
